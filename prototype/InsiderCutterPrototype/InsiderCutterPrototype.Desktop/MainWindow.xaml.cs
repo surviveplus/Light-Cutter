@@ -89,5 +89,20 @@ namespace InsiderCutterPrototype.Desktop
                 button.IsEnabled = true;
             } // end try
         }
+
+        private async void cutIeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            try
+            {
+                button.IsEnabled = false;
+                await LightCutter.CutIeInsiderAsync();
+            }
+            finally
+            {
+                button.IsEnabled = true;
+            } // end try			
+        } // end sub
+
     } // end class
 } // end namespace

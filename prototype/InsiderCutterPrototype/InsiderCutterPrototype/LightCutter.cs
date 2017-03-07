@@ -119,5 +119,11 @@ namespace Net.Surviveplus.LightCutter
             });
         } // end sub
 
-    } // end class
+        public static async Task CutIeInsiderAsync()
+        {
+            await Task.Run(() => {
+                SaveByPrintWindow("{IEFrame}", "{Frame Tab}");
+            });
+        } // end sub
+} // end class
 } // end namespace
