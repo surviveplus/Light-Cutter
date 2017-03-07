@@ -1,0 +1,17 @@
+﻿<Window x:Class="InsiderCutterPrototype.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InsiderCutterPrototype.Desktop"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="250">
+    <Grid>
+    <StackPanel Orientation="Vertical">
+        <Button x:Name="cutButton" Content="Cut remote desktop insider" Height="40" Click="cutButton_Click" />
+        <Button x:Name="resizeButton"  Content="Resize remote desktop for smart sizing" Height="40" Click="resizeButton_Click" Margin="0 10 0 0" />
+        <Button x:Name="cutPrimaryMonitorButton" Content="Cut primary monitor after 3 sec." Height="40"  Margin="0 10 0 0"  Click="cutPrimaryMonitorButton_Click" />
+    </StackPanel>
+       
+    </Grid>
+</Window>
