@@ -74,7 +74,42 @@ namespace Net.Surviveplus.LightCutter
             } // end using (windowBitmap)
         } // end sub
 
-        public static async Task CutRemoteDesktopInsiderAsync()
+        public static void SaveByCopyFromScreen(string windowSelector, string screenSelector)
+        {
+            // Find bounds of window
+            var queryWindow = Desktop.Elements.WaitForChildren(windowSelector, TimeSpan.FromSeconds(3));
+            var window = (queryWindow.FirstOrDefault() as WpfElement)?.UIAutomationElement;
+            var windowBounds = window?.Current.BoundingRectangle;
+
+            // Find bounds of inside of window
+            var queryScreen = queryWindow.Find(screenSelector);
+            var ui = (queryScreen.FirstOrDefault() as WpfElement)?.UIAutomationElement;
+            var bounds = ui?.Current.BoundingRectangle;
+            //Debug.WriteLine("bounds:" + (bounds?.ToString() ?? "(null)") );
+
+            if (bounds == null)
+            {
+                // TODO: throw new NotFoundAppException ?
+                return;
+            } // end if
+
+
+            // filename for new image
+            var bitmapFile = new System.IO.FileInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop), DateTime.Now.ToString("yyyyMMdd HHmmss") + ".png"));
+
+            // Save image
+            using (var bitmap = new Bitmap((int)bounds.Value.Width, (int)bounds.Value.Height))
+            {
+                using (var g = Graphics.FromImage(bitmap))
+                {
+                    g.CopyFromScreen(bounds.Value.TopLeft.ToPoint(), new Point(0, 0), bounds.Value.Size.ToSize());
+                } // end using
+
+                bitmap.Save(bitmapFile.FullName, ImageFormat.Png);
+            } // end using
+        } // end sub
+
+    public static async Task CutRemoteDesktopInsiderAsync()
         {
             await Task.Run(() => {
                 SaveByPrintWindow("{TscShellContainerClass}", "{UIMainClass}");
@@ -118,6 +153,15 @@ namespace Net.Surviveplus.LightCutter
                 SaveByPrintWindow("{WindowsForms10.Window.8.app.0.2bef119_r6_ad1}", "{UIMainClass}");
             });
         } // end sub
+
+        public static async Task CutChromeRemoteDesktopInsiderAsync()
+        {
+            await Task.Run(() => {
+                //{Chrome_WidgetWin_1} {Chrome_RenderWidgetHostHWND}
+                SaveByCopyFromScreen("{Chrome_WidgetWin_1}", "{Chrome_RenderWidgetHostHWND}");
+            });
+        } // end sub
+
 
         public static async Task CutIeInsiderAsync()
         {

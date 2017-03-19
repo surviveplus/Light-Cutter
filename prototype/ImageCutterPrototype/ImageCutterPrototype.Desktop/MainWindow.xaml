@@ -1,0 +1,26 @@
+﻿<Window x:Class="ImageCutterPrototype.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageCutterPrototype.Desktop"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" 
+        AllowDrop="True"
+        DragDrop.Drop="Window_Drop" DragDrop.PreviewDragOver="Window_PreviewDragOver">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" >
+            <Label Width="60">Width:</Label>
+            <TextBox Width="60" x:Name="width" Text="{Binding Size.Width}"/>
+            <Label Width="60">Height:</Label>
+            <TextBox Width="60" x:Name="height" Text="{Binding Size.Height}"/>
+            <Label Width="60">Scale:</Label>
+            <TextBox Width="60" x:Name="scale" Text="{Binding Scale}"/>
+        </StackPanel>
+        <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">Drag &amp; Drop target files to here.</Label>
+    </Grid>
+</Window>
