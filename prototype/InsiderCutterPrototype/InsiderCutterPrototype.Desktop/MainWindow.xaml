@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="250">
     <Grid>
-    <StackPanel Orientation="Vertical">
-        <Button x:Name="cutButton" Content="Cut remote desktop insider" Height="40" Click="cutButton_Click" />
-        <Button x:Name="resizeButton"  Content="Resize remote desktop for smart sizing" Height="40" Click="resizeButton_Click" Margin="0 10 0 0" />
-        <Button x:Name="cutPrimaryMonitorButton" Content="Cut primary monitor after 3 sec." Height="40"  Margin="0 10 0 0"  Click="cutPrimaryMonitorButton_Click" />
-    </StackPanel>
-       
+        <StackPanel Orientation="Vertical">
+            <Button x:Name="cutButton" Content="Cut remote desktop insider" Height="40" Click="cutButton_Click" />
+            <Button x:Name="resizeButton"  Content="Resize remote desktop for smart sizing" Height="40" Click="resizeButton_Click" Margin="0 10 0 0" />
+            <Button x:Name="cutPrimaryMonitorButton" Content="Cut primary monitor after 3 sec." Height="40"  Margin="0 10 0 0"  Click="cutPrimaryMonitorButton_Click" />
+            <Button x:Name="cutVmconnectButton" Content="Cut VM connect insider" Height="40" Margin="0 10 0 0" Click="cutVmconnectButton_Click"/>
+            <Button x:Name="cutChromeRemoteDesktopButton" Content="Cut Chrome Remote Desktop after 3 sec" Height="40" Click="cutChromeRemoteDesktopButton_Click" Margin="0 10 0 0" />
+            <Button x:Name="cutIeButton" Content="Cut IE insider" Height="40" Click="cutIeButton_Click" Margin="0 10 0 0" />
+        </StackPanel>
     </Grid>
 </Window>

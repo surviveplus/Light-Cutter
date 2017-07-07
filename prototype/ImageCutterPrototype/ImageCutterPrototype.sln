@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageCutterPrototype", "ImageCutterPrototype\ImageCutterPrototype.csproj", "{E973A04D-8309-4E7F-89A1-4EB1051870BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageCutterPrototype.Desktop", "ImageCutterPrototype.Desktop\ImageCutterPrototype.Desktop.csproj", "{DAA1D4AB-D9CC-48C0-88B5-AE901100571F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E973A04D-8309-4E7F-89A1-4EB1051870BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E973A04D-8309-4E7F-89A1-4EB1051870BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E973A04D-8309-4E7F-89A1-4EB1051870BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E973A04D-8309-4E7F-89A1-4EB1051870BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAA1D4AB-D9CC-48C0-88B5-AE901100571F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAA1D4AB-D9CC-48C0-88B5-AE901100571F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAA1D4AB-D9CC-48C0-88B5-AE901100571F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAA1D4AB-D9CC-48C0-88B5-AE901100571F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

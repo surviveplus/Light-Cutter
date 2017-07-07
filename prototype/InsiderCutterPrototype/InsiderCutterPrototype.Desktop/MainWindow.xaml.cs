@@ -75,5 +75,54 @@ namespace InsiderCutterPrototype.Desktop
             } // end try			
 
         }
+
+        private async void cutVmconnectButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            try
+            {
+                button.IsEnabled = false;
+                await LightCutter.CutVMConnectInsiderAsync();
+            }
+            finally
+            {
+                button.IsEnabled = true;
+            } // end try
+        }
+        private async void cutChromeRemoteDesktopButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = this;
+            try
+            {
+                window.Visibility = Visibility.Hidden;
+
+                await Task.Run(() =>
+                {
+                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(3));
+                });
+
+                await LightCutter.CutChromeRemoteDesktopInsiderAsync();
+            }
+            finally
+            {
+                window.Visibility = Visibility.Visible;
+            } // end try			
+
+        }
+
+        private async void cutIeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            try
+            {
+                button.IsEnabled = false;
+                await LightCutter.CutIeInsiderAsync();
+            }
+            finally
+            {
+                button.IsEnabled = true;
+            } // end try			
+        } // end sub
+
     } // end class
 } // end namespace
