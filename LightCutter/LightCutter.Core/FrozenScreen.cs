@@ -59,7 +59,12 @@ namespace Net.Surviveplus.LightCutter.Core
 
         private Rectangle bounds ;
 
+        public Rectangle Bounds { get { return this.bounds; } }
+
         private Bitmap frozenImage;
+
+        public Bitmap FrozenImage { get { return this.frozenImage; } }
+
 
         public FrozenScreen(Rectangle bounds)
         {

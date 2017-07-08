@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightCutter.Core", "LightCu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightCutter.Core.CodedUITest", "LightCutter.Core.CodedUITest\LightCutter.Core.CodedUITest.csproj", "{064AE122-B00B-4652-A7E7-67C489ACE58E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightCutter.UI", "LightCutter.UI\LightCutter.UI.csproj", "{E9E0F6BE-C161-4A6D-8F8D-6B20AC491ADE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{064AE122-B00B-4652-A7E7-67C489ACE58E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{064AE122-B00B-4652-A7E7-67C489ACE58E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{064AE122-B00B-4652-A7E7-67C489ACE58E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9E0F6BE-C161-4A6D-8F8D-6B20AC491ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9E0F6BE-C161-4A6D-8F8D-6B20AC491ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9E0F6BE-C161-4A6D-8F8D-6B20AC491ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9E0F6BE-C161-4A6D-8F8D-6B20AC491ADE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

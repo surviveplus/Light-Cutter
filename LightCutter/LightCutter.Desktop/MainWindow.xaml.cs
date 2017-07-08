@@ -29,15 +29,25 @@ namespace Net.Surviveplus.LightCutter.Desktop
         {
 
             // TODO: 
-            //using (var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze())
+            using (var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze())
             //using (var cropped = frozen?.Crop())
             //using (var bitmap = cropped?.GetBitmap())
-            //{
+            {
+                var w = new UI.FullScreenWindow() ;
+                //w.Left = frozen.Bounds.Left;
+                //w.Top = frozen.Bounds.Top;
+                //w.Width = frozen.Bounds.Width;
+                //w.Height = frozen.Bounds.Height;
+                w.ShowFrozenScreen(frozen);
 
-            //    var outputFile = new System.IO.FileInfo(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), System.DateTime.Now.ToString("yyyyMMdd HHmmssfff", System.Threading.Thread.CurrentThread.CurrentUICulture) + ".png"));
-            //    bitmap.Save(outputFile.FullName, System.Drawing.Imaging.ImageFormat.Png);
-            //}
-             this.Close();
+                //w.ShowDialog();
+
+                //var outputFile = new System.IO.FileInfo(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), System.DateTime.Now.ToString("yyyyMMdd HHmmssfff", System.Threading.Thread.CurrentThread.CurrentUICulture) + ".png"));
+                //bitmap.Save(outputFile.FullName, System.Drawing.Imaging.ImageFormat.Png);
+            }
+
+
+            this.Close();
         }
     }
 }

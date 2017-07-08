@@ -18,7 +18,10 @@ namespace Net.Surviveplus.LightCutter.Core
                 bounds = Rectangle.Union(bounds, b);
             } // next b
 
-            System.Threading.Thread.Sleep(time.Value - DateTime.Now);
+            var timeSpan = time.Value - DateTime.Now;
+            if (timeSpan < TimeSpan.FromSeconds(0)) { timeSpan = TimeSpan.FromSeconds(0); }
+
+            System.Threading.Thread.Sleep(timeSpan);
             return new FrozenScreen(bounds);
 
         } // end function

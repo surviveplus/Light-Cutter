@@ -1,0 +1,60 @@
+﻿<Window x:Class="Net.Surviveplus.LightCutter.UI.FullScreenWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.UI"
+        mc:Ignorable="d"
+        Title="FullScreenWindow" ShowInTaskbar="False" WindowStyle="None" Loaded="Window_Loaded" Topmost="True" 
+        BorderThickness="0" Left="0" Top="0" ResizeMode="NoResize" 
+        KeyDown="Window_KeyDown" LostFocus="Window_LostFocus" MouseDown="Window_MouseDown" Background="Black"
+        SizeChanged="Window_SizeChanged">
+    <Window.Resources>
+        <Storyboard x:Key="LineColor" AutoReverse="False" RepeatBehavior="Forever">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="verticalLine">
+                <EasingColorKeyFrame KeyTime="0" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:1" Value="Black">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:2" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="horizontalLine">
+                <EasingColorKeyFrame KeyTime="0" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:1" Value="Black">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:2" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource LineColor}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Canvas>
+        <Image x:Name="frozenImage" MouseDown="frozenImage_MouseDown" KeyDown="frozenImage_KeyDown" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None" Opacity="0.8" MouseMove="frozenImage_MouseMove"/>
+        <Line x:Name="verticalLine" Stroke="White" MouseDown="Rectangle_MouseDown" X1="100" X2="100" Y1="0" Y2="200"  MouseMove="frozenImage_MouseMove" />
+        <Line x:Name="horizontalLine" Stroke="White" MouseDown="Rectangle_MouseDown" X1="0" X2="200" Y1="100" Y2="100" MouseMove="frozenImage_MouseMove" />
+    </Canvas>
+</Window>
