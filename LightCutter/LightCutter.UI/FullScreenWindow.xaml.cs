@@ -33,6 +33,8 @@ namespace Net.Surviveplus.LightCutter.UI
             this.Width = frozen.Bounds.Width;
             this.Height = frozen.Bounds.Height;
 
+            this.cropGuidelines.Visibility = Visibility.Collapsed;
+
             using (var s = new MemoryStream())
             {
                 frozen.FrozenImage.Save(s, ImageFormat.Png);
@@ -43,10 +45,17 @@ namespace Net.Surviveplus.LightCutter.UI
 
         } // end sub
 
+        private Point p;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
+            var source = PresentationSource.FromVisual(this.frozenImage);
+            this.p = new Point(
+            source.CompositionTarget.TransformToDevice.M11,
+            source.CompositionTarget.TransformToDevice.M22);
+
         } // end sub
-        
+
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
@@ -62,13 +71,38 @@ namespace Net.Surviveplus.LightCutter.UI
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
+
+        }
+
+        private void frozenImage_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (this.isCropping )
+            {
+                this.isCropping = false;
+                this.DialogResult = true;
+            }
             this.Close();
 
         }
 
         private void frozenImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.isCropping = true;
+                var point = e.GetPosition(this);
+                this.startPoing = new System.Drawing.PointF( (float)point.X, (float)point.Y);
+
+                this.horizontalLine.Visibility = Visibility.Collapsed;
+                this.verticalLine.Visibility = Visibility.Collapsed;
+                this.cropGuidelines.Visibility = Visibility.Visible;
+
+                
+            }
+            else
+            {
+                this.Close();
+            }
 
         }
 
@@ -78,10 +112,6 @@ namespace Net.Surviveplus.LightCutter.UI
 
         }
 
-        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Close();
-        }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -100,6 +130,31 @@ namespace Net.Surviveplus.LightCutter.UI
 
             this.horizontalLine.Y1 = point.Y;
             this.horizontalLine.Y2 = point.Y;
+
+            this.cropBounds.X = (float)Math.Min(point.X, this.startPoing.X);
+            this.cropBounds.Y = (float)Math.Min(point.Y, this.startPoing.Y);
+            this.cropBounds.Width =  (float)Math.Abs(point.X - (double) startPoing.X);
+            this.cropBounds.Height = (float)Math.Abs(point.Y - (double)startPoing.Y);
+
+            Canvas.SetLeft(this.cropGuidelines, this.cropBounds.X);
+            Canvas.SetTop(this.cropGuidelines, this.cropBounds.Y);
+
+            this.cropGuidelines.Width = this.cropBounds.Width;
+            this.cropGuidelines.Height = this.cropBounds.Height;
+        }
+
+        private System.Drawing.PointF startPoing = new System.Drawing.PointF();
+        private System.Drawing.RectangleF cropBounds = new System.Drawing.RectangleF();
+        private bool isCropping;
+
+        public System.Drawing.Rectangle CroppedBounds {
+            get {
+                return new System.Drawing.Rectangle(
+                    (int)(this.cropBounds.X * p.X),
+                    (int)(this.cropBounds.Y * p.Y),
+                    (int)(this.cropBounds.Width * p.X), 
+                    (int)(this.cropBounds.Height * p.Y));
+            }
         }
 
     } // end class

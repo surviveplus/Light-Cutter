@@ -28,23 +28,21 @@ namespace Net.Surviveplus.LightCutter.Desktop
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            // TODO: 
             using (var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze())
-            //using (var cropped = frozen?.Crop())
-            //using (var bitmap = cropped?.GetBitmap())
             {
                 var w = new UI.FullScreenWindow() ;
-                //w.Left = frozen.Bounds.Left;
-                //w.Top = frozen.Bounds.Top;
-                //w.Width = frozen.Bounds.Width;
-                //w.Height = frozen.Bounds.Height;
-                w.ShowFrozenScreen(frozen);
+                var r = w.ShowFrozenScreen(frozen);
+                if (r.HasValue && r.Value)
+                {
+                    using (var cropped = frozen?.Crop( w.CroppedBounds))
+                    using (var bitmap = cropped?.GetBitmap())
+                    {
 
-                //w.ShowDialog();
-
-                //var outputFile = new System.IO.FileInfo(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), System.DateTime.Now.ToString("yyyyMMdd HHmmssfff", System.Threading.Thread.CurrentThread.CurrentUICulture) + ".png"));
-                //bitmap.Save(outputFile.FullName, System.Drawing.Imaging.ImageFormat.Png);
-            }
+                        var outputFile = new System.IO.FileInfo(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), System.DateTime.Now.ToString("yyyyMMdd HHmmssfff", System.Threading.Thread.CurrentThread.CurrentUICulture) + ".png"));
+                        bitmap.Save(outputFile.FullName, System.Drawing.Imaging.ImageFormat.Png);
+                    } // end using (cropped, bitmap )
+                } // end if
+            } // end using(frozen)
 
 
             this.Close();
