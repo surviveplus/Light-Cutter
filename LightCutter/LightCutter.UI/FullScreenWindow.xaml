@@ -70,9 +70,9 @@
         </EventTrigger>
     </Window.Triggers>
     <Canvas>
-        <Image x:Name="frozenImage" MouseDown="frozenImage_MouseDown" MouseUp="frozenImage_MouseUp" KeyDown="frozenImage_KeyDown" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None" Opacity="0.8" MouseMove="frozenImage_MouseMove"/>
-        <Line x:Name="verticalLine" Stroke="White" MouseDown="frozenImage_MouseDown" MouseUp="frozenImage_MouseUp"  X1="100" X2="100" Y1="0" Y2="200"  MouseMove="frozenImage_MouseMove" />
-        <Line x:Name="horizontalLine" Stroke="White" MouseDown="frozenImage_MouseDown" MouseUp="frozenImage_MouseUp"  X1="0" X2="200" Y1="100" Y2="100" MouseMove="frozenImage_MouseMove" />
-        <Rectangle x:Name="cropGuidelines" Stroke="White" MouseDown="frozenImage_MouseDown" MouseUp="frozenImage_MouseUp"  Width="300" Height="300" MouseMove="frozenImage_MouseMove" />
+        <Image x:Name="frozenImage" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp" KeyDown="FrozenImage_KeyDown" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None" Opacity="0.8" MouseMove="FrozenImage_MouseMove"/>
+        <Line x:Name="verticalLine" Stroke="White" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="100" X2="100" Y1="0" Y2="200"  MouseMove="FrozenImage_MouseMove" />
+        <Line x:Name="horizontalLine" Stroke="White" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="0" X2="200" Y1="100" Y2="100" MouseMove="FrozenImage_MouseMove" />
+        <Rectangle x:Name="cropGuidelines" Stroke="White" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  Width="300" Height="300" MouseMove="FrozenImage_MouseMove" />
     </Canvas>
 </Window>

@@ -21,11 +21,25 @@ namespace Net.Surviveplus.LightCutter.UI
     /// </summary>
     public partial class FullScreenWindow : Window
     {
+        #region constructor
+
+        /// <summary>
+        /// Initialize instance
+        /// </summary>
         public FullScreenWindow()
         {
             InitializeComponent();
-        }
-        
+        } // end constructor
+
+        #endregion
+
+        #region methods
+
+        /// <summary>
+        /// Show dialog window to display Frozen Screen image and to let the user specify a range. 
+        /// </summary>
+        /// <param name="frozen">Set Frozen Screen  image object.</param>
+        /// <returns>Return true if the user specified the range, otherwise return false.</returns>
         public bool? ShowFrozenScreen( Core.FrozenScreen frozen)
         {
             this.Left = frozen.Bounds.Left;
@@ -42,39 +56,55 @@ namespace Net.Surviveplus.LightCutter.UI
                 this.frozenImage.Source = BitmapFrame.Create(s, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
             }
             return this.ShowDialog();
+        } // end function 
 
-        } // end sub
+        #endregion
 
-        private Point p;
+        #region Window Events 
+
+       /// <summary>
+        /// Rate to transform to device. 
+        /// </summary>
+        private Point toDevice;
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
             var source = PresentationSource.FromVisual(this.frozenImage);
-            this.p = new Point(
-            source.CompositionTarget.TransformToDevice.M11,
-            source.CompositionTarget.TransformToDevice.M22);
-
+            this.toDevice = new Point(
+                source.CompositionTarget.TransformToDevice.M11,
+                source.CompositionTarget.TransformToDevice.M22);
         } // end sub
-
+        
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-
             this.Close();
-        }
+        } // end sub
 
         private void Window_LostFocus(object sender, RoutedEventArgs e)
         {
-
             this.Close();
-        }
+        } // end sub
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
-        }
+        } // end sub
 
-        private void frozenImage_MouseUp(object sender, MouseButtonEventArgs e)
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            this.verticalLine.Y1 = 0;
+            this.verticalLine.Y2 = this.Height;
+            this.horizontalLine.X1 = 0;
+            this.horizontalLine.X2 = this.Width;
+
+        } // end sub
+
+        #endregion
+
+        #region FrozenImage Events
+
+        private void FrozenImage_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (this.isCropping )
             {
@@ -85,13 +115,13 @@ namespace Net.Surviveplus.LightCutter.UI
 
         }
 
-        private void frozenImage_MouseDown(object sender, MouseButtonEventArgs e)
+        private void FrozenImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 this.isCropping = true;
                 var point = e.GetPosition(this);
-                this.startPoing = new System.Drawing.PointF( (float)point.X, (float)point.Y);
+                this.startPoint = new Point( point.X, point.Y);
 
                 this.horizontalLine.Visibility = Visibility.Collapsed;
                 this.verticalLine.Visibility = Visibility.Collapsed;
@@ -106,23 +136,13 @@ namespace Net.Surviveplus.LightCutter.UI
 
         }
 
-        private void frozenImage_KeyDown(object sender, KeyEventArgs e)
+        private void FrozenImage_KeyDown(object sender, KeyEventArgs e)
         {
             this.Close();
 
         }
 
-
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            this.verticalLine.Y1 = 0;
-            this.verticalLine.Y2 = this.Height;
-            this.horizontalLine.X1 = 0;
-            this.horizontalLine.X2 = this.Width;
-
-        }
-
-        private void frozenImage_MouseMove(object sender, MouseEventArgs e)
+        private void FrozenImage_MouseMove(object sender, MouseEventArgs e)
         {
             var point = e.GetPosition(this);
             this.verticalLine.X1 = point.X;
@@ -131,10 +151,10 @@ namespace Net.Surviveplus.LightCutter.UI
             this.horizontalLine.Y1 = point.Y;
             this.horizontalLine.Y2 = point.Y;
 
-            this.cropBounds.X = (float)Math.Min(point.X, this.startPoing.X);
-            this.cropBounds.Y = (float)Math.Min(point.Y, this.startPoing.Y);
-            this.cropBounds.Width =  (float)Math.Abs(point.X - (double) startPoing.X);
-            this.cropBounds.Height = (float)Math.Abs(point.Y - (double)startPoing.Y);
+            this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
+            this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
+            this.cropBounds.Width =  Math.Abs(point.X - startPoint.X);
+            this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y);
 
             Canvas.SetLeft(this.cropGuidelines, this.cropBounds.X);
             Canvas.SetTop(this.cropGuidelines, this.cropBounds.Y);
@@ -143,19 +163,28 @@ namespace Net.Surviveplus.LightCutter.UI
             this.cropGuidelines.Height = this.cropBounds.Height;
         }
 
-        private System.Drawing.PointF startPoing = new System.Drawing.PointF();
-        private System.Drawing.RectangleF cropBounds = new System.Drawing.RectangleF();
+        private Point startPoint = new Point();
+        private Rect cropBounds = new Rect();
         private bool isCropping;
 
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Get Cropped bounds as System.Drawing.Rectangle
+        /// </summary>
         public System.Drawing.Rectangle CroppedBounds {
             get {
                 return new System.Drawing.Rectangle(
-                    (int)(this.cropBounds.X * p.X),
-                    (int)(this.cropBounds.Y * p.Y),
-                    (int)(this.cropBounds.Width * p.X), 
-                    (int)(this.cropBounds.Height * p.Y));
-            }
-        }
+                    (int)Math.Round(this.cropBounds.X * toDevice.X),
+                    (int)Math.Round(this.cropBounds.Y * toDevice.Y),
+                    (int)Math.Round(this.cropBounds.Width * toDevice.X), 
+                    (int)Math.Round(this.cropBounds.Height * toDevice.Y));
+            } // end get
+        } // end property
+
+        #endregion
 
     } // end class
 } // end namespace
