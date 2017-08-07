@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" 
         AllowDrop="True"
-        DragDrop.Drop="Window_Drop" DragDrop.PreviewDragOver="Window_PreviewDragOver">
+        DragDrop.Drop="Window_Drop" DragDrop.PreviewDragOver="Window_PreviewDragOver"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

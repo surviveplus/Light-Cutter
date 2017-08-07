@@ -69,5 +69,20 @@ namespace ImageCutterPrototype.Desktop
 
         }
 
+
+        /// <summary>
+        /// Rate to transform to device. 
+        /// </summary>
+        private System.Windows.Point toDevice;
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var source = PresentationSource.FromVisual(this);
+            this.toDevice = new System.Windows.Point(
+                source.CompositionTarget.TransformToDevice.M11,
+                source.CompositionTarget.TransformToDevice.M22);
+
+            this.scale.Text = this.toDevice.X.ToString();
+        }
     }
 }
