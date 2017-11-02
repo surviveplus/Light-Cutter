@@ -27,7 +27,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Title = "Light Cutter ver." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            this.Title = "Light Cutter ver." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " (Preview)";
         }
 
         private void CutAndCopyButton_Click(object sender, RoutedEventArgs e)
