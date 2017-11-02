@@ -154,6 +154,9 @@ namespace Net.Surviveplus.LightCutter.UI
             this.horizontalLine.Y1 = point.Y;
             this.horizontalLine.Y2 = point.Y;
 
+            Canvas.SetLeft(this.guide, point.X + 10 );
+            Canvas.SetTop(this.guide, point.Y + 10 );
+
             this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
             this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
             this.cropBounds.Width =  Math.Abs(point.X - startPoint.X);
