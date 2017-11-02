@@ -27,14 +27,38 @@ namespace Net.Surviveplus.LightCutter.Desktop
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            this.Title = "Light Cutter ver." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        }
 
+        private void CutAndCopyButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (new WindowHide(this))
             using (var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze())
             {
-                var w = new UI.FullScreenWindow() ;
+                var w = new UI.FullScreenWindow();
                 var r = w.ShowFrozenScreen(frozen);
                 if (r.HasValue && r.Value)
                 {
-                    using (var cropped = frozen?.Crop( w.CroppedBounds))
+                    using (var cropped = frozen?.Crop(w.CroppedBounds))
+                    using (var bitmap = cropped?.GetBitmap())
+                    {
+                        System.Windows.Forms.Clipboard.SetImage(bitmap);
+                    } // end using (cropped, bitmap )
+                } // end if
+            } // end using(frozen)
+
+        }
+
+        private void CutAndSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            using( new WindowHide(this) )
+            using(var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze())
+            {
+                var w = new UI.FullScreenWindow();
+                var r = w.ShowFrozenScreen(frozen);
+                if (r.HasValue && r.Value)
+                {
+                    using (var cropped = frozen?.Crop(w.CroppedBounds))
                     using (var bitmap = cropped?.GetBitmap())
                     {
 
@@ -43,9 +67,6 @@ namespace Net.Surviveplus.LightCutter.Desktop
                     } // end using (cropped, bitmap )
                 } // end if
             } // end using(frozen)
-
-
-            this.Close();
         }
     }
 }

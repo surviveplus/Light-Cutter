@@ -29,6 +29,9 @@ namespace Net.Surviveplus.LightCutter.UI
         public FullScreenWindow()
         {
             InitializeComponent();
+
+            RenderOptions.SetEdgeMode(this.frozenImage, EdgeMode.Aliased);
+            RenderOptions.SetBitmapScalingMode(this.frozenImage, BitmapScalingMode.NearestNeighbor);
         } // end constructor
 
         #endregion
