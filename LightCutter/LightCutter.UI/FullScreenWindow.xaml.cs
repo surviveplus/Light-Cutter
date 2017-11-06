@@ -81,17 +81,26 @@ namespace Net.Surviveplus.LightCutter.UI
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            this.Close();
+            if (e.Key == Key.Escape)
+            {
+                if (this.isCropping)
+                {
+                    this.isCropping = false;
+                    this.horizontalLine.Visibility = Visibility.Visible;
+                    this.verticalLine.Visibility = Visibility.Visible;
+                    this.cropGuidelines.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+
         } // end sub
 
         private void Window_LostFocus(object sender, RoutedEventArgs e)
         {
             this.Close();
-        } // end sub
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
         } // end sub
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -113,24 +122,28 @@ namespace Net.Surviveplus.LightCutter.UI
             {
                 this.isCropping = false;
                 this.DialogResult = true;
+                this.Close();
             }
-            this.Close();
-
         }
 
         private void FrozenImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            if(this.isCropping &&
+                e.RightButton == MouseButtonState.Pressed ){
+
+                this.isCropping = false;
+                this.horizontalLine.Visibility = Visibility.Visible;
+                this.verticalLine.Visibility = Visibility.Visible;
+                this.cropGuidelines.Visibility = Visibility.Collapsed;
+            }
+            else if (e.LeftButton == MouseButtonState.Pressed)
             {
                 this.isCropping = true;
                 var point = e.GetPosition(this);
-                this.startPoint = new Point( point.X, point.Y);
-
+                this.startPoint = new Point(point.X, point.Y);
                 this.horizontalLine.Visibility = Visibility.Collapsed;
                 this.verticalLine.Visibility = Visibility.Collapsed;
                 this.cropGuidelines.Visibility = Visibility.Visible;
-
-                
             }
             else
             {
@@ -139,11 +152,6 @@ namespace Net.Surviveplus.LightCutter.UI
 
         }
 
-        private void FrozenImage_KeyDown(object sender, KeyEventArgs e)
-        {
-            this.Close();
-
-        }
 
         private void FrozenImage_MouseMove(object sender, MouseEventArgs e)
         {
@@ -157,6 +165,7 @@ namespace Net.Surviveplus.LightCutter.UI
             Canvas.SetLeft(this.guide, point.X + 10 );
             Canvas.SetTop(this.guide, point.Y + 10 );
 
+
             this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
             this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
             this.cropBounds.Width =  Math.Abs(point.X - startPoint.X);
@@ -167,6 +176,15 @@ namespace Net.Surviveplus.LightCutter.UI
 
             this.cropGuidelines.Width = this.cropBounds.Width;
             this.cropGuidelines.Height = this.cropBounds.Height;
+
+            if (this.isCropping)
+            {
+                this.positionLabel.Content = "(" + this.cropBounds.Left + "," + this.cropBounds.Top + ") - (" + cropBounds.Right + "," + cropBounds.Bottom + ") : " + this.cropBounds.Width + " x " + this.cropBounds.Height + " Pixels";
+            }
+            else
+            {
+                this.positionLabel.Content = "(" + point.X + "," + point.Y + ")";
+            }
         }
 
         private Point startPoint = new Point();
