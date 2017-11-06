@@ -168,8 +168,8 @@ namespace Net.Surviveplus.LightCutter.UI
 
             this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
             this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
-            this.cropBounds.Width =  Math.Abs(point.X - startPoint.X);
-            this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y);
+            this.cropBounds.Width =  Math.Abs(point.X - startPoint.X) + 1;
+            this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1;
 
             Canvas.SetLeft(this.cropGuidelines, this.cropBounds.X);
             Canvas.SetTop(this.cropGuidelines, this.cropBounds.Y);
@@ -179,7 +179,7 @@ namespace Net.Surviveplus.LightCutter.UI
 
             if (this.isCropping)
             {
-                this.positionLabel.Content = "(" + this.cropBounds.Left + "," + this.cropBounds.Top + ") - (" + cropBounds.Right + "," + cropBounds.Bottom + ") : " + this.cropBounds.Width + " x " + this.cropBounds.Height + " Pixels";
+                this.positionLabel.Content = "(" + this.cropBounds.Left + "," + this.cropBounds.Top + ") - (" + Math.Max(point.X, this.startPoint.X) + "," + Math.Max(point.Y, this.startPoint.Y) + ") : " + this.cropBounds.Width + " x " + this.cropBounds.Height + " Pixels";
             }
             else
             {
