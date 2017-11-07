@@ -1,0 +1,27 @@
+﻿<Window x:Class="Net.Surviveplus.LightCutter.Desktop.BackgroundWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        mc:Ignorable="d"
+        Title="BackgroundWindow" Height="300" Width="300"
+        WindowState="Minimized"
+        ShowInTaskbar="False"
+        WindowStyle="ToolWindow"
+        Opacity="0"
+        Closed="Window_Closed">
+    <Grid>
+        <tb:TaskbarIcon x:Name="Notify"
+                        IconSource="LightCutter Ver.6.ico"
+                        ToolTipText="LightCutter Ver.7">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="OpenMainAction" Header="Show Action Pannel" Click="OpenMainAction_Click" />
+                    <MenuItem x:Name="CloseAction" Header="Quit" Click="CloseAction_Click" />
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
+    </Grid>
+</Window>
