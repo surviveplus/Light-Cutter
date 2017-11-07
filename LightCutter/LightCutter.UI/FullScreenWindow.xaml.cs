@@ -32,6 +32,10 @@ namespace Net.Surviveplus.LightCutter.UI
 
             RenderOptions.SetEdgeMode(this.frozenImage, EdgeMode.Aliased);
             RenderOptions.SetBitmapScalingMode(this.frozenImage, BitmapScalingMode.NearestNeighbor);
+
+            RenderOptions.SetEdgeMode(this.magnifyingImage, EdgeMode.Aliased);
+            RenderOptions.SetBitmapScalingMode(this.magnifyingImage, BitmapScalingMode.NearestNeighbor);
+           
         } // end constructor
 
         #endregion
@@ -187,11 +191,11 @@ namespace Net.Surviveplus.LightCutter.UI
                 this.positionLabel.Content = "(" + point.X + "," + point.Y + ")";
             }
 
-            var magnifyingCenter = new Point(point.X - 50, point.Y - 50);
+            var magnifyingCenter = new Point(point.X - 20, point.Y - 20);
 
-            this.magnifyingTransform.X = -2 * magnifyingCenter.X;
-            this.magnifyingTransform.Y = -2 * magnifyingCenter.Y;
-            this.magnifyingClip.Rect = new Rect(magnifyingCenter.X, magnifyingCenter.Y, 100, 100);
+            this.magnifyingTransform.X = -5 * magnifyingCenter.X;
+            this.magnifyingTransform.Y = -5 * magnifyingCenter.Y;
+            this.magnifyingClip.Rect = new Rect(magnifyingCenter.X, magnifyingCenter.Y, 40, 40);
 
 
         }
