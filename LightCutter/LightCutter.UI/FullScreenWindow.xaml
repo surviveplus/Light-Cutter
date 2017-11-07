@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="FullScreenWindow" ShowInTaskbar="False" WindowStyle="None" Loaded="Window_Loaded" Topmost="True" 
         BorderThickness="0" Left="0" Top="0" ResizeMode="NoResize" 
-        KeyDown="Window_KeyDown" LostFocus="Window_LostFocus" MouseDown="Window_MouseDown" Background="Black"
+        KeyDown="Window_KeyDown" LostFocus="Window_LostFocus" Background="Black"
         SizeChanged="Window_SizeChanged">
     <Window.Resources>
         <Storyboard x:Key="LineColor" AutoReverse="False" RepeatBehavior="Forever">
@@ -96,6 +96,57 @@
                     </EasingColorKeyFrame.EasingFunction>
                 </EasingColorKeyFrame>
             </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Label.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="positionLabel">
+                <EasingColorKeyFrame KeyTime="0" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:1" Value="Black">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:2" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="magnifyingPoint">
+                <EasingColorKeyFrame KeyTime="0" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:1" Value="Black">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:2" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="magnifyingOutline">
+                <EasingColorKeyFrame KeyTime="0" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:1" Value="Black">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:2" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
@@ -104,13 +155,31 @@
         </EventTrigger>
     </Window.Triggers>
     <Canvas>
-        <Image x:Name="frozenImage" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp" KeyDown="FrozenImage_KeyDown" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None" Opacity="0.8" MouseMove="FrozenImage_MouseMove"/>
+        <Image x:Name="frozenImage" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="UniformToFill" Opacity="0.8" MouseMove="FrozenImage_MouseMove"/>
         <Line x:Name="verticalLine" Stroke="White" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="100" X2="100" Y1="0" Y2="200"  MouseMove="FrozenImage_MouseMove" />
         <Line x:Name="horizontalLine" Stroke="White" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="0" X2="200" Y1="100" Y2="100" MouseMove="FrozenImage_MouseMove" />
         <Rectangle x:Name="cropGuidelines" Stroke="White" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  Width="300" Height="300" MouseMove="FrozenImage_MouseMove" />
-        <StackPanel x:Name="guide" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"   MouseMove="FrozenImage_MouseMove">
-            <Label x:Name="titleLabel" Foreground="White">Light Cutter 7</Label>
-            <Label x:Name="operationLabel" Foreground="White">Drag by the left mouse button to cut the screen.</Label>
+        <StackPanel x:Name="guide" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"   MouseMove="FrozenImage_MouseMove" Orientation="Horizontal">
+            <Canvas Width="210" Height="210" Background="Black">
+                <Image x:Name="magnifyingImage" Stretch="UniformToFill" >
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="10" ScaleY="10" />
+                            <TranslateTransform x:Name="magnifyingTransform" X="-3800" Y="0" />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                    <Image.Clip>
+                        <RectangleGeometry x:Name="magnifyingClip" Rect="1900,0,100,100"  />
+                    </Image.Clip>
+                </Image>
+                <Rectangle x:Name="magnifyingPoint" Stroke="White" StrokeThickness="1" Width="10" Height="10" Canvas.Left="100" Canvas.Top="100"></Rectangle>
+                <Rectangle x:Name="magnifyingOutline" Stroke="White" Width="210" Height="210" ></Rectangle>
+            </Canvas> 
+            <StackPanel>
+                <Label x:Name="titleLabel" Foreground="White">Light Cutter 7</Label>
+                <Label x:Name="operationLabel" Foreground="White">Drag by the left mouse button to cut the screen. Rigth Click / Esc key to cancel.</Label>
+                <Label x:Name="positionLabel" Foreground="White">(0, 0)</Label>
+            </StackPanel>
         </StackPanel>
     </Canvas>
 </Window>
