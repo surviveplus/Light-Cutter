@@ -16,6 +16,11 @@
     </Window.Resources>
     <StackPanel>
         <Button x:Name="CutAndCopyButton" Click="CutAndCopyButton_Click">Freeze Screen => Cut by Mouse => Copy</Button>
-        <Button x:Name="CutAndSaveButton" Click="CutAndSaveButton_Click">Freeze Screen => Cut by Mouse => Save a File on desktop</Button>
+        <Button x:Name="CutAndSaveButton" Click="CutAndSaveButton_Click" >
+            <TextBlock TextAlignment="Center">
+            Freeze Screen => Cut by Mouse => Save a File on desktop  <LineBreak/>
+            ( Ctrl + Shift + Alt + A )
+            </TextBlock>
+        </Button>
     </StackPanel>
 </Window>
