@@ -57,6 +57,7 @@ namespace Net.Surviveplus.LightCutter.UI
                 frozen.FrozenImage.Save(s, ImageFormat.Png);
                 s.Seek(0, SeekOrigin.Begin);
                 this.frozenImage.Source = BitmapFrame.Create(s, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+                this.magnifyingImage.Source = this.frozenImage.Source;
             }
             return this.ShowDialog();
         } // end function 
@@ -185,6 +186,14 @@ namespace Net.Surviveplus.LightCutter.UI
             {
                 this.positionLabel.Content = "(" + point.X + "," + point.Y + ")";
             }
+
+            var magnifyingCenter = new Point(point.X - 50, point.Y - 50);
+
+            this.magnifyingTransform.X = -2 * magnifyingCenter.X;
+            this.magnifyingTransform.Y = -2 * magnifyingCenter.Y;
+            this.magnifyingClip.Rect = new Rect(magnifyingCenter.X, magnifyingCenter.Y, 100, 100);
+
+
         }
 
         private Point startPoint = new Point();
