@@ -41,6 +41,11 @@ namespace Net.Surviveplus.LightCutter.Desktop
                 this.main.Closed += (sender, e) => { this.main = null; };
             }
             this.main?.Show();
+            if(this.main?.WindowState == WindowState.Minimized)
+            {
+                this.main.WindowState = WindowState.Normal;
+            }
+            this.main?.Activate();
         }
 
         #endregion
@@ -55,6 +60,16 @@ namespace Net.Surviveplus.LightCutter.Desktop
         #endregion
 
         #region Notify menu events
+        private void CutAndCopyAction_Click(object sender, RoutedEventArgs e)
+        {
+            LightCutter.CutAndCopy(this.main);
+        }
+
+        private void CutAndSaveAction_Click(object sender, RoutedEventArgs e)
+        {
+            LightCutter.CutAndSave(this.main);
+        }
+
 
         private void OpenMainAction_Click(object sender, RoutedEventArgs e)
         {
@@ -65,6 +80,15 @@ namespace Net.Surviveplus.LightCutter.Desktop
         {
             this.Notify.Visibility = Visibility.Hidden;
             this.Close();
+        }
+
+        #endregion
+
+        #region Notify Icon events
+
+        private void Notify_TrayMouseDoubleClick(object sender, RoutedEventArgs e)
+        {
+            LightCutter.CutAndSave(this.main);
         }
 
         #endregion

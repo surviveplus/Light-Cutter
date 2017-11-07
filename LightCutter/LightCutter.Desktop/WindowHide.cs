@@ -45,11 +45,14 @@ namespace Net.Surviveplus.LightCutter.Desktop
                 if (disposing)
                 {
                     // Dispose managed resources.
-                    this.parent.Left = this.originalLocation.X;
-                    this.parent.Top = this.originalLocation.Y;
-                    this.parent.ShowInTaskbar = true;
-                    this.parent.Opacity = 1;
-                    this.parent.Show();
+                    if(this.parent != null)
+                    {
+                        this.parent.Left = this.originalLocation.X;
+                        this.parent.Top = this.originalLocation.Y;
+                        this.parent.ShowInTaskbar = true;
+                        this.parent.Opacity = 1;
+                        this.parent.Show();
+                    }
                 } // end if
 
                 // Dispose unmanaged resources.
@@ -66,6 +69,11 @@ namespace Net.Surviveplus.LightCutter.Desktop
         public WindowHide(Window parent)
         {
             this.parent = parent;
+            if(this.parent == null)
+            {
+                return;
+            }
+
             this.parent.ShowInTaskbar = false;
 
             this.originalLocation = new Point(this.parent.Left, this.parent.Top);

@@ -66,6 +66,7 @@
     <Compile Include="BackgroundWindow.xaml.cs">
       <DependentUpon>BackgroundWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LightCutter.cs" />
     <Compile Include="WindowHide.cs" />
     <Page Include="BackgroundWindow.xaml">
       <SubType>Designer</SubType>
