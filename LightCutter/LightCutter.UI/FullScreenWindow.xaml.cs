@@ -35,7 +35,7 @@ namespace Net.Surviveplus.LightCutter.UI
 
             RenderOptions.SetEdgeMode(this.magnifyingImage, EdgeMode.Aliased);
             RenderOptions.SetBitmapScalingMode(this.magnifyingImage, BitmapScalingMode.NearestNeighbor);
-           
+
         } // end constructor
 
         #endregion
@@ -61,7 +61,12 @@ namespace Net.Surviveplus.LightCutter.UI
                 frozen.FrozenImage.Save(s, ImageFormat.Png);
                 s.Seek(0, SeekOrigin.Begin);
                 this.frozenImage.Source = BitmapFrame.Create(s, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+                this.frozenImage.Width = this.Width;
+                this.frozenImage.Height = this.Height;
+
                 this.magnifyingImage.Source = this.frozenImage.Source;
+                this.magnifyingImage.Width = this.Width;
+                this.magnifyingImage.Height = this.Height;
             }
             return this.ShowDialog();
         } // end function 
@@ -191,11 +196,11 @@ namespace Net.Surviveplus.LightCutter.UI
                 this.positionLabel.Content = "(" + point.X + "," + point.Y + ")";
             }
 
-            var magnifyingCenter = new Point(point.X - 20, point.Y - 20);
+            var magnifyingCenter = new Point(point.X - 10, point.Y - 10);
 
-            this.magnifyingTransform.X = -5 * magnifyingCenter.X;
-            this.magnifyingTransform.Y = -5 * magnifyingCenter.Y;
-            this.magnifyingClip.Rect = new Rect(magnifyingCenter.X, magnifyingCenter.Y, 40, 40);
+            this.magnifyingTransform.X = -10 * magnifyingCenter.X;
+            this.magnifyingTransform.Y = -10 * magnifyingCenter.Y;
+            this.magnifyingClip.Rect = new Rect(magnifyingCenter.X , magnifyingCenter.Y, 21, 21);
 
 
         }
