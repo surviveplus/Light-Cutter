@@ -61,12 +61,8 @@ namespace Net.Surviveplus.LightCutter.UI
                 frozen.FrozenImage.Save(s, ImageFormat.Png);
                 s.Seek(0, SeekOrigin.Begin);
                 this.frozenImage.Source = BitmapFrame.Create(s, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
-                this.frozenImage.Width = this.Width;
-                this.frozenImage.Height = this.Height;
 
                 this.magnifyingImage.Source = this.frozenImage.Source;
-                this.magnifyingImage.Width = this.Width;
-                this.magnifyingImage.Height = this.Height;
             }
             return this.ShowDialog();
         } // end function 
@@ -86,8 +82,15 @@ namespace Net.Surviveplus.LightCutter.UI
             this.toDevice = new Point(
                 source.CompositionTarget.TransformToDevice.M11,
                 source.CompositionTarget.TransformToDevice.M22);
+
+            this.frozenImage.Width = this.Width ;
+            this.frozenImage.Height = this.Height ;
+
+            this.magnifyingImage.Width = this.Width ;
+            this.magnifyingImage.Height = this.Height ;
+
         } // end sub
-        
+
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
