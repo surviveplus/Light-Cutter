@@ -9,8 +9,9 @@
         Title="BackgroundWindow" Height="300" Width="300"
         WindowState="Minimized"
         ShowInTaskbar="False"
-        WindowStyle="ToolWindow"
+        WindowStyle="None"
         Opacity="0"
+        AllowsTransparency="True"
         Loaded="Window_Loaded"
         Closed="Window_Closed">
     <Grid>

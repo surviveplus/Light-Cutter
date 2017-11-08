@@ -32,6 +32,12 @@ namespace Net.Surviveplus.LightCutter.Desktop
 
             // Insert the code of Declare of DllImport. (see static code analysis CA1060)
 
+            public const Int16 WS_EX_TOOLWINDOW = 0x80;
+            public const Int16 GWL_EXSTYLE = -20;
+
+            [DllImport("user32")] public extern static int GetWindowLong(IntPtr hWnd, int nIndex);
+
+            [DllImport("user32")] public extern static int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 
             // 'Public Declare Function CallWindowProc Lib "user32" Alias "CallWindowProcA" (ByVal lpPrevWndFunc As Long, ByVal hwnd As Long, ByVal Msg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long
             [DllImport("user32")] public extern static IntPtr CallWindowProc( IntPtr lpPrevWndFunc, IntPtr hwnd, Int32 Msg, IntPtr wParam, IntPtr lParam);
@@ -141,6 +147,10 @@ namespace Net.Surviveplus.LightCutter.Desktop
             this.helper = new WindowInteropHelper(this);
             this.hwndSource = HwndSource.FromHwnd(this.helper.Handle);
             this.hwndSource.AddHook(new HwndSourceHook(this.WndProc));
+
+            var style = NativeMethods.GetWindowLong(this.helper.Handle, NativeMethods.GWL_EXSTYLE);
+            style = style | NativeMethods.WS_EX_TOOLWINDOW;
+            NativeMethods.SetWindowLong(this.helper.Handle, NativeMethods.GWL_EXSTYLE, style);
 
             this.SetHotkey();
             this.ShowActionPannel();
