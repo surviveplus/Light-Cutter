@@ -8,10 +8,10 @@ namespace Net.Surviveplus.LightCutter.Desktop
 {
     public class LightCutter
     {
-        public static void CutAndCopy(MainWindow main)
+        public static void CutAndCopy(MainWindow main, DateTime? time = null)
         {
             using (new WindowHide(main))
-            using (var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze())
+            using (var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze(time))
             {
                 var w = new UI.FullScreenWindow();
                 var r = w.ShowFrozenScreen(frozen);
@@ -27,10 +27,10 @@ namespace Net.Surviveplus.LightCutter.Desktop
 
         }
 
-        public static void CutAndSave(MainWindow main)
+        public static void CutAndSave(MainWindow main, DateTime? time = null)
         {
             using (new WindowHide(main))
-            using (var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze())
+            using (var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze(time))
             {
                 var w = new UI.FullScreenWindow();
                 var r = w.ShowFrozenScreen(frozen);

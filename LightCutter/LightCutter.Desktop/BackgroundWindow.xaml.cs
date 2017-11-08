@@ -182,13 +182,23 @@ namespace Net.Surviveplus.LightCutter.Desktop
         #endregion
 
         #region Notify menu events
-        private void CutAndCopyAction_Click(object sender, RoutedEventArgs e)
+
+        private  async void Count3CutAndSaveAction_Click(object sender, RoutedEventArgs e)
         {
+            var time = DateTime.Now + TimeSpan.FromSeconds(3);
+            await Task.Run(() => { System.Threading.Thread.Sleep(200); });
+            LightCutter.CutAndSave(this.main, time);
+        }
+
+        private async void CutAndCopyAction_Click(object sender, RoutedEventArgs e)
+        {
+            await Task.Run(() => { System.Threading.Thread.Sleep(200); });
             LightCutter.CutAndCopy(this.main);
         }
 
-        private void CutAndSaveAction_Click(object sender, RoutedEventArgs e)
+        private async void CutAndSaveAction_Click(object sender, RoutedEventArgs e)
         {
+            await Task.Run(() => { System.Threading.Thread.Sleep(200); });
             LightCutter.CutAndSave(this.main);
         }
 

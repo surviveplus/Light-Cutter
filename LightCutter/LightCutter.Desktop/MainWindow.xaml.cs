@@ -39,5 +39,10 @@ namespace Net.Surviveplus.LightCutter.Desktop
         {
             LightCutter.CutAndSave(this);
         }
+
+        private void CountdownCutAndSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            LightCutter.CutAndSave(this, DateTime.Now + TimeSpan.FromSeconds(3));
+        }
     }
 }

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop"
         mc:Ignorable="d"
         Title="Light Cutter " 
-        Height="150" Width="400"
+        Height="200" Width="450"
+        Icon="LightCutter Ver.6.ico"
         Loaded="Window_Loaded" >
     <Window.Resources>
         <Style TargetType="Button">
@@ -22,5 +23,6 @@
             ( Ctrl + Shift + Alt + A )
             </TextBlock>
         </Button>
+        <Button x:Name="CountdownCutAndSaveButton" Click="CountdownCutAndSaveButton_Click">Countdown 3s. => Freeze Screen => Cut by Mouse => Save a File on desktop</Button>
     </StackPanel>
 </Window>
