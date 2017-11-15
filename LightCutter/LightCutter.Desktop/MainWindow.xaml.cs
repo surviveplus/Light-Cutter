@@ -27,8 +27,16 @@ namespace Net.Surviveplus.LightCutter.Desktop
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Title = "Light Cutter ver." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " (Preview)";
+            this.Title = "Action Panel - Light Cutter ver." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " (Preview)";
+
         }
+        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var enabled = LightCutter.LastRange.HasValue;
+            this.CutSameAreaAndSaveButton.IsEnabled = enabled;
+            this.CountdownCutSaveAreaAndSaveButton.IsEnabled = enabled;
+        }
+
 
         private void CutAndCopyButton_Click(object sender, RoutedEventArgs e)
         {
@@ -39,10 +47,19 @@ namespace Net.Surviveplus.LightCutter.Desktop
         {
             LightCutter.CutAndSave(this);
         }
+        private void CutSameAreaAndSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            LightCutter.CutSameAreaAndSave(this);
+        }
 
         private void CountdownCutAndSaveButton_Click(object sender, RoutedEventArgs e)
         {
             LightCutter.CutAndSave(this, DateTime.Now + TimeSpan.FromSeconds(3));
+        }
+
+        private void CountdownCutSaveAreaAndSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            LightCutter.CutSameAreaAndSave(this, DateTime.Now + TimeSpan.FromSeconds(3));
         }
     }
 }

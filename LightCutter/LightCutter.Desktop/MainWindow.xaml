@@ -5,17 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop"
         mc:Ignorable="d"
-        Title="Light Cutter " 
-        Height="200" Width="450"
+        Title="Action Panel - Light Cutter ver.7.0.0.0 (Preview)" 
+        Height="340" Width="500"
         Icon="LightCutter Ver.6.ico"
-        Loaded="Window_Loaded" >
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        IsVisibleChanged="Window_IsVisibleChanged">
     <Window.Resources>
         <Style TargetType="Button">
-            <Setter Property="Margin" Value="0,0,0,10" />
+            <Setter Property="Margin" Value="10,0,10,10" />
             <Setter Property="Padding" Value="10,10,10,10" />
         </Style>
     </Window.Resources>
     <StackPanel>
+        <Label Margin="5,10,0,10">Select an action. If this window is closed, it will be shown again from the task tray icon.</Label>
         <Button x:Name="CutAndCopyButton" Click="CutAndCopyButton_Click">Freeze Screen => Cut by Mouse => Copy</Button>
         <Button x:Name="CutAndSaveButton" Click="CutAndSaveButton_Click" >
             <TextBlock TextAlignment="Center">
@@ -23,6 +27,8 @@
             ( Ctrl + Shift + Alt + A )
             </TextBlock>
         </Button>
+        <Button x:Name="CutSameAreaAndSaveButton" Click="CutSameAreaAndSaveButton_Click" >Freeze Screen => Cut the same range => Save a File on desktop</Button>
         <Button x:Name="CountdownCutAndSaveButton" Click="CountdownCutAndSaveButton_Click">Countdown 3s. => Freeze Screen => Cut by Mouse => Save a File on desktop</Button>
+        <Button x:Name="CountdownCutSaveAreaAndSaveButton" Click="CountdownCutSaveAreaAndSaveButton_Click">Countdown 3s. => Freeze Screen => Cut the same range => Save a File on desktop</Button>
     </StackPanel>
 </Window>
