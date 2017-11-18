@@ -10,7 +10,7 @@ Can capture the same area as last time, so you can capture it fast and continuou
  - [Light Cutter ver.5.4](
 http://www.surviveplus.net/ja/archives/24
 ) ( Japanese Only )
- - [Light Cutter ver.7.0](releases) ( Preview )
+ - [Light Cutter ver.7.0](https://github.com/surviveplus/Light-Cutter/releases) ( Preview )
 
 In Japan, users of this software series are over 50,000 people total. For example, one of company was approved as official software.
 However, the new version had not been released recently. So in this repository we migrate this and release new features.
@@ -25,7 +25,7 @@ This version supports high DPI in addition to previous features.
 ### ver.7.1 - Split commands to support new targets
 Now we specify the area from the full screen.
 The new version will allow you to automatically find specific apps and areas.
-This feature has already been done in the [prototyping code](tree/master/prototype/InsiderCutterPrototype).
+This feature has already been done in the [prototyping code](https://github.com/surviveplus/Light-Cutter/tree/master/prototype/InsiderCutterPrototype).
 
 In addition to copying captured images to the Clipboard or saving them as images on the desktop, you can share them with others.
 
@@ -45,9 +45,9 @@ AI should be able to automatically determine capture scenarios and help more.
 
 
 ## Contributing
- - When you find bugs in [the released version](releases), report it to the [issues](issues).
+ - When you find bugs in [the released version](https://github.com/surviveplus/Light-Cutter/releases), report it to the [issues](https://github.com/surviveplus/Light-Cutter/issues).
  - The new feature will be prototyped first. 
- Look at the [issues](issues) and [code](tree/master/prototype) for the prototype and send a pull request if you have a good idea. 
+ Look at the [issues](https://github.com/surviveplus/Light-Cutter/issues) and [code](https://github.com/surviveplus/Light-Cutter/tree/master/prototype) for the prototype and send a pull request if you have a good idea. 
  - Help to collect learning data. We still think about how we do this.
 
 ## License
