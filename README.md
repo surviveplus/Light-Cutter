@@ -2,7 +2,7 @@
 
 ![Light Cutter](http://www.surviveplus.net/ja/wp-content/uploads/desktopapps-LightCutter.png) 
 
-Light Cutter is a screenshot utility in Windows 3.1 and later.
+Light Cutter is a screenshot utility in Windows 3.1 and later, including Windows 10.
 It can take screenshots of an rectangular area by using a mouse.
 You can start this with shortcut key or delay.
 Can capture the same area as last time, so you can capture it fast and continuously.
@@ -12,15 +12,16 @@ http://www.surviveplus.net/ja/archives/24
 ) ( Japanese Only )
  - [Light Cutter ver.7.0](https://github.com/surviveplus/Light-Cutter/releases) ( Preview )
 
-In Japan, users of this software series are over 50,000 people total. For example, one of company was approved as official software.
+In Japan, users of this software series are over 50,000 people total. For example, one of company approved it as official software.
 However, the new version had not been released recently. So in this repository we migrate this and release new features.
 
 
 ## Roadmap
 ### ver.7.0 - Migrating from previous version
 Light Cutter ver.5.4 is Visual Basic 6.0 (unmanaged) based app with using .net COM classes (managed).
+Even in Windows10, this version is limited but works.
 First we are migrating from this version.
-This version supports high DPI in addition to previous features.
+The new version supports high DPI in addition to previous features.
 
 ### ver.7.1 - Split commands to support new targets
 Now we specify the area from the full screen.
