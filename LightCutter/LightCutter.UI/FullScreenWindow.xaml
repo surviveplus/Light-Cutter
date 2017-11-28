@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.UI"
+        xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts"        
         mc:Ignorable="d"
         Title="FullScreenWindow" ShowInTaskbar="False" WindowStyle="None" Loaded="Window_Loaded" Topmost="True" 
         BorderThickness="0" Left="0" Top="0" ResizeMode="NoResize" 
@@ -177,7 +178,7 @@
             </Canvas> 
             <StackPanel>
                 <Label x:Name="titleLabel" Foreground="White">Light Cutter 7</Label>
-                <Label x:Name="operationLabel" Foreground="White">Drag by the left mouse button to cut the screen. Rigth Click / Esc key to cancel.</Label>
+                <TextBlock Margin="5" x:Name="operationLabel" Foreground="White">Drag by the left mouse button to cut the screen. Rigth Click / <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
                 <Label x:Name="positionLabel" Foreground="White">(0, 0)</Label>
             </StackPanel>
         </StackPanel>

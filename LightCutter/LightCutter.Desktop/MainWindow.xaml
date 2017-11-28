@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop"
+        xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
         mc:Ignorable="d"
         Title="Action Panel - Light Cutter ver.7.0.0.0 (Preview)" 
-        Height="340" Width="500"
+        Height="350" Width="500"
         Icon="LightCutter Ver.6.ico"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
@@ -24,7 +25,7 @@
         <Button x:Name="CutAndSaveButton" Click="CutAndSaveButton_Click" >
             <TextBlock TextAlignment="Center">
             Freeze Screen => Cut by Mouse => Save a File on desktop  <LineBreak/>
-            ( Ctrl + Shift + Alt + A )
+            <ui:Key>Ctrl</ui:Key> + <ui:Key>Shift</ui:Key> + <ui:Key>Alt</ui:Key> + <ui:Key>A</ui:Key>
             </TextBlock>
         </Button>
         <Button x:Name="CutSameAreaAndSaveButton" Click="CutSameAreaAndSaveButton_Click" >Freeze Screen => Cut the same range => Save a File on desktop</Button>
