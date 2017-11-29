@@ -12,126 +12,7 @@
         SizeChanged="Window_SizeChanged">
     <Window.Resources>
         <Storyboard x:Key="LineColor" AutoReverse="False" RepeatBehavior="Forever">
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="verticalLine">
-                <EasingColorKeyFrame KeyTime="0" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="Black">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:2" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="horizontalLine">
-                <EasingColorKeyFrame KeyTime="0" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="Black">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:2" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-            </ColorAnimationUsingKeyFrames>
             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="cropGuidelines">
-                <EasingColorKeyFrame KeyTime="0" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="Black">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:2" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Label.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="titleLabel">
-                <EasingColorKeyFrame KeyTime="0" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="Black">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:2" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Label.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="operationLabel">
-                <EasingColorKeyFrame KeyTime="0" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="Black">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:2" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Label.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="positionLabel">
-                <EasingColorKeyFrame KeyTime="0" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="Black">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:2" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="magnifyingPoint">
-                <EasingColorKeyFrame KeyTime="0" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="Black">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-                <EasingColorKeyFrame KeyTime="0:0:2" Value="White">
-                    <EasingColorKeyFrame.EasingFunction>
-                        <PowerEase EasingMode="EaseInOut"/>
-                    </EasingColorKeyFrame.EasingFunction>
-                </EasingColorKeyFrame>
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="magnifyingOutline">
                 <EasingColorKeyFrame KeyTime="0" Value="White">
                     <EasingColorKeyFrame.EasingFunction>
                         <PowerEase EasingMode="EaseInOut"/>
@@ -157,10 +38,16 @@
     </Window.Triggers>
     <Canvas>
         <Image x:Name="frozenImage" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="UniformToFill" Opacity="0.8" MouseMove="FrozenImage_MouseMove"/>
-        <Line x:Name="verticalLine" Stroke="White" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="100" X2="100" Y1="0" Y2="200"  MouseMove="FrozenImage_MouseMove" />
-        <Line x:Name="horizontalLine" Stroke="White" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="0" X2="200" Y1="100" Y2="100" MouseMove="FrozenImage_MouseMove" />
+        <Line x:Name="verticalLine" Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="100" X2="100" Y1="0" Y2="200"  MouseMove="FrozenImage_MouseMove" />
+        <Line x:Name="horizontalLine" Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="0" X2="200" Y1="100" Y2="100" MouseMove="FrozenImage_MouseMove" />
         <Rectangle x:Name="cropGuidelines" Stroke="White" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  Width="300" Height="300" MouseMove="FrozenImage_MouseMove" />
         <StackPanel x:Name="guide" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"   MouseMove="FrozenImage_MouseMove" Orientation="Horizontal">
+            <StackPanel x:Name="guideMessageLeft" Visibility="Collapsed">
+                <Label x:Name="titleLabelLeft" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right">Light Cutter 7</Label>
+                <TextBlock Margin="5" x:Name="operationLabelLeft" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen. / <ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
+                <Label x:Name="positionLabelLeft" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right">(0, 0)</Label>
+            </StackPanel>
+
             <Canvas Width="210" Height="210" Background="Black">
                 <Image x:Name="magnifyingImage" Stretch="UniformToFill" >
                     <Image.RenderTransform>
@@ -173,13 +60,13 @@
                         <RectangleGeometry x:Name="magnifyingClip" Rect="1900,0,100,100"  />
                     </Image.Clip>
                 </Image>
-                <Rectangle x:Name="magnifyingPoint" Stroke="White" StrokeThickness="1" Width="10" Height="10" Canvas.Left="100" Canvas.Top="100"></Rectangle>
-                <Rectangle x:Name="magnifyingOutline" Stroke="White" Width="210" Height="210" ></Rectangle>
-            </Canvas> 
-            <StackPanel>
-                <Label x:Name="titleLabel" Foreground="White">Light Cutter 7</Label>
-                <TextBlock Margin="5" x:Name="operationLabel" Foreground="White"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen. / <ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
-                <Label x:Name="positionLabel" Foreground="White">(0, 0)</Label>
+                <Rectangle x:Name="magnifyingPoint" Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" StrokeThickness="1" Width="10" Height="10" Canvas.Left="100" Canvas.Top="100"></Rectangle>
+                <Rectangle x:Name="magnifyingOutline" Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" Width="210" Height="210" ></Rectangle>
+            </Canvas>
+            <StackPanel x:Name="guideMessageRight">
+                <Label x:Name="titleLabelRight" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}">Light Cutter 7</Label>
+                <TextBlock Margin="5" x:Name="operationLabelRight" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen. / <ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
+                <Label x:Name="positionLabelRight" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}">(0, 0)</Label>
             </StackPanel>
         </StackPanel>
     </Canvas>

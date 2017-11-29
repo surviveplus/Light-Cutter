@@ -166,6 +166,7 @@ namespace Net.Surviveplus.LightCutter.UI
         }
 
 
+
         private void FrozenImage_MouseMove(object sender, MouseEventArgs e)
         {
             var point = e.GetPosition(this);
@@ -175,8 +176,27 @@ namespace Net.Surviveplus.LightCutter.UI
             this.horizontalLine.Y1 = point.Y;
             this.horizontalLine.Y2 = point.Y;
 
-            Canvas.SetLeft(this.guide, point.X + 10 );
-            Canvas.SetTop(this.guide, point.Y + 10 );
+            if( this.Width < this.guide.ActualWidth + point.X + 10)
+            {
+                Canvas.SetLeft(this.guide, point.X - 10 - this.guide.ActualWidth);
+                this.guideMessageRight.Visibility = Visibility.Collapsed;
+                this.guideMessageLeft.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Canvas.SetLeft(this.guide, point.X + 10 );
+                this.guideMessageRight.Visibility = Visibility.Visible;
+                this.guideMessageLeft.Visibility = Visibility.Collapsed;
+            }
+
+            if(this.Height < this.guide.ActualHeight + point.Y  + 10)
+            {
+                Canvas.SetTop(this.guide, point.Y - 10 - this.guide.ActualHeight);
+            }
+            else
+            {
+                Canvas.SetTop(this.guide, point.Y + 10 );
+            }
 
 
             this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
@@ -192,13 +212,14 @@ namespace Net.Surviveplus.LightCutter.UI
 
             if (this.isCropping)
             {
-                this.positionLabel.Content = "(" + this.cropBounds.Left + "," + this.cropBounds.Top + ") - (" + Math.Max(point.X, this.startPoint.X) + "," + Math.Max(point.Y, this.startPoint.Y) + ") : " + this.cropBounds.Width + " x " + this.cropBounds.Height + " Pixels";
+                this.positionLabelLeft.Content = "(" + this.cropBounds.Left + "," + this.cropBounds.Top + ") - (" + Math.Max(point.X, this.startPoint.X) + "," + Math.Max(point.Y, this.startPoint.Y) + ") : " + this.cropBounds.Width + " x " + this.cropBounds.Height + " Pixels";
+                this.positionLabelRight.Content = this.positionLabelLeft.Content;
             }
             else
             {
-                this.positionLabel.Content = "(" + point.X + "," + point.Y + ")";
+                this.positionLabelLeft.Content = "(" + point.X + "," + point.Y + ")";
+                this.positionLabelRight.Content = this.positionLabelLeft.Content;
             }
-
             var magnifyingCenter = new Point(point.X - 10, point.Y - 10);
 
             this.magnifyingTransform.X = -10 * magnifyingCenter.X;
