@@ -10,7 +10,10 @@
     <Grid>
         <TextBlock >
             <ui:Key>Esc</ui:Key> : Exit <LineBreak />
-            <ui:Key>Ctrl</ui:Key> + <ui:Key>Shift</ui:Key> + <ui:Key>Alt</ui:Key> + <ui:Key>A</ui:Key> : Start capture.
+            <ui:Key>Ctrl</ui:Key> + <ui:Key>Shift</ui:Key> + <ui:Key>Alt</ui:Key> + <ui:Key>A</ui:Key> : Start capture.<LineBreak />
+            <ui:Mouse /> Mouse / 
+            <ui:MouseRightClick /> Right Click /
+            <ui:MouseLeftClick /> Left Click 
         </TextBlock>
     </Grid>
 </Window>

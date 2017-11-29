@@ -178,7 +178,7 @@
             </Canvas> 
             <StackPanel>
                 <Label x:Name="titleLabel" Foreground="White">Light Cutter 7</Label>
-                <TextBlock Margin="5" x:Name="operationLabel" Foreground="White">Drag by the left mouse button to cut the screen. Rigth Click / <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
+                <TextBlock Margin="5" x:Name="operationLabel" Foreground="White"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen. / <ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
                 <Label x:Name="positionLabel" Foreground="White">(0, 0)</Label>
             </StackPanel>
         </StackPanel>

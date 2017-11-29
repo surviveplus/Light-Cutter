@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -53,6 +54,15 @@
     </Compile>
     <Compile Include="Parts\Key.xaml.cs">
       <DependentUpon>Key.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\MouseLeftClick.xaml.cs">
+      <DependentUpon>MouseLeftClick.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\MouseRightClick.xaml.cs">
+      <DependentUpon>MouseRightClick.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\Mouse.xaml.cs">
+      <DependentUpon>Mouse.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -82,6 +92,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Parts\Key.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Parts\MouseLeftClick.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Parts\MouseRightClick.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Parts\Mouse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
