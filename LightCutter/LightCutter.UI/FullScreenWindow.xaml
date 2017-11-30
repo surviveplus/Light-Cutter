@@ -44,8 +44,9 @@
         <StackPanel x:Name="guide" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"   MouseMove="FrozenImage_MouseMove" Orientation="Horizontal">
             <StackPanel x:Name="guideMessageLeft" Visibility="Collapsed">
                 <Label x:Name="titleLabelLeft" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right">Light Cutter 7</Label>
-                <TextBlock Margin="5" x:Name="operationLabelLeft" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen. / <ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
+                <TextBlock Margin="5" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen.</TextBlock>
                 <Label x:Name="positionLabelLeft" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right">(0, 0)</Label>
+                <TextBlock Margin="5 15 0 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" TextAlignment="Right"><ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
             </StackPanel>
 
             <Canvas Width="210" Height="210" Background="Black">
@@ -65,8 +66,9 @@
             </Canvas>
             <StackPanel x:Name="guideMessageRight">
                 <Label x:Name="titleLabelRight" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}">Light Cutter 7</Label>
-                <TextBlock Margin="5" x:Name="operationLabelRight" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen. / <ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
+                <TextBlock Margin="5" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen.</TextBlock>
                 <Label x:Name="positionLabelRight" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}">(0, 0)</Label>
+                 <TextBlock Margin="5 15 0 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}"><ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
             </StackPanel>
         </StackPanel>
     </Canvas>
