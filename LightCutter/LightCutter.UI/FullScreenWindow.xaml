@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="FullScreenWindow" ShowInTaskbar="False" WindowStyle="None" Loaded="Window_Loaded" Topmost="True" 
         BorderThickness="0" Left="0" Top="0" ResizeMode="NoResize" 
+        KeyUp="Window_KeyUp"
         KeyDown="Window_KeyDown" LostFocus="Window_LostFocus" Background="Black"
         SizeChanged="Window_SizeChanged">
     <Window.Resources>
@@ -41,12 +42,16 @@
         <Line x:Name="verticalLine" Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="100" X2="100" Y1="0" Y2="200"  MouseMove="FrozenImage_MouseMove" />
         <Line x:Name="horizontalLine" Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="0" X2="200" Y1="100" Y2="100" MouseMove="FrozenImage_MouseMove" />
         <Rectangle x:Name="cropGuidelines" Stroke="White" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  Width="300" Height="300" MouseMove="FrozenImage_MouseMove" />
-        <StackPanel x:Name="guide" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"   MouseMove="FrozenImage_MouseMove" Orientation="Horizontal">
+        <StackPanel x:Name="guide"  Background="#60000000"  MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"   MouseMove="FrozenImage_MouseMove" Orientation="Horizontal">
             <StackPanel x:Name="guideMessageLeft" Visibility="Collapsed">
                 <Label x:Name="titleLabelLeft" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right">Light Cutter 7</Label>
-                <TextBlock Margin="5" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen.</TextBlock>
+                <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=verticalLine, Path=Visibility}" HorizontalAlignment="Right"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen.</TextBlock>
+                <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=cropGuidelines, Path=Visibility}" HorizontalAlignment="Right"><ui:MouseLeftClick /> Mouse button up to determine area.</TextBlock>
                 <Label x:Name="positionLabelLeft" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right">(0, 0)</Label>
-                <TextBlock Margin="5 15 0 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" TextAlignment="Right"><ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
+                <TextBlock Margin="5 15 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" TextAlignment="Right"><ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
+                <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=cropGuidelines, Path=Visibility}">
+                    <ui:Key>Ctrl</ui:Key> key to grid (16 pixel)<LineBreak />
+                    <ui:Key>Shift</ui:Key> key to square</TextBlock>
             </StackPanel>
 
             <Canvas Width="210" Height="210" Background="Black">
@@ -66,9 +71,13 @@
             </Canvas>
             <StackPanel x:Name="guideMessageRight">
                 <Label x:Name="titleLabelRight" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}">Light Cutter 7</Label>
-                <TextBlock Margin="5" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen.</TextBlock>
+                <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=verticalLine, Path=Visibility}"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen.</TextBlock>
+                <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=cropGuidelines, Path=Visibility}"><ui:MouseLeftClick /> Mouse button up to determine area.</TextBlock>
                 <Label x:Name="positionLabelRight" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}">(0, 0)</Label>
-                 <TextBlock Margin="5 15 0 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}"><ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
+                 <TextBlock Margin="5 15 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}"><ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
+                <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=cropGuidelines, Path=Visibility}">
+                    <ui:Key>Ctrl</ui:Key> key to grid (16 pixel)<LineBreak />
+                    <ui:Key>Shift</ui:Key> key to square</TextBlock>
             </StackPanel>
         </StackPanel>
     </Canvas>

@@ -92,8 +92,20 @@ namespace Net.Surviveplus.LightCutter.UI
         } // end sub
 
 
+        private bool ctrl = false;
+        private bool shift = false;
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            this.ctrl = (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
+            this.shift = (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
+        }
+
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            this.ctrl = (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
+            this.shift = (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
+
             if (e.Key == Key.Escape)
             {
                 if (this.isCropping)
@@ -108,7 +120,6 @@ namespace Net.Surviveplus.LightCutter.UI
                     this.Close();
                 }
             }
-
         } // end sub
 
         private void Window_LostFocus(object sender, RoutedEventArgs e)
@@ -172,6 +183,63 @@ namespace Net.Surviveplus.LightCutter.UI
         private void FrozenImage_MouseMove(object sender, MouseEventArgs e)
         {
             var point = e.GetPosition(this);
+
+            this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
+            this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
+            this.cropBounds.Width = Math.Abs(point.X - startPoint.X) + 1;
+            this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1;
+
+            if (this.isCropping)
+            {
+                if (this.ctrl)
+                {
+                    point = new Point(
+                        point.X + (startPoint.X< point.X ? -1 : 1) * (this.cropBounds.Width % 16), 
+                        point.Y + (startPoint.Y < point.Y ? -1 : 1) * (this.cropBounds.Height % 16));
+
+                    this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
+                    this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
+                    this.cropBounds.Width = Math.Abs(point.X - startPoint.X) + 1;
+                    this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1;
+
+                } // end if(ctrl)
+
+                if (this.shift)
+                {
+                    if( this.cropBounds.Width < this.cropBounds.Height)
+                    {
+                        //this.cropBounds.Height = this.cropBounds.Width;
+                        if ( this.cropBounds.Y == point.Y)
+                        {
+                            point.Y = this.startPoint.Y - this.cropBounds.Width + 1;
+                        }
+                        else
+                        {
+                            point.Y = this.startPoint.Y + this.cropBounds.Width - 1  ;
+                        }
+                    }
+                    else
+                    {
+                        //this.cropBounds.Width = this.cropBounds.Height;
+                        if (this.cropBounds.X == point.X)
+                        {
+                            point.X = this.startPoint.X - this.cropBounds.Height + 1;
+                        }
+                        else
+                        {
+                            point.X = this.startPoint.X + this.cropBounds.Height - 1;
+                        }
+                    }
+
+                    this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
+                    this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
+                    this.cropBounds.Width = Math.Abs(point.X - startPoint.X) + 1;
+                    this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1;
+
+                } // end if(shift)
+
+            } // end if(isCropping)
+
             this.verticalLine.X1 = point.X;
             this.verticalLine.X2 = point.X;
 
@@ -217,12 +285,6 @@ namespace Net.Surviveplus.LightCutter.UI
             {
                 Canvas.SetTop(this.guide, point.Y + 10 );
             }
-
-
-            this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
-            this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
-            this.cropBounds.Width =  Math.Abs(point.X - startPoint.X) + 1;
-            this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1;
 
             Canvas.SetLeft(this.cropGuidelines, this.cropBounds.X);
             Canvas.SetTop(this.cropGuidelines, this.cropBounds.Y);
