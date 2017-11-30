@@ -10,7 +10,8 @@
         BorderThickness="0" Left="0" Top="0" ResizeMode="NoResize" 
         KeyUp="Window_KeyUp"
         KeyDown="Window_KeyDown" LostFocus="Window_LostFocus" Background="Black"
-        SizeChanged="Window_SizeChanged">
+        SizeChanged="Window_SizeChanged"
+        Cursor="None">
     <Window.Resources>
         <Storyboard x:Key="LineColor" AutoReverse="False" RepeatBehavior="Forever">
             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="cropGuidelines">
