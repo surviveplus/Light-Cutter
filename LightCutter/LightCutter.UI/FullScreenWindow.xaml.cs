@@ -166,6 +166,8 @@ namespace Net.Surviveplus.LightCutter.UI
         }
 
 
+        private bool beLeft = false;
+        private bool beTop = false;
 
         private void FrozenImage_MouseMove(object sender, MouseEventArgs e)
         {
@@ -176,7 +178,16 @@ namespace Net.Surviveplus.LightCutter.UI
             this.horizontalLine.Y1 = point.Y;
             this.horizontalLine.Y2 = point.Y;
 
-            if( this.Width < this.guide.ActualWidth + point.X + 10)
+            if( this.beLeft )
+            {
+                this.beLeft =  this.guide.ActualWidth + 10 < point.X;
+            }
+            else
+            {
+                this.beLeft = this.Width < this.guide.ActualWidth + point.X + 10;
+            }
+
+            if( this.beLeft )
             {
                 Canvas.SetLeft(this.guide, point.X - 10 - this.guide.ActualWidth);
                 this.guideMessageRight.Visibility = Visibility.Collapsed;
@@ -189,7 +200,16 @@ namespace Net.Surviveplus.LightCutter.UI
                 this.guideMessageLeft.Visibility = Visibility.Collapsed;
             }
 
-            if(this.Height < this.guide.ActualHeight + point.Y  + 10)
+            if (this.beTop)
+            {
+                beTop = this.guide.ActualHeight + 10 < point.Y;
+            }
+            else
+            {
+                beTop = this.Height < this.guide.ActualHeight + point.Y + 10;
+            }
+
+            if (beTop)
             {
                 Canvas.SetTop(this.guide, point.Y - 10 - this.guide.ActualHeight);
             }
