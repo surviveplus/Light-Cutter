@@ -93,6 +93,9 @@ namespace Net.Surviveplus.LightCutter.UI
             this.magnifyingImage.Width = this.frozen.Bounds.Width / this.toDevice.X;
             this.magnifyingImage.Height = this.frozen.Bounds.Height / this.toDevice.Y;
 
+            this.magnifyingPoint.Width = 10 / this.toDevice.X;
+            this.magnifyingPoint.Height = 10 / this.toDevice.Y;
+
         } // end sub
 
 
