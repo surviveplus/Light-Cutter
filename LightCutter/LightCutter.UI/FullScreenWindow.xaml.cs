@@ -42,6 +42,8 @@ namespace Net.Surviveplus.LightCutter.UI
 
         #region methods
 
+        private Core.FrozenScreen frozen;
+
         /// <summary>
         /// Show dialog window to display Frozen Screen image and to let the user specify a range. 
         /// </summary>
@@ -49,6 +51,8 @@ namespace Net.Surviveplus.LightCutter.UI
         /// <returns>Return true if the user specified the range, otherwise return false.</returns>
         public bool? ShowFrozenScreen( Core.FrozenScreen frozen)
         {
+            this.frozen = frozen;
+
             this.Left = frozen.Bounds.Left;
             this.Top = frozen.Bounds.Top;
             this.Width = frozen.Bounds.Width;
@@ -83,11 +87,11 @@ namespace Net.Surviveplus.LightCutter.UI
                 source.CompositionTarget.TransformToDevice.M11,
                 source.CompositionTarget.TransformToDevice.M22);
 
-            this.frozenImage.Width = this.Width ;
-            this.frozenImage.Height = this.Height ;
+            this.frozenImage.Width = this.frozen.Bounds.Width / this.toDevice.X;
+            this.frozenImage.Height = this.frozen.Bounds.Height / this.toDevice.Y;
 
-            this.magnifyingImage.Width = this.Width ;
-            this.magnifyingImage.Height = this.Height ;
+            this.magnifyingImage.Width = this.frozen.Bounds.Width / this.toDevice.X;
+            this.magnifyingImage.Height = this.frozen.Bounds.Height / this.toDevice.Y;
 
         } // end sub
 
@@ -186,21 +190,21 @@ namespace Net.Surviveplus.LightCutter.UI
 
             this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
             this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
-            this.cropBounds.Width = Math.Abs(point.X - startPoint.X) + 1;
-            this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1;
+            this.cropBounds.Width = Math.Abs(point.X - startPoint.X) + 1 / this.toDevice.X;
+            this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1 / this.toDevice.Y;
 
             if (this.isCropping)
             {
                 if (this.ctrl)
                 {
                     point = new Point(
-                        point.X + (startPoint.X< point.X ? -1 : 1) * (this.cropBounds.Width % 16), 
-                        point.Y + (startPoint.Y < point.Y ? -1 : 1) * (this.cropBounds.Height % 16));
+                        point.X + (startPoint.X< point.X ? -1 : 1) * (this.cropBounds.Width % (16/this.toDevice.X)), 
+                        point.Y + (startPoint.Y < point.Y ? -1 : 1) * (this.cropBounds.Height % (16/this.toDevice.X)));
 
                     this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
                     this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
-                    this.cropBounds.Width = Math.Abs(point.X - startPoint.X) + 1;
-                    this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1;
+                    this.cropBounds.Width = Math.Abs(point.X - startPoint.X) + 1 / this.toDevice.X;
+                    this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1 / this.toDevice.Y;
 
                 } // end if(ctrl)
 
@@ -211,11 +215,11 @@ namespace Net.Surviveplus.LightCutter.UI
                         //this.cropBounds.Height = this.cropBounds.Width;
                         if ( this.cropBounds.Y == point.Y)
                         {
-                            point.Y = this.startPoint.Y - this.cropBounds.Width + 1;
+                            point.Y = this.startPoint.Y - this.cropBounds.Width + 1 / this.toDevice.Y;
                         }
                         else
                         {
-                            point.Y = this.startPoint.Y + this.cropBounds.Width - 1  ;
+                            point.Y = this.startPoint.Y + this.cropBounds.Width - 1 / this.toDevice.Y;
                         }
                     }
                     else
@@ -223,18 +227,18 @@ namespace Net.Surviveplus.LightCutter.UI
                         //this.cropBounds.Width = this.cropBounds.Height;
                         if (this.cropBounds.X == point.X)
                         {
-                            point.X = this.startPoint.X - this.cropBounds.Height + 1;
+                            point.X = this.startPoint.X - this.cropBounds.Height + 1 / this.toDevice.X;
                         }
                         else
                         {
-                            point.X = this.startPoint.X + this.cropBounds.Height - 1;
+                            point.X = this.startPoint.X + this.cropBounds.Height - 1 / this.toDevice.X;
                         }
                     }
 
                     this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
                     this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
-                    this.cropBounds.Width = Math.Abs(point.X - startPoint.X) + 1;
-                    this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1;
+                    this.cropBounds.Width = Math.Abs(point.X - startPoint.X) + 1 / this.toDevice.X;
+                    this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1 / this.toDevice.Y;
 
                 } // end if(shift)
 
@@ -294,12 +298,12 @@ namespace Net.Surviveplus.LightCutter.UI
 
             if (this.isCropping)
             {
-                this.positionLabelLeft.Content = "(" + this.cropBounds.Left + "," + this.cropBounds.Top + ") - (" + Math.Max(point.X, this.startPoint.X) + "," + Math.Max(point.Y, this.startPoint.Y) + ") : " + this.cropBounds.Width + " x " + this.cropBounds.Height + " Pixels";
+                this.positionLabelLeft.Content = "(" + (this.cropBounds.Left * this.toDevice.X) + "," + (this.cropBounds.Top * this.toDevice.X) + ") - (" + Math.Max(point.X, this.startPoint.X) * this.toDevice.X + "," + Math.Max(point.Y, this.startPoint.Y) * this.toDevice.Y + ") : " + (this.cropBounds.Width * this.toDevice.X) + " x " + (this.cropBounds.Height * this.toDevice.Y )+ " Pixels";
                 this.positionLabelRight.Content = this.positionLabelLeft.Content;
             }
             else
             {
-                this.positionLabelLeft.Content = "(" + point.X + "," + point.Y + ")";
+                this.positionLabelLeft.Content = "(" + (point.X * this.toDevice.X) + "," + (point.Y * this.toDevice.Y) + ")";
                 this.positionLabelRight.Content = this.positionLabelLeft.Content;
             }
             var magnifyingCenter = new Point(point.X - 10, point.Y - 10);
