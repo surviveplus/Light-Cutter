@@ -59,7 +59,7 @@
                 <Image x:Name="magnifyingImage" Stretch="UniformToFill" >
                     <Image.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="10" ScaleY="10" />
+                            <ScaleTransform x:Name="magnifyingScale" ScaleX="10" ScaleY="10" />
                             <TranslateTransform x:Name="magnifyingTransform" X="-3800" Y="0" />
                         </TransformGroup>
                     </Image.RenderTransform>

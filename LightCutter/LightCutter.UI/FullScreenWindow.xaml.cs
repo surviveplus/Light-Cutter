@@ -93,8 +93,10 @@ namespace Net.Surviveplus.LightCutter.UI
             this.magnifyingImage.Width = this.frozen.Bounds.Width / this.toDevice.X;
             this.magnifyingImage.Height = this.frozen.Bounds.Height / this.toDevice.Y;
 
-            this.magnifyingPoint.Width = 10 / this.toDevice.X;
-            this.magnifyingPoint.Height = 10 / this.toDevice.Y;
+            this.magnifyingPoint.Width = 10;
+            this.magnifyingPoint.Height = 10;
+            this.magnifyingScale.ScaleX = 10 * this.toDevice.X;
+            this.magnifyingScale.ScaleY = 10 * this.toDevice.Y;
 
         } // end sub
 
@@ -309,11 +311,11 @@ namespace Net.Surviveplus.LightCutter.UI
                 this.positionLabelLeft.Content = "(" + (point.X * this.toDevice.X) + "," + (point.Y * this.toDevice.Y) + ")";
                 this.positionLabelRight.Content = this.positionLabelLeft.Content;
             }
-            var magnifyingCenter = new Point(point.X - 10, point.Y - 10);
+            var magnifyingCenter = new Point(point.X - 10 / this.toDevice.X, point.Y - 10 / this.toDevice.Y);
 
-            this.magnifyingTransform.X = -10 * magnifyingCenter.X;
-            this.magnifyingTransform.Y = -10 * magnifyingCenter.Y;
-            this.magnifyingClip.Rect = new Rect(magnifyingCenter.X , magnifyingCenter.Y, 21, 21);
+            this.magnifyingTransform.X = -10 * this.toDevice.X  * magnifyingCenter.X;
+            this.magnifyingTransform.Y = -10 * this.toDevice.Y * magnifyingCenter.Y;
+            this.magnifyingClip.Rect = new Rect(magnifyingCenter.X , magnifyingCenter.Y, 210 / (10 * this.toDevice.X), 210 / (10* this.toDevice.Y));
 
 
         }
