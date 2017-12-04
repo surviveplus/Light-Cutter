@@ -94,6 +94,7 @@ namespace Net.Surviveplus.LightCutter.UI
             this.magnifyingScale.ScaleY = 10 * this.cropping.toDevice.Y;
 
             this.DataContext = this.cropping;
+            this.guide.Visibility = Visibility.Hidden;
         } // end sub
 
 
@@ -238,6 +239,7 @@ namespace Net.Surviveplus.LightCutter.UI
             this.cropping.Point = this.lastPoint;
             this.cropping.UpdateBounds();
             this.cropping.UpdateGuilde(this.Width, this.Height, this.guide.ActualWidth, this.guide.ActualHeight);
+            this.guide.Visibility = Visibility.Visible;
         }
 
         private Cropping cropping = new Cropping();
