@@ -58,7 +58,6 @@ namespace Net.Surviveplus.LightCutter.UI
             this.Width = frozen.Bounds.Width;
             this.Height = frozen.Bounds.Height;
 
-            this.cropGuidelines.Visibility = Visibility.Collapsed;
 
             using (var s = new MemoryStream())
             {
@@ -75,28 +74,26 @@ namespace Net.Surviveplus.LightCutter.UI
 
         #region Window Events 
 
-       /// <summary>
-        /// Rate to transform to device. 
-        /// </summary>
-        private Point toDevice;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var source = PresentationSource.FromVisual(this.frozenImage);
-            this.toDevice = new Point(
+            this.cropping.toDevice = new Point(
                 source.CompositionTarget.TransformToDevice.M11,
                 source.CompositionTarget.TransformToDevice.M22);
 
-            this.frozenImage.Width = this.frozen.Bounds.Width / this.toDevice.X;
-            this.frozenImage.Height = this.frozen.Bounds.Height / this.toDevice.Y;
+            var size = new Size(this.frozen.Bounds.Width / this.cropping.toDevice.X, this.frozen.Bounds.Height / this.cropping.toDevice.Y);
 
-            this.magnifyingImage.Width = this.frozen.Bounds.Width / this.toDevice.X;
-            this.magnifyingImage.Height = this.frozen.Bounds.Height / this.toDevice.Y;
+            this.frozenImage.Width = size.Width;
+            this.frozenImage.Height = size.Height;
 
-            this.magnifyingPoint.Width = 10;
-            this.magnifyingPoint.Height = 10;
-            this.magnifyingScale.ScaleX = 10 * this.toDevice.X;
-            this.magnifyingScale.ScaleY = 10 * this.toDevice.Y;
+            this.magnifyingImage.Width = size.Width;
+            this.magnifyingImage.Height = size.Height;
+
+            this.magnifyingScale.ScaleX = 10 * this.cropping.toDevice.X;
+            this.magnifyingScale.ScaleY = 10 * this.cropping.toDevice.Y;
+
+            this.DataContext = this.cropping;
 
         } // end sub
 
@@ -117,12 +114,9 @@ namespace Net.Surviveplus.LightCutter.UI
 
             if (e.Key == Key.Escape)
             {
-                if (this.isCropping)
+                if (this.cropping.IsCropping)
                 {
-                    this.isCropping = false;
-                    this.horizontalLine.Visibility = Visibility.Visible;
-                    this.verticalLine.Visibility = Visibility.Visible;
-                    this.cropGuidelines.Visibility = Visibility.Collapsed;
+                    this.cropping.IsCropping = false;
                 }
                 else
                 {
@@ -151,9 +145,9 @@ namespace Net.Surviveplus.LightCutter.UI
 
         private void FrozenImage_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (this.isCropping )
+            if (this.cropping.IsCropping )
             {
-                this.isCropping = false;
+                this.cropping.IsCropping = false;
                 this.DialogResult = true;
                 this.Close();
             }
@@ -161,22 +155,16 @@ namespace Net.Surviveplus.LightCutter.UI
 
         private void FrozenImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(this.isCropping &&
+            if(this.cropping.IsCropping &&
                 e.RightButton == MouseButtonState.Pressed ){
 
-                this.isCropping = false;
-                this.horizontalLine.Visibility = Visibility.Visible;
-                this.verticalLine.Visibility = Visibility.Visible;
-                this.cropGuidelines.Visibility = Visibility.Collapsed;
+                this.cropping.IsCropping = false;
             }
             else if (e.LeftButton == MouseButtonState.Pressed)
             {
-                this.isCropping = true;
+                this.cropping.IsCropping = true;
                 var point = e.GetPosition(this);
-                this.startPoint = new Point(point.X, point.Y);
-                this.horizontalLine.Visibility = Visibility.Collapsed;
-                this.verticalLine.Visibility = Visibility.Collapsed;
-                this.cropGuidelines.Visibility = Visibility.Visible;
+                this.cropping.StartPoint = new Point(point.X, point.Y);
             }
             else
             {
@@ -186,143 +174,16 @@ namespace Net.Surviveplus.LightCutter.UI
         }
 
 
-        private bool beLeft = false;
-        private bool beTop = false;
-
         private void FrozenImage_MouseMove(object sender, MouseEventArgs e)
         {
             var point = e.GetPosition(this);
-
-            this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
-            this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
-            this.cropBounds.Width = Math.Abs(point.X - startPoint.X) + 1 / this.toDevice.X;
-            this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1 / this.toDevice.Y;
-
-            if (this.isCropping)
-            {
-                if (this.ctrl)
-                {
-                    point = new Point(
-                        point.X + (startPoint.X< point.X ? -1 : 1) * (this.cropBounds.Width % (16/this.toDevice.X)), 
-                        point.Y + (startPoint.Y < point.Y ? -1 : 1) * (this.cropBounds.Height % (16/this.toDevice.X)));
-
-                    this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
-                    this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
-                    this.cropBounds.Width = Math.Abs(point.X - startPoint.X) + 1 / this.toDevice.X;
-                    this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1 / this.toDevice.Y;
-
-                } // end if(ctrl)
-
-                if (this.shift)
-                {
-                    if( this.cropBounds.Width < this.cropBounds.Height)
-                    {
-                        //this.cropBounds.Height = this.cropBounds.Width;
-                        if ( this.cropBounds.Y == point.Y)
-                        {
-                            point.Y = this.startPoint.Y - this.cropBounds.Width + 1 / this.toDevice.Y;
-                        }
-                        else
-                        {
-                            point.Y = this.startPoint.Y + this.cropBounds.Width - 1 / this.toDevice.Y;
-                        }
-                    }
-                    else
-                    {
-                        //this.cropBounds.Width = this.cropBounds.Height;
-                        if (this.cropBounds.X == point.X)
-                        {
-                            point.X = this.startPoint.X - this.cropBounds.Height + 1 / this.toDevice.X;
-                        }
-                        else
-                        {
-                            point.X = this.startPoint.X + this.cropBounds.Height - 1 / this.toDevice.X;
-                        }
-                    }
-
-                    this.cropBounds.X = Math.Min(point.X, this.startPoint.X);
-                    this.cropBounds.Y = Math.Min(point.Y, this.startPoint.Y);
-                    this.cropBounds.Width = Math.Abs(point.X - startPoint.X) + 1 / this.toDevice.X;
-                    this.cropBounds.Height = Math.Abs(point.Y - startPoint.Y) + 1 / this.toDevice.Y;
-
-                } // end if(shift)
-
-            } // end if(isCropping)
-
-            this.verticalLine.X1 = point.X;
-            this.verticalLine.X2 = point.X;
-
-            this.horizontalLine.Y1 = point.Y;
-            this.horizontalLine.Y2 = point.Y;
-
-            if( this.beLeft )
-            {
-                this.beLeft =  this.guide.ActualWidth + 10 < point.X;
-            }
-            else
-            {
-                this.beLeft = this.Width < this.guide.ActualWidth + point.X + 10;
-            }
-
-            if( this.beLeft )
-            {
-                Canvas.SetLeft(this.guide, point.X - 10 - this.guide.ActualWidth);
-                this.guideMessageRight.Visibility = Visibility.Collapsed;
-                this.guideMessageLeft.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                Canvas.SetLeft(this.guide, point.X + 10 );
-                this.guideMessageRight.Visibility = Visibility.Visible;
-                this.guideMessageLeft.Visibility = Visibility.Collapsed;
-            }
-
-            if (this.beTop)
-            {
-                beTop = this.guide.ActualHeight + 10 < point.Y;
-            }
-            else
-            {
-                beTop = this.Height < this.guide.ActualHeight + point.Y + 10;
-            }
-
-            if (beTop)
-            {
-                Canvas.SetTop(this.guide, point.Y - 10 - this.guide.ActualHeight);
-            }
-            else
-            {
-                Canvas.SetTop(this.guide, point.Y + 10 );
-            }
-
-            Canvas.SetLeft(this.cropGuidelines, this.cropBounds.X);
-            Canvas.SetTop(this.cropGuidelines, this.cropBounds.Y);
-
-            this.cropGuidelines.Width = this.cropBounds.Width;
-            this.cropGuidelines.Height = this.cropBounds.Height;
-
-            if (this.isCropping)
-            {
-                this.positionLabelLeft.Content = "(" + (this.cropBounds.Left * this.toDevice.X) + "," + (this.cropBounds.Top * this.toDevice.X) + ") - (" + Math.Max(point.X, this.startPoint.X) * this.toDevice.X + "," + Math.Max(point.Y, this.startPoint.Y) * this.toDevice.Y + ") : " + (this.cropBounds.Width * this.toDevice.X) + " x " + (this.cropBounds.Height * this.toDevice.Y )+ " Pixels";
-                this.positionLabelRight.Content = this.positionLabelLeft.Content;
-            }
-            else
-            {
-                this.positionLabelLeft.Content = "(" + (point.X * this.toDevice.X) + "," + (point.Y * this.toDevice.Y) + ")";
-                this.positionLabelRight.Content = this.positionLabelLeft.Content;
-            }
-            var magnifyingCenter = new Point(point.X - 10 / this.toDevice.X, point.Y - 10 / this.toDevice.Y);
-
-            this.magnifyingTransform.X = -10 * this.toDevice.X  * magnifyingCenter.X;
-            this.magnifyingTransform.Y = -10 * this.toDevice.Y * magnifyingCenter.Y;
-            this.magnifyingClip.Rect = new Rect(magnifyingCenter.X , magnifyingCenter.Y, 210 / (10 * this.toDevice.X), 210 / (10* this.toDevice.Y));
-
-
+            this.cropping.Point = e.GetPosition(this);
+            this.cropping.Bounds = Cropping.GetRect(this.cropping.StartPoint, this.cropping.Point, this.cropping.toDevice, this.cropping.IsCropping, this.ctrl, this.shift);
+            this.cropping.UpdateGuilde(this.Width, this.Height, this.guide.ActualWidth, this.guide.ActualHeight);
+            this.cropping.UpdatePositionLabel();
         }
 
-        private Point startPoint = new Point();
-        private Rect cropBounds = new Rect();
-        private bool isCropping;
+        private Cropping cropping = new Cropping();
 
         #endregion
 
@@ -333,11 +194,7 @@ namespace Net.Surviveplus.LightCutter.UI
         /// </summary>
         public System.Drawing.Rectangle CroppedBounds {
             get {
-                return new System.Drawing.Rectangle(
-                    (int)Math.Round(this.cropBounds.X * toDevice.X),
-                    (int)Math.Round(this.cropBounds.Y * toDevice.Y),
-                    (int)Math.Round(this.cropBounds.Width * toDevice.X), 
-                    (int)Math.Round(this.cropBounds.Height * toDevice.Y));
+                return this.cropping.BoundsToDevice.ToRectangle();
             } // end get
         } // end property
 

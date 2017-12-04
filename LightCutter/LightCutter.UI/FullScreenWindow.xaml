@@ -40,17 +40,30 @@
     </Window.Triggers>
     <Canvas>
         <Image x:Name="frozenImage" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="UniformToFill" Opacity="0.8" MouseMove="FrozenImage_MouseMove"/>
-        <Line x:Name="verticalLine" Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="100" X2="100" Y1="0" Y2="200"  MouseMove="FrozenImage_MouseMove" />
-        <Line x:Name="horizontalLine" Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="0" X2="200" Y1="100" Y2="100" MouseMove="FrozenImage_MouseMove" />
-        <Rectangle x:Name="cropGuidelines" Stroke="White" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  Width="300" Height="300" MouseMove="FrozenImage_MouseMove" />
-        <StackPanel x:Name="guide"  Background="#60000000"  MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"   MouseMove="FrozenImage_MouseMove" Orientation="Horizontal">
-            <StackPanel x:Name="guideMessageLeft" Visibility="Collapsed">
+        <Line x:Name="verticalLine" 
+              Visibility="{Binding LineVisibility}"
+              Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="{Binding Path=Point.X}" X2="{Binding Path=Point.X}" Y1="0" Y2="200"  MouseMove="FrozenImage_MouseMove" />
+        <Line x:Name="horizontalLine" 
+              Visibility="{Binding LineVisibility}"
+              Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="0" X2="200" Y1="{Binding Path=Point.Y}" Y2="{Binding Path=Point.Y}" MouseMove="FrozenImage_MouseMove" />
+        <Rectangle 
+            x:Name="cropGuidelines" 
+            Visibility="{Binding GuideVisibility}"
+            Canvas.Left="{Binding Bounds.X}" Canvas.Top="{Binding Bounds.Y}"
+            Width="{Binding Bounds.Width}" Height="{Binding Bounds.Height}" 
+            Stroke="White" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  
+            MouseMove="FrozenImage_MouseMove" />
+        <StackPanel x:Name="guide"  
+                    Background="#60000000"  
+                    Canvas.Left="{Binding GuideLocation.X}" Canvas.Top="{Binding GuideLocation.Y}"
+                    MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"   MouseMove="FrozenImage_MouseMove" Orientation="Horizontal">
+            <StackPanel x:Name="guideMessageLeft" Visibility="{Binding GuideMessageLeftVisibility}">
                 <Label x:Name="titleLabelLeft" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right">Light Cutter 7</Label>
                 <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=verticalLine, Path=Visibility}" HorizontalAlignment="Right"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen.</TextBlock>
                 <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=cropGuidelines, Path=Visibility}" HorizontalAlignment="Right"><ui:MouseLeftClick /> Mouse button up to determine area.</TextBlock>
-                <Label x:Name="positionLabelLeft" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right">(0, 0)</Label>
+                <Label x:Name="positionLabelLeft" Content="{Binding PositionLabelContent}" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right"></Label>
                 <TextBlock Margin="5 15 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" TextAlignment="Right"><ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
-                <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=cropGuidelines, Path=Visibility}">
+                <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=cropGuidelines, Path=Visibility}" TextAlignment="Right">
                     <ui:Key>Ctrl</ui:Key> key to grid (16 pixel)<LineBreak />
                     <ui:Key>Shift</ui:Key> key to square</TextBlock>
             </StackPanel>
@@ -60,21 +73,21 @@
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform x:Name="magnifyingScale" ScaleX="10" ScaleY="10" />
-                            <TranslateTransform x:Name="magnifyingTransform" X="-3800" Y="0" />
+                            <TranslateTransform x:Name="magnifyingTransform" X="{Binding MagnifyingTransform.X}" Y="{Binding MagnifyingTransform.Y}" />
                         </TransformGroup>
                     </Image.RenderTransform>
                     <Image.Clip>
-                        <RectangleGeometry x:Name="magnifyingClip" Rect="1900,0,100,100"  />
+                        <RectangleGeometry x:Name="magnifyingClip" Rect="{Binding MagnifyingClip}"  />
                     </Image.Clip>
                 </Image>
                 <Rectangle x:Name="magnifyingPoint" Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" StrokeThickness="1" Width="10" Height="10" Canvas.Left="100" Canvas.Top="100"></Rectangle>
                 <Rectangle x:Name="magnifyingOutline" Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" Width="210" Height="210" ></Rectangle>
             </Canvas>
-            <StackPanel x:Name="guideMessageRight">
+            <StackPanel x:Name="guideMessageRight" Visibility="{Binding GuideMessageRightVisibility}">
                 <Label x:Name="titleLabelRight" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}">Light Cutter 7</Label>
                 <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=verticalLine, Path=Visibility}"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen.</TextBlock>
                 <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=cropGuidelines, Path=Visibility}"><ui:MouseLeftClick /> Mouse button up to determine area.</TextBlock>
-                <Label x:Name="positionLabelRight" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}">(0, 0)</Label>
+                <Label x:Name="positionLabelRight" Content="{Binding ElementName=positionLabelLeft, Path=Content}" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}"></Label>
                  <TextBlock Margin="5 15 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}"><ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
                 <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=cropGuidelines, Path=Visibility}">
                     <ui:Key>Ctrl</ui:Key> key to grid (16 pixel)<LineBreak />
