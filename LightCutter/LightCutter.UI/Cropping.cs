@@ -9,41 +9,83 @@ namespace Net.Surviveplus.LightCutter.UI
 {
     public class Cropping : BindableBase
     {
-        public static Rect GetRect(Point startPoint, Point point, Point toDevice, bool isCropping, bool grid, bool squre)
-        {
-            var r = new Rect();
-            r.X = Math.Min(point.X, startPoint.X);
-            r.Y = Math.Min(point.Y, startPoint.Y);
-            r.Width = Math.Abs(point.X - startPoint.X) + 1 / toDevice.X;
-            r.Height = Math.Abs(point.Y - startPoint.Y) + 1 / toDevice.Y;
 
-            if (isCropping)
+        /// <summary>
+        /// Backing field of KeepGrid property.
+        /// </summary>
+        private bool valueOfKeepGrid;
+
+        /// <summary>
+        /// Gets or sets KeepGrid.
+        /// </summary>
+        public bool KeepGrid
+        {
+            get
             {
-                if (grid)
+                return this.valueOfKeepGrid;
+            } // end get
+            set
+            {
+                this.SetProperty(ref this.valueOfKeepGrid, value );
+            } // end set
+        } // end property
+
+        /// <summary>
+        /// Backing field of KeepSqure property.
+        /// </summary>
+        private bool valueOfKeepSqure;
+
+        /// <summary>
+        /// Gets or sets KeepSqure.
+        /// </summary>
+        public bool KeepSqure
+        {
+            get
+            {
+                return this.valueOfKeepSqure;
+            } // end get
+            set
+            {
+                this.SetProperty(ref this.valueOfKeepSqure, value);
+            } // end set
+        } // end property
+
+        public void UpdateBounds()
+        {
+            var point = this.Point;
+            var r = new Rect();
+            r.X = Math.Min(point.X, this.StartPoint.X);
+            r.Y = Math.Min(point.Y, this.StartPoint.Y);
+            r.Width = Math.Abs(point.X - this.StartPoint.X) + 1 / toDevice.X;
+            r.Height = Math.Abs(point.Y - this.StartPoint.Y) + 1 / toDevice.Y;
+
+            if (this.IsCropping)
+            {
+                if (this.KeepGrid)
                 {
                     point = new Point(
-                        point.X + (startPoint.X < point.X ? -1 : 1) * (r.Width % (16 / toDevice.X)),
-                        point.Y + (startPoint.Y < point.Y ? -1 : 1) * (r.Height % (16 / toDevice.X)));
+                        point.X + (this.StartPoint.X < point.X ? -1 : 1) * (r.Width % (16 / toDevice.X)),
+                        point.Y + (this.StartPoint.Y < point.Y ? -1 : 1) * (r.Height % (16 / toDevice.X)));
 
-                    r.X = Math.Min(point.X, startPoint.X);
-                    r.Y = Math.Min(point.Y, startPoint.Y);
-                    r.Width = Math.Abs(point.X - startPoint.X) + 1 / toDevice.X;
-                    r.Height = Math.Abs(point.Y - startPoint.Y) + 1 / toDevice.Y;
+                    r.X = Math.Min(point.X, this.StartPoint.X);
+                    r.Y = Math.Min(point.Y, this.StartPoint.Y);
+                    r.Width = Math.Abs(point.X - this.StartPoint.X) + 1 / toDevice.X;
+                    r.Height = Math.Abs(point.Y - this.StartPoint.Y) + 1 / toDevice.Y;
 
                 } // end if(ctrl)
 
-                if (squre)
+                if (this.KeepSqure)
                 {
                     if (r.Width < r.Height)
                     {
                         //r.Height = r.Width;
                         if (r.Y == point.Y)
                         {
-                            point.Y = startPoint.Y - r.Width + 1 / toDevice.Y;
+                            point.Y = this.StartPoint.Y - r.Width + 1 / toDevice.Y;
                         }
                         else
                         {
-                            point.Y = startPoint.Y + r.Width - 1 / toDevice.Y;
+                            point.Y = this.StartPoint.Y + r.Width - 1 / toDevice.Y;
                         }
                     }
                     else
@@ -51,24 +93,38 @@ namespace Net.Surviveplus.LightCutter.UI
                         //r.Width = r.Height;
                         if (r.X == point.X)
                         {
-                            point.X = startPoint.X - r.Height + 1 / toDevice.X;
+                            point.X = this.StartPoint.X - r.Height + 1 / toDevice.X;
                         }
                         else
                         {
-                            point.X = startPoint.X + r.Height - 1 / toDevice.X;
+                            point.X = this.StartPoint.X + r.Height - 1 / toDevice.X;
                         }
                     }
 
-                    r.X = Math.Min(point.X, startPoint.X);
-                    r.Y = Math.Min(point.Y, startPoint.Y);
-                    r.Width = Math.Abs(point.X - startPoint.X) + 1 / toDevice.X;
-                    r.Height = Math.Abs(point.Y - startPoint.Y) + 1 / toDevice.Y;
+                    r.X = Math.Min(point.X, this.StartPoint.X);
+                    r.Y = Math.Min(point.Y, this.StartPoint.Y);
+                    r.Width = Math.Abs(point.X - this.StartPoint.X) + 1 / toDevice.X;
+                    r.Height = Math.Abs(point.Y - this.StartPoint.Y) + 1 / toDevice.Y;
 
                 } // end if(shift)
 
+                this.Point = point;
             } // end if(isCropping)
 
-            return r;
+            if (this.IsCropping)
+            {
+                this.PositionLabelContent =
+                    "(" + this.BoundsToDevice.Left + "," + this.BoundsToDevice.Top + ") - (" +
+                    Math.Max(this.StartPoint.X, point.X) + "," + Math.Max(this.StartPoint.Y, point.Y) + ") : " +
+                    this.BoundsToDevice.Width + " x " + this.BoundsToDevice.Height + " Pixels";
+            }
+            else
+            {
+                this.PositionLabelContent = "(" + (this.PointToDevice.X) + "," + (this.PointToDevice.Y) + ")";
+            }
+
+
+            this.Bounds = r;
         }
 
 
@@ -95,7 +151,6 @@ namespace Net.Surviveplus.LightCutter.UI
             {
                 this.SetProperty(ref this.valueOfPoint, value);
                 this.PointToDevice = new Point(this.Point.X * this.toDevice.X, this.Point.Y * this.toDevice.Y);
-
                 this.MagnifyingCenter = new Point(this.Point.X - 10 / this.toDevice.X, this.Point.Y - 10 / this.toDevice.Y);
             } // end set
         } // end property
@@ -471,23 +526,6 @@ namespace Net.Surviveplus.LightCutter.UI
         /// Backing field of PositionLabelContent  property.
         /// </summary>
         private String valueOfPositionLabelContent ;
-
-
-        public void UpdatePositionLabel()
-        {
-            if (this.IsCropping)
-            {
-                this.PositionLabelContent = 
-                    "(" + this.BoundsToDevice.Left  + "," + this.BoundsToDevice.Top + ") - (" + 
-                    Math.Max(this.StartPoint.X,this.Point.X) + "," + Math.Max(this.StartPoint.Y, this.Point.Y) + ") : " +
-                    this.BoundsToDevice.Width  + " x " + this.BoundsToDevice.Height  + " Pixels";
-            }
-            else
-            {
-                this.PositionLabelContent = "(" + (this.PointToDevice.X) + "," + (this.PointToDevice.Y) + ")";
-            }
-
-        }
 
         /// <summary>
         /// Gets or sets PositionLabelContent .

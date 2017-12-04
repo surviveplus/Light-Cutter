@@ -94,23 +94,72 @@ namespace Net.Surviveplus.LightCutter.UI
             this.magnifyingScale.ScaleY = 10 * this.cropping.toDevice.Y;
 
             this.DataContext = this.cropping;
-
         } // end sub
 
 
-        private bool ctrl = false;
-        private bool shift = false;
+
+        //private bool Ctrl { get; set; }
+
+        /// <summary>
+        /// Backing field of Ctrl property.
+        /// </summary>
+        private bool valueOfCtrl;
+
+        /// <summary>
+        /// Gets or sets Ctrl.
+        /// </summary>
+        public bool Ctrl
+        {
+            get
+            {
+                return this.valueOfCtrl;
+            } // end get
+            set
+            {
+                this.valueOfCtrl = value;
+                this.cropping.KeepGrid = value;
+            } // end set
+        } // end property
+
+        //private bool Shift { get; set; }
+
+        /// <summary>
+        /// Backing field of Shift property.
+        /// </summary>
+        private bool valueOfShift;
+
+        /// <summary>
+        /// Gets or sets Shift.
+        /// </summary>
+        public bool Shift
+        {
+            get
+            {
+                return this.valueOfShift;
+            } // end get
+            set
+            {
+                this.valueOfShift = value;
+                this.cropping.KeepSqure = value;
+            } // end set
+        } // end property
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
-            this.ctrl = (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
-            this.shift = (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
+            this.Ctrl = (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
+            this.Shift = (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
+
+            if (this.cropping.IsCropping)
+            {
+                this.cropping.Point = this.lastPoint;
+                this.cropping.UpdateBounds();
+            }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            this.ctrl = (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
-            this.shift = (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
+            this.Ctrl = (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
+            this.Shift = (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
 
             if (e.Key == Key.Escape)
             {
@@ -123,6 +172,13 @@ namespace Net.Surviveplus.LightCutter.UI
                     this.Close();
                 }
             }
+
+            if (this.cropping.IsCropping)
+            {
+                this.cropping.Point = this.lastPoint;
+                this.cropping.UpdateBounds();
+            }
+
         } // end sub
 
         private void Window_LostFocus(object sender, RoutedEventArgs e)
@@ -165,6 +221,7 @@ namespace Net.Surviveplus.LightCutter.UI
                 this.cropping.IsCropping = true;
                 var point = e.GetPosition(this);
                 this.cropping.StartPoint = new Point(point.X, point.Y);
+                this.cropping.UpdateBounds();
             }
             else
             {
@@ -173,14 +230,14 @@ namespace Net.Surviveplus.LightCutter.UI
 
         }
 
+        private Point lastPoint;
 
         private void FrozenImage_MouseMove(object sender, MouseEventArgs e)
         {
-            var point = e.GetPosition(this);
-            this.cropping.Point = e.GetPosition(this);
-            this.cropping.Bounds = Cropping.GetRect(this.cropping.StartPoint, this.cropping.Point, this.cropping.toDevice, this.cropping.IsCropping, this.ctrl, this.shift);
+            this.lastPoint = e.GetPosition(this);
+            this.cropping.Point = this.lastPoint;
+            this.cropping.UpdateBounds();
             this.cropping.UpdateGuilde(this.Width, this.Height, this.guide.ActualWidth, this.guide.ActualHeight);
-            this.cropping.UpdatePositionLabel();
         }
 
         private Cropping cropping = new Cropping();
