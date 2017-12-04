@@ -22,13 +22,13 @@
         "Entry"
         {
         "MsmKey" = "8:_04ED06BC263DE917DB17A9EB2C9E20D0"
-        "OwnerKey" = "8:_0B08EFD16B7558DF5CF7DEFD7FAE6A8C"
+        "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_04ED06BC263DE917DB17A9EB2C9E20D0"
-        "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
+        "OwnerKey" = "8:_0B08EFD16B7558DF5CF7DEFD7FAE6A8C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -64,13 +64,13 @@
         "Entry"
         {
         "MsmKey" = "8:_607DDC4AEC7BA74163A5D0AE7416CA89"
-        "OwnerKey" = "8:_9D84CC9495BA472096244AEC03295376"
+        "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_607DDC4AEC7BA74163A5D0AE7416CA89"
-        "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
+        "OwnerKey" = "8:_9D84CC9495BA472096244AEC03295376"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -106,25 +106,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_607DDC4AEC7BA74163A5D0AE7416CA89"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_04ED06BC263DE917DB17A9EB2C9E20D0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0B08EFD16B7558DF5CF7DEFD7FAE6A8C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_23531506A87E1896DE048A9E439C12AD"
+        "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -136,7 +118,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
+        "OwnerKey" = "8:_23531506A87E1896DE048A9E439C12AD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0B08EFD16B7558DF5CF7DEFD7FAE6A8C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_04ED06BC263DE917DB17A9EB2C9E20D0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_607DDC4AEC7BA74163A5D0AE7416CA89"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -465,15 +465,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:LightCutter 7"
-        "ProductCode" = "8:{E3763916-3459-42F6-893E-CD2514E092A7}"
-        "PackageCode" = "8:{07BAC9CB-9399-4253-AFCA-DEE8CB65ABCC}"
+        "ProductCode" = "8:{7E1542AC-EA8D-4553-97F9-5D2A057B0E8B}"
+        "PackageCode" = "8:{BABAD200-5720-46B1-8C74-4D8E6BE5E1E9}"
         "UpgradeCode" = "8:{10855EB8-1B59-4C96-930F-F6541B80006A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:7.0.2"
+        "ProductVersion" = "8:7.0.3"
         "Manufacturer" = "8:Surviveplus.net"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
