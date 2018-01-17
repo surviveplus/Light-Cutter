@@ -67,6 +67,9 @@
       <DependentUpon>BackgroundWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="LightCutter.cs" />
+    <Compile Include="Pages\ActionPage.xaml.cs">
+      <DependentUpon>ActionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowHide.cs" />
     <Page Include="BackgroundWindow.xaml">
       <SubType>Designer</SubType>
@@ -84,6 +87,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\ActionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

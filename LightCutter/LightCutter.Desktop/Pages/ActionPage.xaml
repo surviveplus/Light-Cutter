@@ -1,0 +1,34 @@
+﻿<Page x:Class="Net.Surviveplus.LightCutter.Desktop.Pages.ActionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Pages"
+        xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="500"
+      Title="ActionPage"
+      Loaded="Page_Loaded"
+      IsVisibleChanged="Page_IsVisibleChanged">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="10,0,10,10" />
+            <Setter Property="Padding" Value="10,10,10,10" />
+        </Style>
+    </Page.Resources>
+
+    <StackPanel>
+        <Label Margin="5,10,0,10">Select an action. If this window is closed, it will be shown again from the task tray icon.</Label>
+        <Button x:Name="CutAndCopyButton" Click="CutAndCopyButton_Click">Freeze Screen => Cut by Mouse => Copy</Button>
+        <Button x:Name="CutAndSaveButton" Click="CutAndSaveButton_Click" >
+            <TextBlock TextAlignment="Center">
+            Freeze Screen => Cut by Mouse => Save a File on desktop  <LineBreak />
+                <TextBlock x:Name="shortcutA"><ui:Key>Ctrl</ui:Key> + <ui:Key>Shift</ui:Key> + <ui:Key>Alt</ui:Key> + <ui:Key>A</ui:Key></TextBlock>
+                <TextBlock x:Name="shortcutAError" Foreground="Gray">(The shortcut key was not enabled.)</TextBlock>
+            </TextBlock>
+        </Button>
+        <Button x:Name="CutSameAreaAndSaveButton" Click="CutSameAreaAndSaveButton_Click" >Freeze Screen => Cut the same range => Save a File on desktop</Button>
+        <Button x:Name="CountdownCutAndSaveButton" Click="CountdownCutAndSaveButton_Click">Countdown 3s. => Freeze Screen => Cut by Mouse => Save a File on desktop</Button>
+        <Button x:Name="CountdownCutSaveAreaAndSaveButton" Click="CountdownCutSaveAreaAndSaveButton_Click">Countdown 3s. => Freeze Screen => Cut the same range => Save a File on desktop</Button>
+    </StackPanel>
+</Page>

@@ -11,26 +11,10 @@
         Icon="LightCutter Ver.6.ico"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
-        Loaded="Window_Loaded"
-        IsVisibleChanged="Window_IsVisibleChanged">
+        Loaded="Window_Loaded">
     <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="10,0,10,10" />
-            <Setter Property="Padding" Value="10,10,10,10" />
-        </Style>
     </Window.Resources>
-    <StackPanel>
-        <Label Margin="5,10,0,10">Select an action. If this window is closed, it will be shown again from the task tray icon.</Label>
-        <Button x:Name="CutAndCopyButton" Click="CutAndCopyButton_Click">Freeze Screen => Cut by Mouse => Copy</Button>
-        <Button x:Name="CutAndSaveButton" Click="CutAndSaveButton_Click" >
-            <TextBlock TextAlignment="Center">
-            Freeze Screen => Cut by Mouse => Save a File on desktop  <LineBreak />
-                <TextBlock x:Name="shortcutA"><ui:Key>Ctrl</ui:Key> + <ui:Key>Shift</ui:Key> + <ui:Key>Alt</ui:Key> + <ui:Key>A</ui:Key></TextBlock>
-                <TextBlock x:Name="shortcutAError" Foreground="Gray">(The shortcut key was not enabled.)</TextBlock>
-            </TextBlock>
-        </Button>
-        <Button x:Name="CutSameAreaAndSaveButton" Click="CutSameAreaAndSaveButton_Click" >Freeze Screen => Cut the same range => Save a File on desktop</Button>
-        <Button x:Name="CountdownCutAndSaveButton" Click="CountdownCutAndSaveButton_Click">Countdown 3s. => Freeze Screen => Cut by Mouse => Save a File on desktop</Button>
-        <Button x:Name="CountdownCutSaveAreaAndSaveButton" Click="CountdownCutSaveAreaAndSaveButton_Click">Countdown 3s. => Freeze Screen => Cut the same range => Save a File on desktop</Button>
-    </StackPanel>
+    <Frame x:Name="mainFrame">
+        
+    </Frame>
 </Window>
