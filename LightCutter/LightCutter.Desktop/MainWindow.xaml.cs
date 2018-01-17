@@ -28,7 +28,17 @@ namespace Net.Surviveplus.LightCutter.Desktop
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.Title = "Action Panel - Light Cutter ver." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " (Preview)";
-
+            
+            if( (App.Current.MainWindow as BackgroundWindow).ShortcutA)
+            {
+                this.shortcutA.Visibility = Visibility.Visible;
+                this.shortcutAError.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                this.shortcutA.Visibility = Visibility.Collapsed;
+                this.shortcutAError.Visibility = Visibility.Visible;
+            }
         }
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {

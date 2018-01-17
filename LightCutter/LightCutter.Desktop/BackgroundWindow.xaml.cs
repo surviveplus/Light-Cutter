@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -124,8 +125,12 @@ namespace Net.Surviveplus.LightCutter.Desktop
             //NativeMethods.RegisterHotKey(this.helper.Handle, this.hotkeyId, NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT, 83);
 
             //        ' Ctrl + Shift + Alt + A
-            NativeMethods.RegisterHotKey(this.helper.Handle, this.hotkeyId, NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT, 65);
+            var r = NativeMethods.RegisterHotKey(this.helper.Handle, this.hotkeyId, NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT, 65);
+            this.ShortcutA = (r != 0);
         }
+
+        public bool ShortcutA { get;  private set; }
+
 
         public void ReleaseHotkey()
         {

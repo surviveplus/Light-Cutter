@@ -24,8 +24,9 @@
         <Button x:Name="CutAndCopyButton" Click="CutAndCopyButton_Click">Freeze Screen => Cut by Mouse => Copy</Button>
         <Button x:Name="CutAndSaveButton" Click="CutAndSaveButton_Click" >
             <TextBlock TextAlignment="Center">
-            Freeze Screen => Cut by Mouse => Save a File on desktop  <LineBreak/>
-            <ui:Key>Ctrl</ui:Key> + <ui:Key>Shift</ui:Key> + <ui:Key>Alt</ui:Key> + <ui:Key>A</ui:Key>
+            Freeze Screen => Cut by Mouse => Save a File on desktop  <LineBreak />
+                <TextBlock x:Name="shortcutA"><ui:Key>Ctrl</ui:Key> + <ui:Key>Shift</ui:Key> + <ui:Key>Alt</ui:Key> + <ui:Key>A</ui:Key></TextBlock>
+                <TextBlock x:Name="shortcutAError" Foreground="Gray">(The shortcut key was not enabled.)</TextBlock>
             </TextBlock>
         </Button>
         <Button x:Name="CutSameAreaAndSaveButton" Click="CutSameAreaAndSaveButton_Click" >Freeze Screen => Cut the same range => Save a File on desktop</Button>
