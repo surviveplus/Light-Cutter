@@ -14,7 +14,5 @@
         Loaded="Window_Loaded">
     <Window.Resources>
     </Window.Resources>
-    <Frame x:Name="mainFrame">
-        
-    </Frame>
+    <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
 </Window>

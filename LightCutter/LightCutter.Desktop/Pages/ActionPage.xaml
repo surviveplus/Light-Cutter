@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Pages"
         xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="500"
+      d:DesignHeight="310" d:DesignWidth="500"
       Title="ActionPage"
       Loaded="Page_Loaded"
       IsVisibleChanged="Page_IsVisibleChanged">
@@ -18,7 +18,15 @@
     </Page.Resources>
 
     <StackPanel>
-        <Label Margin="5,10,0,10">Select an action. If this window is closed, it will be shown again from the task tray icon.</Label>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Margin="5,10,0,10" Grid.ColumnSpan="2">If this window is closed, it will be shown again from the task tray icon.</Label>
+            <Button Grid.Column="1" Margin="0 5" Padding="0" x:Name="SettingsButton" Click="SettingsButton_Click" Background="Transparent" BorderBrush="Transparent">⚙</Button>
+        </Grid>
         <Button x:Name="CutAndCopyButton" Click="CutAndCopyButton_Click">Freeze Screen => Cut by Mouse => Copy</Button>
         <Button x:Name="CutAndSaveButton" Click="CutAndSaveButton_Click" >
             <TextBlock TextAlignment="Center">

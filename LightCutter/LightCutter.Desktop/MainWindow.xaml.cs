@@ -28,7 +28,22 @@ namespace Net.Surviveplus.LightCutter.Desktop
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.Title = "Action Panel - Light Cutter ver." + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " (Preview)";
+            this.ShowAction();
+            
+        }
+
+        public void GoBack()
+        {
+            this.mainFrame.GoBack();
+        }
+
+        public void ShowAction() {
             this.mainFrame.Content = new Pages.ActionPage(this);
+        }
+
+        public void ShowSetting()
+        {
+            this.mainFrame.Content = new Pages.SettingsPage(this);
         }
 
     }

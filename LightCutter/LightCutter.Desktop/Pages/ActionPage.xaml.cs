@@ -71,5 +71,10 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
         {
             LightCutter.CutSameAreaAndSave(this.parentWindow, DateTime.Now + TimeSpan.FromSeconds(3));
         }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.parentWindow.ShowSetting();
+        }
     }
 }

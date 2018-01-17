@@ -149,6 +149,12 @@ namespace Net.Surviveplus.LightCutter.Desktop
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if(Properties.Settings.Default.Upgraded == false){
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.Upgraded = true;
+                Properties.Settings.Default.Save();
+            }
+
             this.helper = new WindowInteropHelper(this);
             this.hwndSource = HwndSource.FromHwnd(this.helper.Handle);
             this.hwndSource.AddHook(new HwndSourceHook(this.WndProc));
@@ -158,7 +164,10 @@ namespace Net.Surviveplus.LightCutter.Desktop
             NativeMethods.SetWindowLong(this.helper.Handle, NativeMethods.GWL_EXSTYLE, style);
 
             this.SetHotkey();
-            this.ShowActionPannel();
+
+            if(Properties.Settings.Default.ShowActionPanelOnStartUp){
+                this.ShowActionPannel();
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)

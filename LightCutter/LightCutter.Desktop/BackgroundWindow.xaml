@@ -26,7 +26,7 @@
                     <MenuItem x:Name="CutAndSaveAction" Header="Cut and Save" Click="CutAndSaveAction_Click"/>
                     
                     <Separator />
-                    <MenuItem x:Name="OpenMainAction" Header="Show Action Pannel" Click="OpenMainAction_Click" />
+                    <MenuItem x:Name="OpenMainAction" Header="Show Action Panel" Click="OpenMainAction_Click" />
                     <MenuItem x:Name="CloseAction" Header="Quit" Click="CloseAction_Click" />
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
