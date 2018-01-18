@@ -208,7 +208,13 @@ namespace Net.Surviveplus.LightCutter.UI
                 this.DialogResult = true;
                 this.Close();
             }
+            else if(this.mustClose)
+            {
+                this.Close();
+            }
         }
+
+        private bool mustClose = false;
 
         private void FrozenImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -226,7 +232,7 @@ namespace Net.Surviveplus.LightCutter.UI
             }
             else
             {
-                this.Close();
+                this.mustClose = true;
             }
 
         }
