@@ -107,40 +107,53 @@ namespace Net.Surviveplus.LightCutter.Desktop
             this.main?.Activate();
         }
 
-        private IntPtr hotkeyId ;
+        private IntPtr hotkeyIdA ;
+        private IntPtr hotkeyIdZ;
         private WindowInteropHelper helper;
 
         public void SetHotkey()
         {
-            if (this.hotkeyId != IntPtr.Zero)
+            if (this.hotkeyIdA != IntPtr.Zero)
             {
-                NativeMethods.UnregisterHotKey(this.helper.Handle, this.hotkeyId);
+                NativeMethods.UnregisterHotKey(this.helper.Handle, this.hotkeyIdA);
             }
 
-            this.hotkeyId = NativeMethods.GlobalAddAtom("Net.Surviveplus.LightCutter7");
-
+            // KeyCode constant for HotKey:
             // https://msdn.microsoft.com/ja-jp/library/0z084th3(v=vs.90).aspx
 
-            //        ' Ctrl + Shift + Alt + S
-            //NativeMethods.RegisterHotKey(this.helper.Handle, this.hotkeyId, NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT, 83);
-
             //        ' Ctrl + Shift + Alt + A
-            var r = NativeMethods.RegisterHotKey(this.helper.Handle, this.hotkeyId, NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT, 65);
-            this.ShortcutA = (r != 0);
+            this.hotkeyIdA = NativeMethods.GlobalAddAtom("Net.Surviveplus.LightCutter7.A");
+            var a = NativeMethods.RegisterHotKey(this.helper.Handle, this.hotkeyIdA, NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT, 65);
+            this.ShortcutA = (a != 0);
+
+            //        ' Ctrl + Shift + Alt + Z
+            this.hotkeyIdZ = NativeMethods.GlobalAddAtom("Net.Surviveplus.LightCutter7.Z");
+            var z = NativeMethods.RegisterHotKey(this.helper.Handle, this.hotkeyIdZ, NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT, 90);
+            this.ShortcutZ = (z != 0);
         }
 
         public bool ShortcutA { get;  private set; }
+        public bool ShortcutZ { get; private set; }
 
 
         public void ReleaseHotkey()
         {
-            if( this.hotkeyId != IntPtr.Zero)
+            if( this.hotkeyIdA != IntPtr.Zero)
             {
-                NativeMethods.UnregisterHotKey(this.helper.Handle, this.hotkeyId);
-                NativeMethods.GlobalDeleteAtom(this.hotkeyId);
+                NativeMethods.UnregisterHotKey(this.helper.Handle, this.hotkeyIdA);
+                NativeMethods.GlobalDeleteAtom(this.hotkeyIdA);
 
-                this.hotkeyId = IntPtr.Zero;
+                this.hotkeyIdA = IntPtr.Zero;
             }
+
+            if (this.hotkeyIdZ != IntPtr.Zero)
+            {
+                NativeMethods.UnregisterHotKey(this.helper.Handle, this.hotkeyIdZ);
+                NativeMethods.GlobalDeleteAtom(this.hotkeyIdZ);
+
+                this.hotkeyIdZ = IntPtr.Zero;
+            }
+
         }
 
         #endregion
@@ -178,10 +191,15 @@ namespace Net.Surviveplus.LightCutter.Desktop
 
         private HwndSource hwndSource;
 
-        private IntPtr WndProc(IntPtr hwnd, int msg,
-  IntPtr wParam, IntPtr lParam, ref bool handled)
+        private IntPtr WndProc(IntPtr hwnd, int msg,  IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            if (msg == NativeMethods.WM_HOTKEY && wParam == this.hotkeyId)
+            if (msg == NativeMethods.WM_HOTKEY && wParam == this.hotkeyIdA)
+            {
+                this.ShowActionPannel();
+                handled = true;
+                return IntPtr.Zero;
+            }
+            else if (msg == NativeMethods.WM_HOTKEY && wParam == this.hotkeyIdZ)
             {
                 LightCutter.CutAndSave(this.main);
                 handled = true;
