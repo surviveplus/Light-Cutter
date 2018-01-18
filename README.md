@@ -7,10 +7,14 @@ It can take screenshots of an rectangular area by using a mouse.
 You can start this with shortcut key or delay.
 Can capture the same area as last time, so you can capture it fast and continuously.
 
+ ![Action Panel](HowToUse/images/ActionPanel.png)
+
+ - [Light Cutter ver.7.0](https://github.com/surviveplus/Light-Cutter/releases) ( Preview )
+
  - [Light Cutter ver.5.4](
 http://www.surviveplus.net/ja/archives/24
 ) ( Japanese Only )
- - [Light Cutter ver.7.0](https://github.com/surviveplus/Light-Cutter/releases) ( Preview )
+
 
 In Japan, users of this software series are over 50,000 people total. For example, one of company approved it as official software.
 However, the new version had not been released recently. So in this repository we migrate this and release new features.
