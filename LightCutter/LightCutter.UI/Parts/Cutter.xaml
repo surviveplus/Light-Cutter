@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Net.Surviveplus.LightCutter.UI.Parts.Cutter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts"
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="20">
+    <Grid Width="16" Height="20">
+        <Grid.RenderTransform>
+            <TranslateTransform X="0" Y="5"></TranslateTransform>
+        </Grid.RenderTransform>
+        <Label x:Name="text" />
+        <Rectangle Fill="{Binding ElementName=text, Path=Foreground}" Width="16" Height="4"  Margin="3,0,-3,2.5" VerticalAlignment="Bottom" d:LayoutOverrides="Height" >
+            <Rectangle.RenderTransform>
+                <RotateTransform Angle="-45"/>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Path Stroke="{Binding Foreground, ElementName=text}" StrokeThickness="1" Margin="-1,17.5,10,-1.5" Data="M0.5,0.5 L6.5,0.5 6.5,3.4999999 3.5,3.4999999 z" RenderTransformOrigin="0,-1.49011614158923E-08" Stretch="Fill">
+            <Path.RenderTransform>
+                <RotateTransform Angle="-45"/>
+            </Path.RenderTransform>
+        </Path>
+        <Rectangle Stroke="{Binding Foreground, ElementName=text}" StrokeThickness="1" Margin="-2,4,7.208,0" Height="1" VerticalAlignment="Top"/>
+        <Rectangle Stroke="{Binding Foreground, ElementName=text}" StrokeThickness="1" Margin="-2,4,0,3.583" HorizontalAlignment="Left" Width="1"/>
+        <Rectangle Stroke="{Binding Foreground, ElementName=text}" StrokeThickness="1" Margin="7.083,0,4,2" Height="1" VerticalAlignment="Bottom"/>
+        <Rectangle Stroke="{Binding Foreground, ElementName=text}" StrokeThickness="1" Margin="0,0,4,2" HorizontalAlignment="Right" Width="1" Height="4.938" VerticalAlignment="Bottom"/>
+    </Grid>
+</UserControl>

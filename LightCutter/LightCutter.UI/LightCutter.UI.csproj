@@ -55,8 +55,17 @@
     <Compile Include="FullScreenWindow.xaml.cs">
       <DependentUpon>FullScreenWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Parts\Copy.xaml.cs">
+      <DependentUpon>Copy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\Cutter.xaml.cs">
+      <DependentUpon>Cutter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Parts\Key.xaml.cs">
       <DependentUpon>Key.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\LastArea.xaml.cs">
+      <DependentUpon>LastArea.xaml</DependentUpon>
     </Compile>
     <Compile Include="Parts\MouseLeftClick.xaml.cs">
       <DependentUpon>MouseLeftClick.xaml</DependentUpon>
@@ -66,6 +75,15 @@
     </Compile>
     <Compile Include="Parts\Mouse.xaml.cs">
       <DependentUpon>Mouse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\Save.xaml.cs">
+      <DependentUpon>Save.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\Screen.xaml.cs">
+      <DependentUpon>Screen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\Timer.xaml.cs">
+      <DependentUpon>Timer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -96,7 +114,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Parts\Copy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Parts\Cutter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Parts\Key.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Parts\LastArea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -109,6 +139,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Parts\Mouse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Parts\Save.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Parts\Screen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Parts\Timer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

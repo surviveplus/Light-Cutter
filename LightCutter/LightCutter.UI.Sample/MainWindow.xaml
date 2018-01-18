@@ -13,7 +13,9 @@
             <ui:Key>Ctrl</ui:Key> + <ui:Key>Shift</ui:Key> + <ui:Key>Alt</ui:Key> + <ui:Key>A</ui:Key> : Start capture.<LineBreak />
             <ui:Mouse /> Mouse / 
             <ui:MouseRightClick /> Right Click /
-            <ui:MouseLeftClick /> Left Click 
+            <ui:MouseLeftClick /> Left Click <LineBreak />
+            <ui:Timer /> Wait 3s  => <ui:Screen /> Freeze Screen => <ui:Cutter /> Cut.
+
         </TextBlock>
     </Grid>
 </Window>

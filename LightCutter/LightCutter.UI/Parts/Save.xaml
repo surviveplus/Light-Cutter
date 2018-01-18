@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Net.Surviveplus.LightCutter.UI.Parts.Save"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts"
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="20">
+    <Grid Width="16" Height="20">
+        <Grid.RenderTransform>
+            <TranslateTransform X="0" Y="5"></TranslateTransform>
+        </Grid.RenderTransform>
+        <Label x:Name="text" />
+        <Path Data="M0,0 L2.4999998,0 2.4999998,5.9999999 10.5,5.9999999 10.5,0 11.084839,0 13,1.915161 13,14 0,14 z" Fill="{Binding Foreground, ElementName=text}" Margin="1.5,4,1.5,2" Stretch="Fill"/>
+        <Rectangle Fill="{Binding Foreground, ElementName=text}" Margin="0,4,6,12" HorizontalAlignment="Right" Width="2"/>
+
+    </Grid>
+</UserControl>

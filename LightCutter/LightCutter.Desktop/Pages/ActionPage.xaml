@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Pages"
         xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="500"
+      d:DesignHeight="350" d:DesignWidth="540"
       Title="ActionPage"
       Loaded="Page_Loaded"
       IsVisibleChanged="Page_IsVisibleChanged">
@@ -14,6 +14,7 @@
         <Style TargetType="Button">
             <Setter Property="Margin" Value="10,0,10,10" />
             <Setter Property="Padding" Value="10,10,10,10" />
+            <Setter Property="Background" Value="#FFFAFAFA" />
         </Style>
     </Page.Resources>
 
@@ -27,17 +28,44 @@
             <Label Margin="5,0,0,0" Grid.ColumnSpan="2" FontSize="18">Actions</Label>
             <Button Grid.Column="1" Margin="0 5" Padding="0" x:Name="SettingsButton" Click="SettingsButton_Click" Background="Transparent" BorderBrush="Transparent">⚙</Button>
         </Grid>
-        <Button x:Name="CutAndCopyButton" Click="CutAndCopyButton_Click">_1. Freeze Screen => Cut by Mouse => Copy</Button>
+        <Button x:Name="CutAndCopyButton" Click="CutAndCopyButton_Click">
+            <TextBlock Margin="0 -5 0 0">
+                <Label Margin="0 -10 0 0"><Label.RenderTransform><TranslateTransform  X="0" Y="8"></TranslateTransform></Label.RenderTransform><AccessText>_1.</AccessText></Label>
+                <TextBlock><ui:Screen /> Stop Screen &gt; <ui:Cutter /> Cut &gt; <ui:Copy /> Copy</TextBlock>
+            </TextBlock>
+        </Button>
         <Button x:Name="CutAndSaveButton" Click="CutAndSaveButton_Click" >
-            <TextBlock TextAlignment="Center">
-                <Label><AccessText>_2. Freeze Screen => Cut by Mouse => Save a File on desktop</AccessText></Label>  <LineBreak />
+            <TextBlock TextAlignment="Center" Margin="0 -5 0 0">
+                <Label Margin="0 -10 0 0"><Label.RenderTransform><TranslateTransform  X="0" Y="8"></TranslateTransform></Label.RenderTransform><AccessText>_2.</AccessText></Label> 
+                <TextBlock><ui:Screen /> Stop Screen &gt; <ui:Cutter /> Cut &gt; <ui:Save /> Save a File on desktop</TextBlock><LineBreak />
                 <TextBlock x:Name="shortcutA"><ui:Key>Ctrl</ui:Key> + <ui:Key>Shift</ui:Key> + <ui:Key>Alt</ui:Key> + <ui:Key>Z</ui:Key></TextBlock>
                 <TextBlock x:Name="shortcutAError" Foreground="Gray">(The shortcut key was not enabled.)</TextBlock>
             </TextBlock>
         </Button>
-        <Button x:Name="CutSameAreaAndSaveButton" Click="CutSameAreaAndSaveButton_Click" >_3. Freeze Screen => Cut the same range => Save a File on desktop</Button>
-        <Button x:Name="CountdownCutAndSaveButton" Click="CountdownCutAndSaveButton_Click">_4. Countdown 3s. => Freeze Screen => Cut by Mouse => Save a File on desktop</Button>
-        <Button x:Name="CountdownCutSaveAreaAndSaveButton" Click="CountdownCutSaveAreaAndSaveButton_Click">_5. Countdown 3s. => Freeze Screen => Cut the same range => Save a File on desktop</Button>
+        <Button x:Name="CutSameAreaAndSaveButton" Click="CutSameAreaAndSaveButton_Click" >
+            <TextBlock Margin="0 -5 0 0">
+                <Label x:Name="access3" Margin="0 -10 0 0"><Label.RenderTransform><TranslateTransform  X="0" Y="8"></TranslateTransform></Label.RenderTransform><AccessText>_3.</AccessText></Label>
+                <TextBlock Foreground="{Binding ElementName=access3, Path=Foreground}">
+                    <ui:Screen />  Stop Screen &gt; <ui:LastArea /> Cut the same range &gt; <ui:Save /> Save a File on desktop</TextBlock>
+            </TextBlock>
+        </Button>
+        <Button x:Name="CountdownCutAndSaveButton" Click="CountdownCutAndSaveButton_Click">
+            <TextBlock Margin="0 -5 0 0">
+                <Label x:Name="access4" Margin="0 -10 0 0"><Label.RenderTransform><TranslateTransform  X="0" Y="8"></TranslateTransform></Label.RenderTransform><AccessText>_4.</AccessText></Label>
+                <TextBlock Foreground="{Binding ElementName=access4, Path=Foreground}">
+                <ui:Timer /> Wait 3s &gt; <ui:Screen /> Stop Screen &gt; <ui:Cutter /> Cut &gt; <ui:Save /> Save a File on desktop
+                </TextBlock>
+            </TextBlock>
+        </Button>
+        <Button x:Name="CountdownCutSaveAreaAndSaveButton" Click="CountdownCutSaveAreaAndSaveButton_Click">
+            <TextBlock Margin="0 -5 0 0">
+                <Label x:Name="access5" Margin="0 -10 0 0"><Label.RenderTransform><TranslateTransform  X="0" Y="8"></TranslateTransform></Label.RenderTransform><AccessText>_5.</AccessText></Label>
+                <TextBlock Foreground="{Binding ElementName=access5, Path=Foreground}">
+                <ui:Timer /> Wait 3s &gt; <ui:Screen /> Stop Screen &gt; <ui:LastArea /> Cut the same range &gt; <ui:Save /> Save a File on desktop
+                   
+                </TextBlock>
+            </TextBlock>
+        </Button>
         <Label Margin="10 0">
             <TextBlock>from <ui:Key>Ctrl</ui:Key> + <ui:Key>Shift</ui:Key> + <ui:Key>Alt</ui:Key> + <ui:Key>A</ui:Key> or tasktray icon to see this window again.</TextBlock>
         </Label>

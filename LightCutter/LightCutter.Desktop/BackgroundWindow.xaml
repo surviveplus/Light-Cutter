@@ -21,13 +21,13 @@
                         TrayMouseDoubleClick="Notify_TrayMouseDoubleClick">
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
-                    <MenuItem x:Name="Count3CutAndSaveAction" Header="Count 3s. Cut and Save " Click="Count3CutAndSaveAction_Click" />
-                    <MenuItem x:Name="CutAndCopyAction" Header="Cut and Copy" Click="CutAndCopyAction_Click"/>
-                    <MenuItem x:Name="CutAndSaveAction" Header="Cut and Save" Click="CutAndSaveAction_Click"/>
+                    <MenuItem x:Name="Count3CutAndSaveAction" Header="Wait 3s > Cut > Save " Click="Count3CutAndSaveAction_Click" />
+                    <MenuItem x:Name="CutAndCopyAction" Header="Cut > Copy" Click="CutAndCopyAction_Click"/>
+                    <MenuItem x:Name="CutAndSaveAction" Header="Cut > Save" Click="CutAndSaveAction_Click"/>
                     
                     <Separator />
                     <MenuItem x:Name="OpenMainAction" Header="Show Action Panel" Click="OpenMainAction_Click" />
-                    <MenuItem x:Name="CloseAction" Header="Quit" Click="CloseAction_Click" />
+                    <MenuItem x:Name="CloseAction" Header="Exit" Click="CloseAction_Click" />
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
         </tb:TaskbarIcon>
