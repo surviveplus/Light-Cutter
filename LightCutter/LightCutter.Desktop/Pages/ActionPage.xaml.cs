@@ -29,27 +29,13 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if ((App.Current.MainWindow as BackgroundWindow).ShortcutA)
-            {
-                this.shortcutA.Visibility = Visibility.Visible;
-                this.shortcutAError.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                this.shortcutA.Visibility = Visibility.Collapsed;
-                this.shortcutAError.Visibility = Visibility.Visible;
-            }
+            var b = App.Current.MainWindow as BackgroundWindow;
 
-            if ((App.Current.MainWindow as BackgroundWindow).ShortcutZ)
-            {
-                this.shortcutZ.Visibility = Visibility.Visible;
-                this.shortcutZError.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                this.shortcutZ.Visibility = Visibility.Collapsed;
-                this.shortcutZError.Visibility = Visibility.Visible;
-            }
+            this.shortcutA.Visibility = b.ShortcutA.ToVisibleOrCollapsed();
+            this.shortcutAError.Visibility =(! b.ShortcutA ).ToVisibleOrCollapsed();
+
+            this.shortcutZ.Visibility = b.ShortcutZ.ToVisibleOrCollapsed();
+            this.shortcutZError.Visibility = (!b.ShortcutZ).ToVisibleOrCollapsed();
         } 
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
