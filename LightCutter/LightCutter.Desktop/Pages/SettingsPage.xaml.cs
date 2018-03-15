@@ -1,4 +1,5 @@
 ﻿using Net.Surviveplus.LightCutter.Desktop.Properties;
+using Net.Surviveplus.LightCutter.UI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,16 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
         {
             InitializeComponent();
             this.parentWindow = parentWindow;
+
+
+            this.shortcutOpenActionPanelBox.ItemsSource = this.hotkeys;
+            this.shortcutOpenActionPanelBox.Text = "Win + Shift + A";
+
+            this.shortcutStartDefaultActionBox.ItemsSource = this.hotkeys;
+            this.shortcutStartDefaultActionBox.Text = "Win + Shift + Z";
         }
         private MainWindow parentWindow;
+        private List<HotkeyViewModel> hotkeys = HotkeyViewItems.CreateAll();
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

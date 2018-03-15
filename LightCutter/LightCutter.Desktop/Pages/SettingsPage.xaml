@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Pages"
       xmlns:properties="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Properties"
+        xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
       mc:Ignorable="d" 
       d:DesignHeight="310" d:DesignWidth="500"
       Title="SettingsPage"
@@ -27,5 +28,28 @@
             <TextBox Width="30" Text="{Binding Source={x:Static properties:Settings.Default}, Path=DefaultWaitTimeSeconds, Mode=TwoWay}"></TextBox>
             <Label>seconds</Label>
         </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+            <Label Width="130">Open Action Panel : </Label>
+            <ComboBox x:Name="shortcutOpenActionPanelBox" TextSearch.TextPath="Caption" Width="200" Height="34">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock xml:space ="preserve"><TextBlock Visibility="{Binding Win}"><ui:Key>Win</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Ctrl}"><ui:Key>Ctrl</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Shift}"><ui:Key>Shift</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Alt}"><ui:Key>Alt</ui:Key> + </TextBlock><ui:Key><TextBlock Text="{Binding Key}" /></ui:Key></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+            <Label Width="130">Start Default Action :</Label>
+            <ComboBox x:Name="shortcutStartDefaultActionBox" TextSearch.TextPath="Caption" Width="200" Height="34">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock xml:space ="preserve"><TextBlock Visibility="{Binding Win}"><ui:Key>Win</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Ctrl}"><ui:Key>Ctrl</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Shift}"><ui:Key>Shift</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Alt}"><ui:Key>Alt</ui:Key> + </TextBlock><ui:Key><TextBlock Text="{Binding Key}" /></ui:Key></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
     </StackPanel>
 </Page>

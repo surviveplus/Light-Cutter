@@ -100,6 +100,8 @@
     </Compile>
     <Compile Include="RectExtensions.cs" />
     <Compile Include="ViewModelBase.cs" />
+    <Compile Include="ViewModels\HotkeyViewItems.cs" />
+    <Compile Include="ViewModels\HotkeyViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
