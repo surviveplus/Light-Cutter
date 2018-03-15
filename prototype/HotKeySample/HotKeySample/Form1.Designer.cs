@@ -129,24 +129,53 @@ namespace HotKeySample
             // KeyCode constant for HotKey:
             // https://msdn.microsoft.com/ja-jp/library/0z084th3(v=vs.90).aspx
 
-            this.hotkeys.Add(new Hotkey {
-                Caption = "Ctrl + Shift + Alt + A",
-                Modifiers = NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT ,
-                Key = 65});
-
-            this.hotkeys.Add(new Hotkey
+            var k = HotkeyKey.A;
+            while (k != HotkeyKey.None)
             {
-                Caption = "Ctrl + Shift + Alt + Z",
-                Modifiers = NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT,
-                Key = 90
-            });
+                this.hotkeys.Add(new Hotkey
+                {
+                    Caption = "Ctrl + Shift + " + k,
+                    Modifiers = NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT,
+                    Key = k.ToInt()
+                });
 
-            this.hotkeys.Add(new Hotkey
-            {
-                Caption = "Win + Shift + A",
-                Modifiers = NativeMethods.MOD_WIN | NativeMethods.MOD_SHIFT,
-                Key = 65
-            });
+                this.hotkeys.Add(new Hotkey
+                {
+                    Caption = "Ctrl + Shift + Alt + " + k,
+                    Modifiers = NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT,
+                    Key = k.ToInt()
+                });
+
+                this.hotkeys.Add(new Hotkey
+                {
+                    Caption = "Win + " + k,
+                    Modifiers = NativeMethods.MOD_WIN,
+                    Key = k.ToInt()
+                });
+
+                this.hotkeys.Add(new Hotkey
+                {
+                    Caption = "Win + Shift + " + k,
+                    Modifiers = NativeMethods.MOD_WIN | NativeMethods.MOD_SHIFT,
+                    Key = k.ToInt()
+                });
+
+                this.hotkeys.Add(new Hotkey
+                {
+                    Caption = "Win + Ctrl + " + k,
+                    Modifiers = NativeMethods.MOD_WIN | NativeMethods.MOD_CONTROL,
+                    Key = k.ToInt()
+                });
+
+                this.hotkeys.Add(new Hotkey
+                {
+                    Caption = "Win + Alt + " + k,
+                    Modifiers = NativeMethods.MOD_WIN | NativeMethods.MOD_ALT,
+                    Key = k.ToInt()
+                });
+
+                k = k.Next();
+            } // next
 
             foreach (var h in this.hotkeys)
             {
@@ -197,5 +226,78 @@ namespace HotKeySample
         public string Caption { get; set; }
     }
 
+    public enum HotkeyKey
+    {
+        None = 0,
+        A = 65,
+        B = 66,
+        C = 67,
+        D = 68,
+        E = 69,
+        F = 70,
+        G = 71,
+        H = 72,
+        I = 73,
+        J = 74,
+        K = 75,
+        L = 76,
+        M = 77,
+        N = 78,
+        O = 79,
+        P = 80,
+        Q = 81,
+        R = 82,
+        S = 83,
+        T = 84,
+        U = 85,
+        V = 86,
+        W = 87,
+        X = 88,
+        Y = 89,
+        Z = 90,       
+
+        F1 = 112 ,
+        F2 = 113 ,
+        F3 = 114 ,
+        F4 = 115 ,
+        F5 = 116 ,
+        F6 = 117 ,
+        F7 = 118 ,
+        F8 = 119 ,
+        F9 = 120 ,
+        F10 = 121 ,
+        F11 = 122 ,
+        F12 = 123 ,
+        F13 = 124 ,
+        F14 = 125 ,
+        F15 = 126 ,
+        F16 = 127 ,
+
+    }
+
+
+    /// <summary>
+    /// Static class which is defined extension methods.
+    /// </summary>
+    public static class HotkeyKeyExtensions
+    {
+        public static int ToInt(this HotkeyKey me)
+        {
+            return (int)me;
+        } // end function
+
+        public static string ToText(this HotkeyKey me)
+        {
+            return me.ToString();
+        } // end function
+
+        public static HotkeyKey Next(this HotkeyKey me)
+        {
+            if (me == HotkeyKey.Z) return HotkeyKey.F1;
+            if (me == HotkeyKey.F16) return HotkeyKey.None;
+            return (HotkeyKey)(((int)me) + 1);
+        }
+
+    } // end class
 } // end namespace
 

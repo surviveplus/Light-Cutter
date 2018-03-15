@@ -1,0 +1,254 @@
+﻿Windows 10 Enterprise + Office 2016
+
+Ctrl + Shift + A : True
+Ctrl + Shift + Alt + A : True
+Win + A : False
+Win + Shift + A : True
+Win + Ctrl + A : True
+Win + Alt + A : True
+Ctrl + Shift + B : True
+Ctrl + Shift + Alt + B : True
+Win + B : False
+Win + Shift + B : True
+Win + Ctrl + B : True
+Win + Alt + B : False
+Ctrl + Shift + C : True
+Ctrl + Shift + Alt + C : True
+Win + C : False
+Win + Shift + C : False
+Win + Ctrl + C : False
+Win + Alt + C : True
+Ctrl + Shift + D : True
+Ctrl + Shift + Alt + D : True
+Win + D : False
+Win + Shift + D : True
+Win + Ctrl + D : False
+Win + Alt + D : False
+Ctrl + Shift + E : True
+Ctrl + Shift + Alt + E : True
+Win + E : False
+Win + Shift + E : True
+Win + Ctrl + E : False
+Win + Alt + E : True
+Ctrl + Shift + F : True
+Ctrl + Shift + Alt + F : True
+Win + F : False
+Win + Shift + F : True
+Win + Ctrl + F : False
+Win + Alt + F : False
+Ctrl + Shift + G : True
+Ctrl + Shift + Alt + G : True
+Win + G : False
+Win + Shift + G : True
+Win + Ctrl + G : True
+Win + Alt + G : False
+Ctrl + Shift + H : True
+Ctrl + Shift + Alt + H : True
+Win + H : False
+Win + Shift + H : True
+Win + Ctrl + H : True
+Win + Alt + H : True
+Ctrl + Shift + I : True
+Ctrl + Shift + Alt + I : True
+Win + I : False
+Win + Shift + I : True
+Win + Ctrl + I : True
+Win + Alt + I : True
+Ctrl + Shift + J : True
+Ctrl + Shift + Alt + J : True
+Win + J : False
+Win + Shift + J : True
+Win + Ctrl + J : True
+Win + Alt + J : True
+Ctrl + Shift + K : True
+Ctrl + Shift + Alt + K : True
+Win + K : False
+Win + Shift + K : True
+Win + Ctrl + K : True
+Win + Alt + K : True
+Ctrl + Shift + L : True
+Ctrl + Shift + Alt + L : True
+Win + L : False
+Win + Shift + L : True
+Win + Ctrl + L : True
+Win + Alt + L : True
+Ctrl + Shift + M : True
+Ctrl + Shift + Alt + M : True
+Win + M : False
+Win + Shift + M : False
+Win + Ctrl + M : False
+Win + Alt + M : False
+Ctrl + Shift + N : True
+Ctrl + Shift + Alt + N : True
+Win + N : False
+Win + Shift + N : False
+Win + Ctrl + N : False
+Win + Alt + N : False
+Ctrl + Shift + O : True
+Ctrl + Shift + Alt + O : True
+Win + O : False
+Win + Shift + O : True
+Win + Ctrl + O : True
+Win + Alt + O : True
+Ctrl + Shift + P : True
+Ctrl + Shift + Alt + P : True
+Win + P : False
+Win + Shift + P : False
+Win + Ctrl + P : False
+Win + Alt + P : True
+Ctrl + Shift + Q : True
+Ctrl + Shift + Alt + Q : True
+Win + Q : False
+Win + Shift + Q : True
+Win + Ctrl + Q : True
+Win + Alt + Q : True
+Ctrl + Shift + R : True
+Ctrl + Shift + Alt + R : True
+Win + R : False
+Win + Shift + R : True
+Win + Ctrl + R : True
+Win + Alt + R : False
+Ctrl + Shift + S : True
+Ctrl + Shift + Alt + S : True
+Win + S : False
+Win + Shift + S : False
+Win + Ctrl + S : True
+Win + Alt + S : False
+Ctrl + Shift + T : True
+Ctrl + Shift + Alt + T : True
+Win + T : False
+Win + Shift + T : False
+Win + Ctrl + T : True
+Win + Alt + T : False
+Ctrl + Shift + U : True
+Ctrl + Shift + Alt + U : True
+Win + U : False
+Win + Shift + U : True
+Win + Ctrl + U : False
+Win + Alt + U : True
+Ctrl + Shift + V : True
+Ctrl + Shift + Alt + V : True
+Win + V : False
+Win + Shift + V : True
+Win + Ctrl + V : False
+Win + Alt + V : True
+Ctrl + Shift + W : True
+Ctrl + Shift + Alt + W : True
+Win + W : False
+Win + Shift + W : False
+Win + Ctrl + W : True
+Win + Alt + W : False
+Ctrl + Shift + X : True
+Ctrl + Shift + Alt + X : True
+Win + X : False
+Win + Shift + X : True
+Win + Ctrl + X : True
+Win + Alt + X : True
+Ctrl + Shift + Y : True
+Ctrl + Shift + Alt + Y : True
+Win + Y : True
+Win + Shift + Y : True
+Win + Ctrl + Y : True
+Win + Alt + Y : False
+Ctrl + Shift + Z : True
+Ctrl + Shift + Alt + Z : True
+Win + Z : False
+Win + Shift + Z : True
+Win + Ctrl + Z : True
+Win + Alt + Z : True
+Ctrl + Shift + F1 : True
+Ctrl + Shift + Alt + F1 : True
+Win + F1 : False
+Win + Shift + F1 : True
+Win + Ctrl + F1 : True
+Win + Alt + F1 : True
+Ctrl + Shift + F2 : True
+Ctrl + Shift + Alt + F2 : True
+Win + F2 : True
+Win + Shift + F2 : True
+Win + Ctrl + F2 : True
+Win + Alt + F2 : True
+Ctrl + Shift + F3 : True
+Ctrl + Shift + Alt + F3 : True
+Win + F3 : True
+Win + Shift + F3 : True
+Win + Ctrl + F3 : True
+Win + Alt + F3 : True
+Ctrl + Shift + F4 : True
+Ctrl + Shift + Alt + F4 : True
+Win + F4 : True
+Win + Shift + F4 : True
+Win + Ctrl + F4 : False
+Win + Alt + F4 : True
+Ctrl + Shift + F5 : True
+Ctrl + Shift + Alt + F5 : True
+Win + F5 : True
+Win + Shift + F5 : True
+Win + Ctrl + F5 : True
+Win + Alt + F5 : True
+Ctrl + Shift + F6 : True
+Ctrl + Shift + Alt + F6 : True
+Win + F6 : True
+Win + Shift + F6 : True
+Win + Ctrl + F6 : True
+Win + Alt + F6 : True
+Ctrl + Shift + F7 : True
+Ctrl + Shift + Alt + F7 : True
+Win + F7 : True
+Win + Shift + F7 : True
+Win + Ctrl + F7 : True
+Win + Alt + F7 : True
+Ctrl + Shift + F8 : True
+Ctrl + Shift + Alt + F8 : True
+Win + F8 : True
+Win + Shift + F8 : True
+Win + Ctrl + F8 : True
+Win + Alt + F8 : True
+Ctrl + Shift + F9 : True
+Ctrl + Shift + Alt + F9 : True
+Win + F9 : True
+Win + Shift + F9 : True
+Win + Ctrl + F9 : True
+Win + Alt + F9 : True
+Ctrl + Shift + F10 : True
+Ctrl + Shift + Alt + F10 : True
+Win + F10 : True
+Win + Shift + F10 : True
+Win + Ctrl + F10 : True
+Win + Alt + F10 : True
+Ctrl + Shift + F11 : True
+Ctrl + Shift + Alt + F11 : True
+Win + F11 : True
+Win + Shift + F11 : True
+Win + Ctrl + F11 : True
+Win + Alt + F11 : True
+Ctrl + Shift + F12 : True
+Ctrl + Shift + Alt + F12 : True
+Win + F12 : True
+Win + Shift + F12 : True
+Win + Ctrl + F12 : True
+Win + Alt + F12 : True
+Ctrl + Shift + F13 : True
+Ctrl + Shift + Alt + F13 : True
+Win + F13 : True
+Win + Shift + F13 : True
+Win + Ctrl + F13 : True
+Win + Alt + F13 : True
+Ctrl + Shift + F14 : True
+Ctrl + Shift + Alt + F14 : True
+Win + F14 : False
+Win + Shift + F14 : True
+Win + Ctrl + F14 : False
+Win + Alt + F14 : True
+Ctrl + Shift + F15 : True
+Ctrl + Shift + Alt + F15 : True
+Win + F15 : False
+Win + Shift + F15 : True
+Win + Ctrl + F15 : True
+Win + Alt + F15 : True
+Ctrl + Shift + F16 : True
+Ctrl + Shift + Alt + F16 : True
+Win + F16 : False
+Win + Shift + F16 : True
+Win + Ctrl + F16 : True
+Win + Alt + F16 : True
