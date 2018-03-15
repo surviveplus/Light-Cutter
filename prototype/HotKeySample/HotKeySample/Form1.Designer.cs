@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -21,6 +22,7 @@ namespace HotKeySample
             if (disposing && (components != null))
             {
                 components.Dispose();
+                this.RemoveHotKey();
             }
             base.Dispose(disposing);
         }
@@ -106,74 +108,94 @@ namespace HotKeySample
 
         #endregion
 
-        private IntPtr hotkeyIdA;
-        private IntPtr hotkeyIdZ;
-        private IntPtr hotkeyIdWinShiftA;
+        private List<Hotkey> hotkeys = new List<Hotkey>();
+
+        public void RemoveHotKey() {
+            foreach (var h in this.hotkeys)
+            {
+                if (h.Enabled)
+                {
+                    NativeMethods.UnregisterHotKey(this.Handle, h.Id);
+                }
+            }
+
+            this.hotkeys.Clear();
+        }
 
         public void SetHotkey()
         {
-            if (this.hotkeyIdA != IntPtr.Zero)
-            {
-                NativeMethods.UnregisterHotKey(this.Handle, this.hotkeyIdA);
-            }
+            this.RemoveHotKey();
 
             // KeyCode constant for HotKey:
             // https://msdn.microsoft.com/ja-jp/library/0z084th3(v=vs.90).aspx
 
-            //        ' Ctrl + Shift + Alt + A
-            this.hotkeyIdA = NativeMethods.GlobalAddAtom("Net.Surviveplus.LightCutter7.A");
-            var a = NativeMethods.RegisterHotKey(this.Handle, this.hotkeyIdA, NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT, 65);
-            this.ShortcutA = (a != 0);
-            Debug.WriteLine("Ctrl + Shift + Alt + A : " + this.ShortcutA);
+            this.hotkeys.Add(new Hotkey {
+                Caption = "Ctrl + Shift + Alt + A",
+                Modifiers = NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT ,
+                Key = 65});
 
-            //        ' Ctrl + Shift + Alt + Z
-            this.hotkeyIdZ = NativeMethods.GlobalAddAtom("Net.Surviveplus.LightCutter7.Z");
-            var z = NativeMethods.RegisterHotKey(this.Handle, this.hotkeyIdZ, NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT, 90);
-            this.ShortcutZ = (z != 0);
-            Debug.WriteLine("Ctrl + Shift + Alt + Z : " + this.ShortcutZ);
+            this.hotkeys.Add(new Hotkey
+            {
+                Caption = "Ctrl + Shift + Alt + Z",
+                Modifiers = NativeMethods.MOD_CONTROL | NativeMethods.MOD_SHIFT | NativeMethods.MOD_ALT,
+                Key = 90
+            });
 
-            //        ' Win + Shift + A
-            this.hotkeyIdWinShiftA = NativeMethods.GlobalAddAtom("Net.Surviveplus.LightCutter7.WinShiftA");
-            var winV = NativeMethods.RegisterHotKey(this.Handle, this.hotkeyIdWinShiftA, NativeMethods.MOD_WIN | NativeMethods.MOD_SHIFT, 65);
-            this.ShortcutWinShiftA = (winV != 0);
-            Debug.WriteLine("Win + Shift  + A : " + this.ShortcutWinShiftA);
+            this.hotkeys.Add(new Hotkey
+            {
+                Caption = "Win + Shift + A",
+                Modifiers = NativeMethods.MOD_WIN | NativeMethods.MOD_SHIFT,
+                Key = 65
+            });
 
-        }
+            foreach (var h in this.hotkeys)
+            {
+                h.Id = NativeMethods.GlobalAddAtom("Net.Surviveplus.LightCutter7.{" + h.Caption + "}");
+                var result = NativeMethods.RegisterHotKey(this.Handle, h.Id, h.Modifiers, h.Key);
+                h.Enabled = (result != 0);
+                Debug.WriteLine( h.Caption + " : " + h.Enabled);
+            }
 
-        public bool ShortcutA { get; private set; }
-        public bool ShortcutZ { get; private set; }
+        } // end sub
+
         public bool ShortcutWinShiftA { get; private set;  }
 
         protected override void WndProc(ref Message m)
         {
-
             var msg = m.Msg;
             var wParam = m.WParam;
 
+            bool handled = false;
+            foreach (var h in this.hotkeys)
+            {
+                if (msg == NativeMethods.WM_HOTKEY && wParam == h.Id)
+                {
+                    Debug.WriteLine(h.Caption);
+                    m.Result = IntPtr.Zero;
+                    handled = true;
+                }
+            }
 
-            if (msg == NativeMethods.WM_HOTKEY && wParam == this.hotkeyIdA)
-            {
-                Debug.WriteLine("Ctrl + Shift + Alt + A");
-                m.Result = IntPtr.Zero;
-            }
-            else if (msg == NativeMethods.WM_HOTKEY && wParam == this.hotkeyIdZ)
-            {
-                Debug.WriteLine("Ctrl + Shift + Alt + Z");
-                m.Result = IntPtr.Zero;
-            }
-            else if (msg == NativeMethods.WM_HOTKEY && wParam == this.hotkeyIdWinShiftA)
-            {
-                Debug.WriteLine("Win + Shift + A");
-                m.Result = IntPtr.Zero;
-            }
-            else
-            {
+            if(handled == false){
                 base.WndProc(ref m);
                 //return NativeMethods.CallWindowProc(IntPtr.Zero, hwnd, msg, wParam, lParam);
             }
 
 
-        }
+        } // end sub
+
+    } // end class
+
+
+    public class Hotkey
+    {
+        public IntPtr Id { get; set; }
+        public bool Enabled { get; set; }
+
+        public int Modifiers { get; set; }
+        public int Key { get; set; }
+        public string Caption { get; set; }
     }
-}
+
+} // end namespace
 
