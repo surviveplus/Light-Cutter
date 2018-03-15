@@ -11,5 +11,11 @@
     <Setting Name="DefaultWaitTimeSeconds" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
+    <Setting Name="ShortcutOpenActionPanel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Ctrl + Shift + Alt + A</Value>
+    </Setting>
+    <Setting Name="ShortcutStartDefaultAction" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Ctrl + Shift + Alt + Z</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

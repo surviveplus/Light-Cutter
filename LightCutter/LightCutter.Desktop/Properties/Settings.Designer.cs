@@ -58,5 +58,29 @@ namespace Net.Surviveplus.LightCutter.Desktop.Properties {
                 this["DefaultWaitTimeSeconds"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl + Shift + Alt + A")]
+        public string ShortcutOpenActionPanel {
+            get {
+                return ((string)(this["ShortcutOpenActionPanel"]));
+            }
+            set {
+                this["ShortcutOpenActionPanel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl + Shift + Alt + Z")]
+        public string ShortcutStartDefaultAction {
+            get {
+                return ((string)(this["ShortcutStartDefaultAction"]));
+            }
+            set {
+                this["ShortcutStartDefaultAction"] = value;
+            }
+        }
     }
 }

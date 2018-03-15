@@ -29,16 +29,26 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
 
 
             this.shortcutOpenActionPanelBox.ItemsSource = this.hotkeys;
-            this.shortcutOpenActionPanelBox.Text = "Win + Shift + A";
+            this.shortcutOpenActionPanelBox.Text = Settings.Default.ShortcutOpenActionPanel;
 
             this.shortcutStartDefaultActionBox.ItemsSource = this.hotkeys;
-            this.shortcutStartDefaultActionBox.Text = "Win + Shift + Z";
+            this.shortcutStartDefaultActionBox.Text = Settings.Default.ShortcutStartDefaultAction;
         }
         private MainWindow parentWindow;
         private List<HotkeyViewModel> hotkeys = HotkeyViewItems.CreateAll();
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            if (Settings.Default.ShortcutOpenActionPanel != this.shortcutOpenActionPanelBox.Text ||
+                Settings.Default.ShortcutStartDefaultAction != this.shortcutStartDefaultActionBox.Text) {
+
+                Settings.Default.ShortcutOpenActionPanel = this.shortcutOpenActionPanelBox.Text;
+                Settings.Default.ShortcutStartDefaultAction = this.shortcutStartDefaultActionBox.Text;
+
+                var b = App.Current.MainWindow as BackgroundWindow;
+                b.SetHotkey();
+            }
+
             this.parentWindow.GoBack();
         }
 

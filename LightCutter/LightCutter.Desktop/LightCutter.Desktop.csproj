@@ -67,6 +67,7 @@
       <DependentUpon>BackgroundWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="LightCutter.cs" />
+    <Compile Include="Models\HotkeyModel.cs" />
     <Compile Include="Pages\ActionPage.xaml.cs">
       <DependentUpon>ActionPage.xaml</DependentUpon>
     </Compile>
