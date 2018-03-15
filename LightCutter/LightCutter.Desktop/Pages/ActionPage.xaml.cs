@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Net.Surviveplus.LightCutter.Desktop.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,12 +62,12 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
 
         private void CountdownCutAndSaveButton_Click(object sender, RoutedEventArgs e)
         {
-            LightCutter.CutAndSave(this.parentWindow, DateTime.Now + TimeSpan.FromSeconds(3));
+            LightCutter.CutAndSave(this.parentWindow, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds));
         }
 
         private void CountdownCutSaveAreaAndSaveButton_Click(object sender, RoutedEventArgs e)
         {
-            LightCutter.CutSameAreaAndSave(this.parentWindow, DateTime.Now + TimeSpan.FromSeconds(3));
+            LightCutter.CutSameAreaAndSave(this.parentWindow, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds));
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)

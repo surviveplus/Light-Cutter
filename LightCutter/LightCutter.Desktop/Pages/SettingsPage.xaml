@@ -22,5 +22,10 @@
             <Label FontSize="18">Settings</Label>
         </StackPanel>
         <CheckBox Margin="10" x:Name="showActionPanelOnStartUpCheckBox" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=ShowActionPanelOnStartUp, Mode=TwoWay}">Show Action Panel on start up.</CheckBox>
+        <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+            <Label>Wait Time : </Label>
+            <TextBox Width="30" Text="{Binding Source={x:Static properties:Settings.Default}, Path=DefaultWaitTimeSeconds, Mode=TwoWay}"></TextBox>
+            <Label>seconds</Label>
+        </StackPanel>
     </StackPanel>
 </Page>
