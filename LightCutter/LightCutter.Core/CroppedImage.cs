@@ -63,9 +63,9 @@ namespace Net.Surviveplus.LightCutter.Core
             this.bitmap = bitmap;
         }
 
-        public System.Drawing.Bitmap GetBitmap()
+        public Bitmap GetBitmap()
         {
-            return new System.Drawing.Bitmap(this.bitmap);
+            return new Bitmap(this.bitmap);
         } // end function
 
     } // end class
