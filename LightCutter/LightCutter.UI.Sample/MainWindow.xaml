@@ -7,8 +7,16 @@
         xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+
+
     <Grid>
-        <TextBlock >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" >
             <ui:Key>Esc</ui:Key> : Exit <LineBreak />
             <ui:Key>Ctrl</ui:Key> + <ui:Key>Shift</ui:Key> + <ui:Key>Alt</ui:Key> + <ui:Key>A</ui:Key> : Start capture.<LineBreak />
             <ui:Mouse /> Mouse / 
@@ -17,5 +25,22 @@
             <ui:Timer /> Wait 3s  => <ui:Screen /> Freeze Screen => <ui:Cutter /> Cut.
 
         </TextBlock>
+
+        <ComboBox Grid.Row="1" x:Name="shortcutBox" TextSearch.TextPath="Caption">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock xml:space ="preserve"><TextBlock Visibility="{Binding Win}"><ui:Key>Win</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Ctrl}"><ui:Key>Ctrl</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Shift}"><ui:Key>Shift</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Alt}"><ui:Key>Alt</ui:Key> + </TextBlock><ui:Key><TextBlock Text="{Binding Key}" /></ui:Key></TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+
+        <ComboBox Grid.Row="2" x:Name="shortcutBox2" TextSearch.TextPath="Caption">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock xml:space ="preserve"><TextBlock Visibility="{Binding Win}"><ui:Key>Win</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Ctrl}"><ui:Key>Ctrl</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Shift}"><ui:Key>Shift</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Alt}"><ui:Key>Alt</ui:Key> + </TextBlock><ui:Key><TextBlock Text="{Binding Key}" /></ui:Key></TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
     </Grid>
 </Window>
