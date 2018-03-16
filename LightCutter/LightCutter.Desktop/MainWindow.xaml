@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Action Panel - Light Cutter ver.7.0.0.0 (Preview)" 
         Height="390" Width="540"
-        Icon="LightCutter Ver.6.ico"
+        Icon="LightCutter Ver.7.ico"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">

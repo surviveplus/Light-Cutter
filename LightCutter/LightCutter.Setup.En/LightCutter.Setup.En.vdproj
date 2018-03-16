@@ -21,13 +21,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
+        "MsmKey" = "8:_1820168BCC9D43C587F0AAB4EB2DD336"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3CE6706B9D8641869ABBB4685413EF2D"
+        "MsmKey" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -265,10 +265,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3CE6706B9D8641869ABBB4685413EF2D"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1820168BCC9D43C587F0AAB4EB2DD336"
             {
-            "SourcePath" = "8:..\\LightCutter.Desktop\\LightCutter Ver.6.ico"
-            "TargetName" = "8:LightCutter Ver.6.ico"
+            "SourcePath" = "8:..\\LightCutter.Desktop\\LightCutter Ver.7.ico"
+            "TargetName" = "8:LightCutter Ver.7.ico"
             "Tag" = "8:"
             "Folder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
             "Condition" = "8:"
@@ -320,7 +320,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:LightCutter.UI, Version=7.0.6.4, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:LightCutter.UI, Version=7.0.7.5, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_863F68C0AC5A8A1D818CAE72B0975CD5"
@@ -485,15 +485,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:LightCutter 7"
-        "ProductCode" = "8:{82461966-CCCB-4A23-B37B-8F0302E55E2F}"
-        "PackageCode" = "8:{5AF8B525-0F0B-477A-9AAC-7791BE82A7E7}"
+        "ProductCode" = "8:{07A6DE1F-3C07-4E8E-90CC-CAA653AA2E12}"
+        "PackageCode" = "8:{FEED7AE3-67F4-4E3A-9024-16ED808CAD23}"
         "UpgradeCode" = "8:{10855EB8-1B59-4C96-930F-F6541B80006A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:7.0.9"
+        "ProductVersion" = "8:7.0.20"
         "Manufacturer" = "8:Surviveplus.net"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -503,7 +503,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_3CE6706B9D8641869ABBB4685413EF2D"
+        "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -617,7 +617,7 @@
             "Target" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
             "Folder" = "8:_AC5BDC6C4D3841C0BD600FF4B917825D"
             "WorkingFolder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
-            "Icon" = "8:_3CE6706B9D8641869ABBB4685413EF2D"
+            "Icon" = "8:_1820168BCC9D43C587F0AAB4EB2DD336"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8D179CD505A240EEA51527A333346210"
@@ -631,7 +631,7 @@
             "Target" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
             "Folder" = "8:_D143C15A5345434FAD6A4E1CA3BB85F2"
             "WorkingFolder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
-            "Icon" = "8:_3CE6706B9D8641869ABBB4685413EF2D"
+            "Icon" = "8:_1820168BCC9D43C587F0AAB4EB2DD336"
             "Feature" = "8:"
             }
         }

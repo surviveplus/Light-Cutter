@@ -16,7 +16,7 @@
         Closed="Window_Closed">
     <Grid>
         <tb:TaskbarIcon x:Name="Notify"
-                        IconSource="LightCutter Ver.6.ico"
+                        IconSource="LightCutter Notify.ico"
                         ToolTipText="LightCutter Ver.7"
                         TrayMouseDoubleClick="Notify_TrayMouseDoubleClick">
             <tb:TaskbarIcon.ContextMenu>
