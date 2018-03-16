@@ -1,6 +1,6 @@
 # Light Cutter
 
-![Light Cutter](http://www.surviveplus.net/ja/wp-content/uploads/desktopapps-LightCutter.png) 
+![Light Cutter](HowToUse/images/LightCutter7.png) 
 
 Light Cutter is a screenshot utility in Windows 3.1 and later, including Windows 10.
 It can take screenshots of an rectangular area by using a mouse.
