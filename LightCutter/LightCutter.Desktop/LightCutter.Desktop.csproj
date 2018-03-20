@@ -34,8 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>Net.Surviveplus.LightCutter.Desktop.SinglieInstanceApp</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>LightCutter Ver.7.ico</ApplicationIcon>
@@ -44,6 +43,7 @@
     <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net451\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -78,6 +78,7 @@
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SinglieInstanceApp.cs" />
     <Compile Include="WindowHide.cs" />
     <Page Include="BackgroundWindow.xaml">
       <SubType>Designer</SubType>
