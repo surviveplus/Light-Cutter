@@ -485,15 +485,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:LightCutter 7"
-        "ProductCode" = "8:{26F5D42E-5CD0-4ACC-BF57-D6235B3310B2}"
-        "PackageCode" = "8:{D75820B6-A5EC-4AA5-82F0-5254279689B9}"
+        "ProductCode" = "8:{D0824B8F-EC4E-4B55-89C7-2C172FC34164}"
+        "PackageCode" = "8:{849DE667-A9F6-49AD-BB2C-331E2BD22647}"
         "UpgradeCode" = "8:{10855EB8-1B59-4C96-930F-F6541B80006A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:7.0.22"
+        "ProductVersion" = "8:7.0.24"
         "Manufacturer" = "8:Surviveplus.net"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -622,7 +622,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8D179CD505A240EEA51527A333346210"
             {
-            "Name" = "8:LightCutter 7"
+            "Name" = "8:Light Cutter 7.0.24"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
