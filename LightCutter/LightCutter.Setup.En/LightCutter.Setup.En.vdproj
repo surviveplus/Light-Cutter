@@ -40,6 +40,12 @@
         "Entry"
         {
         "MsmKey" = "8:_0706FD2D89A16BD562D1DF166C6CFC01"
+        "OwnerKey" = "8:_ADB617BFDC3F4B72983BCA47D8A7711B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0706FD2D89A16BD562D1DF166C6CFC01"
         "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -81,6 +87,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_ADB617BFDC3F4B72983BCA47D8A7711B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -101,6 +113,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_9D84CC9495BA472096244AEC03295376"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_ADB617BFDC3F4B72983BCA47D8A7711B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -211,6 +229,62 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_C021ACC11E5047D687CDECC95E001942"
+            {
+            "Name" = "8:LightCutter.SetupActions (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_ADB617BFDC3F4B72983BCA47D8A7711B"
+            "FileType" = "3:1"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_5A12283D_2DA6_46BE_9C34_A8E8ED225F12"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_CEDF66F3B2C4436BA774412D0A023717"
+            {
+            "Name" = "8:LightCutter.SetupActions (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_ADB617BFDC3F4B72983BCA47D8A7711B"
+            "FileType" = "3:1"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_201F09CA_A6EC_4BC5_8981_D48B8D9957C9"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:/Actions=startmenu /TargetExePath=\"[TARGETDIR]\\LightCutter.Desktop.exe\" /IconLocation=\"[TARGETDIR]\\CreatePasswordZip.exe,0\" /ProductName=\"[ProductName]\" /Manufacturer=\"[Manufacturer]\" /InstallAllUsers=[ALLUSERS]"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_D80DCD2599D44D0FB91817E59EA348EA"
+            {
+            "Name" = "8:LightCutter.SetupActions (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_ADB617BFDC3F4B72983BCA47D8A7711B"
+            "FileType" = "3:1"
+            "InstallAction" = "3:2"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_C593EE2A_C5BB_47E8_BA21_FA531793D1CD"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_E71EF683F5224784B7F74C52D1B0FA57"
+            {
+            "Name" = "8:LightCutter.SetupActions (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_ADB617BFDC3F4B72983BCA47D8A7711B"
+            "FileType" = "3:1"
+            "InstallAction" = "3:3"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_40C2BEC8_08AF_451C_9335_A80A07AE594D"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -484,20 +558,20 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:LightCutter 7"
-        "ProductCode" = "8:{5923650F-6CAD-46AF-961F-2207EB9C3E42}"
-        "PackageCode" = "8:{9C7D2552-F978-437F-B732-B0B5A6548B4F}"
+        "ProductName" = "8:Light Cutter 7"
+        "ProductCode" = "8:{67B0F8F0-2E3A-44CE-828F-B35CEB3B54A3}"
+        "PackageCode" = "8:{1188F05A-EE47-4150-A6AF-9A2D0BF74A90}"
         "UpgradeCode" = "8:{10855EB8-1B59-4C96-930F-F6541B80006A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:7.0.25"
+        "ProductVersion" = "8:7.0.28"
         "Manufacturer" = "8:Surviveplus.net"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:LightCutter 7"
+        "Title" = "8:Light Cutter 7"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Shinichi Koga"
         "Keywords" = "8:"
@@ -616,20 +690,6 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
             "Folder" = "8:_AC5BDC6C4D3841C0BD600FF4B917825D"
-            "WorkingFolder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
-            "Icon" = "8:_1820168BCC9D43C587F0AAB4EB2DD336"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8D179CD505A240EEA51527A333346210"
-            {
-            "Name" = "8:Light Cutter 7.0.25"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
-            "Folder" = "8:_D143C15A5345434FAD6A4E1CA3BB85F2"
             "WorkingFolder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
             "Icon" = "8:_1820168BCC9D43C587F0AAB4EB2DD336"
             "Feature" = "8:"
@@ -1361,6 +1421,34 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{3E67AF87-6D47-462A-8F75-246D328AD3D2}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_ADB617BFDC3F4B72983BCA47D8A7711B"
+            {
+            "SourcePath" = "8:..\\LightCutter.SetupActions\\obj\\Release\\LightCutter.SetupActions.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{18414D66-F31A-448E-A88B-0F6972F8B357}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
