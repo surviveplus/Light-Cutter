@@ -35,6 +35,19 @@ namespace LightCutter.UI.Sample
 
         private List<HotkeyViewModel> hotkeys = HotkeyViewItems.CreateAll();
 
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if( this.Width < 400)
+            {
+                VisualStateManager.GoToElementState(this.mainGrid, "Small", true);
+                //this.wait.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                VisualStateManager.GoToElementState(this.mainGrid, "Full", true);
+                //this.wait.Visibility = Visibility.Visible;
+            }
+        }
     }
 
 

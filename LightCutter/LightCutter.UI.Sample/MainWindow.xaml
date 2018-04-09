@@ -6,10 +6,22 @@
         xmlns:local="clr-namespace:LightCutter.UI.Sample"
         xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" SizeChanged="Window_SizeChanged" MinWidth="250">
 
+    <Grid x:Name="mainGrid">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="Full" />
+                <VisualState x:Name="Small" >
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="wait">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
 
-    <Grid>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Grid.RowDefinitions>
             <RowDefinition Height="110"/>
             <RowDefinition Height="34"/>
@@ -22,7 +34,7 @@
             <ui:Mouse /> Mouse / 
             <ui:MouseRightClick /> Right Click /
             <ui:MouseLeftClick /> Left Click <LineBreak />
-            <ui:Timer /> Wait 3s  => <ui:Screen /> Freeze Screen => <ui:Cutter /> Cut.
+            <ui:Timer /> <TextBlock x:Name="wait" Visibility="Visible">Wait</TextBlock> 3s  > <ui:Screen /> <TextBlock Visibility="{Binding ElementName=wait, Path=Visibility}">Stop</TextBlock> Screen > <ui:Cutter /> <TextBlock Visibility="{Binding ElementName=wait, Path=Visibility}">Cut</TextBlock> > <ui:Save /> <TextBlock Visibility="{Binding ElementName=wait, Path=Visibility}">Save a File on</TextBlock> desktop
 
         </TextBlock>
 
