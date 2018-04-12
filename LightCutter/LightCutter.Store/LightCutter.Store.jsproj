@@ -51,13 +51,21 @@
     <TargetPlatformVersion>10.0.16299.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>$(VersionNumberMajor).$(VersionNumberMinor)</MinimumVisualStudioVersion>
-    <DefaultLanguage>ja-JP</DefaultLanguage>
+    <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>LightCutter.Store_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="images\LightCutter7-16Pixel.png" />
+    <Content Include="images\LightCutter7-256Pixel.png" />
+    <Content Include="images\LightCutter7-32Pixel.png" />
+    <Content Include="images\LightCutter7-48Pixel.png" />
+    <Content Include="images\Square44x44Logo.targetsize-16_altform-unplated.png" />
+    <Content Include="images\Square44x44Logo.targetsize-256_altform-unplated.png" />
+    <Content Include="images\Square44x44Logo.targetsize-32_altform-unplated.png" />
+    <Content Include="images\Square44x44Logo.targetsize-48_altform-unplated.png" />
     <Content Include="index.html" />
     <Content Include="images\LockScreenLogo.scale-200.png" />
     <Content Include="images\SplashScreen.scale-200.png" />
