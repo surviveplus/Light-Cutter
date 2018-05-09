@@ -17,7 +17,7 @@
     <Grid>
         <tb:TaskbarIcon x:Name="Notify"
                         IconSource="LightCutter Notify.ico"
-                        ToolTipText="LightCutter Ver.7"
+                        ToolTipText="Light Cutter"
                         TrayMouseDoubleClick="Notify_TrayMouseDoubleClick">
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
@@ -26,7 +26,7 @@
                     <MenuItem x:Name="CutAndSaveAction" Header="Cut > Save" Click="CutAndSaveAction_Click"/>
                     
                     <Separator />
-                    <MenuItem x:Name="OpenMainAction" Header="Show Action Panel" Click="OpenMainAction_Click" />
+                    <MenuItem x:Name="OpenMainAction" Header="Open Light Cutter" Click="OpenMainAction_Click" />
                     <MenuItem x:Name="CloseAction" Header="Exit" Click="CloseAction_Click" />
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>

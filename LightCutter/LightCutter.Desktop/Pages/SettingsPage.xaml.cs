@@ -56,5 +56,10 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
         {
             Settings.Default.Save();
         }
+
+        private void VersionInformationLink_Click(object sender, RoutedEventArgs e)
+        {
+            this.parentWindow.ShowVersionInformation();
+        }
     }
 }
