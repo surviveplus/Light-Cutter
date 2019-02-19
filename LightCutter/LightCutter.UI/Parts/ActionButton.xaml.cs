@@ -23,8 +23,28 @@ namespace Net.Surviveplus.LightCutter.UI.Parts
         public ActionButton()
         {
             InitializeComponent();
-            this.RefreshDefaultButtonMessage();
         }
+
+        /// <summary>
+        /// Backing field of DefaultShortcutIsEnalbed property.
+        /// </summary>
+        private bool valueOfDefaultShortcutIsEnalbed;
+
+        /// <summary>
+        /// Gets or sets whether shortcut key for default action is enabled.
+        /// </summary>
+        public bool DefaultShortcutIsEnalbed
+        {
+            get
+            {
+                return this.valueOfDefaultShortcutIsEnalbed;
+            } // end get
+            set
+            {
+                this.valueOfDefaultShortcutIsEnalbed = value;
+                this.RefreshDefaultButtonMessage();
+            } // end set
+        } // end property
 
         /// <summary>
         /// Backing field of IsDefaultButton property.
@@ -49,8 +69,22 @@ namespace Net.Surviveplus.LightCutter.UI.Parts
 
         private void RefreshDefaultButtonMessage()
         {
-            this.DefaultButtonMessage.Visibility = this.valueOfIsDefaultButton ? Visibility.Visible : Visibility.Collapsed;
+            var thisDefaultButtonMessage = this.Template.FindName("DefaultButtonMessage", this) as TextBlock;
+            if(thisDefaultButtonMessage!=null) thisDefaultButtonMessage.Visibility = this.valueOfIsDefaultButton.ToVisibleOrCollapsed();
+
+            var shortcutZ = this.Template.FindName("shortcutZ", this) as TextBlock;
+            if(shortcutZ!=null) shortcutZ.Visibility = this.valueOfDefaultShortcutIsEnalbed.ToVisibleOrCollapsed();
+
+            var shortcutZError = this.Template.FindName("shortcutZError", this) as TextBlock;
+            if(shortcutZError!=null) shortcutZError.Visibility = (! this.valueOfDefaultShortcutIsEnalbed ).ToVisibleOrCollapsed();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.RefreshDefaultButtonMessage();
+
+        } // end sub
+
     } // end class
 } // end namespace
 

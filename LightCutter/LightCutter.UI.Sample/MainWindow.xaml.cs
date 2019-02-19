@@ -1,4 +1,5 @@
-﻿using Net.Surviveplus.LightCutter.UI.ViewModels;
+﻿using Net.Surviveplus.LightCutter.UI.Parts;
+using Net.Surviveplus.LightCutter.UI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,11 @@ namespace LightCutter.UI.Sample
 
             this.shortcutBox2.ItemsSource = this.hotkeys;
             this.shortcutBox2.Text = "Win + Shift + Z";
+
+
+            var a = new HotkeyViewModel { Win = Visibility.Visible, Shift = Visibility.Visible, Key = HotKeys.A };
+            this.action1.DataContext = a;
+           
         }
 
         private List<HotkeyViewModel> hotkeys = HotkeyViewItems.CreateAll();
@@ -48,6 +54,7 @@ namespace LightCutter.UI.Sample
                 //this.wait.Visibility = Visibility.Visible;
             }
         }
+
     }
 
 

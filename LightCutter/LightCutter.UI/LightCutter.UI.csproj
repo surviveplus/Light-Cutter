@@ -58,6 +58,7 @@
     <Compile Include="Parts\ActionButton.xaml.cs">
       <DependentUpon>ActionButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Parts\BooleanExtensions.cs" />
     <Compile Include="Parts\Copy.xaml.cs">
       <DependentUpon>Copy.xaml</DependentUpon>
     </Compile>
