@@ -71,7 +71,7 @@
                 </TextBlock>
             </ui:ActionButton>
 
-            <ui:ActionButton  x:Name="action3">
+            <ui:ActionButton  x:Name="action3" Click="Action3_Click">
                 <TextBlock Foreground="{Binding ElementName=access3, Path=Foreground}">
                             <ui:Screen />  Stop Screen &gt; <ui:LastArea /> Cut the same range &gt; <ui:Save /> Save a File on desktop</TextBlock>
             </ui:ActionButton>

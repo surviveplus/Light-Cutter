@@ -2,6 +2,7 @@
 using Net.Surviveplus.LightCutter.UI.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,7 @@ namespace LightCutter.UI.Sample
             var a = new HotkeyViewModel { Win = Visibility.Visible, Shift = Visibility.Visible, Key = HotKeys.A };
             this.action1.DataContext = new ActionViewModel
             {
+                AccessText = "_1.",
                 DefaultShortcut = a,
                 DefaultShortcutVisibility = Visibility.Visible,
                 DefaultShortcutKeyVisibility = Visibility.Visible,
@@ -44,6 +46,7 @@ namespace LightCutter.UI.Sample
             };
             this.action2.DataContext = new ActionViewModel
             {
+                AccessText = "_2.",
                 DefaultShortcut = a,
                 DefaultShortcutVisibility = Visibility.Visible,
                 DefaultShortcutKeyVisibility = Visibility.Collapsed,
@@ -52,6 +55,7 @@ namespace LightCutter.UI.Sample
 
             this.action3.DataContext = new ActionViewModel
             {
+                AccessText = "_3.",
                 DefaultShortcut = a,
                 DefaultShortcutVisibility = Visibility.Collapsed,
             };
@@ -75,6 +79,10 @@ namespace LightCutter.UI.Sample
             }
         }
 
+        private void Action3_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine((sender as ActionButton).Content);
+        }
     }
 
 
