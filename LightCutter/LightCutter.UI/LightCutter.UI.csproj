@@ -55,6 +55,9 @@
     <Compile Include="FullScreenWindow.xaml.cs">
       <DependentUpon>FullScreenWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Parts\ActionButton.xaml.cs">
+      <DependentUpon>ActionButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Parts\Copy.xaml.cs">
       <DependentUpon>Copy.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="FullScreenWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Parts\ActionButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

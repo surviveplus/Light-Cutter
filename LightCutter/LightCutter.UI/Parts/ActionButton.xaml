@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Net.Surviveplus.LightCutter.UI.Parts.ActionButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts"
+            xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid  Margin="10 0 10 10"  VerticalAlignment="Top" HorizontalAlignment="Stretch">
+        <Button x:Name="CutAndSaveButton"  Padding="10 10 10 10"  Background="#FFFAFAFA">
+            <StackPanel Margin="0 -5 0 0">
+                <TextBlock>
+                    <Label Margin="0 -10 0 0"><Label.RenderTransform><TranslateTransform  X="0" Y="8"></TranslateTransform></Label.RenderTransform><AccessText>_2.</AccessText></Label>
+                    <TextBlock><ui:Screen /> Stop Screen &gt; <ui:Cutter /> Cut &gt; <ui:Save /> Save a File on desktop</TextBlock>
+                </TextBlock>
+                <TextBlock x:Name="DefaultButtonMessage" >
+                    <TextBlock x:Name="shortcutZ" xml:space ="preserve" ><TextBlock Visibility="{Binding Win}"><ui:Key>Win</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Ctrl}"><ui:Key>Ctrl</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Shift}"><ui:Key>Shift</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Alt}"><ui:Key>Alt</ui:Key> + </TextBlock><ui:Key><TextBlock Text="{Binding Key}" /></ui:Key></TextBlock>
+                    <TextBlock x:Name="shortcutZError" Foreground="Gray">(The shortcut key was not enabled.)</TextBlock>
+                </TextBlock>
+                
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

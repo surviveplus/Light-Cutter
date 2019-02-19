@@ -54,5 +54,11 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+
+        <StackPanel  Grid.Row="3">
+            <ui:ActionButton IsDefaultButton="true"></ui:ActionButton>
+            <ui:ActionButton></ui:ActionButton>
+
+        </StackPanel>
     </Grid>
 </Window>
