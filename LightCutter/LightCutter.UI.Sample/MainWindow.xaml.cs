@@ -35,8 +35,28 @@ namespace LightCutter.UI.Sample
 
 
             var a = new HotkeyViewModel { Win = Visibility.Visible, Shift = Visibility.Visible, Key = HotKeys.A };
-            this.action1.DataContext = a;
-           
+            this.action1.DataContext = new ActionViewModel
+            {
+                DefaultShortcut = a,
+                DefaultShortcutVisibility = Visibility.Visible,
+                DefaultShortcutKeyVisibility = Visibility.Visible,
+                DefaultShortcutErrorVisibility = Visibility.Collapsed
+            };
+            this.action2.DataContext = new ActionViewModel
+            {
+                DefaultShortcut = a,
+                DefaultShortcutVisibility = Visibility.Visible,
+                DefaultShortcutKeyVisibility = Visibility.Collapsed,
+                DefaultShortcutErrorVisibility = Visibility.Visible
+            };
+
+            this.action3.DataContext = new ActionViewModel
+            {
+                DefaultShortcut = a,
+                DefaultShortcutVisibility = Visibility.Collapsed,
+            };
+
+
         }
 
         private List<HotkeyViewModel> hotkeys = HotkeyViewItems.CreateAll();

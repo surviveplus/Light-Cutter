@@ -56,14 +56,14 @@
         </ComboBox>
 
         <StackPanel  Grid.Row="3">
-            <ui:ActionButton x:Name="action1" IsDefaultButton="true"  DefaultShortcutIsEnalbed="true">
+            <ui:ActionButton x:Name="action1">
                 <TextBlock>
                     <ui:Screen /> Stop Screen &gt;
                     <ui:Cutter /> Cut &gt;
                     <ui:Save /> Save a File on desktop
                 </TextBlock>
             </ui:ActionButton>
-            <ui:ActionButton IsDefaultButton="true"  DefaultShortcutIsEnalbed="False">
+            <ui:ActionButton  x:Name="action2">
                 <TextBlock>
                     <ui:Screen /> Stop Screen &gt;
                     <ui:Cutter /> Cut &gt;
@@ -71,7 +71,7 @@
                 </TextBlock>
             </ui:ActionButton>
 
-            <ui:ActionButton>
+            <ui:ActionButton  x:Name="action3">
                 <TextBlock Foreground="{Binding ElementName=access3, Path=Foreground}">
                             <ui:Screen />  Stop Screen &gt; <ui:LastArea /> Cut the same range &gt; <ui:Save /> Save a File on desktop</TextBlock>
             </ui:ActionButton>
