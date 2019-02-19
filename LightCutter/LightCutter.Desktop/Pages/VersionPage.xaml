@@ -1,0 +1,36 @@
+﻿<Page x:Class="Net.Surviveplus.LightCutter.Desktop.Pages.VersionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="500"
+      Title="VersionPage"
+      Loaded="Page_Loaded">
+
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+            <Button Width="30" Height="30" Margin="0 5" x:Name="BackButton" Background="Transparent" BorderBrush="Transparent" Click="BackButton_Click" >&lt;</Button>
+            <Label FontSize="18">Version Information</Label>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="30 0 30 0" Background="#2e426a">
+            <Image x:Name="icon" Source="../Assets/70x70Logo.png" Margin="10 10 0 10" Width="70" Height="70"></Image>
+            <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
+                <Label  FontSize="20" Foreground="White">Light Cutter 7</Label>
+                <Label Foreground="White" x:Name="versionLabel">7.0.0.0 (Preview)</Label>
+            </StackPanel>
+        </StackPanel>
+        <TextBlock Margin="30 20 0 0">
+            Copyright © 1994-2018 Shin-ichi Koga. All rights reserved.
+        </TextBlock>
+        <TextBlock Margin="30 10 0 0">
+            Licensed under the MIT License.
+        </TextBlock>
+
+        <TextBlock Margin="30 20 0 0">
+            <Hyperlink x:Name="PrivacyStatementLink" Click="PrivacyStatementLink_Click">Privacy Statement</Hyperlink>
+        </TextBlock>
+
+    </StackPanel>
+</Page>

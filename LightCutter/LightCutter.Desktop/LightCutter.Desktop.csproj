@@ -83,6 +83,9 @@
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\VersionPage.xaml.cs">
+      <DependentUpon>VersionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SinglieInstanceApp.cs" />
     <Compile Include="WindowHide.cs" />
     <Page Include="BackgroundWindow.xaml">
@@ -106,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\VersionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

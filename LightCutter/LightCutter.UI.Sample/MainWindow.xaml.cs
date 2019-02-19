@@ -1,6 +1,8 @@
-﻿using Net.Surviveplus.LightCutter.UI.ViewModels;
+﻿using Net.Surviveplus.LightCutter.UI.Parts;
+using Net.Surviveplus.LightCutter.UI.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +33,34 @@ namespace LightCutter.UI.Sample
 
             this.shortcutBox2.ItemsSource = this.hotkeys;
             this.shortcutBox2.Text = "Win + Shift + Z";
+
+
+            var a = new HotkeyViewModel { Win = Visibility.Visible, Shift = Visibility.Visible, Key = HotKeys.A };
+            this.action1.DataContext = new ActionViewModel
+            {
+                AccessText = "_1.",
+                DefaultShortcut = a,
+                DefaultShortcutVisibility = Visibility.Visible,
+                DefaultShortcutKeyVisibility = Visibility.Visible,
+                DefaultShortcutErrorVisibility = Visibility.Collapsed
+            };
+            this.action2.DataContext = new ActionViewModel
+            {
+                AccessText = "_2.",
+                DefaultShortcut = a,
+                DefaultShortcutVisibility = Visibility.Visible,
+                DefaultShortcutKeyVisibility = Visibility.Collapsed,
+                DefaultShortcutErrorVisibility = Visibility.Visible
+            };
+
+            this.action3.DataContext = new ActionViewModel
+            {
+                AccessText = "_3.",
+                DefaultShortcut = a,
+                DefaultShortcutVisibility = Visibility.Collapsed,
+            };
+
+
         }
 
         private List<HotkeyViewModel> hotkeys = HotkeyViewItems.CreateAll();
@@ -47,6 +77,11 @@ namespace LightCutter.UI.Sample
                 VisualStateManager.GoToElementState(this.mainGrid, "Full", true);
                 //this.wait.Visibility = Visibility.Visible;
             }
+        }
+
+        private void Action3_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine((sender as ActionButton).Content);
         }
     }
 
