@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Net.Surviveplus.LightCutter.UI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,7 @@ namespace Net.Surviveplus.LightCutter.UI.Parts
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            this.RefreshDefaultSelectionArea();
         } // end sub
 
         public event EventHandler<EventArgs> Click;
@@ -37,6 +39,48 @@ namespace Net.Surviveplus.LightCutter.UI.Parts
             this.Click?.Invoke(this, EventArgs.Empty);
         } // end sub
 
+        /// <summary>
+        /// Backing field of ShowDefaultActionSelection property.
+        /// </summary>
+        private bool valueOfShowDefaultActionSelection;
+
+        /// <summary>
+        /// Gets or sets the value of something.
+        /// </summary>
+        public bool ShowDefaultActionSelection
+        {
+            get
+            {
+                return this.valueOfShowDefaultActionSelection;
+            } // end get
+            set
+            {
+                this.valueOfShowDefaultActionSelection = value;
+
+                RefreshDefaultSelectionArea();
+
+            } // end set
+        } // end property
+
+        private void RefreshDefaultSelectionArea()
+        {
+            var defaultSelectionArea = this.Template.FindName("defaultSelectionArea", this) as ColumnDefinition;
+            if (defaultSelectionArea != null) defaultSelectionArea.Width = this.valueOfShowDefaultActionSelection ? new GridLength(20) : new GridLength(0);
+
+            var thisIsDefaultRadio = this.Template.FindName("IsDefaultRadio", this) as RadioButton;
+            if (thisIsDefaultRadio != null) thisIsDefaultRadio.IsChecked = (this.DataContext as ActionViewModel)?.DefaultShortcutVisibility == Visibility.Visible;
+        }
+
+        private void IsDefaultRadio_Checked(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as ActionViewModel).DefaultShortcutVisibility = Visibility.Visible;
+       }
+
+        private void IsDefaultRadio_Unchecked(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as ActionViewModel).DefaultShortcutVisibility = Visibility.Collapsed;
+
+        }
     } // end class
 } // end namespace
 

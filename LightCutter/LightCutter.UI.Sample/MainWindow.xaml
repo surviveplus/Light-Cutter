@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:LightCutter.UI.Sample"
         xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" SizeChanged="Window_SizeChanged" MinWidth="250">
+        Title="MainWindow" Height="550" Width="525" SizeChanged="Window_SizeChanged" MinWidth="250"
+        Loaded="Window_Loaded">
 
     <Grid x:Name="mainGrid">
         <VisualStateManager.VisualStateGroups>
@@ -56,6 +57,7 @@
         </ComboBox>
 
         <StackPanel  Grid.Row="3">
+            <CheckBox Margin="10 10 10 10" Click="CheckBox_Click">Edit</CheckBox>
             <ui:ActionButton x:Name="action1">
                 <TextBlock>
                     <ui:Screen /> Stop Screen &gt;

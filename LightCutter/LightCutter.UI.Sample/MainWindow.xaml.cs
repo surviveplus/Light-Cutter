@@ -83,6 +83,21 @@ namespace LightCutter.UI.Sample
         {
             Debug.WriteLine((sender as ActionButton).Content);
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            var edit = (sender as CheckBox).IsChecked.Value;
+
+
+            this.action1.ShowDefaultActionSelection = edit;
+            this.action2.ShowDefaultActionSelection = edit;
+            this.action3.ShowDefaultActionSelection = edit;
+
+        }
     }
 
 
