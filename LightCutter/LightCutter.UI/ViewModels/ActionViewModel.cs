@@ -15,18 +15,12 @@ namespace Net.Surviveplus.LightCutter.UI.ViewModels
         private Visibility valueOfDefaultShortcutVisibility;
 
         /// <summary>
-        /// Gets or sets the value of something.
+        /// Gets or sets whether DefaultShortcut is shown or not.
         /// </summary>
         public Visibility DefaultShortcutVisibility
         {
-            get
-            {
-                return this.valueOfDefaultShortcutVisibility;
-            } // end get
-            set
-            {
-                this.SetProperty( ref this.valueOfDefaultShortcutVisibility, value );
-            } // end set
+            get => this.valueOfDefaultShortcutVisibility; 
+            set => this.SetProperty(ref this.valueOfDefaultShortcutVisibility, value); 
         } // end property
 
 

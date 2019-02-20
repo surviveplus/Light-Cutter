@@ -11,10 +11,16 @@ namespace Net.Surviveplus.LightCutter.UI.ViewModels
 {
     public abstract class ViewModelBase : BindableBase, INotifyDataErrorInfo
     {
-        // オーバーライド・インターフェイス実装
-        #region BindableBase メンバー
+        #region BindableBase members
 
-        // key: プロパティ名, value: エラーメッセージ文字列の一覧
+        /// <summary>
+        /// <para xml:lang="en">
+        /// key : property name, value : list of error message text
+        /// </para>
+        /// <para xml:lang="ja">
+        /// key: プロパティ名, value: エラーメッセージ文字列の一覧
+        /// </para>
+        /// </summary>
         private Dictionary<string, IEnumerable<string>> errors = new Dictionary<string, IEnumerable<string>>();
 
 
@@ -39,12 +45,24 @@ namespace Net.Surviveplus.LightCutter.UI.ViewModels
 
         #endregion
 
-        #region INotifyDataErrorInfo メンバー
-        
+        #region INotifyDataErrorInfo members
+
         /// <summary>
+        /// <para xml:lang="en">
+        /// Gets a value that indicates whether the entity has validation errors.
+        /// </para>
+        /// <para xml:lang="ja">
         /// エンティティに検証エラーがあるかどうかを示す値を取得します。
+        /// </para>
         /// </summary>
-        /// <value>現在エンティティに検証エラーがある場合は true。それ以外の場合は false。</value>
+        /// <value>
+        /// <para xml:lang="en">
+        /// true if the entity currently has validation errors; otherwise, false.
+        /// </para>
+        /// <para xml:lang="ja">
+        /// 現在エンティティに検証エラーがある場合は true。それ以外の場合は false。
+        /// </para>
+        /// </value>
         public bool HasErrors
         {
             get
@@ -54,15 +72,34 @@ namespace Net.Surviveplus.LightCutter.UI.ViewModels
         }
 
         /// <summary>
+        /// <para xml:lang="en">
+        /// Occurs when the validation errors have changed for a property or for the entire entity.
+        /// </para>
+        /// <para xml:lang="ja">
         /// プロパティまたはエンティティ全体の検証エラーが変更されたときに発生します。
+        /// </para>
         /// </summary>
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
         /// <summary>
+        /// <para xml:lang="en">
+        /// Gets the validation errors for a specified property or for the entire entity.
+        /// </para>
+        /// <para xml:lang="ja">
         /// 指定されたプロパティまたはエンティティ全体の検証エラーを取得します。
+        /// </para>
         /// </summary>
-        /// <param name="propertyName"></param>
-        /// <returns>プロパティまたはエンティティの検証エラー。</returns>
+        /// <param name="propertyName">
+        /// The name of the property to retrieve validation errors for; or null or Empty, to retrieve entity-level errors.
+        /// </param>
+        /// <returns>
+        /// <para xml:lang="en">
+        /// The validation errors for the property or entity.
+        /// </para>
+        /// <para xml:lang="ja">
+        /// プロパティまたはエンティティの検証エラー。
+        /// </para>
+        /// </returns>
         public System.Collections.IEnumerable GetErrors(string propertyName)
         {
             var results =
@@ -74,7 +111,7 @@ namespace Net.Surviveplus.LightCutter.UI.ViewModels
 
         #endregion
 
-        // クラスメンバー
+
         public bool IsValid
         {
             get
