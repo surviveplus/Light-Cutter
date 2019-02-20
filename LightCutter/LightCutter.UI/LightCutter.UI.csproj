@@ -108,8 +108,10 @@
     <Compile Include="RectExtensions.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="ViewModels\ActionViewModel.cs" />
+    <Compile Include="ViewModels\BindableBase.cs" />
     <Compile Include="ViewModels\HotkeyViewItems.cs" />
     <Compile Include="ViewModels\HotkeyViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

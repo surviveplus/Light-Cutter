@@ -7,9 +7,28 @@ using System.Windows;
 
 namespace Net.Surviveplus.LightCutter.UI.ViewModels
 {
-    public class ActionViewModel
+    public class ActionViewModel : ViewModelBase
     {
-        public Visibility DefaultShortcutVisibility { get; set;  }
+        /// <summary>
+        /// Backing field of DefaultShortcutVisibility property.
+        /// </summary>
+        private Visibility valueOfDefaultShortcutVisibility;
+
+        /// <summary>
+        /// Gets or sets the value of something.
+        /// </summary>
+        public Visibility DefaultShortcutVisibility
+        {
+            get
+            {
+                return this.valueOfDefaultShortcutVisibility;
+            } // end get
+            set
+            {
+                this.SetProperty( ref this.valueOfDefaultShortcutVisibility, value );
+            } // end set
+        } // end property
+
 
         public Visibility DefaultShortcutErrorVisibility { get; set; }
 

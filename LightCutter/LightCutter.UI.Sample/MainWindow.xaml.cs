@@ -58,6 +58,8 @@ namespace LightCutter.UI.Sample
                 AccessText = "_3.",
                 DefaultShortcut = a,
                 DefaultShortcutVisibility = Visibility.Collapsed,
+                DefaultShortcutKeyVisibility = Visibility.Visible,
+                DefaultShortcutErrorVisibility = Visibility.Collapsed
             };
 
 
