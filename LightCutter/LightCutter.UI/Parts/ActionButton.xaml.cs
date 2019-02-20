@@ -26,9 +26,12 @@ namespace Net.Surviveplus.LightCutter.UI.Parts
             InitializeComponent();
         }
 
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.RefreshDefaultSelectionArea();
+            this.RefreshMainButtonEnabled();
+
         } // end sub
 
         public event EventHandler<EventArgs> Click;
@@ -38,6 +41,35 @@ namespace Net.Surviveplus.LightCutter.UI.Parts
         {
             this.Click?.Invoke(this, EventArgs.Empty);
         } // end sub
+
+        /// <summary>
+        /// Backing field of ButtonIsEnabled property.
+        /// </summary>
+        private bool valueOfButtonIsEnabled = true;
+
+        /// <summary>
+        /// Gets or sets Button.IsEnabled.
+        /// </summary>
+        public bool ButtonIsEnabled
+        {
+            get
+            {
+                return this.valueOfButtonIsEnabled;
+            } // end get
+            set
+            {
+                this.valueOfButtonIsEnabled = value;
+                RefreshMainButtonEnabled();
+
+            } // end set
+        } // end property
+
+        private void RefreshMainButtonEnabled()
+        {
+            var thisMainButton = this.Template.FindName("MainButton", this) as Button;
+            if (thisMainButton != null) thisMainButton.IsEnabled = this.valueOfButtonIsEnabled;
+        }
+
 
         /// <summary>
         /// Backing field of ShowDefaultActionSelection property.
@@ -74,13 +106,17 @@ namespace Net.Surviveplus.LightCutter.UI.Parts
         private void IsDefaultRadio_Checked(object sender, RoutedEventArgs e)
         {
             (this.DataContext as ActionViewModel).DefaultShortcutVisibility = Visibility.Visible;
-       }
+            this.IsDefaultChanged?.Invoke(this, EventArgs.Empty);
+        }
 
         private void IsDefaultRadio_Unchecked(object sender, RoutedEventArgs e)
         {
             (this.DataContext as ActionViewModel).DefaultShortcutVisibility = Visibility.Collapsed;
-
+            this.IsDefaultChanged?.Invoke(this, EventArgs.Empty);
         }
+
+        public event EventHandler<EventArgs> IsDefaultChanged;
+
     } // end class
 } // end namespace
 

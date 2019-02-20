@@ -109,6 +109,7 @@
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="ViewModels\ActionViewModel.cs" />
     <Compile Include="ViewModels\BindableBase.cs" />
+    <Compile Include="ViewModels\DefaultShortcutViewModel.cs" />
     <Compile Include="ViewModels\HotkeyViewItems.cs" />
     <Compile Include="ViewModels\HotkeyViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

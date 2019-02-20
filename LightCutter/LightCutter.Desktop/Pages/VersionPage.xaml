@@ -22,7 +22,7 @@
             </StackPanel>
         </StackPanel>
         <TextBlock Margin="30 20 0 0">
-            Copyright © 1994-2018 Shin-ichi Koga. All rights reserved.
+            Copyright © 1994-2019 Shin-ichi Koga. All rights reserved.
         </TextBlock>
         <TextBlock Margin="30 10 0 0">
             Licensed under the MIT License.

@@ -23,13 +23,10 @@ namespace Net.Surviveplus.LightCutter.UI.ViewModels
             set => this.SetProperty(ref this.valueOfDefaultShortcutVisibility, value); 
         } // end property
 
-
-        public Visibility DefaultShortcutErrorVisibility { get; set; }
-
-        public Visibility DefaultShortcutKeyVisibility { get; set; }
-
-        public HotkeyViewModel DefaultShortcut { get; set; }
+        public DefaultShortcutViewModel DefaultShortcut { get; set; } 
 
         public string AccessText { get; set; }
+
+        public string Name { get; set; }
     }
 }

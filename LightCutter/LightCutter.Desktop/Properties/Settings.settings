@@ -17,5 +17,8 @@
     <Setting Name="ShortcutStartDefaultAction" Type="System.String" Scope="User">
       <Value Profile="(Default)">Ctrl + Shift + Alt + Z</Value>
     </Setting>
+    <Setting Name="DefaultActionName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CutAndSave</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

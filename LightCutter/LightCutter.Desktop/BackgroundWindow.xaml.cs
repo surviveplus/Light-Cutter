@@ -228,8 +228,9 @@ namespace Net.Surviveplus.LightCutter.Desktop
                     {
                         this.ShowActionPannel();
                     }
-                    else if (h == this.ShortcutStartDefaultAction) {
-                        LightCutter.CutAndSave(this.main);
+                    else if (h == this.ShortcutStartDefaultAction)
+                    {
+                        this.DoDefaultAction();
                     }
                     handled = true;
                     return IntPtr.Zero;
@@ -237,6 +238,8 @@ namespace Net.Surviveplus.LightCutter.Desktop
             }
             return NativeMethods.CallWindowProc(IntPtr.Zero, hwnd, msg, wParam, lParam);
         }
+
+
         #endregion
 
         #region Notify menu events
@@ -278,10 +281,43 @@ namespace Net.Surviveplus.LightCutter.Desktop
 
         private void Notify_TrayMouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            LightCutter.CutAndSave(this.main);
+            this.DoDefaultAction();
         }
 
         #endregion
+
+        private void DoDefaultAction()
+        {
+            var enabled = LightCutter.LastRange.HasValue;
+
+            switch (Settings.Default.DefaultActionName)
+            {
+                case "CutAndCopy":
+                    LightCutter.CutAndSave(this.main);
+                    break;
+
+                case "CutAndSave":
+                    LightCutter.CutAndSave(this.main);
+                    break;
+
+                case "CutSameAreaAndSave":
+                    if (enabled){ LightCutter.CutSameAreaAndSave(this.main); }
+                    break;
+
+                case "CountdownCutAndSave":
+                    LightCutter.CutAndSave(this.main, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds));
+                    break;
+
+                case "CountdownCutSaveAreaAndSave":
+                    if (enabled) { LightCutter.CutSameAreaAndSave(this.main, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds)); }
+                    break;
+
+                default:
+                    LightCutter.CutAndSave(this.main);
+                    break;
+            }
+
+        }
 
     } // end class
 } // end namespace

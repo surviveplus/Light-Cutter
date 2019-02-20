@@ -35,22 +35,29 @@ namespace LightCutter.UI.Sample
             this.shortcutBox2.Text = "Win + Shift + Z";
 
 
-            var a = new HotkeyViewModel { Win = Visibility.Visible, Shift = Visibility.Visible, Key = HotKeys.A };
+            var a = new DefaultShortcutViewModel {
+                Hotkey = new HotkeyViewModel { Win = Visibility.Visible, Shift = Visibility.Visible, Key = HotKeys.A },
+                HotkeyVisibility = Visibility.Visible,
+                ErrorVisibility = Visibility.Collapsed };
+
+            var b = new DefaultShortcutViewModel
+            {
+                Hotkey = a.Hotkey,
+                HotkeyVisibility = Visibility.Collapsed,
+                ErrorVisibility = Visibility.Visible
+            };
+
             this.action1.DataContext = new ActionViewModel
             {
                 AccessText = "_1.",
                 DefaultShortcut = a,
                 DefaultShortcutVisibility = Visibility.Visible,
-                DefaultShortcutKeyVisibility = Visibility.Visible,
-                DefaultShortcutErrorVisibility = Visibility.Collapsed
             };
             this.action2.DataContext = new ActionViewModel
             {
                 AccessText = "_2.",
-                DefaultShortcut = a,
+                DefaultShortcut = b,
                 DefaultShortcutVisibility = Visibility.Visible,
-                DefaultShortcutKeyVisibility = Visibility.Collapsed,
-                DefaultShortcutErrorVisibility = Visibility.Visible
             };
 
             this.action3.DataContext = new ActionViewModel
@@ -58,8 +65,6 @@ namespace LightCutter.UI.Sample
                 AccessText = "_3.",
                 DefaultShortcut = a,
                 DefaultShortcutVisibility = Visibility.Collapsed,
-                DefaultShortcutKeyVisibility = Visibility.Visible,
-                DefaultShortcutErrorVisibility = Visibility.Collapsed
             };
 
 
