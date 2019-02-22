@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -21,6 +23,24 @@ namespace Net.Surviveplus.LightCutter.UI
     /// </summary>
     public partial class FullScreenWindow : Window
     {
+
+        /// <summary>
+        /// Allows managed code to call unmanaged functions with Platform Invocation Services (PInvoke).
+        /// </summary>
+        internal static class NativeMethods
+        {
+            #region Win32 API Definitions
+
+            // TODO: Insert the code of Declare of DllImport. (see static code analysis CA1060)
+
+            [DllImport("user32.dll")]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+            #endregion
+
+        } // end class
+
         #region constructor
 
         /// <summary>
@@ -95,6 +115,8 @@ namespace Net.Surviveplus.LightCutter.UI
 
             this.DataContext = this.cropping;
             this.guide.Visibility = Visibility.Hidden;
+
+            NativeMethods.SetForegroundWindow(new WindowInteropHelper(this).Handle);
         } // end sub
 
 
