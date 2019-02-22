@@ -46,8 +46,10 @@ namespace Net.Surviveplus.LightCutter.UI
         /// <summary>
         /// Initialize instance
         /// </summary>
-        public FullScreenWindow()
+        public FullScreenWindow(bool guideBackgroundTransparent)
         {
+            this.GuideBackgroundTransparent = guideBackgroundTransparent;
+
             InitializeComponent();
 
             RenderOptions.SetEdgeMode(this.frozenImage, EdgeMode.Aliased);
@@ -115,6 +117,26 @@ namespace Net.Surviveplus.LightCutter.UI
 
             this.DataContext = this.cropping;
             this.guide.Visibility = Visibility.Hidden;
+
+            if (! this.GuideBackgroundTransparent)
+            {
+                this.guide.Background = new SolidColorBrush(Colors.LightGoldenrodYellow);
+
+                var black = new SolidColorBrush(Colors.Black);
+                foreach (var item in
+                    guideMessageRight.Children.ToEnumerable<UIElement>().Union(
+                        guideMessageLeft.Children.ToEnumerable<UIElement>()).Union( 
+                        new UIElement[] { this.titleLabelLeft, this.titleLabelRight}) )
+                {
+                    var label = item as Label;
+                    if(label != null) { label.Foreground = black; }
+
+                    var textBlock = item as TextBlock;
+                    if (textBlock != null) { textBlock.Foreground = black; }
+                }
+            } // end if
+
+
 
             NativeMethods.SetForegroundWindow(new WindowInteropHelper(this).Handle);
         } // end sub
@@ -276,6 +298,9 @@ namespace Net.Surviveplus.LightCutter.UI
 
         #region Properties
 
+        public bool GuideBackgroundTransparent { get; set; } = true;
+
+
         /// <summary>
         /// Get Cropped bounds as System.Drawing.Rectangle
         /// </summary>
@@ -288,4 +313,34 @@ namespace Net.Surviveplus.LightCutter.UI
         #endregion
 
     } // end class
+
+    /// <summary>
+    /// Static class which is defined extension methods for UIElementCollection.
+    /// </summary>
+    public static partial class UIElementCollectionExtensions
+    {
+
+        /// <summary>
+        /// Return the IEnumerable&lt;T&gt; for a classic collection that do not implement IEnumerable&lt;T&gt; but it is possible to be set on foreach.
+        /// </summary>
+        /// <typeparam name="T">The type of this elements.</typeparam>
+        /// <param name="me">The instance of the type which is added this extension method. Set a null reference (Nothing in Visual Basic), to return empty IEnumerable&lt;T&gt;.</param>
+        /// <returns>
+        /// Return the IEnumerable&lt;T&gt;.
+        /// </returns>
+        public static IEnumerable<T> ToEnumerable<T>(this UIElementCollection me)
+        {
+            if (me != null)
+            {
+                dynamic list = me;
+
+                foreach (T item in list)
+                {
+                    yield return item;
+                } // next item
+            } // end if
+
+        } // end function
+    } // end class
+
 } // end namespace

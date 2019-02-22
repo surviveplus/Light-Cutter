@@ -58,7 +58,15 @@
                     Canvas.Left="{Binding GuideLocation.X}" Canvas.Top="{Binding GuideLocation.Y}"
                     MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"   MouseMove="FrozenImage_MouseMove" Orientation="Horizontal">
             <StackPanel x:Name="guideMessageLeft" Visibility="{Binding GuideMessageLeftVisibility}">
-                <Label x:Name="titleLabelLeft" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right">Light Cutter 7</Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="16"></ColumnDefinition>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" x:Name="titleLabelLeft" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right">Light Cutter 7</Label>
+                    <Image Grid.Column="1" Source="LightCutter7-16Pixel.png" Height="16" Width="16"/>
+                </Grid>                
                 <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=verticalLine, Path=Visibility}" HorizontalAlignment="Right"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen.</TextBlock>
                 <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=cropGuidelines, Path=Visibility}" HorizontalAlignment="Right"><ui:MouseLeftClick /> Mouse button up to determine area.</TextBlock>
                 <Label x:Name="positionLabelLeft" Content="{Binding PositionLabelContent}" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right"></Label>
@@ -84,7 +92,16 @@
                 <Rectangle x:Name="magnifyingOutline" Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" Width="210" Height="210" ></Rectangle>
             </Canvas>
             <StackPanel x:Name="guideMessageRight" Visibility="{Binding GuideMessageRightVisibility}">
-                <Label x:Name="titleLabelRight" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}">Light Cutter 7</Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="16"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="1" Source="LightCutter7-16Pixel.png" Height="16" Width="16"/>
+                    <Label Grid.Column="2" x:Name="titleLabelRight" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}">Light Cutter 7</Label>
+                </Grid>
+                
                 <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=verticalLine, Path=Visibility}"><ui:MouseLeftClick /> Drag by the left mouse button to cut the screen.</TextBlock>
                 <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=cropGuidelines, Path=Visibility}"><ui:MouseLeftClick /> Mouse button up to determine area.</TextBlock>
                 <Label x:Name="positionLabelRight" Content="{Binding ElementName=positionLabelLeft, Path=Content}" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}"></Label>

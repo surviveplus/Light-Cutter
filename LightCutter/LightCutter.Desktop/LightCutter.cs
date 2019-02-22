@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Net.Surviveplus.LightCutter.Desktop.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
             using (new WindowHide(main))
             using (var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze(time))
             {
-                var w = new UI.FullScreenWindow();
+                var w = new UI.FullScreenWindow(Settings.Default.GuideBackgroundTransparent);
                 var r = w.ShowFrozenScreen(frozen);
                 if (r.HasValue && r.Value)
                 {
@@ -36,7 +37,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
             using (new WindowHide(main))
             using (var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze(time))
             {
-                var w = new UI.FullScreenWindow();
+                var w = new UI.FullScreenWindow(Settings.Default.GuideBackgroundTransparent);
                 var r = w.ShowFrozenScreen(frozen);
                 if (r.HasValue && r.Value)
                 {
