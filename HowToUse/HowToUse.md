@@ -13,7 +13,7 @@ If this window is closed aleady, you can open this window again by  shortcut key
 
 ![Tasktray Icon](images/TasktrayIcon.png)
 
-The default shortcut key is "Ctrl + Shift + Alt + A" and it is customizable in the [setting](##Settings) page.
+The default shortcut key is "Ctrl + Shift + Alt + A" and it is customizable in the [setting](#Settings) page.
 
 ## Quick start
 In this app window, click a action button to capture screenshot.
@@ -40,7 +40,7 @@ Choose the best action for your situation.
 
 You can select a action more quickly by using default action.
 Default action is started by shortcut or double click tasktray icon.
-Default shortcut is "Ctrl + Shift + Alt + Z", you can change shortcut in [setting](##Settings) page.
+Default shortcut is "Ctrl + Shift + Alt + Z", you can change shortcut in [setting](#Settings) page.
 
 ![Edit Action Panel](images/ActionPanelEdit.png)
 
