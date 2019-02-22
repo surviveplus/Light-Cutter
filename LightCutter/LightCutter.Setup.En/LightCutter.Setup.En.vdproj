@@ -15,6 +15,24 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_04ED06BC263DE917DB17A9EB2C9E20D0"
+        "OwnerKey" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_04ED06BC263DE917DB17A9EB2C9E20D0"
+        "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_04ED06BC263DE917DB17A9EB2C9E20D0"
+        "OwnerKey" = "8:_0B08EFD16B7558DF5CF7DEFD7FAE6A8C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0706FD2D89A16BD562D1DF166C6CFC01"
         "OwnerKey" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
         "MsmSig" = "8:_UNDEFINED"
@@ -39,26 +57,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0B08EFD16B7558DF5CF7DEFD7FAE6A8C"
+        "OwnerKey" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1820168BCC9D43C587F0AAB4EB2DD336"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_23531506A87E1896DE048A9E439C12AD"
+        "OwnerKey" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_51725A57F78A3312519D01C1B142735F"
-        "OwnerKey" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5BB2077A678B263B50EDF98C2B2ADFDB"
-        "OwnerKey" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -83,24 +101,6 @@
         {
         "MsmKey" = "8:_C29013E4CFB5418D85F757F27A3F3B98"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CCF6EAE4E2C5E0309E8620C9E4B17FB9"
-        "OwnerKey" = "8:_2889E0183B2144BF84EC2F2F7897C8A1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CCF6EAE4E2C5E0309E8620C9E4B17FB9"
-        "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CCF6EAE4E2C5E0309E8620C9E4B17FB9"
-        "OwnerKey" = "8:_51725A57F78A3312519D01C1B142735F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -136,19 +136,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5BB2077A678B263B50EDF98C2B2ADFDB"
+        "OwnerKey" = "8:_23531506A87E1896DE048A9E439C12AD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_51725A57F78A3312519D01C1B142735F"
+        "OwnerKey" = "8:_0B08EFD16B7558DF5CF7DEFD7FAE6A8C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CCF6EAE4E2C5E0309E8620C9E4B17FB9"
+        "OwnerKey" = "8:_04ED06BC263DE917DB17A9EB2C9E20D0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -308,6 +308,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_04ED06BC263DE917DB17A9EB2C9E20D0"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:LightCutter.Core, Version=7.0.2.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_04ED06BC263DE917DB17A9EB2C9E20D0"
+                    {
+                    "Name" = "8:LightCutter.Core.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:LightCutter.Core.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0706FD2D89A16BD562D1DF166C6CFC01"
             {
             "AssemblyRegister" = "3:1"
@@ -339,34 +370,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1820168BCC9D43C587F0AAB4EB2DD336"
-            {
-            "SourcePath" = "8:..\\LightCutter.Desktop\\LightCutter Ver.7.ico"
-            "TargetName" = "8:LightCutter Ver.7.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_51725A57F78A3312519D01C1B142735F"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0B08EFD16B7558DF5CF7DEFD7FAE6A8C"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:LightCutter.UI, Version=7.0.8.6, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:LightCutter.UI, Version=7.0.7.5, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_51725A57F78A3312519D01C1B142735F"
+                    "_0B08EFD16B7558DF5CF7DEFD7FAE6A8C"
                     {
                     "Name" = "8:LightCutter.UI.dll"
                     "Attributes" = "3:512"
@@ -390,14 +401,34 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5BB2077A678B263B50EDF98C2B2ADFDB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1820168BCC9D43C587F0AAB4EB2DD336"
+            {
+            "SourcePath" = "8:..\\LightCutter.Desktop\\LightCutter Ver.7.ico"
+            "TargetName" = "8:LightCutter Ver.7.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_23531506A87E1896DE048A9E439C12AD"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_5BB2077A678B263B50EDF98C2B2ADFDB"
+                    "_23531506A87E1896DE048A9E439C12AD"
                     {
                     "Name" = "8:Hardcodet.Wpf.TaskbarNotification.dll"
                     "Attributes" = "3:512"
@@ -439,37 +470,6 @@
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CCF6EAE4E2C5E0309E8620C9E4B17FB9"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:LightCutter.Core, Version=7.0.2.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_CCF6EAE4E2C5E0309E8620C9E4B17FB9"
-                    {
-                    "Name" = "8:LightCutter.Core.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:LightCutter.Core.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FB219494FEBE4932A072D15F0CD47525"
@@ -559,15 +559,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Light Cutter 7"
-        "ProductCode" = "8:{6530718B-D4D6-400E-B2D7-741D9BAC5D74}"
-        "PackageCode" = "8:{E87B276E-E099-4F6D-9AD0-11B98546CF12}"
+        "ProductCode" = "8:{3D40A88C-D39E-4C8D-B21A-AF33340ED65E}"
+        "PackageCode" = "8:{D5F0897D-5944-4D6E-B3CD-BAD48261181A}"
         "UpgradeCode" = "8:{10855EB8-1B59-4C96-930F-F6541B80006A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:7.0.29"
+        "ProductVersion" = "8:7.0.33"
         "Manufacturer" = "8:Surviveplus.net"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1260,7 +1260,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2889E0183B2144BF84EC2F2F7897C8A1"
             {
-            "SourcePath" = "8:..\\LightCutter.Desktop\\obj\\Debug\\LightCutter.Desktop.exe"
+            "SourcePath" = "8:..\\LightCutter.Desktop\\obj\\Release\\LightCutter.Desktop.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
@@ -1400,7 +1400,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9D84CC9495BA472096244AEC03295376"
             {
-            "SourcePath" = "8:..\\LightCutter.Core\\obj\\Debug\\LightCutter.Core.dll"
+            "SourcePath" = "8:..\\LightCutter.Core\\obj\\Release\\LightCutter.Core.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
@@ -1428,7 +1428,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_ADB617BFDC3F4B72983BCA47D8A7711B"
             {
-            "SourcePath" = "8:..\\LightCutter.SetupActions\\obj\\Debug\\LightCutter.SetupActions.dll"
+            "SourcePath" = "8:..\\LightCutter.SetupActions\\obj\\Release\\LightCutter.SetupActions.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
@@ -1456,7 +1456,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B6F70215E19945488A6E1FDE6A87EC93"
             {
-            "SourcePath" = "8:..\\LightCutter.UI\\obj\\Debug\\LightCutter.UI.dll"
+            "SourcePath" = "8:..\\LightCutter.UI\\obj\\Release\\LightCutter.UI.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
