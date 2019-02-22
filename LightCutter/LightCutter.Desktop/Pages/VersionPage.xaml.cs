@@ -39,7 +39,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            this.versionLabel.Content = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " (Preview)";
+            this.versionLabel.Content = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
     }
 }

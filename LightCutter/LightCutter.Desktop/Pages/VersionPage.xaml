@@ -18,7 +18,7 @@
             <Image x:Name="icon" Source="../Assets/70x70Logo.png" Margin="10 10 0 10" Width="70" Height="70"></Image>
             <StackPanel VerticalAlignment="Center" Margin="10 0 0 0">
                 <Label  FontSize="20" Foreground="White">Light Cutter 7</Label>
-                <Label Foreground="White" x:Name="versionLabel">7.0.0.0 (Preview)</Label>
+                <Label Foreground="White" x:Name="versionLabel">7.0.0.0</Label>
             </StackPanel>
         </StackPanel>
         <TextBlock Margin="30 20 0 0">

@@ -9,6 +9,8 @@ namespace Net.Surviveplus.LightCutter.UI
 {
     public class Cropping : BindableBase
     {
+        public int GridPixel { get; set; } = 16;
+
 
         /// <summary>
         /// Backing field of KeepGrid property.
@@ -64,8 +66,8 @@ namespace Net.Surviveplus.LightCutter.UI
                 if (this.KeepGrid)
                 {
                     point = new Point(
-                        point.X + (this.StartPoint.X < point.X ? -1 : 1) * (r.Width % (16 / toDevice.X)),
-                        point.Y + (this.StartPoint.Y < point.Y ? -1 : 1) * (r.Height % (16 / toDevice.X)));
+                        point.X + (this.StartPoint.X < point.X ? -1 : 1) * (r.Width % (this.GridPixel / toDevice.X)),
+                        point.Y + (this.StartPoint.Y < point.Y ? -1 : 1) * (r.Height % (this.GridPixel / toDevice.X)));
 
                     r.X = Math.Min(point.X, this.StartPoint.X);
                     r.Y = Math.Min(point.Y, this.StartPoint.Y);

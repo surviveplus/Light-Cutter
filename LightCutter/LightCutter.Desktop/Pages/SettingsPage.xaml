@@ -22,12 +22,17 @@
             <Button Width="30" Height="30" Margin="0 5" x:Name="BackButton" Background="Transparent" BorderBrush="Transparent" Click="BackButton_Click" >&lt;</Button>
             <Label FontSize="18">Settings</Label>
         </StackPanel>
-        <CheckBox Margin="10" x:Name="guideBackgroundTransparentCheckBox" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=GuideBackgroundTransparent, Mode=TwoWay}">Guide background is transparent.</CheckBox>
         <CheckBox Margin="10" x:Name="showActionPanelOnStartUpCheckBox" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=ShowActionPanelOnStartUp, Mode=TwoWay}">Show Action Panel on start up.</CheckBox>
         <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
             <Label>Wait Time : </Label>
             <TextBox Width="30" Text="{Binding Source={x:Static properties:Settings.Default}, Path=DefaultWaitTimeSeconds, Mode=TwoWay}"></TextBox>
             <Label>seconds</Label>
+        </StackPanel>
+        <CheckBox Margin="10" x:Name="guideBackgroundTransparentCheckBox" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=GuideBackgroundTransparent, Mode=TwoWay}">Guide background is transparent.</CheckBox>
+        <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+            <Label>Grid Size :</Label>
+            <TextBox Width="30" Text="{Binding Source={x:Static properties:Settings.Default}, Path=GridPixel, Mode=TwoWay}"></TextBox>
+            <Label>pixel</Label>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Margin="10 10 0 0">

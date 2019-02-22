@@ -46,8 +46,9 @@ namespace Net.Surviveplus.LightCutter.UI
         /// <summary>
         /// Initialize instance
         /// </summary>
-        public FullScreenWindow(bool guideBackgroundTransparent)
+        public FullScreenWindow(bool guideBackgroundTransparent, int gridPixel)
         {
+            this.GridPixel = gridPixel;
             this.GuideBackgroundTransparent = guideBackgroundTransparent;
 
             InitializeComponent();
@@ -136,6 +137,8 @@ namespace Net.Surviveplus.LightCutter.UI
                 }
             } // end if
 
+            this.gridPixelLeft.Text = this.GridPixel.ToString();
+            this.gridPixelRight.Text = this.gridPixelLeft.Text;
 
 
             NativeMethods.SetForegroundWindow(new WindowInteropHelper(this).Handle);
@@ -297,6 +300,11 @@ namespace Net.Surviveplus.LightCutter.UI
         #endregion
 
         #region Properties
+
+        public int GridPixel {
+            get => this.cropping.GridPixel;
+            set => this.cropping.GridPixel = value;
+        } 
 
         public bool GuideBackgroundTransparent { get; set; } = true;
 

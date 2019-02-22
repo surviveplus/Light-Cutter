@@ -72,7 +72,7 @@
                 <Label x:Name="positionLabelLeft" Content="{Binding PositionLabelContent}" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" HorizontalAlignment="Right"></Label>
                 <TextBlock Margin="5 15 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" TextAlignment="Right"><ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
                 <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=cropGuidelines, Path=Visibility}" TextAlignment="Right">
-                    <ui:Key>Ctrl</ui:Key> key to grid (16 pixel)<LineBreak />
+                    <ui:Key>Ctrl</ui:Key> key to grid (<TextBlock x:Name="gridPixelLeft">16</TextBlock> pixel)<LineBreak />
                     <ui:Key>Shift</ui:Key> key to square</TextBlock>
             </StackPanel>
 
@@ -107,7 +107,7 @@
                 <Label x:Name="positionLabelRight" Content="{Binding ElementName=positionLabelLeft, Path=Content}" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}"></Label>
                  <TextBlock Margin="5 15 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}"><ui:MouseRightClick /> Rigth Click or <ui:Key>Esc</ui:Key> key to cancel.</TextBlock>
                 <TextBlock Margin="5 0 5 0" Foreground="{Binding ElementName=cropGuidelines, Path=Stroke}" Visibility="{Binding ElementName=cropGuidelines, Path=Visibility}">
-                    <ui:Key>Ctrl</ui:Key> key to grid (16 pixel)<LineBreak />
+                    <ui:Key>Ctrl</ui:Key> key to grid (<TextBlock x:Name="gridPixelRight">16</TextBlock> pixel)<LineBreak />
                     <ui:Key>Shift</ui:Key> key to square</TextBlock>
             </StackPanel>
         </StackPanel>

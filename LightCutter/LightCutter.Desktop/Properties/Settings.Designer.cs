@@ -130,5 +130,17 @@ namespace Net.Surviveplus.LightCutter.Desktop.Properties {
                 this["GuideBackgroundTransparent"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16")]
+        public int GridPixel {
+            get {
+                return ((int)(this["GridPixel"]));
+            }
+            set {
+                this["GridPixel"] = value;
+            }
+        }
     }
 }

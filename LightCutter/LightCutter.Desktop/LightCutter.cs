@@ -17,7 +17,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
             using (new WindowHide(main))
             using (var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze(time))
             {
-                var w = new UI.FullScreenWindow(Settings.Default.GuideBackgroundTransparent);
+                var w = new UI.FullScreenWindow(Settings.Default.GuideBackgroundTransparent, Settings.Default.GridPixel);
                 var r = w.ShowFrozenScreen(frozen);
                 if (r.HasValue && r.Value)
                 {
@@ -37,7 +37,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
             using (new WindowHide(main))
             using (var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze(time))
             {
-                var w = new UI.FullScreenWindow(Settings.Default.GuideBackgroundTransparent);
+                var w = new UI.FullScreenWindow(Settings.Default.GuideBackgroundTransparent, Settings.Default.GridPixel);
                 var r = w.ShowFrozenScreen(frozen);
                 if (r.HasValue && r.Value)
                 {
