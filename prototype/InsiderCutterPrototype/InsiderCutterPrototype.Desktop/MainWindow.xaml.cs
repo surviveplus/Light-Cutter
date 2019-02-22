@@ -124,5 +124,24 @@ namespace InsiderCutterPrototype.Desktop
             } // end try			
         } // end sub
 
+        private async void CutVmconnectButtonAfter3sec_Click(object sender, RoutedEventArgs e)
+        {
+            var window = this;
+            try
+            {
+                window.Visibility = Visibility.Hidden;
+
+                await Task.Run(() =>
+                {
+                    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(3));
+                });
+
+                await LightCutter.CutVMConnectInsiderAsync();
+            }
+            finally
+            {
+                window.Visibility = Visibility.Visible;
+            } // end try
+        }
     } // end class
 } // end namespace

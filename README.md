@@ -9,7 +9,7 @@ Can capture the same area as last time, so you can capture it fast and continuou
 
  ![Action Panel](HowToUse/images/ActionPanel.png)
 
- - [Light Cutter ver.7.0](https://github.com/surviveplus/Light-Cutter/releases) ( Preview )
+ - [Light Cutter ver.7.0](https://github.com/surviveplus/Light-Cutter/releases)
 
  - [Light Cutter ver.5.4](
 http://www.surviveplus.net/ja/archives/24
@@ -18,6 +18,9 @@ http://www.surviveplus.net/ja/archives/24
 
 In Japan, users of this software series are over 50,000 people total. For example, one of company approved it as official software.
 However, the new version had not been released recently. So in this repository we migrate this and release new features.
+
+## How to use (Quick Start)
+see [here](HowToUse/HowToUse.md)
 
 
 ## Roadmap
@@ -56,6 +59,6 @@ AI should be able to automatically determine capture scenarios and help more.
  - Help to collect learning data. We still think about how we do this.
 
 ## License
-Copyright (c) 1994-2017 Shin-ichi Koga. All rights reserved.
+Copyright (c) 1994-2019 Shin-ichi Koga. All rights reserved.
 
 Licensed under the MIT License.

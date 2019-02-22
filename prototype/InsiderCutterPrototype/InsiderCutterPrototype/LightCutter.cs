@@ -150,7 +150,7 @@ namespace Net.Surviveplus.LightCutter
             await Task.Run(() => {
                 // <vmconnect.exe>{WindowsForms10.Window.8.app.0.2bef119_r6_ad1}
                 // HACK: Require Administrator !!
-                SaveByPrintWindow("{WindowsForms10.Window.8.app.0.b679e5_r6_ad1}", "{UIMainClass}");
+                SaveByPrintWindow("{WindowsForms10.Window.8.app.0.aa0c13_r6_ad1}", "{UIMainClass}");
             });
         } // end sub
 
