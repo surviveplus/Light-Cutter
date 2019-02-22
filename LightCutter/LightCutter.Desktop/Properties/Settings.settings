@@ -20,5 +20,11 @@
     <Setting Name="DefaultActionName" Type="System.String" Scope="User">
       <Value Profile="(Default)">CutAndSave</Value>
     </Setting>
+    <Setting Name="LastMainWindowHeight" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LastMainWindowWidth" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

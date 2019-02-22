@@ -7,10 +7,13 @@
         xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
         mc:Ignorable="d"
         Title="Action Panel - Light Cutter ver.7.0.0.0 (Preview)" 
+        
+        MinHeight="200" MinWidth="240"
         Height="400" Width="540"
         Icon="LightCutter Ver.7.ico"
         WindowStartupLocation="CenterScreen"
-        Loaded="Window_Loaded" ResizeMode="CanResizeWithGrip">
+        Loaded="Window_Loaded" ResizeMode="CanResizeWithGrip"
+        Closing="Window_Closing">
     <Window.Resources>
     </Window.Resources>
     <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>

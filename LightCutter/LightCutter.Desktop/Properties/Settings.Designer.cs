@@ -94,5 +94,29 @@ namespace Net.Surviveplus.LightCutter.Desktop.Properties {
                 this["DefaultActionName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double LastMainWindowHeight {
+            get {
+                return ((double)(this["LastMainWindowHeight"]));
+            }
+            set {
+                this["LastMainWindowHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double LastMainWindowWidth {
+            get {
+                return ((double)(this["LastMainWindowWidth"]));
+            }
+            set {
+                this["LastMainWindowWidth"] = value;
+            }
+        }
     }
 }

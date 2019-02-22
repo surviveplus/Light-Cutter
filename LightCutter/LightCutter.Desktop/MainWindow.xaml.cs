@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Net.Surviveplus.LightCutter.Desktop.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,13 +24,30 @@ namespace Net.Surviveplus.LightCutter.Desktop
         public MainWindow()
         {
             InitializeComponent();
-        }
+
+            #region Change window size  ( here for WindowStartupLocation="CenterScreen" )
+
+            Func<double, double, double, double> getValueOrDefault = (value, min, defaultValue) => {
+                if (value < min)
+                {
+                    return defaultValue;
+                }
+                else
+                {
+                    return value;
+                }
+            };
+            this.Width = getValueOrDefault(Settings.Default.LastMainWindowWidth, this.MinWidth, this.Width);
+            this.Height = getValueOrDefault(Settings.Default.LastMainWindowHeight, this.MinHeight, this.Height);
+
+            #endregion
+
+        } // end constructor
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.Title = "Light Cutter";
             this.ShowAction();
-            
         }
 
         public void GoBack()
@@ -51,5 +69,10 @@ namespace Net.Surviveplus.LightCutter.Desktop
             this.mainFrame.Content = new Pages.VersionPage(this);
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Settings.Default.LastMainWindowWidth = this.Width;
+            Settings.Default.LastMainWindowHeight = this.Height;
+        }
     }
 }
