@@ -123,5 +123,11 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             }
 
         }
+
+        private void HelpLink_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/surviveplus/Light-Cutter/blob/master/HowToUse/HowToUse.md");
+
+        }
     }
 }
