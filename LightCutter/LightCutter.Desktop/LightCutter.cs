@@ -70,5 +70,19 @@ namespace Net.Surviveplus.LightCutter.Desktop
                 } // end if
             } // end using(frozen)
         }
+
+        public static void SavePrimaryMonitor(MainWindow main, DateTime? time = null)
+        {
+            using (new WindowHide(main))
+            using (var frozen = Net.Surviveplus.LightCutter.Core.Screen.Freeze(time))
+            {
+                using (var cropped = frozen?.Crop(System.Windows.Forms.Screen.PrimaryScreen.Bounds))
+                using (var bitmap = cropped?.GetBitmap())
+                {
+                    var outputFile = new System.IO.FileInfo(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), System.DateTime.Now.ToString("yyyyMMdd HHmmssfff", System.Threading.Thread.CurrentThread.CurrentUICulture) + ".png"));
+                    bitmap.Save(outputFile.FullName, System.Drawing.Imaging.ImageFormat.Png);
+                } // end using (cropped, bitmap )
+            } // end using(frozen)
+        }
     }
 }

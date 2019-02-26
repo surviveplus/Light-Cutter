@@ -7,7 +7,7 @@
         xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
       xmlns:properties="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Properties"
       mc:Ignorable="d" 
-      d:DesignHeight="360" d:DesignWidth="540"
+      d:DesignHeight="760" d:DesignWidth="540"
       Title="ActionPage"
       Loaded="Page_Loaded"
       IsVisibleChanged="Page_IsVisibleChanged">
@@ -62,6 +62,16 @@
                     <ui:Timer /> Wait <TextBlock Text="{Binding Source={x:Static properties:Settings.Default}, Path=DefaultWaitTimeSeconds}" />s &gt; <ui:Screen /> Stop Screen &gt; <ui:LastArea /> Cut the same range &gt; <ui:Save /> Save a File on desktop
                     </TextBlock>
                 </ui:ActionButton>
+
+                <ui:ActionButton x:Name="SavePrimaryMonitorButton"  Click="SavePrimaryMonitorButton_Click"  IsDefaultChanged="ActionButtons_IsDefaultChanged">
+                    <TextBlock><ui:Screen /> Primary Monitor &gt; <ui:Save/> Save a File on desktop </TextBlock>
+                </ui:ActionButton>
+
+                <ui:ActionButton x:Name="CountdownSavePrimaryMonitorButton"  Click="CountdownSavePrimaryMonitorButton_Click"  IsDefaultChanged="ActionButtons_IsDefaultChanged">
+                    <TextBlock><ui:Timer /> Wait <TextBlock Text="{Binding Source={x:Static properties:Settings.Default}, Path=DefaultWaitTimeSeconds}" />s &gt; <ui:Screen /> Primary Monitor &gt; <ui:Save/> Save a File on desktop</TextBlock>
+                </ui:ActionButton>
+
+
             </StackPanel>
         </ScrollViewer>
 

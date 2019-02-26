@@ -312,6 +312,14 @@ namespace Net.Surviveplus.LightCutter.Desktop
                     if (enabled) { LightCutter.CutSameAreaAndSave(this.main, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds)); }
                     break;
 
+                case "SavePrimaryMonitor":
+                    LightCutter.SavePrimaryMonitor(this.main, DateTime.Now);
+                    break;
+
+                case "CountdownSavePrimaryMonitor":
+                    LightCutter.SavePrimaryMonitor(this.main, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds));
+                    break;
+
                 default:
                     LightCutter.CutAndSave(this.main);
                     break;

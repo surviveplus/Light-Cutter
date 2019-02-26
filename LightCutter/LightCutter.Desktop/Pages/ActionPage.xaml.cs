@@ -49,6 +49,9 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             this.CutSameAreaAndSaveButton.DataContext = new ActionViewModel { AccessText = "_3.", Name = "CutSameAreaAndSave", DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == "CutSameAreaAndSave" ? Visibility.Visible : Visibility.Collapsed };
             this.CountdownCutAndSaveButton.DataContext = new ActionViewModel { AccessText = "_4.", Name = "CountdownCutAndSave", DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == "CountdownCutAndSave" ? Visibility.Visible : Visibility.Collapsed };
             this.CountdownCutSaveAreaAndSaveButton.DataContext = new ActionViewModel { AccessText = "_5.", Name = "CountdownCutSaveAreaAndSave", DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == "CountdownCutSaveAreaAndSave" ? Visibility.Visible : Visibility.Collapsed };
+            this.SavePrimaryMonitorButton.DataContext = new ActionViewModel { AccessText = "_6.", Name = "SavePrimaryMonitor", DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == "SavePrimaryMonitor" ? Visibility.Visible : Visibility.Collapsed };
+            this.CountdownSavePrimaryMonitorButton.DataContext = new ActionViewModel { AccessText = "_7.", Name = "CountdownSavePrimaryMonitor", DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == "CountdownSavePrimaryMonitor" ? Visibility.Visible : Visibility.Collapsed };
+
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -82,6 +85,17 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             LightCutter.CutSameAreaAndSave(this.parentWindow, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds));
         }
 
+        private void SavePrimaryMonitorButton_Click(object sender, EventArgs e)
+        {
+            LightCutter.SavePrimaryMonitor(this.parentWindow);
+        }
+
+        private void CountdownSavePrimaryMonitorButton_Click(object sender, EventArgs e)
+        {
+            LightCutter.SavePrimaryMonitor(this.parentWindow, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds));
+        }
+
+
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             this.EditButton.IsChecked = false;
@@ -98,6 +112,8 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             this.CutSameAreaAndSaveButton.ShowDefaultActionSelection = edit;
             this.CountdownCutAndSaveButton.ShowDefaultActionSelection = edit;
             this.CountdownCutSaveAreaAndSaveButton.ShowDefaultActionSelection = edit;
+            this.SavePrimaryMonitorButton.ShowDefaultActionSelection = edit;
+            this.CountdownSavePrimaryMonitorButton.ShowDefaultActionSelection = edit;
         }
 
         private void EditButton_Checked(object sender, RoutedEventArgs e)
@@ -129,5 +145,6 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             System.Diagnostics.Process.Start("https://github.com/surviveplus/Light-Cutter/blob/master/HowToUse/HowToUse.md");
 
         }
+
     }
 }
