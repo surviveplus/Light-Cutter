@@ -73,6 +73,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
         {
             Settings.Default.LastMainWindowWidth = this.Width;
             Settings.Default.LastMainWindowHeight = this.Height;
+            Settings.Default.SaveAndUpdateCommandsSettings();
         }
     }
 }

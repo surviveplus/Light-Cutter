@@ -57,7 +57,6 @@ namespace Net.Surviveplus.LightCutter.Desktop.Properties
                     break;
 
                 default:
-                    Settings.Default.DefaultActionName = "Screen > Cut > Copy";
                     break;
             }
         }
