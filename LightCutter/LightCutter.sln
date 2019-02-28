@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightCutter.UI.Sample", "Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightCutter.Core.Tests", "LightCutter.Core.Tests\LightCutter.Core.Tests.csproj", "{7E0562E7-8AE2-4BF6-BAC6-20EA5812904D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightCutter.Commands", "LightCutter.Commands\LightCutter.Commands.csproj", "{D55D7B8A-45A8-4F6C-9439-5BA0FD444BBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightCutter.Commands.Test", "LightCutter.Commands.Test\LightCutter.Commands.Test.csproj", "{C937B433-0206-44CC-839C-1F1C79D24D2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{7E0562E7-8AE2-4BF6-BAC6-20EA5812904D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E0562E7-8AE2-4BF6-BAC6-20EA5812904D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E0562E7-8AE2-4BF6-BAC6-20EA5812904D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D55D7B8A-45A8-4F6C-9439-5BA0FD444BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D55D7B8A-45A8-4F6C-9439-5BA0FD444BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D55D7B8A-45A8-4F6C-9439-5BA0FD444BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D55D7B8A-45A8-4F6C-9439-5BA0FD444BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C937B433-0206-44CC-839C-1F1C79D24D2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C937B433-0206-44CC-839C-1F1C79D24D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C937B433-0206-44CC-839C-1F1C79D24D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C937B433-0206-44CC-839C-1F1C79D24D2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
