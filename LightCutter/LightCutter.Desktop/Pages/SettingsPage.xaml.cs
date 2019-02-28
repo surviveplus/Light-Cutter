@@ -54,7 +54,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
-            Settings.Default.Save();
+            Settings.Default.SaveAndUpdateCommandsSettings();
         }
 
         private void VersionInformationLink_Click(object sender, RoutedEventArgs e)

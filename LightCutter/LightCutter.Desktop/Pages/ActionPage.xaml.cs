@@ -44,55 +44,51 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                 ErrorVisibility = (!b.ShortcutStartDefaultAction.Enabled).ToVisibleOrCollapsed()
             };
 
-            this.CutAndCopyButton.DataContext = new ActionViewModel { AccessText = "_1.", Name = "CutAndCopy", DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == "CutAndCopy" ? Visibility.Visible : Visibility.Collapsed };
-            this.CutAndSaveButton.DataContext = new ActionViewModel { AccessText = "_2.", Name = "CutAndSave", DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == "CutAndSave" ? Visibility.Visible : Visibility.Collapsed };
-            this.CutSameAreaAndSaveButton.DataContext = new ActionViewModel { AccessText = "_3.", Name = "CutSameAreaAndSave", DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == "CutSameAreaAndSave" ? Visibility.Visible : Visibility.Collapsed };
-            this.CountdownCutAndSaveButton.DataContext = new ActionViewModel { AccessText = "_4.", Name = "CountdownCutAndSave", DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == "CountdownCutAndSave" ? Visibility.Visible : Visibility.Collapsed };
-            this.CountdownCutSaveAreaAndSaveButton.DataContext = new ActionViewModel { AccessText = "_5.", Name = "CountdownCutSaveAreaAndSave", DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == "CountdownCutSaveAreaAndSave" ? Visibility.Visible : Visibility.Collapsed };
-            this.SavePrimaryMonitorButton.DataContext = new ActionViewModel { AccessText = "_6.", Name = "SavePrimaryMonitor", DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == "SavePrimaryMonitor" ? Visibility.Visible : Visibility.Collapsed };
-            this.CountdownSavePrimaryMonitorButton.DataContext = new ActionViewModel { AccessText = "_7.", Name = "CountdownSavePrimaryMonitor", DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == "CountdownSavePrimaryMonitor" ? Visibility.Visible : Visibility.Collapsed };
+            this.Actions.Children.Clear();
+            int index = 0;
+            foreach (var kvp in LightCutter.ActionCommands)
+            {
+                index += 1; // TODO: 1~9,0,A~Z ?
+                var command = kvp.Key;
+                var action = kvp.Value;
+
+                var actionButton = new UI.Parts.ActionButton { Visibility = Visibility.Visible } ;
+                actionButton.Tag = action;
+                actionButton.Content = action.DisplayCommand;
+                actionButton.ButtonIsEnabled = action.IsEnabled;
+
+                var model = new ActionViewModel { AccessText = $"_{index}.", Name = command, DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == command ? Visibility.Visible : Visibility.Collapsed };
+                actionButton.DataContext = model;
+                actionButton.Click += (sender2, e2) => {
+                    using (new WindowHide(this.parentWindow))
+                    {
+                        action.Do();
+                    } // end using
+                };
+                actionButton.IsDefaultChanged += (sender2, e2) => {
+                    if (model.DefaultShortcutVisibility == Visibility.Visible)
+                    {
+                        Settings.Default.DefaultActionName = command;
+                        Settings.Default.SaveAndUpdateCommandsSettings();
+                    }
+                };
+                    this.Actions.Children.Add(actionButton);
+            } // next kvp
 
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            var enabled = LightCutter.LastRange.HasValue;
-            this.CutSameAreaAndSaveButton.ButtonIsEnabled = enabled;
-            this.CountdownCutSaveAreaAndSaveButton.ButtonIsEnabled = enabled;
-        }
+            foreach (var child in this.Actions.Children)
+            {
+                var actionButton = child as UI.Parts.ActionButton;
+                if (actionButton != null)
+                {
+                    var action = actionButton.Tag as Commands.ActionCommands;
+                    actionButton.ButtonIsEnabled = action.IsEnabled;
+                }
+            }
 
-        private void CutAndCopyButton_Click(object sender, EventArgs e)
-        {
-            LightCutter.CutAndCopy(this.parentWindow);
-        }
-
-        private void CutAndSaveButton_Click(object sender, EventArgs e)
-        {
-            LightCutter.CutAndSave(this.parentWindow);
-        }
-        private void CutSameAreaAndSaveButton_Click(object sender, EventArgs e)
-        {
-            LightCutter.CutSameAreaAndSave(this.parentWindow);
-        }
-
-        private void CountdownCutAndSaveButton_Click(object sender, EventArgs e)
-        {
-            LightCutter.CutAndSave(this.parentWindow, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds));
-        }
-
-        private void CountdownCutSaveAreaAndSaveButton_Click(object sender, EventArgs e)
-        {
-            LightCutter.CutSameAreaAndSave(this.parentWindow, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds));
-        }
-
-        private void SavePrimaryMonitorButton_Click(object sender, EventArgs e)
-        {
-            LightCutter.SavePrimaryMonitor(this.parentWindow);
-        }
-
-        private void CountdownSavePrimaryMonitorButton_Click(object sender, EventArgs e)
-        {
-            LightCutter.SavePrimaryMonitor(this.parentWindow, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds));
         }
 
 
@@ -107,13 +103,14 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             var button = this.EditButton;
             var edit = button.IsChecked.Value;
 
-            this.CutAndCopyButton.ShowDefaultActionSelection = edit;
-            this.CutAndSaveButton.ShowDefaultActionSelection = edit;
-            this.CutSameAreaAndSaveButton.ShowDefaultActionSelection = edit;
-            this.CountdownCutAndSaveButton.ShowDefaultActionSelection = edit;
-            this.CountdownCutSaveAreaAndSaveButton.ShowDefaultActionSelection = edit;
-            this.SavePrimaryMonitorButton.ShowDefaultActionSelection = edit;
-            this.CountdownSavePrimaryMonitorButton.ShowDefaultActionSelection = edit;
+            foreach (var child in this.Actions.Children)
+            {
+                var actionButton = child as UI.Parts.ActionButton;
+                if(actionButton != null)
+                {
+                    actionButton.ShowDefaultActionSelection = edit;
+                }
+            }
         }
 
         private void EditButton_Checked(object sender, RoutedEventArgs e)
@@ -126,19 +123,6 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             this.RefreshEditMode();
         }
 
-        private void ActionButtons_IsDefaultChanged(object sender, EventArgs e)
-        {
-            var actionButton = sender as UI.Parts.ActionButton;
-            var model = actionButton.DataContext as ActionViewModel;
-            var name = model.Name;
-
-            if(model.DefaultShortcutVisibility == Visibility.Visible)
-            {
-                Settings.Default.DefaultActionName = name;
-                Settings.Default.Save();
-            }
-
-        }
 
         private void HelpLink_Click(object sender, RoutedEventArgs e)
         {

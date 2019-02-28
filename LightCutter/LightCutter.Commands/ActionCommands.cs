@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Net.Surviveplus.LightCutter.Commands
 {
@@ -21,23 +23,65 @@ namespace Net.Surviveplus.LightCutter.Commands
             }
         }
 
+        public TextBlock DisplayCommand
+        {
+            get
+            {
+                var t = new TextBlock();
+
+                var isFirst = true;
+                foreach (var command in this.Commands)
+                {
+                    if (! isFirst)
+                    {
+                        t.Inlines.Add(" > ");
+                    }
+                    isFirst = false;
+
+                    foreach (var item in command.DisplayCommand)
+                    {
+                        var uiElement = item as UIElement;
+                        if (uiElement != null)
+                        {
+                            t.Inlines.Add(uiElement);
+                        }
+                        else
+                        {
+                            var text = item?.ToString();
+                            t.Inlines.Add(text);
+                        }
+                    }
+
+                }
+
+
+                return t;
+
+            }
+        }
+
+
+        public bool IsEnabled => !Commands.Any(c => !c.IsEnabled);
+
         public override string ToString()
         {
-            return string.Join(" > ",  (from a in this.Commands select a.Command) );
+            return string.Join(" > ", (from a in this.Commands select a.Command));
         }
 
         public static ActionCommands FromCommands(string commands)
         {
             var r = new ActionCommands();
-            foreach (var text in from c in commands.Split('>') select c.Trim() )
+            foreach (var text in from c in commands.Split('>') select c.Trim())
             {
                 // TODO: text and Parser - key value dictionary ?
                 IActionCommand command = null;
-                if(command == null ) command = Cutting.CutCommand.FromCommand(text);
-                if(command == null ) command = Sharing.SaveFileCommand.FromCommand(text);
-                if(command == null ) command = Targeting.TargetPrimaryMonitorCommand.FromCommand(text);
-                if(command == null ) command = Targeting.TargetScreenCommand.FromCommand(text);
-                if(command == null ) command = Operations.WaitCommand.FromCommand(text);
+                if (command == null) command = Cutting.CutCommand.FromCommand(text);
+                if (command == null) command = Cutting.LastRangeCommand.FromCommand(text);
+                if (command == null) command = Operations.WaitCommand.FromCommand(text);
+                if (command == null) command = Sharing.CopyCommand.FromCommand(text);
+                if (command == null) command = Sharing.SaveFileCommand.FromCommand(text);
+                if (command == null) command = Targeting.TargetPrimaryMonitorCommand.FromCommand(text);
+                if (command == null) command = Targeting.TargetScreenCommand.FromCommand(text);
 
 
                 if (command != null)

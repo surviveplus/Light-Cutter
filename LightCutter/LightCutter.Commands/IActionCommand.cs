@@ -8,12 +8,13 @@ namespace Net.Surviveplus.LightCutter.Commands
 {
     public interface IActionCommand
     {
-
         void Do(ActionState state);
 
         string Command { get; }
 
-        // TODO: System.Windows.Controls.TextBlock DisplayCommand { get; }
+        IEnumerable<object> DisplayCommand { get; }
+
+        bool IsEnabled { get; }
 
     } // end interface
 

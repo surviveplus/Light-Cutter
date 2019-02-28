@@ -46,11 +46,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionCommandDisplay.cs" />
     <Compile Include="ActionCommands.cs" />
     <Compile Include="ActionState.cs" />
     <Compile Include="Cutting\CutCommand.cs" />
-    <Compile Include="Default.cs" />
-    <Compile Include="Share\SaveFileCommand.cs" />
+    <Compile Include="Cutting\LastRangeCommand.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Sharing\CopyCommand.cs" />
+    <Compile Include="Sharing\SaveFileCommand.cs" />
     <Compile Include="Targeting\TargetPrimaryMonitorCommand.cs" />
     <Compile Include="Targeting\TargetScreenCommand.cs" />
     <Compile Include="Operations\WaitCommand.cs" />

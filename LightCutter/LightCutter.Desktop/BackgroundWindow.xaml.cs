@@ -88,6 +88,8 @@ namespace Net.Surviveplus.LightCutter.Desktop
         public BackgroundWindow()
         {
             InitializeComponent();
+
+            LightCutter.InitializeActionCommands();
         }
 
         #endregion
@@ -143,7 +145,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
             catch (Exception)
             {
                 Settings.Default.ShortcutOpenActionPanel = "Ctrl + Shift + Alt + A";
-                Settings.Default.Save();
+                Settings.Default.SaveAndUpdateCommandsSettings();
                 this.ShortcutOpenActionPanel = HotkeyModel.FromString(Settings.Default.ShortcutOpenActionPanel);
             }
             this.hotkeys.Add(this.ShortcutOpenActionPanel);
@@ -155,7 +157,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
             catch (Exception)
             {
                 Settings.Default.ShortcutStartDefaultAction = "Ctrl + Shift + Alt + Z";
-                Settings.Default.Save();
+                Settings.Default.SaveAndUpdateCommandsSettings();
                 this.ShortcutStartDefaultAction = HotkeyModel.FromString(Settings.Default.ShortcutStartDefaultAction);
             }
             this.hotkeys.Add(this.ShortcutStartDefaultAction);
@@ -190,8 +192,13 @@ namespace Net.Surviveplus.LightCutter.Desktop
         {
             if(Properties.Settings.Default.Upgraded == false){
                 Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.UpgradeDefaultActionName();
                 Properties.Settings.Default.Upgraded = true;
-                Properties.Settings.Default.Save();
+                Properties.Settings.Default.SaveAndUpdateCommandsSettings();
+            }
+            else
+            {
+                Properties.Settings.Default.UpdateCommandsSettings();
             }
 
             this.helper = new WindowInteropHelper(this);
@@ -248,19 +255,32 @@ namespace Net.Surviveplus.LightCutter.Desktop
         {
             var time = DateTime.Now + TimeSpan.FromSeconds(3);
             await Task.Run(() => { System.Threading.Thread.Sleep(200); });
-            LightCutter.CutAndSave(this.main, time);
+
+            using (new WindowHide(main))
+            {
+                var action = Commands.ActionCommands.FromCommands("Wait > Screen > Cut > Save");
+                action.Do();
+            }
         }
 
         private async void CutAndCopyAction_Click(object sender, RoutedEventArgs e)
         {
             await Task.Run(() => { System.Threading.Thread.Sleep(200); });
-            LightCutter.CutAndCopy(this.main);
+            using (new WindowHide(main))
+            {
+                var action = Commands.ActionCommands.FromCommands("Screen > Cut > Copy");
+                action.Do();
+            }
         }
 
         private async void CutAndSaveAction_Click(object sender, RoutedEventArgs e)
         {
             await Task.Run(() => { System.Threading.Thread.Sleep(200); });
-            LightCutter.CutAndSave(this.main);
+            using (new WindowHide(main))
+            {
+                var action = Commands.ActionCommands.FromCommands("Screen > Cut > Save");
+                action.Do();
+            }
         }
 
 
@@ -288,41 +308,13 @@ namespace Net.Surviveplus.LightCutter.Desktop
 
         private void DoDefaultAction()
         {
-            var enabled = LightCutter.LastRange.HasValue;
-
-            switch (Settings.Default.DefaultActionName)
+            if(LightCutter.ActionCommands.ContainsKey( Settings.Default.DefaultActionName))
             {
-                case "CutAndCopy":
-                    LightCutter.CutAndSave(this.main);
-                    break;
-
-                case "CutAndSave":
-                    LightCutter.CutAndSave(this.main);
-                    break;
-
-                case "CutSameAreaAndSave":
-                    if (enabled){ LightCutter.CutSameAreaAndSave(this.main); }
-                    break;
-
-                case "CountdownCutAndSave":
-                    LightCutter.CutAndSave(this.main, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds));
-                    break;
-
-                case "CountdownCutSaveAreaAndSave":
-                    if (enabled) { LightCutter.CutSameAreaAndSave(this.main, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds)); }
-                    break;
-
-                case "SavePrimaryMonitor":
-                    LightCutter.SavePrimaryMonitor(this.main, DateTime.Now);
-                    break;
-
-                case "CountdownSavePrimaryMonitor":
-                    LightCutter.SavePrimaryMonitor(this.main, DateTime.Now + TimeSpan.FromSeconds(Settings.Default.DefaultWaitTimeSeconds));
-                    break;
-
-                default:
-                    LightCutter.CutAndSave(this.main);
-                    break;
+                var action = LightCutter.ActionCommands[Settings.Default.DefaultActionName];
+                if (action.IsEnabled)
+                {
+                    action.Do();
+                }
             }
 
         }

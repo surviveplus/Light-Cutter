@@ -41,8 +41,8 @@
         </Grid>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
 
-            <StackPanel >
-                <ui:ActionButton x:Name="CutAndCopyButton" Click="CutAndCopyButton_Click" IsDefaultChanged="ActionButtons_IsDefaultChanged">
+            <StackPanel  x:Name="Actions">
+                <!--<ui:ActionButton x:Name="CutAndCopyButton" Click="CutAndCopyButton_Click" IsDefaultChanged="ActionButtons_IsDefaultChanged">
                     <TextBlock><ui:Screen /> Stop Screen &gt; <ui:Cutter /> Cut &gt; <ui:Copy /> Copy</TextBlock>
                 </ui:ActionButton>
                 <ui:ActionButton x:Name="CutAndSaveButton" Click="CutAndSaveButton_Click"  IsDefaultChanged="ActionButtons_IsDefaultChanged">
@@ -69,7 +69,7 @@
 
                 <ui:ActionButton x:Name="CountdownSavePrimaryMonitorButton"  Click="CountdownSavePrimaryMonitorButton_Click"  IsDefaultChanged="ActionButtons_IsDefaultChanged">
                     <TextBlock><ui:Timer /> Wait <TextBlock Text="{Binding Source={x:Static properties:Settings.Default}, Path=DefaultWaitTimeSeconds}" />s &gt; <ui:Screen /> Primary Monitor &gt; <ui:Save/> Save a File on desktop</TextBlock>
-                </ui:ActionButton>
+                </ui:ActionButton>-->
 
 
             </StackPanel>

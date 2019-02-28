@@ -86,6 +86,7 @@
     <Compile Include="Pages\VersionPage.xaml.cs">
       <DependentUpon>VersionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Commands.cs" />
     <Compile Include="SinglieInstanceApp.cs" />
     <Compile Include="WindowHide.cs" />
     <Page Include="BackgroundWindow.xaml">
@@ -149,6 +150,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LightCutter.Commands\LightCutter.Commands.csproj">
+      <Project>{d55d7b8a-45a8-4f6c-9439-5ba0fd444bbb}</Project>
+      <Name>LightCutter.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LightCutter.Core\LightCutter.Core.csproj">
       <Project>{3e67af87-6d47-462a-8f75-246d328ad3d2}</Project>
       <Name>LightCutter.Core</Name>

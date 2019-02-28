@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Net.Surviveplus.LightCutter.Commands.Sharing
 {
@@ -16,6 +17,10 @@ namespace Net.Surviveplus.LightCutter.Commands.Sharing
         }
 
         public string Command => "Save";
+
+        public bool IsEnabled => true;
+
+        IEnumerable<object> IActionCommand.DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.Save(), " Save");
 
         public void Do(ActionState state)
         {

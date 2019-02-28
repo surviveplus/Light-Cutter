@@ -12,5 +12,6 @@ namespace Net.Surviveplus.LightCutter.Commands
 
         public bool GuideBackgroundTransparent { get; set; } = true;
         public int GridPixel { get; set; } = 16;
+        public int DefaultWaitTimeSeconds { get; set; } = 3;
     }
 }
