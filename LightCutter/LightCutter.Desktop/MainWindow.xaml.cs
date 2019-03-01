@@ -57,6 +57,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
 
         public void ShowAction() {
             this.mainFrame.Content = new Pages.ActionPage(this);
+            if (this.mainFrame.CanGoBack){ this.mainFrame.RemoveBackEntry(); }
         }
 
         public void ShowSetting()
@@ -75,7 +76,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
             Settings.Default.LastMainWindowHeight = this.Height;
             Settings.Default.SaveAndUpdateCommandsSettings();
 
-            if(App.Current.MainWindow != null)
+            if (App.Current.MainWindow != null)
             {
                 e.Cancel = true;
                 this.Hide();

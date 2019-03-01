@@ -1,6 +1,7 @@
 ﻿using Net.Surviveplus.LightCutter.Desktop.Properties;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,8 +15,61 @@ namespace Net.Surviveplus.LightCutter.Desktop
         public static List<Models.ActionModel> Commands;
         public static Dictionary<string, Commands.ActionCommands> ActionCommands ;
 
+        public static void SaveCommands()
+        {
+            var actions = Newtonsoft.Json.JsonConvert.SerializeObject((from a in LightCutter.Commands select a.Commands).ToArray());
+            Settings.Default.Actions = actions;
+        }
+
+        public static void LoadCommands()
+        {
+            if (string.IsNullOrWhiteSpace(Settings.Default.Actions)) return;
+
+            string[] actions = null;
+            try
+            {
+                actions = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(Settings.Default.Actions);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("LoadCommands ERROR");
+                Debug.WriteLine(ex.ToString());
+            }
+
+            if (actions != null)
+            {
+                foreach (var action in actions)
+                {
+                    try
+                    {
+                        AddAction(action);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("LoadCommands AddAction ERROR");
+                        Debug.WriteLine(ex.ToString());
+                    }
+                }
+            } // end if
+
+        }
+
         public static void InitializeActionCommands()
         {
+            LightCutter.Commands = new List<Models.ActionModel>();
+            LightCutter.ActionCommands = new Dictionary<string, Commands.ActionCommands>();
+
+            LoadCommands();
+
+            if(LightCutter.Commands.Count == 0)
+            {
+                ResetActions();
+            }
+        }
+
+        public static void ResetActions()
+        {
+            Settings.Default.Actions = string.Empty;
             LightCutter.Commands = new List<Models.ActionModel>();
             LightCutter.ActionCommands = new Dictionary<string, Commands.ActionCommands>();
 
@@ -27,8 +81,8 @@ namespace Net.Surviveplus.LightCutter.Desktop
             AddAction("Wait > Screen > Cut > Save");
             AddAction("Wait > Screen > Last Range  > Save");
 
-            AddAction("Primary Monitor > Save");
-            AddAction("Wait > Primary Monitor > Save");
+            //AddAction("Primary Monitor > Save");
+            //AddAction("Wait > Primary Monitor > Save");
         }
 
         private static long lastId = 0;
@@ -43,6 +97,8 @@ namespace Net.Surviveplus.LightCutter.Desktop
                 var action = Surviveplus.LightCutter.Commands.ActionCommands.FromCommands(commands);
                 LightCutter.ActionCommands[commands] = action;
             }
+
+            SaveCommands();
         }
 
         public static void RemoveAction(Models.ActionModel action)
@@ -56,11 +112,14 @@ namespace Net.Surviveplus.LightCutter.Desktop
             {
                 LightCutter.ActionCommands.Remove(action.Commands);
             }
+
+            SaveCommands();
         }
 
         public static void ReplaceOrAddAction(Models.ActionModel original, string newCommands)
         {
-            if (LightCutter.Commands.Contains(original))
+            if (original != null &&
+                LightCutter.Commands.Contains(original))
             {
                 var index = LightCutter.Commands.IndexOf(original);
                 LightCutter.Commands.Remove(original);
@@ -88,6 +147,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
                 LightCutter.ActionCommands[newCommands] = action;
             }
 
+            SaveCommands();
         }
 
 

@@ -142,5 +142,17 @@ namespace Net.Surviveplus.LightCutter.Desktop.Properties {
                 this["GridPixel"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Actions {
+            get {
+                return ((string)(this["Actions"]));
+            }
+            set {
+                this["Actions"] = value;
+            }
+        }
     }
 }

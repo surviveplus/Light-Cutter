@@ -47,6 +47,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             if(originalAction == null)
             {
                 this.deleteButton.Visibility = Visibility.Collapsed;
+                this.copyButton.Visibility = Visibility.Collapsed;
                 this.Title.Content = "New Action";
             }
         }
@@ -68,7 +69,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             if (action != null )
             {
                 var newCommand = action.ToString();
-                if(this.originalAction.Commands != newCommand)
+                if(this.originalAction?.Commands != newCommand)
                 {
                     LightCutter.ReplaceOrAddAction(this.originalAction, newCommand);
                     replaced = true;
