@@ -101,6 +101,10 @@ namespace Net.Surviveplus.LightCutter.UI.Parts
 
             var thisIsDefaultRadio = this.Template.FindName("IsDefaultRadio", this) as RadioButton;
             if (thisIsDefaultRadio != null) thisIsDefaultRadio.IsChecked = (this.DataContext as ActionViewModel)?.DefaultShortcutVisibility == Visibility.Visible;
+
+            var buttonArea = this.Template.FindName("buttonArea", this) as ColumnDefinition;
+            if (buttonArea != null) buttonArea.Width = this.valueOfShowDefaultActionSelection ? new GridLength(40) : new GridLength(0);
+
         }
 
         private void IsDefaultRadio_Checked(object sender, RoutedEventArgs e)
@@ -116,6 +120,13 @@ namespace Net.Surviveplus.LightCutter.UI.Parts
         }
 
         public event EventHandler<EventArgs> IsDefaultChanged;
+
+        private void EditActionButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.EditButtonClick?.Invoke(this, EventArgs.Empty);
+        }
+
+        public event EventHandler<EventArgs> EditButtonClick;
 
     } // end class
 } // end namespace

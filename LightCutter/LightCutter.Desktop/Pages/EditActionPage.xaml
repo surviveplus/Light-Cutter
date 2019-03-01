@@ -1,0 +1,75 @@
+﻿<Page x:Class="Net.Surviveplus.LightCutter.Desktop.Pages.EditActionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Pages"
+        xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="540"
+      Title="EditActionPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="55" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+            <Button Width="30" Height="30" Margin="0 5" x:Name="BackButton" Background="Transparent" BorderBrush="Transparent" Click="BackButton_Click" >&lt;</Button>
+            <Label x:Name="Title" FontSize="18">Edit Action</Label>
+        </StackPanel>
+
+        <ui:ActionButton Grid.Row="1" x:Name="actionPreview" VerticalAlignment="Center" Click="ActionPreview_Click">
+            <TextBlock ><ui:Screen />  Stop Screen &gt; <ui:LastArea /> Cut the same range &gt; <ui:Save /> Save a File on desktop</TextBlock>
+        </ui:ActionButton>
+        <TextBlock Grid.Row="1" x:Name="commandError" TextAlignment="Center" VerticalAlignment="Center" Foreground="red" Visibility="Collapsed">( xxx is not command)</TextBlock>
+
+        <StackPanel Grid.Row="2" Margin="10">
+
+            <TextBlock> Action Commands :</TextBlock>
+            <TextBox x:Name="commandsTextBox" Margin="0 10" Height="40" TextChanged="CommandsTextBox_TextChanged">Screen &gt; Cut &gt; Save</TextBox>
+
+
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="3" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="10 0" >
+                    <TextBlock>&gt;</TextBlock>
+                </StackPanel>
+
+                <StackPanel Margin="10 0" MinWidth="60">
+                    <TextBlock><ui:Timer /> Wait</TextBlock>
+                </StackPanel>
+
+                <StackPanel Margin="10 0" MinWidth="80">
+                    <TextBlock><ui:Screen/> Screen</TextBlock>
+                    <TextBlock><ui:Screen/> Primary Monitor</TextBlock>
+                </StackPanel>
+                <StackPanel Margin="10 0" MinWidth="80">
+                    <TextBlock><ui:Cutter/> Cut</TextBlock>
+                    <TextBlock><ui:LastArea/> Last Range</TextBlock>
+                </StackPanel>
+                <StackPanel Margin="10 0" MinWidth="80">
+                    <TextBlock><ui:Copy/> Copy</TextBlock>
+                    <TextBlock><ui:Save/> Save</TextBlock>
+                </StackPanel>
+            </StackPanel>
+            </ScrollViewer>
+
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5 0 0 10">
+            <Button x:Name="copyButton" Width="60" Margin="5" Click="CopyButton_Click" Visibility="Collapsed">Copy</Button>
+            <Button x:Name="deleteButton" Width="60" Margin="5" Click="DeleteButton_Click">Delete</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 5 10">
+            <Button x:Name="okButton" Width="120" Margin="5" IsDefault="True" Click="OkButton_Click">OK</Button>
+            <Button x:Name="cancelButton" Width="120" Margin="5" IsCancel="True" Click="CancelButton_Click">Cancel</Button>
+        </StackPanel>
+
+    </Grid>
+</Page>

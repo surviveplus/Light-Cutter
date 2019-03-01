@@ -14,6 +14,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition x:Name="defaultSelectionArea" Width="20"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition x:Name="buttonArea" Width="40"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <RadioButton x:Name="IsDefaultRadio" Grid.Column="0" VerticalAlignment="Center" GroupName="ActionRadio" Checked="IsDefaultRadio_Checked" Unchecked="IsDefaultRadio_Unchecked"></RadioButton>
                 <Button Grid.Column="1" x:Name="MainButton"  Padding="10 10 10 10"  Background="#FFFAFAFA" Click="MainButton_Click">
@@ -28,6 +29,7 @@
                 
                     </StackPanel>
                 </Button>
+                <Button Grid.Column="2" x:Name="EditActionButton" Background="Transparent" BorderThickness="0 1 1 1" Click="EditActionButton_Click">...</Button>
             </Grid>
         </ControlTemplate> 
     </UserControl.Template>

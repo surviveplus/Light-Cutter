@@ -80,6 +80,15 @@ namespace LightCutter.Commands.Test
             action.Do();
         }
 
+        [TestMethod]
+        public void Test_Waite_Text()
+        {
+            var action = ActionCommands.FromCommands("Wait");
+
+            Debug.WriteLine(action.ToString());
+            Debug.WriteLine("");
+            action.Do();
+        }
 
     }
 }

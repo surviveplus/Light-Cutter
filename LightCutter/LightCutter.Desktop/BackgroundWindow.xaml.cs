@@ -313,7 +313,10 @@ namespace Net.Surviveplus.LightCutter.Desktop
                 var action = LightCutter.ActionCommands[Settings.Default.DefaultActionName];
                 if (action.IsEnabled)
                 {
-                    action.Do();
+                    using (new WindowHide(main))
+                    {
+                        action.Do();
+                    }
                 }
             }
 

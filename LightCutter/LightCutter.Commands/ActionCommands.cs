@@ -90,7 +90,7 @@ namespace Net.Surviveplus.LightCutter.Commands
                 }
                 else
                 {
-                    throw new ArgumentException($"{text} is not command");
+                    throw new ArgumentException($"\"{text}\" is not command");
                 } // end if
             }
             return r;

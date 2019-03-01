@@ -22,6 +22,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition x:Name="actionOperationArea" Height="50"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
@@ -75,7 +76,12 @@
             </StackPanel>
         </ScrollViewer>
 
-        <Label Margin="10 0" Grid.Row="2">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" >
+            <TextBlock Margin="10 5" VerticalAlignment="Center"><Hyperlink x:Name="recetActionsButton" Click="RecetActionsButton_Click">Reset Actions</Hyperlink></TextBlock>
+            <Button x:Name="addActionButton" Margin="10 5" Width="40" Click="AddActionButton_Click">+</Button>
+        </StackPanel>
+        
+        <Label Margin="10 0" Grid.Row="3">
             <TextBlock>from 
                 <TextBlock x:Name="shortcutA" xml:space ="preserve"><TextBlock Visibility="{Binding Win}"><ui:Key>Win</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Ctrl}"><ui:Key>Ctrl</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Shift}"><ui:Key>Shift</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Alt}"><ui:Key>Alt</ui:Key> + </TextBlock><ui:Key><TextBlock Text="{Binding Key}" /></ui:Key></TextBlock>
                 <TextBlock x:Name="shortcutAError" Foreground="Gray">(The shortcut key was not enabled.)</TextBlock>

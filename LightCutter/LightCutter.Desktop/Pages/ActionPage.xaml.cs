@@ -29,6 +29,8 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
         }
         private MainWindow parentWindow;
 
+        public bool MustRefreshActions { get; set; } = false;
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var b = App.Current.MainWindow as BackgroundWindow;
@@ -44,37 +46,46 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                 ErrorVisibility = (!b.ShortcutStartDefaultAction.Enabled).ToVisibleOrCollapsed()
             };
 
-            this.Actions.Children.Clear();
-            int index = 0;
-            foreach (var kvp in LightCutter.ActionCommands)
+            if (this.MustRefreshActions || 
+                this.Actions.Children.Count == 0)
             {
-                index += 1; // TODO: 1~9,0,A~Z ?
-                var command = kvp.Key;
-                var action = kvp.Value;
+                this.Actions.Children.Clear();
+                int index = 0;
+                foreach (var kvp in LightCutter.ActionCommands)
+                {
+                    index += 1; // TODO: 1~9,0,A~Z ?
+                    var command = kvp.Key;
+                    var action = kvp.Value;
 
-                var actionButton = new UI.Parts.ActionButton { Visibility = Visibility.Visible } ;
-                actionButton.Tag = action;
-                actionButton.Content = action.DisplayCommand;
-                actionButton.ButtonIsEnabled = action.IsEnabled;
+                    var actionButton = new UI.Parts.ActionButton { Visibility = Visibility.Visible } ;
+                    actionButton.Tag = action;
+                    actionButton.Content = action.DisplayCommand;
+                    actionButton.ButtonIsEnabled = action.IsEnabled;
 
-                var model = new ActionViewModel { AccessText = $"_{index}.", Name = command, DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == command ? Visibility.Visible : Visibility.Collapsed };
-                actionButton.DataContext = model;
-                actionButton.Click += (sender2, e2) => {
-                    using (new WindowHide(this.parentWindow))
-                    {
-                        action.Do();
-                    } // end using
-                };
-                actionButton.IsDefaultChanged += (sender2, e2) => {
-                    if (model.DefaultShortcutVisibility == Visibility.Visible)
-                    {
-                        Settings.Default.DefaultActionName = command;
-                        Settings.Default.SaveAndUpdateCommandsSettings();
-                    }
-                };
+                    var model = new ActionViewModel { AccessText = $"_{index}.", Name = command, DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == command ? Visibility.Visible : Visibility.Collapsed };
+                    actionButton.DataContext = model;
+                    actionButton.Click += (sender2, e2) => {
+                        using (new WindowHide(this.parentWindow))
+                        {
+                            action.Do();
+                        } // end using
+                    };
+                    actionButton.IsDefaultChanged += (sender2, e2) => {
+                        if (model.DefaultShortcutVisibility == Visibility.Visible)
+                        {
+                            Settings.Default.DefaultActionName = command;
+                            Settings.Default.SaveAndUpdateCommandsSettings();
+                        }
+                    };
+                    actionButton.EditButtonClick += (sender2, e2) => {
+                        this.parentWindow.mainFrame.Content = new EditActionPage(this.parentWindow, this, model.AccessText, command);
+                    
+                    };
                     this.Actions.Children.Add(actionButton);
-            } // next kvp
+                } // next kvp
+            }
 
+            this.RefreshEditMode();
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -111,6 +122,8 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                     actionButton.ShowDefaultActionSelection = edit;
                 }
             }
+
+            this.actionOperationArea.Height = edit ? new GridLength( 50) :  new GridLength( 0 );
         }
 
         private void EditButton_Checked(object sender, RoutedEventArgs e)
@@ -130,5 +143,17 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
 
         }
 
+        private void AddActionButton_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: index
+            this.parentWindow.mainFrame.Content = new EditActionPage(this.parentWindow, this, string.Empty, string.Empty);
+        }
+
+        private void RecetActionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 
+            LightCutter.InitializeActionCommands();
+            this.parentWindow.ShowAction();
+        }
     }
 }

@@ -105,6 +105,24 @@ namespace LightCutter.UI.Sample
             this.action3.ShowDefaultActionSelection = edit;
 
         }
+
+        private void Action1_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Action1_Click(object sender, EventArgs e)
+        {
+            var w = new EditActionWindow();
+            w.ShowDialog();
+        }
+
+        private void Action1_EditButtonClick(object sender, EventArgs e)
+        {
+            var w = new EditActionWindow();
+            w.ShowDialog();
+
+        }
     }
 
 
