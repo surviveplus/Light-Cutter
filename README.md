@@ -22,6 +22,15 @@ However, the new version had not been released recently. So in this repository w
 ## How to use (Quick Start)
 see [here](HowToUse/HowToUse.md)
 
+### Action Command Edit (Ver.7.1)
+
+![Action Panel Edit](HowToUse/images/ActionPanelEdit2.png)
+
+You can edit Actions in version.7.1 or later. 
+
+![Action Edit](HowToUse/images/ActionEdit.png)
+
+Action is specified by simple command text.
 
 ## Roadmap
 ### ver.7.0 - Migrating from previous version
