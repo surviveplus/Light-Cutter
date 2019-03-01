@@ -78,7 +78,7 @@
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" >
             <TextBlock Margin="10 5" VerticalAlignment="Center"><Hyperlink x:Name="recetActionsButton" Click="RecetActionsButton_Click">Reset Actions</Hyperlink></TextBlock>
-            <Button x:Name="addActionButton" Margin="10 5" Width="40" Click="AddActionButton_Click">+</Button>
+            <Button x:Name="addActionButton" Margin="10 5" Width="40" Background="#FFFAFAFA" FontSize="18" Click="AddActionButton_Click">+</Button>
         </StackPanel>
         
         <Label Margin="10 0" Grid.Row="3">
