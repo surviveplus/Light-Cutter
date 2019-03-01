@@ -42,6 +42,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             }
 
             this.commandsTextBox.Text = commands;
+            this.commandsTextBox.SelectAll();
             this.commandsTextBox.Focus();
 
             if(originalAction == null)
@@ -166,6 +167,17 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                         // TODO : Error
                     }
                 } // end using
+            } // end if
+        }
+
+        private void CommandButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var command = button?.Tag as string;
+            if(!string.IsNullOrWhiteSpace( command))
+            {
+                this.commandsTextBox.SelectedText = command;
+                this.commandsTextBox.Focus();
             } // end if
         }
     }

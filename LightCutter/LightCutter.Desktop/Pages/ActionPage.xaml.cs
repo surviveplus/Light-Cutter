@@ -53,7 +53,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                 int index = 0;
                 foreach (var m in LightCutter.Commands)
                 {
-                    index += 1; // TODO: 1~9,0,A~Z ?
+                    index += 1; 
                     var id = m.Id;
                     var command = m.Commands;
                     var action = LightCutter.ActionCommands[command];
@@ -63,7 +63,23 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                     actionButton.Content = action.DisplayCommand;
                     actionButton.ButtonIsEnabled = action.IsEnabled;
 
-                    var model = new ActionViewModel { AccessText = $"_{index}.", Name = command, DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == command ? Visibility.Visible : Visibility.Collapsed };
+                    // 1~9, 0,A~Z ?
+                    var accessText = string.Empty;
+                    if( index < 10)
+                    {
+                        accessText = $"_{index}.";
+                    }
+                    else if (index == 10)
+                    {
+                        accessText = $"_0.";
+                    }
+                    else
+                    {
+                        var number = (index - 11) % 26;
+                        accessText = $"_{ Convert.ToChar(number + 0x41) }.";
+                    }
+
+                    var model = new ActionViewModel { AccessText = accessText, Name = command, DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == command ? Visibility.Visible : Visibility.Collapsed };
                     actionButton.DataContext = model;
                     actionButton.Click += (sender2, e2) => {
                         using (new WindowHide(this.parentWindow))

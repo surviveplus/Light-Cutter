@@ -15,6 +15,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "LightCutter.Setup.En", "Lig
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LightCutter.SetupActions", "LightCutter.SetupActions\LightCutter.SetupActions.vbproj", "{18414D66-F31A-448E-A88B-0F6972F8B357}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightCutter.Commands", "LightCutter.Commands\LightCutter.Commands.csproj", "{D55D7B8A-45A8-4F6C-9439-5BA0FD444BBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{18414D66-F31A-448E-A88B-0F6972F8B357}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18414D66-F31A-448E-A88B-0F6972F8B357}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18414D66-F31A-448E-A88B-0F6972F8B357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D55D7B8A-45A8-4F6C-9439-5BA0FD444BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D55D7B8A-45A8-4F6C-9439-5BA0FD444BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D55D7B8A-45A8-4F6C-9439-5BA0FD444BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D55D7B8A-45A8-4F6C-9439-5BA0FD444BBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,6 +53,7 @@ Global
 		{3E67AF87-6D47-462A-8F75-246D328AD3D2} = {42721C38-FFB9-4DB0-92A3-8E5406BE4A17}
 		{539472D6-60D8-43A2-B115-D402C44C88D0} = {42721C38-FFB9-4DB0-92A3-8E5406BE4A17}
 		{E9E0F6BE-C161-4A6D-8F8D-6B20AC491ADE} = {42721C38-FFB9-4DB0-92A3-8E5406BE4A17}
+		{D55D7B8A-45A8-4F6C-9439-5BA0FD444BBB} = {42721C38-FFB9-4DB0-92A3-8E5406BE4A17}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {69AEB872-EC85-492F-8DE5-3FB678DC83B6}
