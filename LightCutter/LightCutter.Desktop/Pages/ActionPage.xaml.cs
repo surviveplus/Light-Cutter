@@ -51,11 +51,12 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             {
                 this.Actions.Children.Clear();
                 int index = 0;
-                foreach (var kvp in LightCutter.ActionCommands)
+                foreach (var m in LightCutter.Commands)
                 {
                     index += 1; // TODO: 1~9,0,A~Z ?
-                    var command = kvp.Key;
-                    var action = kvp.Value;
+                    var id = m.Id;
+                    var command = m.Commands;
+                    var action = LightCutter.ActionCommands[command];
 
                     var actionButton = new UI.Parts.ActionButton { Visibility = Visibility.Visible } ;
                     actionButton.Tag = action;
@@ -78,7 +79,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                         }
                     };
                     actionButton.EditButtonClick += (sender2, e2) => {
-                        this.parentWindow.mainFrame.Content = new EditActionPage(this.parentWindow, this, model.AccessText, command);
+                        this.parentWindow.mainFrame.Content = new EditActionPage(this.parentWindow, this, model.AccessText, m);
                     
                     };
                     this.Actions.Children.Add(actionButton);
@@ -146,7 +147,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
         private void AddActionButton_Click(object sender, RoutedEventArgs e)
         {
             // TODO: index
-            this.parentWindow.mainFrame.Content = new EditActionPage(this.parentWindow, this, string.Empty, string.Empty);
+            this.parentWindow.mainFrame.Content = new EditActionPage(this.parentWindow, this, string.Empty, null);
         }
 
         private void RecetActionsButton_Click(object sender, RoutedEventArgs e)

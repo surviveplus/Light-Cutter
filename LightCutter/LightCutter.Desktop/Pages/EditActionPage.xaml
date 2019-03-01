@@ -66,7 +66,7 @@
 
 
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5 0 0 10">
-            <Button x:Name="copyButton" Width="60" Margin="5" Click="CopyButton_Click" Visibility="Collapsed">Copy</Button>
+            <Button x:Name="copyButton" Width="60" Margin="5" Click="CopyButton_Click">Copy</Button>
             <Button x:Name="deleteButton" Width="60" Margin="5" Click="DeleteButton_Click">Delete</Button>
         </StackPanel>
 

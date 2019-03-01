@@ -22,12 +22,12 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
     /// </summary>
     public partial class EditActionPage : Page
     {
-        public EditActionPage(MainWindow parentWindow, ActionPage actionPage, string accessText, string commands)
+        public EditActionPage(MainWindow parentWindow, ActionPage actionPage, string accessText, Models.ActionModel originalAction )
         {
             InitializeComponent();
             this.parentWindow = parentWindow;
             this.actionPage = actionPage;
-            this.originalCommand = commands;
+            this.originalAction = originalAction;
 
             this.actionPreview.DataContext = new ActionViewModel
             {
@@ -35,6 +35,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                 DefaultShortcutVisibility = Visibility.Collapsed
             };
 
+            var commands = originalAction?.Commands;
             if (string.IsNullOrWhiteSpace(commands))
             {
                 commands = "Screen > Copy";
@@ -43,15 +44,14 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             this.commandsTextBox.Text = commands;
             this.commandsTextBox.Focus();
 
-            if(string.IsNullOrWhiteSpace( this.originalCommand))
+            if(originalAction == null)
             {
                 this.deleteButton.Visibility = Visibility.Collapsed;
                 this.Title.Content = "New Action";
             }
         }
 
-        private string originalCommand;
-
+        private Models.ActionModel originalAction;
         private MainWindow parentWindow;
         private ActionPage actionPage;
 
@@ -63,22 +63,21 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+            var replaced = false;
             var action = this.actionPreview.Tag as ActionCommands;
-            if (action != null)
+            if (action != null )
             {
-                if(LightCutter.ActionCommands.ContainsKey(this.originalCommand))
+                var newCommand = action.ToString();
+                if(this.originalAction.Commands != newCommand)
                 {
-                    LightCutter.ActionCommands.Remove(this.originalCommand);
-                }
-
-                // TODO : key
-                LightCutter.ActionCommands.Add(action.ToString(), action );
+                    LightCutter.ReplaceOrAddAction(this.originalAction, newCommand);
+                    replaced = true;
+                } // end if
             } // end if
-
 
             if(this.actionPage != null)
             {
-                this.actionPage.MustRefreshActions = true;
+                this.actionPage.MustRefreshActions = replaced;
                 this.parentWindow.GoBack();
             }
             else
@@ -94,15 +93,30 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
 
         private void CopyButton_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: copy , Actions key  ...
+            var added = false;
+            var action = this.actionPreview.Tag as ActionCommands;
+            if (action != null)
+            {
+                LightCutter.AddAction(action.ToString());
+                added = true;
+            } // end if
+
+            if (this.actionPage != null)
+            {
+                this.actionPage.MustRefreshActions = added;
+                this.parentWindow.GoBack();
+            }
+            else
+            {
+                this.parentWindow.ShowAction();
+            }
+
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (LightCutter.ActionCommands.ContainsKey(this.originalCommand))
-            {
-                LightCutter.ActionCommands.Remove(this.originalCommand);
-            }
+            LightCutter.RemoveAction(this.originalAction);
+
             if (this.actionPage != null)
             {
                 this.actionPage.MustRefreshActions = true;
