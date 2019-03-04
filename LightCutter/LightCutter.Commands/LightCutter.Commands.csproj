@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodedUIQuery, Version=1.0.2.4, Culture=neutral, PublicKeyToken=8bef33aba4cdebf4, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodedUIQuery.1.0.2.4\lib\net45\CodedUIQuery.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -43,6 +46,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -54,7 +58,10 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Sharing\CopyCommand.cs" />
     <Compile Include="Sharing\SaveFileCommand.cs" />
+    <Compile Include="Targeting\PrintWindowImage.cs" />
+    <Compile Include="Targeting\TargetNotFoundException.cs" />
     <Compile Include="Targeting\TargetPrimaryMonitorCommand.cs" />
+    <Compile Include="Targeting\TargetRemoteDesktopConnectionCommand.cs" />
     <Compile Include="Targeting\TargetScreenCommand.cs" />
     <Compile Include="Operations\WaitCommand.cs" />
     <Compile Include="IActionCommand.cs" />
@@ -72,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Actions.md" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

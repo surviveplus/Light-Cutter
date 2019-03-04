@@ -73,13 +73,13 @@ namespace Net.Surviveplus.LightCutter.Commands
             var r = new ActionCommands();
             foreach (var text in from c in commands.Split('>') select c.Trim())
             {
-                // TODO: text and Parser - key value dictionary ?
                 IActionCommand command = null;
                 if (command == null) command = Cutting.CutCommand.FromCommand(text);
                 if (command == null) command = Cutting.LastRangeCommand.FromCommand(text);
                 if (command == null) command = Operations.WaitCommand.FromCommand(text);
                 if (command == null) command = Sharing.CopyCommand.FromCommand(text);
                 if (command == null) command = Sharing.SaveFileCommand.FromCommand(text);
+                if (command == null) command = Targeting.TargetRemoteDesktopConnectionCommand.FromCommand(text);
                 if (command == null) command = Targeting.TargetPrimaryMonitorCommand.FromCommand(text);
                 if (command == null) command = Targeting.TargetScreenCommand.FromCommand(text);
 
