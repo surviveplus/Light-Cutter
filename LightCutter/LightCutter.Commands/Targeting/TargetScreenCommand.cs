@@ -22,6 +22,8 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
         IEnumerable<object> IActionCommand.DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.Screen(), " Stop Screen");
 
+        public bool MustUac => false;
+
         public void Do(ActionState state)
         {
             if (state.IsCanceled) return;

@@ -62,6 +62,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                     actionButton.Tag = action;
                     actionButton.Content = action.DisplayCommand;
                     actionButton.ButtonIsEnabled = action.IsEnabled;
+                    actionButton.MustUac = action.MustUac;
 
                     // 1~9, 0,A~Z ?
                     var accessText = string.Empty;

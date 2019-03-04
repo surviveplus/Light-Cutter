@@ -16,6 +16,8 @@ namespace Net.Surviveplus.LightCutter.Commands
 
         bool IsEnabled { get; }
 
+        bool MustUac { get; } 
+
     } // end interface
 
 } // end namespace

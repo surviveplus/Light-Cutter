@@ -21,6 +21,8 @@ namespace Net.Surviveplus.LightCutter.Commands.Cutting
 
         IEnumerable<object> IActionCommand.DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.LastArea(), " Cut the same range");
 
+        public bool MustUac => false;
+
         public void Do(ActionState state)
         {
             if (state.IsCanceled) return;

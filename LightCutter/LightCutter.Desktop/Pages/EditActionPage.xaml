@@ -53,6 +53,7 @@
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Screen"><TextBlock><ui:Screen/> Screen</TextBlock></Button>
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Primary Monitor"><TextBlock><ui:Screen/> Primary Monitor</TextBlock></Button>
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Remote Desktop"><TextBlock><ui:Screen/> Remote Desktop</TextBlock></Button>
+                    <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Virtual Machine"><TextBlock><ui:Screen/> Virtual Machine</TextBlock></Button>
                 </StackPanel>
                 <StackPanel Margin="10 0" MinWidth="80">
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Cut"><TextBlock><ui:Cutter/> Cut</TextBlock></Button>

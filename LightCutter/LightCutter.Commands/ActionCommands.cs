@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,6 +16,29 @@ namespace Net.Surviveplus.LightCutter.Commands
 
         public void Do()
         {
+            if (this.MustUac)
+            {
+                var principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+                var isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
+
+                if (!isAdmin)
+                {
+                    //restart
+                   var file = System.Reflection.Assembly.GetEntryAssembly().Location;
+                    try
+                    {
+                        Application.Current.Shutdown();
+                        Process.Start(new ProcessStartInfo(file) { UseShellExecute = true, Verb = "runas" });
+                        return;
+                    }
+                    catch (Exception)
+                    {
+                        throw new MustRunAsAdminException();
+                    }
+
+                } // endif
+            } // end if
+
             using (var state = new ActionState())
             {
                 foreach (var command in this.Commands)
@@ -63,6 +88,8 @@ namespace Net.Surviveplus.LightCutter.Commands
 
         public bool IsEnabled => !Commands.Any(c => !c.IsEnabled);
 
+        public bool MustUac => Commands.Any(c => c.MustUac);
+
         public override string ToString()
         {
             return string.Join(" > ", (from a in this.Commands select a.Command));
@@ -79,9 +106,10 @@ namespace Net.Surviveplus.LightCutter.Commands
                 if (command == null) command = Operations.WaitCommand.FromCommand(text);
                 if (command == null) command = Sharing.CopyCommand.FromCommand(text);
                 if (command == null) command = Sharing.SaveFileCommand.FromCommand(text);
-                if (command == null) command = Targeting.TargetRemoteDesktopConnectionCommand.FromCommand(text);
                 if (command == null) command = Targeting.TargetPrimaryMonitorCommand.FromCommand(text);
+                if (command == null) command = Targeting.TargetRemoteDesktopConnectionCommand.FromCommand(text);
                 if (command == null) command = Targeting.TargetScreenCommand.FromCommand(text);
+                if (command == null) command = Targeting.TargetVirtualMachineConnectionCommand.FromCommand(text);
 
 
                 if (command != null)

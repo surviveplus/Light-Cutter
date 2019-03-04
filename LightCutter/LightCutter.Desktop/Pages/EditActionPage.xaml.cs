@@ -137,6 +137,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                 var action = ActionCommands.FromCommands(this.commandsTextBox.Text);
                 this.actionPreview.Content = action.DisplayCommand;
                 this.actionPreview.ButtonIsEnabled = action.IsEnabled;
+                this.actionPreview.MustUac = action.MustUac;
                 this.actionPreview.Visibility = Visibility.Visible;
                 this.commandError.Visibility = Visibility.Collapsed;
                 this.actionPreview.Tag = action;

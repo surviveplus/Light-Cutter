@@ -22,6 +22,8 @@ namespace Net.Surviveplus.LightCutter.Commands.Sharing
 
         IEnumerable<object> IActionCommand.DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.Copy(), " Copy");
 
+        public bool MustUac => false;
+
         public void Do(ActionState state)
         {
             if (state.IsCanceled) return;

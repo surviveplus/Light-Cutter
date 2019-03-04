@@ -53,6 +53,7 @@ namespace LightCutter.UI.Sample
                 DefaultShortcut = a,
                 DefaultShortcutVisibility = Visibility.Visible,
             };
+            this.action1.MustUac = true;
             this.action2.DataContext = new ActionViewModel
             {
                 AccessText = "_2.",

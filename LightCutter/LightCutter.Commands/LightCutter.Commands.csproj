@@ -55,6 +55,7 @@
     <Compile Include="ActionState.cs" />
     <Compile Include="Cutting\CutCommand.cs" />
     <Compile Include="Cutting\LastRangeCommand.cs" />
+    <Compile Include="MustRunAsAdminException.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Sharing\CopyCommand.cs" />
     <Compile Include="Sharing\SaveFileCommand.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Operations\WaitCommand.cs" />
     <Compile Include="IActionCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Targeting\TargetVirtualMachineConnectionCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LightCutter.Core\LightCutter.Core.csproj">

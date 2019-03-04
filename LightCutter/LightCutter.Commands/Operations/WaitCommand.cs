@@ -30,7 +30,9 @@ namespace Net.Surviveplus.LightCutter.Commands.Operations
             Debug.WriteLine($"{this.Command}");
         }
 
-        public TimeSpan? WaitTime { get; set; } 
+        public TimeSpan? WaitTime { get; set; }
+
+        public bool MustUac => false;
 
         public TimeSpan GetWaitTime()
         {

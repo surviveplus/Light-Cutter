@@ -47,11 +47,16 @@ namespace Net.Surviveplus.LightCutter.Desktop
                     // Dispose managed resources.
                     if(this.parent != null)
                     {
-                        this.parent.Left = this.originalLocation.X;
-                        this.parent.Top = this.originalLocation.Y;
-                        this.parent.ShowInTaskbar = true;
-                        this.parent.Opacity = 1;
-                        this.parent.Show();
+                        try
+                        {
+                            this.parent.Left = this.originalLocation.X;
+                            this.parent.Top = this.originalLocation.Y;
+                            this.parent.ShowInTaskbar = true;
+                            this.parent.Opacity = 1;
+                            this.parent.Show();
+
+                        }
+                        catch {}
                     }
                 } // end if
 

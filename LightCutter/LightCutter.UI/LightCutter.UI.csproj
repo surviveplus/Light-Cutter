@@ -92,6 +92,9 @@
     <Compile Include="Parts\Timer.xaml.cs">
       <DependentUpon>Timer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Parts\Uac.xaml.cs">
+      <DependentUpon>Uac.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -172,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Parts\Timer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Parts\Uac.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace Net.Surviveplus.LightCutter.Commands.Targeting
 {
-    public class TargetRemoteDesktopConnectionCommand : IActionCommand
+    public class TargetVirtualMachineConnectionCommand : IActionCommand
     {
-        public static TargetRemoteDesktopConnectionCommand FromCommand(string command)
+        public static TargetVirtualMachineConnectionCommand FromCommand(string command)
         {
-            if (command == "Remote Desktop") { return new TargetRemoteDesktopConnectionCommand(); }
+            if (command == "Virtual Machine") { return new TargetVirtualMachineConnectionCommand(); }
             return null;
         }
 
-        public string Command => "Remote Desktop";
+        public string Command => "Virtual Machine";
 
-        public IEnumerable<object> DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.Screen(), " Remote Desktop");
+        public IEnumerable<object> DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.Screen(), " Virtual Machine");
 
         public bool IsEnabled => true;
 
-        public bool MustUac => false;
+        public bool MustUac => true;
 
         public void Do(ActionState state)
         {
@@ -31,7 +31,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
             try
             {
-                var bitmap = PrintWindowImage.PrintWindow("{TscShellContainerClass}", "{UIMainClass}");
+                var bitmap = PrintWindowImage.PrintWindow("<vmconnect>", "{UIMainClass}");
                 state.CroppedImage = new Core.CroppedImage(bitmap);
             }
             catch (TargetNotFoundException)
@@ -39,7 +39,6 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
                 state.IsCanceled = true;
                 // TODO: error messages
             }
-
 
         }
     }

@@ -31,6 +31,7 @@ namespace Net.Surviveplus.LightCutter.UI.Parts
         {
             this.RefreshDefaultSelectionArea();
             this.RefreshMainButtonEnabled();
+            this.RefreshUac();
 
         } // end sub
 
@@ -127,6 +128,35 @@ namespace Net.Surviveplus.LightCutter.UI.Parts
         }
 
         public event EventHandler<EventArgs> EditButtonClick;
+
+        private bool valueOfMustUac;
+
+        public bool MustUac { get => valueOfMustUac;
+            set {
+                valueOfMustUac = value;
+                this.RefreshUac();
+            }
+        }
+        private void RefreshUac()
+        {
+            var uac = this.Template.FindName("uac", this) as Label;
+
+            if(uac != null)
+            {
+                if (this.valueOfMustUac)
+                {
+                    if(uac.Content == null)
+                    {
+                        uac.Content = new UI.Parts.Uac();
+                    }
+                }
+                else
+                {
+                    uac.Content = null;
+                }
+
+            } // end if
+        }
 
     } // end class
 } // end namespace
