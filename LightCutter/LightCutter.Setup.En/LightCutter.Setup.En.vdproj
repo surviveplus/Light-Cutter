@@ -22,12 +22,6 @@
         "Entry"
         {
         "MsmKey" = "8:_0706FD2D89A16BD562D1DF166C6CFC01"
-        "OwnerKey" = "8:_67F6859582964BE5A1079B23704ADCD5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0706FD2D89A16BD562D1DF166C6CFC01"
         "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -45,6 +39,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0706FD2D89A16BD562D1DF166C6CFC01"
+        "OwnerKey" = "8:_67F6859582964BE5A1079B23704ADCD5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1820168BCC9D43C587F0AAB4EB2DD336"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -58,13 +58,13 @@
         "Entry"
         {
         "MsmKey" = "8:_18F7B29DA5450A3828CE2CD09B471926"
-        "OwnerKey" = "8:_67F6859582964BE5A1079B23704ADCD5"
+        "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_18F7B29DA5450A3828CE2CD09B471926"
-        "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
+        "OwnerKey" = "8:_67F6859582964BE5A1079B23704ADCD5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -147,6 +147,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B71F94838039F6C621FC4731AD645323"
+        "OwnerKey" = "8:_67F6859582964BE5A1079B23704ADCD5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C29013E4CFB5418D85F757F27A3F3B98"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -166,7 +172,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9612459861B06E48E9B3E6450FA6FEA1"
+        "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_ADB617BFDC3F4B72983BCA47D8A7711B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -178,13 +190,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B6F70215E19945488A6E1FDE6A87EC93"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_ADB617BFDC3F4B72983BCA47D8A7711B"
+        "OwnerKey" = "8:_B71F94838039F6C621FC4731AD645323"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -203,6 +209,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_5BB2077A678B263B50EDF98C2B2ADFDB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9612459861B06E48E9B3E6450FA6FEA1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -460,7 +472,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:LightCutter.UI, Version=7.0.11.9, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:LightCutter.UI, Version=7.0.12.9, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_1F0909727EDA2A1FBF850B40AB6E49CA"
@@ -580,6 +592,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B71F94838039F6C621FC4731AD645323"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:CodedUIQuery, Version=1.0.2.4, Culture=neutral, PublicKeyToken=8bef33aba4cdebf4, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_B71F94838039F6C621FC4731AD645323"
+                    {
+                    "Name" = "8:CodedUIQuery.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:CodedUIQuery.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D07ABC2E94E84EF690B676AA9A164F77"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C29013E4CFB5418D85F757F27A3F3B98"
             {
             "SourcePath" = "8:SetupBackground.jpg"
@@ -687,15 +730,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Light Cutter 7"
-        "ProductCode" = "8:{D8BF34DA-AA57-4F3E-8574-DC9CE5E0461B}"
-        "PackageCode" = "8:{7D14E8D5-A84E-459B-A95F-17CFD55AFF4E}"
+        "ProductCode" = "8:{5D322B42-8E51-4BFE-9338-51C4024E1EDC}"
+        "PackageCode" = "8:{DC8D1687-155D-47AE-B5DD-9D08E447FE3C}"
         "UpgradeCode" = "8:{10855EB8-1B59-4C96-930F-F6541B80006A}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:7.1.39"
+        "ProductVersion" = "8:7.1.40"
         "Manufacturer" = "8:Surviveplus.net"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

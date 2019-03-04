@@ -9,8 +9,8 @@ Can capture the same area as last time, so you can capture it fast and continuou
 
  ![Action Panel](HowToUse/images/ActionPanel.png)
 
- - [Light Cutter ver.7.0](https://github.com/surviveplus/Light-Cutter/releases)
-
+ - [Light Cutter ver.7.1 (Preview)](https://github.com/surviveplus/Light-Cutter/releases)
+ - [Light Cutter ver.7.0](https://github.com/surviveplus/Light-Cutter/releases/tag/ver.7.0.33.18)
  - [Light Cutter ver.5.4](
 http://www.surviveplus.net/ja/archives/24
 ) ( Japanese Only )
