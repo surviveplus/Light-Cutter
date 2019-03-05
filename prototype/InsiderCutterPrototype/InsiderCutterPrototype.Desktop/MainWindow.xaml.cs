@@ -143,5 +143,20 @@ namespace InsiderCutterPrototype.Desktop
                 window.Visibility = Visibility.Visible;
             } // end try
         }
+
+        private async void CutCommandPrompt_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            try
+            {
+                button.IsEnabled = false;
+                await LightCutter.CutCmdInsiderAsync();
+            }
+            finally
+            {
+                button.IsEnabled = true;
+            } // end try			
+
+        }
     } // end class
 } // end namespace

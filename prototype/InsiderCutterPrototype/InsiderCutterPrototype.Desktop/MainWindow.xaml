@@ -16,6 +16,7 @@
             <Button x:Name="cutVmconnectButtonAfter3sec" Content="Cu VM connect insider after 3 sec." Height="40" Margin="0 10 0 0" Click="CutVmconnectButtonAfter3sec_Click"/>
             <Button x:Name="cutChromeRemoteDesktopButton" Content="Cut Chrome Remote Desktop after 3 sec" Height="40" Click="cutChromeRemoteDesktopButton_Click" Margin="0 10 0 0" />
             <Button x:Name="cutIeButton" Content="Cut IE insider" Height="40" Click="cutIeButton_Click" Margin="0 10 0 0" />
+            <Button x:Name="cutCommandPrompt" Content="Cut Command Prompt" Height="40" Click="CutCommandPrompt_Click" Margin="0 10 0 0" />
         </StackPanel>
     </Grid>
 </Window>
