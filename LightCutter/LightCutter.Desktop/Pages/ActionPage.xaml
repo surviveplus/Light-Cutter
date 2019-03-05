@@ -31,12 +31,17 @@
                 <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
 
             <Label Margin="5,0,0,0" Grid.ColumnSpan="4" FontSize="18">Actions</Label>
             <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"><Hyperlink x:Name="HelpLink" Click="HelpLink_Click">Help</Hyperlink></TextBlock>
             <ToggleButton x:Name="EditButton" Grid.Column="2" Margin="5"  Background="Transparent" BorderBrush="Transparent"  Checked="EditButton_Checked" Unchecked="EditButton_Unchecked">Edit</ToggleButton>
-            <Button Grid.Column="3" Margin="0 5" Padding="0" x:Name="SettingsButton" Click="SettingsButton_Click" Background="Transparent" BorderBrush="Transparent">
+
+            <Button Grid.Column="3" Margin="0 5" Padding="0" x:Name="NotificationButton" Click="NotificationButton_Click" Background="Transparent" BorderBrush="Transparent">
+                <ui:Notification />
+            </Button>
+            <Button Grid.Column="4" Margin="0 5" Padding="0" x:Name="SettingsButton" Click="SettingsButton_Click" Background="Transparent" BorderBrush="Transparent">
                 <ui:Settings></ui:Settings>
             </Button>
         </Grid>

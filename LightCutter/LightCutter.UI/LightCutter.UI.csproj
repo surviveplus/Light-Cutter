@@ -80,6 +80,9 @@
     <Compile Include="Parts\Mouse.xaml.cs">
       <DependentUpon>Mouse.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Parts\Notification.xaml.cs">
+      <DependentUpon>Notification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Parts\Save.xaml.cs">
       <DependentUpon>Save.xaml</DependentUpon>
     </Compile>
@@ -159,6 +162,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Parts\Mouse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Parts\Notification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

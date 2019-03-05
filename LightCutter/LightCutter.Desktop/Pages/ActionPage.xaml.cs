@@ -170,5 +170,10 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             LightCutter.ResetActions();
             this.parentWindow.ShowAction();
         }
+
+        private void NotificationButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
