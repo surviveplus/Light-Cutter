@@ -103,6 +103,7 @@ namespace Net.Surviveplus.LightCutter.Commands
                 IActionCommand command = null;
                 if (command == null) command = Cutting.CutCommand.FromCommand(text);
                 if (command == null) command = Cutting.LastRangeCommand.FromCommand(text);
+                if (command == null) command = Editing.TrimColorCommand.FromCommand(text);
                 if (command == null) command = Operations.WaitCommand.FromCommand(text);
                 if (command == null) command = Sharing.CopyCommand.FromCommand(text);
                 if (command == null) command = Sharing.SaveFileCommand.FromCommand(text);
