@@ -89,6 +89,18 @@ namespace Net.Surviveplus.LightCutter.Desktop
         {
             InitializeComponent();
 
+            if (Properties.Settings.Default.Upgraded == false)
+            {
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.UpgradeDefaultActionName();
+                Properties.Settings.Default.Upgraded = true;
+                Properties.Settings.Default.SaveAndUpdateCommandsSettings();
+            }
+            else
+            {
+                Properties.Settings.Default.UpdateCommandsSettings();
+            }
+
             LightCutter.InitializeActionCommands();
         }
 
@@ -190,17 +202,6 @@ namespace Net.Surviveplus.LightCutter.Desktop
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if(Properties.Settings.Default.Upgraded == false){
-                Properties.Settings.Default.Upgrade();
-                Properties.Settings.Default.UpgradeDefaultActionName();
-                Properties.Settings.Default.Upgraded = true;
-                Properties.Settings.Default.SaveAndUpdateCommandsSettings();
-            }
-            else
-            {
-                Properties.Settings.Default.UpdateCommandsSettings();
-            }
-
             this.helper = new WindowInteropHelper(this);
             this.hwndSource = HwndSource.FromHwnd(this.helper.Handle);
             this.hwndSource.AddHook(new HwndSourceHook(this.WndProc));

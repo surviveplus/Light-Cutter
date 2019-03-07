@@ -178,6 +178,9 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             if(!string.IsNullOrWhiteSpace( command))
             {
                 this.commandsTextBox.SelectedText = command;
+                var start = this.commandsTextBox.SelectionStart + this.commandsTextBox.SelectionLength;
+                this.commandsTextBox.SelectionLength = 0;
+                this.commandsTextBox.SelectionStart = start;
                 this.commandsTextBox.Focus();
             } // end if
         }

@@ -17,7 +17,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
         public string Command => "Remote Desktop";
 
-        public IEnumerable<object> DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.Screen(), " Remote Desktop");
+        public IEnumerable<object> DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.RemoteDesktop(), " Remote Desktop");
 
         public bool IsEnabled => true;
 

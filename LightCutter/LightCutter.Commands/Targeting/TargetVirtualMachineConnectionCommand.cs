@@ -17,7 +17,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
         public string Command => "Virtual Machine";
 
-        public IEnumerable<object> DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.Screen(), " Virtual Machine");
+        public IEnumerable<object> DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.VirtualMachine(), " Virtual Machine");
 
         public bool IsEnabled => true;
 
