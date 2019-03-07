@@ -41,12 +41,25 @@ namespace Net.Surviveplus.LightCutter.Commands.Editing
             Debug.WriteLine($"{this.Command}");
             using (var bitmap = state.CroppedImage?.GetBitmap())
             {
+                var data = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
                 System.Drawing.Color? lastColor = null;
                 bool exitForFor = false;
 
                 Action<int, int> checkColor = (i, j) =>
                  {
-                     var color = bitmap.GetPixel(i, j);
+                     //var color = bitmap.GetPixel(i, j);
+                     System.Drawing.Color color;
+                     unsafe
+                     {
+                         byte* p = (byte*)(void*)data.Scan0;
+                         int offset = j * data.Stride + i * 4;
+                         byte b = p[offset];
+                         byte g = p[offset + 1];
+                         byte r = p[offset + 2];
+                         byte a = p[offset + 3];
+                         color = System.Drawing.Color.FromArgb(a, r, g, b);
+                     }
+
 
                      if (!lastColor.HasValue)
                      {
@@ -89,7 +102,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Editing
                 // left <-  right
                 int right = 0;
                 exitForFor = false;
-                for (int i = bitmap.Width-1; 0<= i ; i--)
+                for (int i = bitmap.Width - 1; 0 <= i; i--)
                 {
                     for (int j = 0; j < bitmap.Height; j++)
                     {
@@ -103,7 +116,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Editing
                 // top <- bottom
                 int bottom = 0;
                 exitForFor = false;
-                for (int j = bitmap.Height-1; 0 <=j ; j--)
+                for (int j = bitmap.Height - 1; 0 <= j; j--)
                 {
                     for (int i = 0; i < bitmap.Width; i++)
                     {
@@ -114,11 +127,13 @@ namespace Net.Surviveplus.LightCutter.Commands.Editing
                     bottom = j;
                 }
 
+                bitmap.UnlockBits(data);
+
                 // new 
                 var bounds = new System.Drawing.Rectangle(
                     left,
                     top,
-                    right - left, 
+                    right - left,
                     bottom - top);
 
                 var newBitmap = new System.Drawing.Bitmap(bounds.Width, bounds.Height);
@@ -126,7 +141,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Editing
 
                 using (var g = System.Drawing.Graphics.FromImage(newBitmap))
                 {
-                    g.DrawImage(bitmap, 0,0,bounds, System.Drawing.GraphicsUnit.Pixel);
+                    g.DrawImage(bitmap, 0, 0, bounds, System.Drawing.GraphicsUnit.Pixel);
                 }
 
                 state.CroppedImage.Dispose();
