@@ -73,6 +73,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Editing
 
                 // left -> right
                 int left = 0;
+                lastColor = null;
                 exitForFor = false;
                 for (int i = 0; i < bitmap.Width; i++)
                 {
@@ -87,6 +88,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Editing
 
                 // top -> bottom
                 int top = 0;
+                lastColor = null;
                 exitForFor = false;
                 for (int j = 0; j < bitmap.Height; j++)
                 {
@@ -100,7 +102,8 @@ namespace Net.Surviveplus.LightCutter.Commands.Editing
                 }
 
                 // left <-  right
-                int right = 0;
+                int right = bitmap.Width;
+                lastColor = null;
                 exitForFor = false;
                 for (int i = bitmap.Width - 1; 0 <= i; i--)
                 {
@@ -114,7 +117,8 @@ namespace Net.Surviveplus.LightCutter.Commands.Editing
                 }
 
                 // top <- bottom
-                int bottom = 0;
+                int bottom = bitmap.Height;
+                lastColor = null;
                 exitForFor = false;
                 for (int j = bitmap.Height - 1; 0 <= j; j--)
                 {
