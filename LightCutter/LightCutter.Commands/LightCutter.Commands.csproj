@@ -60,6 +60,7 @@
     <Compile Include="Sharing\CopyCommand.cs" />
     <Compile Include="Sharing\SaveFileCommand.cs" />
     <Compile Include="Targeting\PrintWindowImage.cs" />
+    <Compile Include="Targeting\TargetConsoleCommand.cs" />
     <Compile Include="Targeting\TargetNotFoundException.cs" />
     <Compile Include="Targeting\TargetPrimaryMonitorCommand.cs" />
     <Compile Include="Targeting\TargetRemoteDesktopConnectionCommand.cs" />
