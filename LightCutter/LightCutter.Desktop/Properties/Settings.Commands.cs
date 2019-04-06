@@ -15,6 +15,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Properties
             d.GuideBackgroundTransparent = Settings.Default.GuideBackgroundTransparent;
             d.GridPixel= Settings.Default.GridPixel;
             d.DefaultWaitTimeSeconds = Settings.Default.DefaultWaitTimeSeconds;
+            d.DefaultFolder = Settings.Default.DefaultFolder;
         }
 
         public void SaveAndUpdateCommandsSettings()

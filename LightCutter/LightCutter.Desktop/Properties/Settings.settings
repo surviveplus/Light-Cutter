@@ -35,5 +35,8 @@
     <Setting Name="Actions" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="DefaultFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Desktop</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

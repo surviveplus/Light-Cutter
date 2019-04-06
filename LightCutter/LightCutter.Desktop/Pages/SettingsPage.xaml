@@ -57,6 +57,18 @@
             </ComboBox>
         </StackPanel>
 
+        <Grid Margin="10 10 10 0" Height="34">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label>Default Folder :</Label>
+            <TextBox x:Name="defaultFolderBox" Grid.Column="1" Text="{Binding Source={x:Static properties:Settings.Default}, Path=DefaultFolder, Mode=TwoWay}"/>
+            <Button x:Name="defaultFolderButton" Grid.Column="2" Click="DefaultFolderButton_Click" >...</Button>
+        </Grid>
+
         <TextBlock Margin="10 20 0 0">
             <Hyperlink x:Name="VersionInformationLink" Click="VersionInformationLink_Click" >Version Information</Hyperlink>
         </TextBlock>

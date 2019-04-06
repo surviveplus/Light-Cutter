@@ -1,4 +1,5 @@
-﻿using Net.Surviveplus.LightCutter.Desktop.Properties;
+﻿using Net.Surviveplus.LightCutter.Commands.Sharing;
+using Net.Surviveplus.LightCutter.Desktop.Properties;
 using Net.Surviveplus.LightCutter.UI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Environment;
 
 namespace Net.Surviveplus.LightCutter.Desktop.Pages
 {
@@ -60,6 +62,30 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
         private void VersionInformationLink_Click(object sender, RoutedEventArgs e)
         {
             this.parentWindow.ShowVersionInformation();
+        }
+
+        private void DefaultFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (var d = new System.Windows.Forms.FolderBrowserDialog())
+            {
+                var folder = this.defaultFolderBox.Text;
+
+                var specialFolder = SaveFileCommand.GetSupportedSpecialFolder(folder);
+                if (specialFolder != null)
+                {
+                    folder = specialFolder.FullName;
+                }
+
+                if (System.IO.Directory.Exists(folder))
+                {
+                    d.SelectedPath = folder;
+                } // end if
+
+                if( d.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    this.defaultFolderBox.Text = d.SelectedPath;
+                } // end if
+            } // end using (d)
         }
     }
 }
