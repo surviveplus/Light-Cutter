@@ -60,6 +60,11 @@ namespace Net.Surviveplus.LightCutter.Desktop
             if (this.mainFrame.CanGoBack){ this.mainFrame.RemoveBackEntry(); }
         }
 
+        public void ShowNotifications()
+        {
+            this.mainFrame.Content = new Pages.NotificationsPage(this);
+        }
+
         public void ShowSetting()
         {
             this.mainFrame.Content = new Pages.SettingsPage(this);

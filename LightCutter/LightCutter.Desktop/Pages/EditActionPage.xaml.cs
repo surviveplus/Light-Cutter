@@ -164,8 +164,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                     }
                     catch
                     {
-
-                        // TODO : Error
+                        // TODO : show Error in this page
                     }
                 } // end using
             } // end if

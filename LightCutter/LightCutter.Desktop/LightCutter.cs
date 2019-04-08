@@ -1,6 +1,7 @@
 ﻿using Net.Surviveplus.LightCutter.Desktop.Properties;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -150,6 +151,24 @@ namespace Net.Surviveplus.LightCutter.Desktop
             SaveCommands();
         }
 
+        public static ObservableCollection<Models.NotificationModel> Notifications = new ObservableCollection<Models.NotificationModel>();
+
+        public static bool TryDo( Action action, Func<string> getFailedActionDisplayName )
+        {
+            try
+            {
+                action.Invoke();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LightCutter.Notifications.Insert(0, Models.NotificationModel.FromException(ex, getFailedActionDisplayName.Invoke() ));
+                LightCutter.AddNotifications?.Invoke(null, EventArgs.Empty);
+                return false;
+            }
+        }
+
+        public static event EventHandler<EventArgs> AddNotifications;
 
     }
 }

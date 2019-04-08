@@ -85,7 +85,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                     actionButton.Click += (sender2, e2) => {
                         using (new WindowHide(this.parentWindow))
                         {
-                            action.Do();
+                            LightCutter.TryDo(() => action.Do(), () => action.ToString());
                         } // end using
                     };
                     actionButton.IsDefaultChanged += (sender2, e2) => {
@@ -173,7 +173,8 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
 
         private void NotificationButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.EditButton.IsChecked = false;
+            this.parentWindow.ShowNotifications();
         }
     }
 }

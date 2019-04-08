@@ -260,7 +260,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
             using (new WindowHide(main))
             {
                 var action = Commands.ActionCommands.FromCommands("Wait > Screen > Cut > Save");
-                action.Do();
+                LightCutter.TryDo(() => action.Do(), ()=> action.ToString());
             }
         }
 
@@ -270,7 +270,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
             using (new WindowHide(main))
             {
                 var action = Commands.ActionCommands.FromCommands("Screen > Cut > Copy");
-                action.Do();
+                LightCutter.TryDo(() => action.Do(), () => action.ToString());
             }
         }
 
@@ -280,7 +280,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
             using (new WindowHide(main))
             {
                 var action = Commands.ActionCommands.FromCommands("Screen > Cut > Save");
-                action.Do();
+                LightCutter.TryDo(() => action.Do(), () => action.ToString());
             }
         }
 
@@ -316,7 +316,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
                 {
                     using (new WindowHide(main))
                     {
-                        action.Do();
+                        LightCutter.TryDo(() => action.Do(), () => action.ToString());
                     }
                 }
             }

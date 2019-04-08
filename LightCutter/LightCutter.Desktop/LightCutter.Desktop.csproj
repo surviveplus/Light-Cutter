@@ -80,12 +80,16 @@
     <Compile Include="LightCutter.cs" />
     <Compile Include="Models\ActionModel.cs" />
     <Compile Include="Models\HotkeyModel.cs" />
+    <Compile Include="Models\NotificationModel.cs" />
     <Compile Include="Pages\ActionPage.xaml.cs">
       <DependentUpon>ActionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\BooleanExtensions.cs" />
     <Compile Include="Pages\EditActionPage.xaml.cs">
       <DependentUpon>EditActionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NotificationsPage.xaml.cs">
+      <DependentUpon>NotificationsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -117,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EditActionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NotificationsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
