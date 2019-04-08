@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Pages"
         xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
       xmlns:properties="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Properties"
+      xmlns:l="clr-namespace:Net.Surviveplus.LightCutter.Desktop"
       mc:Ignorable="d" 
       d:DesignHeight="760" d:DesignWidth="540"
       Title="ActionPage"
@@ -39,7 +40,7 @@
             <ToggleButton x:Name="EditButton" Grid.Column="2" Margin="5"  Background="Transparent" BorderBrush="Transparent"  Checked="EditButton_Checked" Unchecked="EditButton_Unchecked">Edit</ToggleButton>
 
             <Button Grid.Column="3" Margin="0 5" Padding="0" x:Name="NotificationButton" Click="NotificationButton_Click" Background="Transparent" BorderBrush="Transparent">
-                <ui:Notification />
+                <ui:Notification DataContext="{Binding Source={x:Static l:LightCutter.Notifications}}" />
             </Button>
             <Button Grid.Column="4" Margin="0 5" Padding="0" x:Name="SettingsButton" Click="SettingsButton_Click" Background="Transparent" BorderBrush="Transparent">
                 <ui:Settings></ui:Settings>

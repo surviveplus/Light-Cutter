@@ -12,7 +12,18 @@
         </Grid.RenderTransform>
         <Label x:Name="text" Margin="-0.757,0.269,-0.757,-2.589" />
         <Path Data="M6.104129,17.146999 L11.495872,17.146999 11.482948,17.2225 C11.232678,18.500223 10.126598,19.462999 8.8000003,19.462999 7.4734036,19.462999 6.367323,18.500223 6.1170517,17.2225 z M8.8000013,1.4210855E-14 C9.7068521,-1.4123133E-07 10.442001,0.74947528 10.442001,1.6740004 L10.441956,1.6758314 10.49007,1.6933418 C12.571335,2.4827906 14.069462,4.690059 14.069462,7.2895382 14.069463,9.8380469 15.509417,12.009576 17.527107,12.837669 L17.6,12.866447 17.6,15.147 0,15.147 0,12.866449 0.072895771,12.837669 C2.0275346,12.035454 3.4399785,9.9724549 3.5263475,7.5273274 L3.5305399,7.2895473 C3.5305394,4.690061 5.0286661,2.4827906 7.1099311,1.6933418 L7.1580464,1.6758314 7.1580011,1.6740004 C7.1580006,0.74947528 7.8931495,-1.4123133E-07 8.8000013,1.4210855E-14 z" Fill="Transparent" HorizontalAlignment="Center" Height="17.693" Margin="0,1.154,0,0" Stretch="Fill"  StrokeThickness="1" Stroke="{Binding Foreground, ElementName=text}" VerticalAlignment="Top" Width="16"/>
-        <Ellipse x:Name="Badge" Fill="Red" HorizontalAlignment="Left" Height="8" StrokeThickness="1" VerticalAlignment="Top" Width="8" Margin="8,1,0,0" Visibility="Collapsed"/>
+        <Ellipse x:Name="Badge" Fill="RoyalBlue" HorizontalAlignment="Left" Height="8" StrokeThickness="1" VerticalAlignment="Top" Width="8" Margin="8,1,0,0" >
+            <Ellipse.Style>
+                <Style TargetType="Ellipse">
+                    <Setter Property="Visibility" Value="Visible" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Count}" Value="0">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Ellipse.Style>
+        </Ellipse>
         <!--<Path Data="M8.8000002,0 C9.7068517,0 10.442,0.74947548 10.442,1.6740007 L10.441955,1.6758318 10.490069,1.6933413 C12.571334,2.4827909 14.069461,4.6900597 14.069461,7.2895389 14.069462,9.838048 15.509415,12.009576 17.527105,12.83767 L17.6,12.866448 17.6,16.740001 11.534339,16.740001 11.53244,16.816573 C11.459162,18.290725 10.263831,19.463 8.8000002,19.463 7.3361694,19.463 6.1408388,18.290725 6.0675604,16.816573 L6.0656616,16.740001 0,16.740001 0,12.866449 0.072895527,12.83767 C2.027534,12.035454 3.4399781,9.9724565 3.5263472,7.527328 L3.530539,7.2895479 C3.530539,4.6900616 5.0286654,2.4827909 7.1099303,1.6933422 L7.1580456,1.6758318 7.1580002,1.6740007 C7.1580001,0.74947548 7.8931485,0 8.8000002,0 z" Fill="Transparent" HorizontalAlignment="Center" Height="19.463" Margin="-0.8,0.269,-0.8,0" Stretch="Fill"  StrokeThickness="1" Stroke="{Binding Foreground, ElementName=text}" VerticalAlignment="Top" Width="17.6"/>-->
     </Grid>
 </UserControl>

@@ -14,12 +14,31 @@
             <RowDefinition Height="45"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-            <Button Width="30" Height="30" Margin="0 5" x:Name="BackButton" Background="Transparent" BorderBrush="Transparent" Click="BackButton_Click" >&lt;</Button>
-            <Label x:Name="Title" FontSize="18">Notifications</Label>
-        </StackPanel>
+        <Grid Margin="0 0 0 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <Button  Width="30" Height="30" Margin="0 5" x:Name="BackButton" Background="Transparent" BorderBrush="Transparent" Click="BackButton_Click" >&lt;</Button>
+            <Label Grid.Column="1" x:Name="Title" FontSize="18">Notifications</Label>
 
-        <ListBox Grid.Row="1" 
+            <TextBlock Grid.Column="2" Margin="0 0 10 0" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding  ElementName=notificationList, Path=Items.Count}" Value="0">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+                <Hyperlink x:Name="ClearAllNotifications" Click="ClearAllNotifications_Click">Clear All Notifications</Hyperlink></TextBlock>
+        </Grid>
+
+        <ListBox x:Name="notificationList"
+                Grid.Row="1" 
                  ItemsSource="{Binding Source={x:Static l:LightCutter.Notifications}}" 
                  HorizontalContentAlignment="Stretch"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -57,5 +76,19 @@
             </ListBox.ItemTemplate>
             
         </ListBox>
+
+        <Label Grid.Row="1" Margin="10">
+            <Label.Style>
+                <Style TargetType="Label">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding  ElementName=notificationList, Path=Items.Count}" Value="0">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Label.Style>
+            (There is no notification. If an error occurs, it will appear here.)
+        </Label>
     </Grid>
 </Page>

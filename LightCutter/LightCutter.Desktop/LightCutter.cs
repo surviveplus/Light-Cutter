@@ -169,6 +169,6 @@ namespace Net.Surviveplus.LightCutter.Desktop
         }
 
         public static event EventHandler<EventArgs> AddNotifications;
-
+        
     }
 }

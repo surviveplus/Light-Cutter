@@ -30,7 +30,6 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.parentWindow.GoBack();
-
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -41,6 +40,11 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             {
                 LightCutter.Notifications.Remove(removing);
             }
+        }
+
+        private void ClearAllNotifications_Click(object sender, RoutedEventArgs e)
+        {
+            LightCutter.Notifications.Clear();
         }
     }
 }
