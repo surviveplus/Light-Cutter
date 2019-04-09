@@ -144,6 +144,11 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
             var window = (queryWindow.FirstOrDefault() as WpfElement)?.UIAutomationElement;
             var windowBounds = window?.Current.BoundingRectangle;
 
+            if (windowBounds == null)
+            {
+                throw new TargetNotFoundException("Target not found.");
+            } // end if
+
             System.Windows.Point toDevice = new System.Windows.Point(1, 1);
 
             var w = new System.Windows.Window {
@@ -198,7 +203,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
             if (bounds == null)
             {
-                throw new TargetNotFoundException();
+                throw new TargetNotFoundException("Target not found.");
             } // end if
 
             return GetBitmapByUsingPrintWindow(window, windowBounds, bounds);
@@ -212,6 +217,11 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
             var window = (queryWindow.FirstOrDefault() as WpfElement)?.UIAutomationElement;
             var windowBounds = window?.Current.BoundingRectangle;
 
+            if (windowBounds == null)
+            {
+                throw new TargetNotFoundException("Target not found.");
+            } // end if
+
             // Find bounds of inside of window
             var queryScreen = queryWindow.Find(screenSelector);
             var ui = (queryScreen.FirstOrDefault() as WpfElement)?.UIAutomationElement;
@@ -220,7 +230,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
             if (bounds == null)
             {
-                throw new TargetNotFoundException();
+                throw new TargetNotFoundException("Target not found.");
             } // end if
 
             return GetBitmapByUsingPrintWindow(window, windowBounds, bounds);

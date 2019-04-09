@@ -29,16 +29,8 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
             Debug.WriteLine($"{this.Command}");
 
-            try
-            {
-                var bitmap = PrintWindowImage.PrintWindow("{TscShellContainerClass}", "{UIMainClass}");
-                state.CroppedImage = new Core.CroppedImage(bitmap);
-            }
-            catch (TargetNotFoundException)
-            {
-                state.IsCanceled = true;
-                // TODO: error messages
-            }
+            var bitmap = PrintWindowImage.PrintWindow("{TscShellContainerClass}", "{UIMainClass}");
+            state.CroppedImage = new Core.CroppedImage(bitmap);
 
 
         }
