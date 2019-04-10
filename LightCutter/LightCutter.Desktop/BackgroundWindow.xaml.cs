@@ -1,5 +1,6 @@
 ﻿using Net.Surviveplus.LightCutter.Desktop.Models;
 using Net.Surviveplus.LightCutter.Desktop.Properties;
+using Net.Surviveplus.LightCutter.UI;
 using Net.Surviveplus.LightCutter.UI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -77,6 +78,7 @@ namespace Net.Surviveplus.LightCutter.Desktop
             // Public Declare Function GlobalDeleteAtom Lib "kernel32" (ByVal nAtom As Integer) As Integer
             [DllImport("kernel32")] public extern static Int16 GlobalDeleteAtom(IntPtr nAtom);
 
+            public const byte WM_SETTINGCHANGE = 0x001A;
             #endregion
 
         } // end class
@@ -227,6 +229,12 @@ namespace Net.Surviveplus.LightCutter.Desktop
 
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
+            if(msg == NativeMethods.WM_SETTINGCHANGE)
+            {
+                WindowsTheme.Current.Theme = WindowsTheme.GetUserTheme().Theme;
+                handled = true;
+                return IntPtr.Zero;
+            }
 
             foreach (var h in this.hotkeys)
             {

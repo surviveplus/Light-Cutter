@@ -27,6 +27,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
             InitializeComponent();
             this.parentWindow = parentWindow;
         }
+
         private MainWindow parentWindow;
 
         public bool MustRefreshActions { get; set; } = false;
