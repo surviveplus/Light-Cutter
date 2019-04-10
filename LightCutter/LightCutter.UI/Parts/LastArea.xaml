@@ -10,8 +10,7 @@
         <Grid.RenderTransform>
             <TranslateTransform X="0" Y="5"></TranslateTransform>
         </Grid.RenderTransform>
-        <Label x:Name="text" />
-
+        <TextBlock x:Name="text" />
         <Rectangle Stroke="{Binding Foreground, ElementName=text}" StrokeThickness="1" Margin="1,4,1,2" StrokeDashArray="3 2" />
 
     </Grid>

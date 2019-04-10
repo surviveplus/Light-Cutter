@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop"
-        xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
+        xmlns:u="clr-namespace:Net.Surviveplus.LightCutter.UI;assembly=LightCutter.UI"
         mc:Ignorable="d"
         Title="Action Panel - Light Cutter ver.7.0.0.0 (Preview)" 
         
@@ -13,7 +13,21 @@
         Icon="LightCutter Ver.7.ico"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded" ResizeMode="CanResizeWithGrip"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        DataContext="{Binding Source={x:Static u:WindowsTheme.Current}}"
+        >
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="Black" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Theme}" Value="0">
+                    <Setter Property="Background" Value="Black" />
+                    <Setter Property="Foreground" Value="White" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Style>
     <Window.Resources>
     </Window.Resources>
     <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>

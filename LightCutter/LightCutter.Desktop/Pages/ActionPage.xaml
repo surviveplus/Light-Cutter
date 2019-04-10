@@ -5,19 +5,30 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Pages"
         xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
+        xmlns:u="clr-namespace:Net.Surviveplus.LightCutter.UI;assembly=LightCutter.UI"
       xmlns:properties="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Properties"
       xmlns:l="clr-namespace:Net.Surviveplus.LightCutter.Desktop"
       mc:Ignorable="d" 
       d:DesignHeight="760" d:DesignWidth="540"
       Title="ActionPage"
       Loaded="Page_Loaded"
-      IsVisibleChanged="Page_IsVisibleChanged">
+      IsVisibleChanged="Page_IsVisibleChanged"
+        DataContext="{Binding Source={x:Static u:WindowsTheme.Current}}"
+      >
+    <Page.Style>
+        <Style TargetType="Page">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="Black" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Theme}" Value="0">
+                    <Setter Property="Background" Value="Black" />
+                    <Setter Property="Foreground" Value="White" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Style>
     <Page.Resources>
-        <!--<Style TargetType="Button">
-            <Setter Property="Margin" Value="10,0,10,10" />
-            <Setter Property="Padding" Value="10,10,10,10" />
-            <Setter Property="Background" Value="#FFFAFAFA" />
-        </Style>-->
+        <ResourceDictionary Source="Style.xaml"/>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -34,7 +45,6 @@
                 <ColumnDefinition Width="30"/>
                 <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
-
             <Label Margin="5,0,0,0" Grid.ColumnSpan="4" FontSize="18">Actions</Label>
             <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"><Hyperlink x:Name="HelpLink" Click="HelpLink_Click">Help</Hyperlink></TextBlock>
             <ToggleButton x:Name="EditButton" Grid.Column="2" Margin="5"  Background="Transparent" BorderBrush="Transparent"  Checked="EditButton_Checked" Unchecked="EditButton_Unchecked">Edit</ToggleButton>
@@ -84,13 +94,13 @@
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" >
             <TextBlock Margin="10 5" VerticalAlignment="Center"><Hyperlink x:Name="recetActionsButton" Click="RecetActionsButton_Click">Reset Actions</Hyperlink></TextBlock>
-            <Button x:Name="addActionButton" Margin="10 5" Width="40" Background="#FFFAFAFA" FontSize="18" Click="AddActionButton_Click">+</Button>
+            <Button x:Name="addActionButton" Margin="10 5" Width="40" FontSize="18" Click="AddActionButton_Click">+</Button>
         </StackPanel>
         
         <Label Margin="10 0" Grid.Row="3">
             <TextBlock>from 
                 <TextBlock x:Name="shortcutA" xml:space ="preserve"><TextBlock Visibility="{Binding Win}"><ui:Key>Win</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Ctrl}"><ui:Key>Ctrl</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Shift}"><ui:Key>Shift</ui:Key> + </TextBlock><TextBlock Visibility="{Binding Alt}"><ui:Key>Alt</ui:Key> + </TextBlock><ui:Key><TextBlock Text="{Binding Key}" /></ui:Key></TextBlock>
-                <TextBlock x:Name="shortcutAError" Foreground="Gray">(The shortcut key was not enabled.)</TextBlock>
+                <TextBlock x:Name="shortcutAError" Foreground="{Binding ElementName=text, Path=Foreground}" Opacity="0.5">(The shortcut key was not enabled.)</TextBlock>
                 or tasktray icon to see this window again.</TextBlock>
         </Label>
     </Grid>

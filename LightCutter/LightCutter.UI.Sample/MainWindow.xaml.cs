@@ -1,4 +1,5 @@
-﻿using Net.Surviveplus.LightCutter.UI.Parts;
+﻿using Net.Surviveplus.LightCutter.UI;
+using Net.Surviveplus.LightCutter.UI.Parts;
 using Net.Surviveplus.LightCutter.UI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -122,6 +123,17 @@ namespace LightCutter.UI.Sample
         {
             var w = new EditActionWindow();
             w.ShowDialog();
+
+        }
+
+        private void RadioButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowsTheme.Current.Theme = WindowsThemes.Dark;
+        }
+
+        private void RadioButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            WindowsTheme.Current.Theme = WindowsThemes.Light;
 
         }
     }

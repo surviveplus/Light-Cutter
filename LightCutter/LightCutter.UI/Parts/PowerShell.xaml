@@ -10,11 +10,10 @@
         <Grid.RenderTransform>
             <TranslateTransform X="0" Y="5"></TranslateTransform>
         </Grid.RenderTransform>
-        <Label x:Name="text" />
-
+        <TextBlock x:Name="text" />
         <Rectangle Stroke="{Binding ElementName=text, Path=Foreground}" Width="16" StrokeThickness="1.5" Margin="0,4,0,3"/>
         <Rectangle Fill="{Binding ElementName=text, Path=Foreground}" Height="1" Margin="8,13,3,6" RenderTransformOrigin="0.375,-1.562" />
-        <Path Data="M3.287184,5.5304494 L7.3764696,9.6627045 L1.8047285,13.65889 L0.85223287,12.455737 L4.984488,9.5337954 L2.0267386,6.5832076 z" Fill="Black" Margin="2.476,6.436,7,5.436" RenderTransformOrigin="0.5,0.5" Stretch="Fill">
+        <Path Data="M3.287184,5.5304494 L7.3764696,9.6627045 L1.8047285,13.65889 L0.85223287,12.455737 L4.984488,9.5337954 L2.0267386,6.5832076 z" Fill="{Binding ElementName=text, Path=Foreground}" Margin="2.476,6.436,7,5.436" RenderTransformOrigin="0.5,0.5" Stretch="Fill">
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

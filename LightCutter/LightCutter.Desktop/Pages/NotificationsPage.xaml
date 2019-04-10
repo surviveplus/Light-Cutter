@@ -4,10 +4,28 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Pages"
+        xmlns:u="clr-namespace:Net.Surviveplus.LightCutter.UI;assembly=LightCutter.UI"
       xmlns:l="clr-namespace:Net.Surviveplus.LightCutter.Desktop"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="NotificationsPage">
+      Title="NotificationsPage"
+        DataContext="{Binding Source={x:Static u:WindowsTheme.Current}}"
+      >
+    <Page.Style>
+        <Style TargetType="Page">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="Black" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Theme}" Value="0">
+                    <Setter Property="Background" Value="Black" />
+                    <Setter Property="Foreground" Value="White" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Style>
+    <Page.Resources>
+        <ResourceDictionary Source="Style.xaml"/>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -70,14 +88,14 @@
                                     FontSize="14"
                                     Click="CloseButton_Click">r</Button>
                         </Grid>
-                        <TextBlock Margin="5 0 0 20" TextWrapping="Wrap" Grid.Row="1" Text="{Binding Message}"/>
+                        <TextBlock Margin="5 0 0 20" TextWrapping="Wrap" Grid.Row="1" Text="{Binding Message}" Foreground="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=Foreground}"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
             
         </ListBox>
 
-        <Label Grid.Row="1" Margin="10">
+        <Label Grid.Row="1" Margin="10" Foreground="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=Foreground}">
             <Label.Style>
                 <Style TargetType="Label">
                     <Setter Property="Visibility" Value="Collapsed"/>

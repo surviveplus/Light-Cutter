@@ -183,5 +183,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                 this.commandsTextBox.Focus();
             } // end if
         }
+
+
     }
 }

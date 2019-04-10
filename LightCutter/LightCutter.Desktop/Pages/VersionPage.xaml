@@ -4,11 +4,29 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Pages"
+        xmlns:u="clr-namespace:Net.Surviveplus.LightCutter.UI;assembly=LightCutter.UI"
+      xmlns:l="clr-namespace:Net.Surviveplus.LightCutter.Desktop"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="500"
       Title="VersionPage"
-      Loaded="Page_Loaded">
-
+      Loaded="Page_Loaded"
+        DataContext="{Binding Source={x:Static u:WindowsTheme.Current}}"
+      >
+    <Page.Style>
+        <Style TargetType="Page">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="Black" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Theme}" Value="0">
+                    <Setter Property="Background" Value="Black" />
+                    <Setter Property="Foreground" Value="White" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Style>
+    <Page.Resources>
+        <ResourceDictionary Source="Style.xaml"/>
+    </Page.Resources>
     <StackPanel>
         <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
             <Button Width="30" Height="30" Margin="0 5" x:Name="BackButton" Background="Transparent" BorderBrush="Transparent" Click="BackButton_Click" >&lt;</Button>

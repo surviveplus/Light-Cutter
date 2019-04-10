@@ -10,7 +10,7 @@
         <Grid.RenderTransform>
             <TranslateTransform X="0" Y="5"></TranslateTransform>
         </Grid.RenderTransform>
-        <Label x:Name="text" />
+        <TextBlock x:Name="text" />
         <Rectangle Fill="{Binding ElementName=text, Path=Foreground}" Width="16" Height="4"  Margin="3,0,-3,2.5" VerticalAlignment="Bottom" d:LayoutOverrides="Height" >
             <Rectangle.RenderTransform>
                 <RotateTransform Angle="-45"/>

@@ -16,16 +16,17 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition x:Name="buttonArea" Width="40"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+                <TextBlock x:Name="text" />
                 <RadioButton x:Name="IsDefaultRadio" Grid.Column="0" VerticalAlignment="Center" GroupName="ActionRadio" Checked="IsDefaultRadio_Checked" Unchecked="IsDefaultRadio_Unchecked"></RadioButton>
-                <Button Grid.Column="1" x:Name="MainButton"  Padding="10 10 10 10"  Background="#FFFAFAFA" Click="MainButton_Click">
+                <Button Grid.Column="1" x:Name="MainButton"  Padding="10 10 10 10"  Click="MainButton_Click">
                     <StackPanel Margin="0 -5 0 0" >
-                        <TextBlock Foreground="{Binding ElementName=access, Path=Foreground}">
+                        <TextBlock Foreground="{Binding ElementName=text, Path=Foreground}">
                             <Label x:Name="uac"><ui:Uac /></Label>
-                            <Label x:Name="access" Margin="0 -10 0 0"><Label.RenderTransform><TranslateTransform  X="0" Y="6"></TranslateTransform></Label.RenderTransform><AccessText Text="{Binding AccessText}"></AccessText></Label><ContentPresenter  />
+                            <Label x:Name="access" Margin="0 -10 0 0" Foreground="{Binding ElementName=text, Path=Foreground}"><Label.RenderTransform><TranslateTransform  X="0" Y="6"></TranslateTransform></Label.RenderTransform><AccessText Text="{Binding AccessText}"></AccessText></Label><ContentPresenter  />
                         </TextBlock>
-                        <TextBlock Foreground="{Binding ElementName=access, Path=Foreground}" x:Name="DefaultButtonMessage" HorizontalAlignment="Center" Visibility="{Binding DefaultShortcutVisibility}">
+                        <TextBlock Foreground="{Binding ElementName=text, Path=Foreground}" x:Name="DefaultButtonMessage" HorizontalAlignment="Center" Visibility="{Binding DefaultShortcutVisibility}">
                             <TextBlock x:Name="shortcutZ" Visibility="{Binding DefaultShortcut.HotkeyVisibility}" xml:space ="preserve" ><TextBlock Visibility="{Binding DefaultShortcut.Hotkey.Win}"><ui:Key>Win</ui:Key> + </TextBlock><TextBlock Visibility="{Binding DefaultShortcut.Hotkey.Ctrl}"><ui:Key>Ctrl</ui:Key> + </TextBlock><TextBlock Visibility="{Binding DefaultShortcut.Hotkey.Shift}"><ui:Key>Shift</ui:Key> + </TextBlock><TextBlock Visibility="{Binding DefaultShortcut.Hotkey.Alt}"><ui:Key>Alt</ui:Key> + </TextBlock><ui:Key><TextBlock Text="{Binding DefaultShortcut.Hotkey.Key}" /></ui:Key></TextBlock>
-                            <TextBlock x:Name="shortcutZError" Foreground="Gray" Visibility="{Binding DefaultShortcut.ErrorVisibility}" >(The shortcut key was not enabled.)</TextBlock>
+                            <TextBlock x:Name="shortcutZError" Foreground="{Binding ElementName=text, Path=Foreground}" Opacity="0.5" Visibility="{Binding DefaultShortcut.ErrorVisibility}" >(The shortcut key was not enabled.)</TextBlock>
                         </TextBlock>
                 
                     </StackPanel>

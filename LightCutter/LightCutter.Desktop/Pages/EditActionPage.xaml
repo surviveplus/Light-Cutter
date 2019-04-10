@@ -4,14 +4,28 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.Desktop.Pages"
-        xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
+     xmlns:l="clr-namespace:Net.Surviveplus.LightCutter.Desktop"
+         xmlns:ui="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts;assembly=LightCutter.UI"
+        xmlns:u="clr-namespace:Net.Surviveplus.LightCutter.UI;assembly=LightCutter.UI"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="540"
-      Title="EditActionPage">
-    <Page.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="#FFFAFAFA" />
+      Title="EditActionPage"
+         DataContext="{Binding Source={x:Static u:WindowsTheme.Current}}"
+      >
+    <Page.Style>
+        <Style TargetType="Page">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="Black" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Theme}" Value="0">
+                    <Setter Property="Background" Value="Black" />
+                    <Setter Property="Foreground" Value="White" />
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
+    </Page.Style>
+    <Page.Resources>
+        <ResourceDictionary Source="Style.xaml"/>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>

@@ -10,8 +10,7 @@
         <Grid.RenderTransform>
             <TranslateTransform X="0" Y="5"></TranslateTransform>
         </Grid.RenderTransform>
-        <Label x:Name="text" />
-
+        <TextBlock x:Name="text" />
         <Rectangle Stroke="{Binding ElementName=text, Path=Foreground}" Width="16" Height="11" StrokeThickness="1.5" Margin="0,4,0,5"/>
         <Rectangle Fill="{Binding ElementName=text, Path=Foreground}" Width="2" Height="1" Margin="7,15,7,4" />
         <Rectangle Fill="{Binding ElementName=text, Path=Foreground}" Width="8" Height="1" Margin="4,16,4,3" />

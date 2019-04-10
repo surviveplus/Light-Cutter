@@ -80,7 +80,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                         accessText = $"_{ Convert.ToChar(number + 0x41) }.";
                     }
 
-                    var model = new ActionViewModel { AccessText = accessText, Name = command, DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == command ? Visibility.Visible : Visibility.Collapsed };
+                    var model = new ActionViewModel { AccessText = accessText, Name = command, DefaultShortcut = defaultShortcut, DefaultShortcutVisibility = Settings.Default.DefaultActionName == command ? Visibility.Visible : Visibility.Collapsed};
                     actionButton.DataContext = model;
                     actionButton.Click += (sender2, e2) => {
                         using (new WindowHide(this.parentWindow))
