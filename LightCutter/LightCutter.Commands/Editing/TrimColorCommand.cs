@@ -17,7 +17,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Editing
 
         public string Command => "Trim Color";
 
-        public IEnumerable<object> DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.LastArea(), " Trim by Color");
+        public IEnumerable<object> DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.Trim(), " Trim by Color");
 
         public bool IsEnabled => true;
 

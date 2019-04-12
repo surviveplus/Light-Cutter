@@ -73,7 +73,7 @@
                 <StackPanel Margin="10 0" MinWidth="80">
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Cut"><TextBlock><ui:Cutter/> Cut</TextBlock></Button>
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Last Range"><TextBlock><ui:LastArea/> Last Range</TextBlock></Button>
-                    <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Trim Color"><TextBlock><ui:LastArea/> Trim Color</TextBlock></Button>
+                    <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Trim Color"><TextBlock><ui:Trim /> Trim Color</TextBlock></Button>
                 </StackPanel>
                 <StackPanel Margin="10 0" MinWidth="80">
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Copy"><TextBlock><ui:Copy/> Copy</TextBlock></Button>

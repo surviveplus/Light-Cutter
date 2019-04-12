@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Net.Surviveplus.LightCutter.UI.Parts.Trim"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts"
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="20">
+
+    <Grid Width="16" Height="20">
+        <Grid.RenderTransform>
+            <TranslateTransform X="0" Y="5"></TranslateTransform>
+        </Grid.RenderTransform>
+        <TextBlock x:Name="text" />
+        <!--<Rectangle Stroke="{Binding Foreground, ElementName=text}" StrokeThickness="1" Margin="1,4,1,2"  />-->
+        <Rectangle Fill="{Binding ElementName=text, Path=Foreground}" Height="1" Margin="1,6,2,13" />
+        <Rectangle Fill="{Binding Foreground, ElementName=text}" Margin="3,4,12,3" />
+        <Rectangle Fill="{Binding Foreground, ElementName=text}" Margin="13,15,2,1" />
+
+        <Rectangle Fill="{Binding Foreground, ElementName=text}" Height="3"  Margin="11,0,-1,6" VerticalAlignment="Bottom"  RadiusX="2" RadiusY="2">
+            <Rectangle.RenderTransform>
+                <RotateTransform Angle="-45"/>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Fill="{Binding Foreground, ElementName=text}" Height="6"  Margin="10,0,4,4" VerticalAlignment="Bottom"  RadiusX="2" RadiusY="2">
+            <Rectangle.RenderTransform>
+                <RotateTransform Angle="-45"/>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Fill="{Binding Foreground, ElementName=text}" Height="1" Margin="12,16,0,3" />
+        <Rectangle Stroke="{Binding Foreground, ElementName=text}"  StrokeThickness="1" Height="3"  Margin="4,0,0,-1" VerticalAlignment="Bottom"  RadiusX="2" RadiusY="2" >
+            <Rectangle.RenderTransform>
+                <RotateTransform Angle="-45"/>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+
+    </Grid>
+</UserControl>

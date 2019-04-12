@@ -101,6 +101,9 @@
     <Compile Include="Parts\Timer.xaml.cs">
       <DependentUpon>Timer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Parts\Trim.xaml.cs">
+      <DependentUpon>Trim.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Parts\Uac.xaml.cs">
       <DependentUpon>Uac.xaml</DependentUpon>
     </Compile>
@@ -200,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Parts\Timer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Parts\Trim.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
