@@ -29,7 +29,7 @@ namespace LightCutter.Commands.Test
         [TestMethod]
         public void Test_CutAndSave_Text()
         {
-            var action = ActionCommands.FromCommands("Wait > Screen > Cut > Save");
+            var action = ActionCommands.FromCommands("Wait > Screen > Cut > Trim Color > Save");
 
             Debug.WriteLine(action.ToString());
             Debug.WriteLine("");
