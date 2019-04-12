@@ -7,7 +7,7 @@ It can take screenshots of an rectangular area by using a mouse.
 You can start this with shortcut key or delay.
 Can capture the same area as last time, so you can capture it fast and continuously.
 
- ![Action Panel](HowToUse/images/ActionPanel.png)
+ ![Action Panel](HowToUse/images/ActionPanel71Dark.png)
 
  - [Light Cutter ver.7.1 (Preview)](https://github.com/surviveplus/Light-Cutter/releases)
  - [Light Cutter ver.7.0](https://github.com/surviveplus/Light-Cutter/releases/tag/ver.7.0.33.18)
@@ -24,11 +24,11 @@ see [here](HowToUse/HowToUse.md)
 
 ### Action Command Edit (Ver.7.1)
 
-![Action Panel Edit](HowToUse/images/ActionPanelEdit2.png)
+![Action Panel Edit](HowToUse/images/ActionPanelEdit71Dark.png)
 
 You can edit Actions in version.7.1 or later. 
 
-![Action Edit](HowToUse/images/ActionEdit.png)
+![Action Edit](HowToUse/images/ActionEdit71Dark.png)
 
 Action is specified by simple command text.
 
