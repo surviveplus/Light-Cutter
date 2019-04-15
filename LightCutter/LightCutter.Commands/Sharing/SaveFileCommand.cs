@@ -50,6 +50,9 @@ namespace Net.Surviveplus.LightCutter.Commands.Sharing
                     outputFile.Directory.Create();
                 }
                 bitmap.Save(outputFile.FullName, System.Drawing.Imaging.ImageFormat.Png);
+
+                outputFile.Refresh();
+                state.SavedFile = outputFile;
             } // end using (cropped, bitmap )
         }
 

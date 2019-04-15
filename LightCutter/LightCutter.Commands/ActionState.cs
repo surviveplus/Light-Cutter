@@ -1,6 +1,7 @@
 ﻿using Net.Surviveplus.LightCutter.Core;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,6 +65,8 @@ namespace Net.Surviveplus.LightCutter.Commands
         public System.Drawing.Rectangle LastRange { get; set; }
 
         public CroppedImage CroppedImage { get; set; }
+
+        public FileInfo SavedFile { get; set; }
 
     }
 }

@@ -58,6 +58,9 @@
     <Compile Include="Parts\ActionButton.xaml.cs">
       <DependentUpon>ActionButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Parts\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Parts\BooleanExtensions.cs" />
     <Compile Include="Parts\Copy.xaml.cs">
       <DependentUpon>Copy.xaml</DependentUpon>
@@ -147,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Parts\ActionButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Parts\App.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

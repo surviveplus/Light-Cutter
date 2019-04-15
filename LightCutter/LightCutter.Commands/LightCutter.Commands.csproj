@@ -61,6 +61,7 @@
     <Compile Include="MustRunAsAdminException.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Sharing\CopyCommand.cs" />
+    <Compile Include="Sharing\OpenSavedFileCommand.cs" />
     <Compile Include="Sharing\SaveFileCommand.cs" />
     <Compile Include="Targeting\PrintWindowImage.cs" />
     <Compile Include="Targeting\TargetConsoleCommand.cs" />

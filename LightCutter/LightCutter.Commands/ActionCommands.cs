@@ -107,6 +107,7 @@ namespace Net.Surviveplus.LightCutter.Commands
                 if (command == null) command = Operations.WaitCommand.FromCommand(text);
                 if (command == null) command = Sharing.CopyCommand.FromCommand(text);
                 if (command == null) command = Sharing.SaveFileCommand.FromCommand(text);
+                if (command == null) command = Sharing.OpenSavedFileCommand.FromCommand(text);
                 if (command == null) command = Targeting.TargetConsoleCommand.FromCommand(text);
                 if (command == null) command = Targeting.TargetPrimaryMonitorCommand.FromCommand(text);
                 if (command == null) command = Targeting.TargetRemoteDesktopConnectionCommand.FromCommand(text);
