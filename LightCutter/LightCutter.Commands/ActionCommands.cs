@@ -44,8 +44,9 @@ namespace Net.Surviveplus.LightCutter.Commands
                 foreach (var command in this.Commands)
                 {
                     command.Do(state);
+                    if (state.IsCanceled) break;
                 }
-            }
+            } // end using(state)
         }
 
         public TextBlock DisplayCommand

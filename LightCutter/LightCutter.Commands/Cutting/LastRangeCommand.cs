@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Net.Surviveplus.LightCutter.Core;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -26,28 +27,29 @@ namespace Net.Surviveplus.LightCutter.Commands.Cutting
         public void Do(ActionState state)
         {
             if (state.IsCanceled) return;
+            if (!LastRange.HasValue) throw new InvalidOperationException("Last range is nothing.");
 
-            if (state.FrozenScreen == null)
+            Func<CroppedImage> crop;
+
+            if (state.CroppedImage != null)
             {
-                Debug.WriteLine($"{this.Command} - state.FrozenScreen is null");
-                throw new InvalidOperationException("state.FrozenScreen is null");
-            } // end if
+                crop = () => state.CroppedImage?.Crop(LastRange.Value);
 
-            //if(state.CroppedImage != null)
-            //{
-            //    // TODO : w.ShowCroppedImage(state.CroppedImage );
-            //}
-
-            if (LastRange.HasValue)
+            }
+            else
             {
-                using (var cropped = state.FrozenScreen?.Crop(LastRange.Value))
-                using (var bitmap = cropped?.GetBitmap())
+                if (state.FrozenScreen == null)
                 {
-                    var outputFile = new System.IO.FileInfo(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), System.DateTime.Now.ToString("yyyyMMdd HHmmssfff", System.Threading.Thread.CurrentThread.CurrentUICulture) + ".png"));
-                    bitmap.Save(outputFile.FullName, System.Drawing.Imaging.ImageFormat.Png);
-                } // end using (cropped, bitmap )
+                    Debug.WriteLine($"{this.Command} - state.FrozenScreen and state.CroppedImage are null");
+                    throw new InvalidOperationException("state.FrozenScreen and state.CroppedImage are null");
+                } // end if
+
+                crop = () => state.FrozenScreen?.Crop(LastRange.Value);
             } // end if
-        }
+
+            state.CroppedImage = crop();
+
+        } // end sub
 
         public static System.Drawing.Rectangle? LastRange = null;
     }

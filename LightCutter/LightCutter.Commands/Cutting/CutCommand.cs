@@ -55,7 +55,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Cutting
             if (r.HasValue && r.Value)
             {
                 Debug.WriteLine($"{this.Command} - Done");
-                state.LastRange = w.CroppedBounds;
+                LastRangeCommand.LastRange = w.CroppedBounds;
                 state.CroppedImage = crop();
             }
             else

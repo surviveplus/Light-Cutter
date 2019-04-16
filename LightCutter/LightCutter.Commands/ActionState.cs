@@ -62,8 +62,6 @@ namespace Net.Surviveplus.LightCutter.Commands
 
         public FrozenScreen FrozenScreen { get; set; }
 
-        public System.Drawing.Rectangle LastRange { get; set; }
-
         public CroppedImage CroppedImage { get; set; }
 
         public FileInfo SavedFile { get; set; }
