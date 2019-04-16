@@ -140,6 +140,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                 this.actionPreview.MustUac = action.MustUac;
                 this.actionPreview.Visibility = Visibility.Visible;
                 this.commandError.Visibility = Visibility.Collapsed;
+                this.runningError.Visibility = Visibility.Collapsed;
                 this.actionPreview.Tag = action;
             }
             catch (Exception ex)
@@ -154,6 +155,7 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
 
         private void ActionPreview_Click(object sender, EventArgs e)
         {
+            this.runningError.Visibility = Visibility.Collapsed;
             var action = this.actionPreview.Tag as ActionCommands;
             if (action != null) {
                 using (new WindowHide(this.parentWindow))
@@ -162,9 +164,10 @@ namespace Net.Surviveplus.LightCutter.Desktop.Pages
                     {
                         action.Do();    
                     }
-                    catch
+                    catch(Exception ex)
                     {
-                        // TODO : show Error in this page
+                        this.runningError.Text = ex.Message;
+                        this.runningError.Visibility = Visibility.Visible;
                     }
                 } // end using
             } // end if
