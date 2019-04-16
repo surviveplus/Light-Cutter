@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace Net.Surviveplus.LightCutter.Commands.Targeting
 {
-    /// <summary>
-    /// The exception that is thrown when target is not found.
-    /// </summary>
-    /// <remarks>
-    /// <para>change log</para>
-    /// </remarks>
+
     [Serializable]
-    public class TargetNotFoundException : Exception
+    public class TargetNotSelectedException : Exception
     {
         // Override or Implement Interface
 
@@ -34,43 +29,39 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
         } // end sub
 
         #endregion
-
+        
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the TargetNotFoundException class.
+        /// Initializes a new instance of the TargetNotSelectedException class.
         /// </summary>
-        public TargetNotFoundException() : base("Target not found. Please launch this action while a target is running.") { }
+        public TargetNotSelectedException() : base("Target not selected. Insert a command to select a screen capture or image before other commands.") { }
 
         /// <summary>
-        /// Initializes a new instance of the TargetNotFoundException class with a specified error message. 
+        /// Initializes a new instance of the TargetNotSelectedException class with a specified error message. 
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
-        public TargetNotFoundException(string message) : base(message) { }
+        public TargetNotSelectedException(string message) : base(message) { }
 
         /// <summary>
-        /// Initializes a new instance of the TargetNotFoundException class with a specified error message and a reference to the inner exception that is the cause of this exception.
+        /// Initializes a new instance of the TargetNotSelectedException class with a specified error message and a reference to the inner exception that is the cause of this exception.
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="inner">The exception that is the cause of the current exception. Set a null reference (Nothing in Visual Basic) if the inner exception value was not supplied.</param>
-        public TargetNotFoundException(string message, Exception inner) : base(message, inner) { }
+        public TargetNotSelectedException(string message, Exception inner) : base(message, inner) { }
 
         /// <summary>
-        /// Initializes a new instance of the TargetNotFoundException class with serialized data.
+        /// Initializes a new instance of the TargetNotSelectedException class with serialized data.
         /// </summary>
         /// <param name="info">The object that holds the serialized object data.</param>
         /// <param name="context">The contextual information about the source or destination.</param>
-        protected TargetNotFoundException(
+        protected TargetNotSelectedException(
           System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context)
-            : base(info, context)
-        {
+          System.Runtime.Serialization.StreamingContext context) : base(info, context) {
 
             // TODO: Initialize private members by info object. For example to initialize Value property, write the code as follows.
             // this.Value = info.GetInt32("Value");
-
-        } // end constructor
-
+        }
         #endregion
 
     } // end class

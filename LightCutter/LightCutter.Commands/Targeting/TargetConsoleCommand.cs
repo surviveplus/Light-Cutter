@@ -30,7 +30,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
             Debug.WriteLine($"{this.Command}");
 
             //var bitmap = PrintWindowImage.PrintWindow("{ConsoleWindowClass}", "(Text Area)");
-            var bitmap = PrintWindowImage.SaveByPrintWindowInside("{ConsoleWindowClass}");
+            var bitmap = PrintWindowImage.SaveByPrintWindowInside("{ConsoleWindowClass}", "Console of PowerShell or Command Prompt");
             state.CroppedImage = new Core.CroppedImage(bitmap);
 
         }

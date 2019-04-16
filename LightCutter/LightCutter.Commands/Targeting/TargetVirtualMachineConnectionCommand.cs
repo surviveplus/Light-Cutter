@@ -29,7 +29,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
             Debug.WriteLine($"{this.Command}");
 
-            var bitmap = PrintWindowImage.PrintWindow("<vmconnect>", "{UIMainClass}");
+            var bitmap = PrintWindowImage.PrintWindow("<vmconnect>", "{UIMainClass}" , "Virtual Machine Connection");
             state.CroppedImage = new Core.CroppedImage(bitmap);
 
         }

@@ -66,6 +66,7 @@
     <Compile Include="Targeting\PrintWindowImage.cs" />
     <Compile Include="Targeting\TargetConsoleCommand.cs" />
     <Compile Include="Targeting\TargetNotFoundException.cs" />
+    <Compile Include="Targeting\TargetNotSelectedException.cs" />
     <Compile Include="Targeting\TargetPrimaryMonitorCommand.cs" />
     <Compile Include="Targeting\TargetRemoteDesktopConnectionCommand.cs" />
     <Compile Include="Targeting\TargetScreenCommand.cs" />

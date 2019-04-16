@@ -41,8 +41,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Cutting
             else {
                 if (state.FrozenScreen == null)
                 {
-                    Debug.WriteLine($"{this.Command} - state.FrozenScreen and state.CroppedImage are null");
-                    throw new InvalidOperationException("state.FrozenScreen and state.CroppedImage are null");
+                    throw new Targeting.TargetNotSelectedException();
                 } // end if
 
                 show = () => w.ShowFrozenScreen(state.FrozenScreen);

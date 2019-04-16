@@ -34,8 +34,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Sharing
                 {
                     if (state.FrozenScreen == null)
                     {
-                        Debug.WriteLine($"{this.Command} state.SavedFile, state.CroppedImage and state.FrozenScreen are null");
-                        throw new InvalidOperationException("state.SavedFile, state.CroppedImage and state.FrozenScreen are null");
+                        throw new Targeting.TargetNotSelectedException();
                     } // end if
 
                     state.CroppedImage = state.FrozenScreen.Crop();

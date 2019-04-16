@@ -137,7 +137,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
         } // end class
 
-        public static Bitmap SaveByPrintWindowInside(string windowSelector)
+        public static Bitmap SaveByPrintWindowInside(string windowSelector, string targetName = "a target")
         {
             // Find bounds of window
             var queryWindow = Desktop.Elements.Children(windowSelector);
@@ -146,7 +146,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
             if (windowBounds == null)
             {
-                throw new TargetNotFoundException("Target not found.");
+                throw new TargetNotFoundException($"Target not found. Please launch this action while {targetName} is running.");
             } // end if
 
             System.Windows.Point toDevice = new System.Windows.Point(1, 1);
@@ -203,13 +203,13 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
             if (bounds == null)
             {
-                throw new TargetNotFoundException("Target not found.");
+                throw new TargetNotFoundException($"Target not found. Please launch this action while {targetName} is running.");
             } // end if
 
             return GetBitmapByUsingPrintWindow(window, windowBounds, bounds);
         } // end sub
 
-        public static Bitmap PrintWindow(string windowSelector, string screenSelector)
+        public static Bitmap PrintWindow(string windowSelector, string screenSelector, string targetName = "a target")
         {
 
             // Find bounds of window
@@ -219,7 +219,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
             if (windowBounds == null)
             {
-                throw new TargetNotFoundException("Target not found.");
+                throw new TargetNotFoundException($"Target not found. Please launch this action while {targetName} is running.");
             } // end if
 
             // Find bounds of inside of window
@@ -230,7 +230,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
             if (bounds == null)
             {
-                throw new TargetNotFoundException("Target not found.");
+                throw new TargetNotFoundException($"Target not found. Please launch this action while {targetName} is running.");
             } // end if
 
             return GetBitmapByUsingPrintWindow(window, windowBounds, bounds);

@@ -29,7 +29,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
             Debug.WriteLine($"{this.Command}");
 
-            var bitmap = PrintWindowImage.PrintWindow("{TscShellContainerClass}", "{UIMainClass}");
+            var bitmap = PrintWindowImage.PrintWindow("{TscShellContainerClass}", "{UIMainClass}", "Remote Desktop Connection");
             state.CroppedImage = new Core.CroppedImage(bitmap);
 
 
