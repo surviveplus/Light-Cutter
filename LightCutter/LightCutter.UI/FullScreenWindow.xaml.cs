@@ -65,7 +65,7 @@ namespace Net.Surviveplus.LightCutter.UI
 
         #region methods
 
-        private Core.FrozenScreen frozen;
+        private System.Drawing.Rectangle originalBounds;
 
         /// <summary>
         /// Show dialog window to display Frozen Screen image and to let the user specify a range. 
@@ -74,12 +74,12 @@ namespace Net.Surviveplus.LightCutter.UI
         /// <returns>Return true if the user specified the range, otherwise return false.</returns>
         public bool? ShowFrozenScreen( Core.FrozenScreen frozen)
         {
-            this.frozen = frozen;
+            this.originalBounds = frozen.Bounds;
 
-            this.Left = frozen.Bounds.Left;
-            this.Top = frozen.Bounds.Top;
-            this.Width = frozen.Bounds.Width;
-            this.Height = frozen.Bounds.Height;
+            this.Left = this.originalBounds.Left;
+            this.Top = this.originalBounds.Top;
+            this.Width = this.originalBounds.Width;
+            this.Height = this.originalBounds.Height;
 
 
             using (var s = new MemoryStream())
@@ -93,6 +93,51 @@ namespace Net.Surviveplus.LightCutter.UI
             return this.ShowDialog();
         } // end function 
 
+        public System.Drawing.Point CroppedOffest { get; private set; } = new System.Drawing.Point();
+
+        public bool? ShowCroppedImage(Core.CroppedImage cropped)
+        {
+            // TODO: move to Screen class
+            var bounds = new System.Drawing.Rectangle();
+            foreach (var b in from s in System.Windows.Forms.Screen.AllScreens select s.Bounds)
+            {
+                bounds = System.Drawing.Rectangle.Union(bounds, b);
+            } // next b
+
+            this.originalBounds = bounds;
+
+            this.Left = this.originalBounds.Left;
+            this.Top = this.originalBounds.Top;
+            this.Width = this.originalBounds.Width;
+            this.Height = this.originalBounds.Height;
+
+            using (var s = new MemoryStream())
+            using(var bitmap = new System.Drawing.Bitmap(bounds.Width,bounds.Height))
+            {
+                using (var g = System.Drawing.Graphics.FromImage(bitmap))
+                using (var b = cropped.GetBitmap())
+                {
+                    // primariy monitor or all screen.
+                    this.CroppedOffest = new System.Drawing.Point();
+                    var primary = System.Windows.Forms.Screen.PrimaryScreen.Bounds;
+                    if(b.Width < primary.Width && b.Height < primary.Height)
+                    {
+                        this.CroppedOffest = primary.Location;
+                    } // end if
+
+                    g.DrawImage(b, this.CroppedOffest);
+                } // end using (g, b)
+
+                bitmap.Save(s, ImageFormat.Png);
+                s.Seek(0, SeekOrigin.Begin);
+                this.frozenImage.Source = BitmapFrame.Create(s, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
+
+                this.magnifyingImage.Source = this.frozenImage.Source;
+            } // end using (s,bitmap)
+            return this.ShowDialog();
+
+        } // end function
+
         #endregion
 
         #region Window Events 
@@ -105,7 +150,7 @@ namespace Net.Surviveplus.LightCutter.UI
                 source.CompositionTarget.TransformToDevice.M11,
                 source.CompositionTarget.TransformToDevice.M22);
 
-            var size = new Size(this.frozen.Bounds.Width / this.cropping.toDevice.X, this.frozen.Bounds.Height / this.cropping.toDevice.Y);
+            var size = new Size(this.originalBounds.Width / this.cropping.toDevice.X, this.originalBounds.Height / this.cropping.toDevice.Y);
 
             this.frozenImage.Width = size.Width;
             this.frozenImage.Height = size.Height;
@@ -314,7 +359,9 @@ namespace Net.Surviveplus.LightCutter.UI
         /// </summary>
         public System.Drawing.Rectangle CroppedBounds {
             get {
-                return this.cropping.BoundsToDevice.ToRectangle();
+                var r = this.cropping.BoundsToDevice.ToRectangle();
+                r.Offset(this.CroppedOffest);
+                return r;
             } // end get
         } // end property
 

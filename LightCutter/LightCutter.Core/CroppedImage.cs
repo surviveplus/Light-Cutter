@@ -68,5 +68,26 @@ namespace Net.Surviveplus.LightCutter.Core
             return new Bitmap(this.bitmap);
         } // end function
 
+        public CroppedImage Crop()
+        {
+            var cropped = new Bitmap(this.bitmap);
+            return new CroppedImage(cropped);
+        } // end function
+
+
+        public CroppedImage Crop(Rectangle part)
+        {
+            var bounds = new Rectangle(0, 0, this.bitmap.Width, this.bitmap.Height);
+            bounds.Intersect(part);
+
+            var cropped = new Bitmap(bounds.Width, bounds.Height);
+            using (var g = Graphics.FromImage(cropped))
+            {
+                g.DrawImage(this.bitmap, 0, 0, bounds, GraphicsUnit.Pixel);
+            }
+            return new CroppedImage(cropped);
+        } // end function
+
+
     } // end class
 } // end namespace

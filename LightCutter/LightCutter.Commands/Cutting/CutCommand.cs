@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Net.Surviveplus.LightCutter.Core;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -27,26 +28,35 @@ namespace Net.Surviveplus.LightCutter.Commands.Cutting
         {
             if (state.IsCanceled) return;
 
-            if(state.FrozenScreen == null)
+            Net.Surviveplus.LightCutter.UI.FullScreenWindow w = null;
+            Func<bool?> show;
+            Func<CroppedImage> crop;
+
+            if (state.CroppedImage != null)
             {
-                Debug.WriteLine($"{this.Command} - state.FrozenScreen is null");
-                throw new InvalidOperationException("state.FrozenScreen is null");
+                show = () => w.ShowCroppedImage(state.CroppedImage);
+                crop = () => state.CroppedImage?.Crop(w.CroppedBounds);
+
+            }
+            else {
+                if (state.FrozenScreen == null)
+                {
+                    Debug.WriteLine($"{this.Command} - state.FrozenScreen and state.CroppedImage are null");
+                    throw new InvalidOperationException("state.FrozenScreen and state.CroppedImage are null");
+                } // end if
+
+                show = () => w.ShowFrozenScreen(state.FrozenScreen);
+                crop = () => state.FrozenScreen?.Crop(w.CroppedBounds);
             } // end if
 
-            //if(state.CroppedImage != null)
-            //{
-            //    // TODO : w.ShowCroppedImage(state.CroppedImage );
-            //}
-
             Debug.WriteLine($"{this.Command} - Start");
-            var w = new Net.Surviveplus.LightCutter.UI.FullScreenWindow(Settings.Default.GuideBackgroundTransparent, Settings.Default.GridPixel);
-            var r = w.ShowFrozenScreen(state.FrozenScreen);
+            w = new Net.Surviveplus.LightCutter.UI.FullScreenWindow(Settings.Default.GuideBackgroundTransparent, Settings.Default.GridPixel);
+            var r = show();
             if (r.HasValue && r.Value)
             {
                 Debug.WriteLine($"{this.Command} - Done");
                 state.LastRange = w.CroppedBounds;
-
-                state.CroppedImage = state.FrozenScreen?.Crop(w.CroppedBounds);
+                state.CroppedImage = crop();
             }
             else
             {
