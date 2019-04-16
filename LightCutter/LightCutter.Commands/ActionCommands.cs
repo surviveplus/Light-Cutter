@@ -100,6 +100,8 @@ namespace Net.Surviveplus.LightCutter.Commands
             var r = new ActionCommands();
             foreach (var text in from c in commands.Split('>') select c.Trim())
             {
+                if (string.IsNullOrWhiteSpace(text)) continue;
+
                 IActionCommand command = null;
                 if (command == null) command = Cutting.CutCommand.FromCommand(text);
                 if (command == null) command = Cutting.LastRangeCommand.FromCommand(text);
