@@ -122,7 +122,7 @@ namespace Net.Surviveplus.LightCutter.UI
                     var primary = System.Windows.Forms.Screen.PrimaryScreen.Bounds;
                     if(b.Width < primary.Width && b.Height < primary.Height)
                     {
-                        this.CroppedOffest = primary.Location;
+                        this.CroppedOffest = new System.Drawing.Point( primary.Location.X - this.originalBounds.Location.X , primary.Location.Y - this.originalBounds.Location.Y);
                     } // end if
 
                     g.DrawImage(b, this.CroppedOffest);
@@ -360,7 +360,7 @@ namespace Net.Surviveplus.LightCutter.UI
         public System.Drawing.Rectangle CroppedBounds {
             get {
                 var r = this.cropping.BoundsToDevice.ToRectangle();
-                r.Offset(this.CroppedOffest);
+                r.Offset(new System.Drawing.Point ( -1 * this.CroppedOffest.X, -1 * this.CroppedOffest.Y));
                 return r;
             } // end get
         } // end property
