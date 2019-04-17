@@ -64,7 +64,9 @@
     <Compile Include="Sharing\OpenSavedFileCommand.cs" />
     <Compile Include="Sharing\SaveFileCommand.cs" />
     <Compile Include="Targeting\PrintWindowImage.cs" />
+    <Compile Include="Targeting\TargetClipboardCommand.cs" />
     <Compile Include="Targeting\TargetConsoleCommand.cs" />
+    <Compile Include="Targeting\TargetFileCommand.cs" />
     <Compile Include="Targeting\TargetNotFoundException.cs" />
     <Compile Include="Targeting\TargetNotSelectedException.cs" />
     <Compile Include="Targeting\TargetPrimaryMonitorCommand.cs" />

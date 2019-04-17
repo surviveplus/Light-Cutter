@@ -62,11 +62,17 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Parts\BooleanExtensions.cs" />
+    <Compile Include="Parts\Clipboard.xaml.cs">
+      <DependentUpon>Clipboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Parts\Copy.xaml.cs">
       <DependentUpon>Copy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Parts\Cutter.xaml.cs">
       <DependentUpon>Cutter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\File.xaml.cs">
+      <DependentUpon>File.xaml</DependentUpon>
     </Compile>
     <Compile Include="Parts\Key.xaml.cs">
       <DependentUpon>Key.xaml</DependentUpon>
@@ -157,11 +163,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Parts\Clipboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Parts\Copy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Parts\Cutter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Parts\File.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

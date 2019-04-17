@@ -72,6 +72,8 @@
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Console"><TextBlock><ui:PowerShell /> Console</TextBlock></Button>
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Remote Desktop"><TextBlock><ui:RemoteDesktop/> Remote Desktop</TextBlock></Button>
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Virtual Machine"><TextBlock><ui:VirtualMachine/> Virtual Machine</TextBlock></Button>
+                    <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="File"><TextBlock><ui:File/> File</TextBlock></Button>
+                    <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Clipboard"><TextBlock><ui:Clipboard/> Clipboard</TextBlock></Button>
                 </StackPanel>
                 <StackPanel Margin="10 0" MinWidth="80">
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Cut"><TextBlock><ui:Cutter/> Cut</TextBlock></Button>

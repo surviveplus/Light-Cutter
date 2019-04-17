@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Net.Surviveplus.LightCutter.UI.Parts.Clipboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Net.Surviveplus.LightCutter.UI.Parts"
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="20">
+    <Grid Width="16" Height="20">
+        <Grid.RenderTransform>
+            <TranslateTransform X="0" Y="5"></TranslateTransform>
+        </Grid.RenderTransform>
+        <TextBlock x:Name="text" Margin="0,1,0,-1" />
+        <Rectangle Stroke="{Binding Foreground, ElementName=text}" StrokeThickness="1" Margin="0,2,0,1"  RadiusX="1" RadiusY="1"/>
+        <Rectangle Stroke="{Binding Foreground, ElementName=text}" StrokeThickness="1" Margin="2,4,2,3" />
+        <Rectangle Fill="{Binding Foreground, ElementName=text}"  Margin="6,1,6,15" RadiusX="3" RadiusY="3"/>
+        <Rectangle Fill="{Binding Foreground, ElementName=text}"  Margin="4,2.559,4,14" RadiusX="3" RadiusY="1"/>
+
+    </Grid>
+</UserControl>
