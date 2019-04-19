@@ -19,18 +19,9 @@ http://www.surviveplus.net/ja/archives/24
 In Japan, users of this software series are over 50,000 people total. For example, one of company approved it as official software.
 However, the new version had not been released recently. So in this repository we migrate this and release new features.
 
-## How to use (Quick Start)
-see [here](HowToUse/HowToUse.md)
-
-### Action Command Edit (Ver.7.1)
-
-![Action Panel Edit](HowToUse/images/ActionPanelEdit71Dark.png)
-
-You can edit Actions in version.7.1 or later. 
-
-![Action Edit](HowToUse/images/ActionEdit71Dark.png)
-
-Action is specified by simple command text.
+## How to use 
+- [How to use (Quick Start)](HowToUse/HowToUse.md)
+- [How to Edit Action](HowToUse/HowToEditAction.md)
 
 ## Roadmap
 ### ver.7.0 - Migrating from previous version

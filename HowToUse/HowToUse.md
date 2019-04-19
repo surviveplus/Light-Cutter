@@ -1,7 +1,12 @@
-# How to use Light Cutter 7.0
+# How to use Light Cutter 7.1
 ![Light Cutter](images/LightCutter7.png) 
 
 Light Cutter is a simple screenshot utility. 
+
+## See  also
+
+- [How to Edit Action](HowToEditAction.md)
+
 
 ## Installation and Run
 Download installer package from [here](https://github.com/surviveplus/Light-Cutter/releases)  and run setup.exe in the zip file.
