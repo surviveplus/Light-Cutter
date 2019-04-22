@@ -36,10 +36,17 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="55" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-            <Button Width="30" Height="30" Margin="0 5" x:Name="BackButton" Background="Transparent" BorderBrush="Transparent" Click="BackButton_Click" >&lt;</Button>
-            <Label x:Name="Title" FontSize="18">Edit Action</Label>
-        </StackPanel>
+        <Grid Margin="0 0 0 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"></ColumnDefinition>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BackButton" Background="Transparent" BorderBrush="Transparent" Click="BackButton_Click" >&lt;</Button>
+            <Label Grid.Column="1" x:Name="Title" FontSize="18">Edit Action</Label>
+            <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"><Hyperlink x:Name="HelpLink" Click="HelpLink_Click">Help</Hyperlink></TextBlock>
+
+        </Grid>
 
         <ui:ActionButton Grid.Row="1" x:Name="actionPreview" VerticalAlignment="Center" Click="ActionPreview_Click">
             <TextBlock ><ui:Screen />  Stop Screen &gt; <ui:LastArea /> Cut the same range &gt; <ui:Save /> Save a File on desktop</TextBlock>
