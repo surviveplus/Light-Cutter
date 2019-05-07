@@ -9,7 +9,7 @@
         Title="FullScreenWindow" ShowInTaskbar="False" WindowStyle="None" Loaded="Window_Loaded" Topmost="True" 
         BorderThickness="0" Left="0" Top="0" ResizeMode="NoResize" 
         KeyUp="Window_KeyUp"
-        KeyDown="Window_KeyDown" LostFocus="Window_LostFocus" Background="Black"
+        KeyDown="Window_KeyDown" LostFocus="Window_LostFocus" 
         SizeChanged="Window_SizeChanged"
         Cursor="None">
     <Window.Resources>
@@ -38,8 +38,37 @@
             <BeginStoryboard Storyboard="{StaticResource LineColor}"/>
         </EventTrigger>
     </Window.Triggers>
+    <Window.Background>
+        <DrawingBrush Viewport="0,0,32,32" TileMode="Tile" ViewportUnits="Absolute">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="#FF999999">
+                        <GeometryDrawing.Geometry>
+                            <RectangleGeometry Rect="0,0,100,100"  />
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="#FF666666">
+                        <GeometryDrawing.Geometry>
+                            <GeometryGroup RenderOptions.EdgeMode="Aliased">
+                                <RectangleGeometry Rect="0,0,50,50" />
+                                <RectangleGeometry Rect="50,50,50,50" />
+                            </GeometryGroup>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </Window.Background>
     <Canvas>
-        <Image x:Name="frozenImage" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="UniformToFill" Opacity="0.8" MouseMove="FrozenImage_MouseMove"/>
+        <Image x:Name="frozenImage" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp" HorizontalAlignment="Left" VerticalAlignment="Top"   Stretch="UniformToFill" MouseMove="FrozenImage_MouseMove" />
+
+        <Rectangle Opacity=".2" Fill="Black" Canvas.Left="{Binding Bounds.Left}" Canvas.Top="{Binding Bounds.Top}" Width="{Binding Bounds.Width}" Height="{Binding Bounds.Height}" Visibility="{Binding LineVisibility}" MouseMove="FrozenImage_MouseMove" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp" ></Rectangle>
+
+        <Rectangle Opacity=".2" Fill="Black" Canvas.Left="0" Canvas.Top="0" Width="{Binding Bounds.X}" Height="{Binding ElementName=verticalLine, Path=Y2}" MouseMove="FrozenImage_MouseMove" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp" ></Rectangle>
+        <Rectangle Opacity=".2" Fill="Black" Canvas.Left="{Binding Bounds.Left}"  Canvas.Top="0" Width="{Binding Bounds.Width}" Height="{Binding Bounds.Top}" MouseMove="FrozenImage_MouseMove" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp" ></Rectangle>
+        <Rectangle Opacity=".2" Fill="Black" Canvas.Left="{Binding Bounds.Left}"  Canvas.Top="{Binding Bounds.Bottom}" Width="{Binding Bounds.Width}" Height="{Binding ElementName=verticalLine, Path=Y2}" MouseMove="FrozenImage_MouseMove" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp" ></Rectangle>
+        <Rectangle Opacity=".2" Fill="Black" Canvas.Left="{Binding Bounds.Right}" Canvas.Top="0" Width="{Binding ElementName=horizontalLine, Path=X2}" Height="{Binding ElementName=verticalLine, Path=Y2}" MouseMove="FrozenImage_MouseMove" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp" ></Rectangle>
+
         <Line x:Name="verticalLine" 
               Visibility="{Binding LineVisibility}"
               Stroke="{Binding ElementName=cropGuidelines, Path=Stroke}" MouseDown="FrozenImage_MouseDown" MouseUp="FrozenImage_MouseUp"  X1="{Binding Path=Point.X}" X2="{Binding Path=Point.X}" Y1="0" Y2="200"  MouseMove="FrozenImage_MouseMove" />
