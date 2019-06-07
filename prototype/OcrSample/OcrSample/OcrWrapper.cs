@@ -27,11 +27,18 @@ namespace OcrSample
 
         public static async Task<OcrResult> RecognizeAsync(SoftwareBitmap bitmap)
         {
-            //var ocrEngine = OcrEngine.TryCreateFromLanguage(new Windows.Globalization.Language("en-US"));   // This code does not work in my computer, English is not installed ?
-            //Debug.WriteLine(OcrEngine.IsLanguageSupported(new Windows.Globalization.Language("en"))); // false
-
-            var ocrEngine = OcrEngine.TryCreateFromUserProfileLanguages();
+            OcrEngine ocrEngine = null;
+            var en = new Windows.Globalization.Language("en");
+            if (OcrEngine.IsLanguageSupported(en))
+            {
+                ocrEngine = OcrEngine.TryCreateFromLanguage(en);
+            }
+            if(ocrEngine == null)
+            {
+                ocrEngine = OcrEngine.TryCreateFromUserProfileLanguages();
+            }
             Debug.WriteLine(ocrEngine.RecognizerLanguage.DisplayName);
+
             var ocrResult = await ocrEngine.RecognizeAsync(bitmap);
             return ocrResult;
         } // end function
