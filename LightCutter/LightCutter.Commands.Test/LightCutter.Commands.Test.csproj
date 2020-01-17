@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="ActionCommandsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SafeFileCommandTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

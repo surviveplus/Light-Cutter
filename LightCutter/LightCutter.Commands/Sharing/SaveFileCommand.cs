@@ -12,17 +12,36 @@ namespace Net.Surviveplus.LightCutter.Commands.Sharing
 {
     public class SaveFileCommand : IActionCommand
     {
-        public static SaveFileCommand FromCommand(string command)
-        {
-            if (command == "Save") { return new SaveFileCommand(); }
-            return null;
-        }
 
-        public string Command => "Save";
+        #region IActionCommand members
+
+        public string Command{
+            get
+            {
+                if(this.Folder != null){ 
+                    return $"Save ( \"{this.Folder.FullName}\" )";
+                }else{
+                    return "Save";
+                }
+            } // end get
+        } // end property
 
         public bool IsEnabled => true;
 
-        IEnumerable<object> IActionCommand.DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.Save(), " Save");
+        IEnumerable<object> IActionCommand.DisplayCommand
+        {
+            get{
+                if (this.Folder != null)
+                {
+                    return ActionCommandDisplay.Create(new UI.Parts.Save(), $" Save ( ... {this.Folder.Name} )");
+                }
+                else
+                {
+                    return ActionCommandDisplay.Create(new UI.Parts.Save(), " Save");
+                }
+
+            }
+        }
 
         public bool MustUac => false;
 
@@ -54,6 +73,41 @@ namespace Net.Surviveplus.LightCutter.Commands.Sharing
                 state.SavedFile = outputFile;
             } // end using (cropped, bitmap )
         }
+
+        #endregion
+
+
+        private static System.Text.RegularExpressions.Regex valueOfRegexCommand;
+
+        private static System.Text.RegularExpressions.Regex RegexCommand
+        {
+            get
+            {
+                if (SaveFileCommand.valueOfRegexCommand == null) {
+                    SaveFileCommand.valueOfRegexCommand = new System.Text.RegularExpressions.Regex("Save *\\( *\"(?<folder>.+)\" *\\)");
+                }
+                return SaveFileCommand.valueOfRegexCommand;
+            }
+        }
+
+        public static SaveFileCommand FromCommand(string command)
+        {
+            if (command.StartsWith("Save"))
+            {
+                if (command == "Save") { return new SaveFileCommand(); }
+                else
+                {
+                    var m = SaveFileCommand.RegexCommand.Match(command);
+                    if (m.Success)
+                    {
+                        var folder = m.Groups["folder"].Value;
+                        return new SaveFileCommand { Folder = new System.IO.DirectoryInfo(folder) };
+                    } // end if
+                } // endif                
+            } // end if
+            
+            return null;
+        } // end function
 
         public DirectoryInfo Folder { get; set; }
 
