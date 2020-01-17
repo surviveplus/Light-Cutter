@@ -90,6 +90,7 @@
                 <StackPanel Margin="10 0" MinWidth="80">
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Copy"><TextBlock><ui:Copy/> Copy</TextBlock></Button>
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Save"><TextBlock><ui:Save/> Save</TextBlock></Button>
+                    <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Save( &quot;c:\folder&quot; )"><TextBlock><ui:Save/> Save ( Folder )</TextBlock></Button>
                     <Button HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent" Click="CommandButton_Click" Tag="Open"><TextBlock><ui:App/> Open</TextBlock></Button>
                 </StackPanel>
             </StackPanel>
