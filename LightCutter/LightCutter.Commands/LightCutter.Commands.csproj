@@ -57,6 +57,7 @@
     <Compile Include="ActionState.cs" />
     <Compile Include="Cutting\CutCommand.cs" />
     <Compile Include="Cutting\LastRangeCommand.cs" />
+    <Compile Include="Cutting\RangeCommand.cs" />
     <Compile Include="Editing\TrimColorCommand.cs" />
     <Compile Include="MustRunAsAdminException.cs" />
     <Compile Include="Settings.cs" />
