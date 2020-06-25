@@ -58,6 +58,12 @@ namespace OcrSample
 
 
         }
+
+        private void resultBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var text = this.resultBlock.Text;
+            Clipboard.SetText(text);
+        }
     }
 
 #pragma warning restore CA2007 // Consider calling ConfigureAwait on the awaited task
