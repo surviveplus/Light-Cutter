@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -36,6 +37,9 @@ namespace Net.Surviveplus.LightCutter.UI
             [DllImport("user32.dll")]
             [return: MarshalAs(UnmanagedType.Bool)]
             public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+            [DllImport("user32.dll", EntryPoint = "SetWindowPos")]
+            public static extern IntPtr SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int Y, int cx, int cy, int wFlags);
 
             #endregion
 
@@ -74,13 +78,11 @@ namespace Net.Surviveplus.LightCutter.UI
         /// <returns>Return true if the user specified the range, otherwise return false.</returns>
         public bool? ShowFrozenScreen( Core.FrozenScreen frozen)
         {
+            
             this.originalBounds = frozen.Bounds;
-
-            this.Left = this.originalBounds.Left;
-            this.Top = this.originalBounds.Top;
-            this.Width = this.originalBounds.Width;
-            this.Height = this.originalBounds.Height;
-
+            this.Width = 0;
+            this.Height = 0;
+            // Resize and Move on Window_Loaded
 
             using (var s = new MemoryStream())
             {
@@ -105,11 +107,9 @@ namespace Net.Surviveplus.LightCutter.UI
             } // next b
 
             this.originalBounds = bounds;
-
-            this.Left = this.originalBounds.Left;
-            this.Top = this.originalBounds.Top;
-            this.Width = this.originalBounds.Width;
-            this.Height = this.originalBounds.Height;
+            this.Width = 0;
+            this.Height = 0;
+            // Resize and Move on Window_Loaded
 
             using (var s = new MemoryStream())
             using(var bitmap = new System.Drawing.Bitmap(bounds.Width,bounds.Height))
@@ -185,7 +185,7 @@ namespace Net.Surviveplus.LightCutter.UI
             this.gridPixelLeft.Text = this.GridPixel.ToString();
             this.gridPixelRight.Text = this.gridPixelLeft.Text;
 
-
+            NativeMethods.SetWindowPos(new WindowInteropHelper(this).Handle, IntPtr.Zero, this.originalBounds.Left, this.originalBounds.Top, this.originalBounds.Width, this.originalBounds.Height, 0);
             NativeMethods.SetForegroundWindow(new WindowInteropHelper(this).Handle);
         } // end sub
 

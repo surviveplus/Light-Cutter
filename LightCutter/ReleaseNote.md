@@ -1,5 +1,1 @@
-- New Cutting "Specified Bounds" #26
-- Add folder path to Save Action #35
-- Add New Target "Clipboard Image" 
-- Add New Target "File Image"
-- New Action "Open saved file" #31
+- Bug fix "It does not work on multi monitor and mixed High DPI" #14

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace Net.Surviveplus.LightCutter.Core
             var bounds = new Rectangle();
             foreach (var b in from s in System.Windows.Forms.Screen.AllScreens select s.Bounds)
             {
+                Debug.WriteLine($"({b.Left},{b.Top})-({b.Right},{b.Bottom}) : {b.Width}x{b.Height}");
                 bounds = Rectangle.Union(bounds, b);
             } // next b
 
@@ -22,6 +24,7 @@ namespace Net.Surviveplus.LightCutter.Core
             if (timeSpan < TimeSpan.FromSeconds(0)) { timeSpan = TimeSpan.FromSeconds(0); }
 
             System.Threading.Thread.Sleep(timeSpan);
+            Debug.WriteLine($"FrozenScreen : ({bounds.Left},{bounds.Top})-({bounds.Right},{bounds.Bottom}) : {bounds.Width}x{bounds.Height}");
             return new FrozenScreen(bounds);
 
         } // end function
