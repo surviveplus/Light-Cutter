@@ -131,14 +131,14 @@
             <CheckBox Margin="10 10 10 10" Click="CheckBox_Click">Edit</CheckBox>
             <ui:ActionButton x:Name="action1" Loaded="Action1_Loaded" Click="Action1_Click" EditButtonClick="Action1_EditButtonClick">
                 <TextBlock>
-                    <ui:Screen /> Stop Screen &gt;
+                    <ui:Screen /> Capture Screen &gt;
                     <ui:Cutter /> Cut &gt;
                     <ui:Save /> Save a File on desktop
                 </TextBlock>
             </ui:ActionButton>
             <ui:ActionButton  x:Name="action2" EditButtonClick="Action1_EditButtonClick">
                 <TextBlock>
-                    <ui:Screen /> Stop Screen &gt;
+                    <ui:Screen /> Capture Screen &gt;
                     <ui:Cutter /> Cut &gt;
                     <ui:Save /> Save a File on desktop
                 </TextBlock>
@@ -146,7 +146,7 @@
 
             <ui:ActionButton  x:Name="action3" Click="Action3_Click" EditButtonClick="Action1_EditButtonClick">
                 <TextBlock>
-                            <ui:Screen />  Stop Screen &gt; <ui:LastArea /> Cut the same range &gt; <ui:Save /> Save a File on desktop</TextBlock>
+                            <ui:Screen />  Capture Screen &gt; <ui:LastArea /> Cut the same range &gt; <ui:Save /> Save a File on desktop</TextBlock>
             </ui:ActionButton>
 
         </StackPanel>
