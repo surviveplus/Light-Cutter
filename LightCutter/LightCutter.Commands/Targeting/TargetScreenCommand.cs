@@ -20,7 +20,7 @@ namespace Net.Surviveplus.LightCutter.Commands.Targeting
 
         public bool IsEnabled => true;
 
-        IEnumerable<object> IActionCommand.DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.Screen(), " Stop Screen");
+        IEnumerable<object> IActionCommand.DisplayCommand => ActionCommandDisplay.Create(new UI.Parts.Screen(), " Capture Screen");
 
         public bool MustUac => false;
 

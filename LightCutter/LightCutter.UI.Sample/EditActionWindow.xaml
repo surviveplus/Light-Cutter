@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <ui:ActionButton x:Name="actionPreview" VerticalAlignment="Center">
-            <TextBlock ><ui:Screen />  Stop Screen &gt; <ui:LastArea /> Cut the same range &gt; <ui:Save /> Save a File on desktop</TextBlock>
+            <TextBlock ><ui:Screen />  Capture Screen &gt; <ui:LastArea /> Cut the same range &gt; <ui:Save /> Save a File on desktop</TextBlock>
         </ui:ActionButton>
 
         <StackPanel Grid.Row="1" Margin="10">
